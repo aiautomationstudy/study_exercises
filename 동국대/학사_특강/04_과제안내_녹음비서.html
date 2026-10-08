@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="type" content="student-assignment-guide"><meta name="created" content="2026-10-03">
+<meta name="source_notes" content="study_exercises/3기/실습/3기_심화실습_2_녹음하면_알아서_정리하는_내_비서_만들기.md">
+<meta name="target_audience" content="동국대학교 AI 활용 특강 수강생"><meta name="status" content="1회차 뒤 배포용">
+<meta name="description" content="녹음하면 알아서 글로 옮기고 정리해 텔레그램으로 알려 주는 비서를 Antigravity 앱과 agy로 만드는 과제 안내 (Windows·Mac)">
+<title>녹음 비서 과제 · Antigravity로 만들기</title>
+<style>:root{--ink:#183140;--muted:#586b74;--line:#dce6e7;--paper:#fff;--bg:#f3f6f5;--teal:#006d68;--warm:#fff6e7;--navy:#122e3c;--radius:18px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:17px;line-height:1.85}a{color:var(--teal);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d69b30;outline-offset:4px}[hidden]{display:none!important}.skip{position:fixed;top:-100px;background:white;z-index:20;padding:12px}.skip:focus{top:0}.top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}.top-inner{max-width:1460px;margin:auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:15px;font-weight:750;color:var(--ink);text-decoration:none}.actions,.link-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.button{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid var(--teal);border-radius:10px;background:var(--teal);color:white;text-decoration:none;font-size:14px;font-weight:700;line-height:1.5;min-height:44px;text-align:center}.button.secondary{background:white;color:var(--teal);border-color:#b8cdce}.button:hover{filter:brightness(.94)}#progress{font-size:13px;color:var(--muted);white-space:nowrap}.layout{max-width:1460px;margin:auto;display:grid;grid-template-columns:236px minmax(0,1fr);gap:32px;padding:34px 28px 80px}.toc{position:sticky;top:108px;height:fit-content;padding:16px 4px}.eyebrow{font-size:12px;letter-spacing:.12em;font-weight:750;color:var(--teal);margin:0 0 18px}.toc ol{padding:0;list-style:none;margin:0 0 28px}.toc li{margin:8px 0}.toc a{display:block;padding:7px 11px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:14px}.toc a:hover{background:#e2eeeb;color:var(--teal)}main{min-width:0}.hero{background:var(--navy);color:white;border-radius:24px;padding:52px 46px}.hero .eyebrow{color:#8fd5c7}.hero h1{font-size:clamp(34px,4vw,53px);letter-spacing:-.045em;line-height:1.3;margin:0 0 24px}.hero em{font-style:normal;color:#9ee1d2}.lead{font-size:19px;line-height:1.85;color:#dbe8ea}.meta{display:flex;gap:8px 20px;flex-wrap:wrap;font-size:13px;color:#adc6cd;margin:28px 0}.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:1px solid #3d5661;padding-top:24px}.hero-grid div{display:grid;gap:4px}.hero-grid b{font-size:16px}.hero-grid span{font-size:13px;color:#adc6cd}.section{padding:40px 38px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-top:24px;overflow-wrap:anywhere}.step{font-size:13px;font-weight:750;color:var(--teal);margin:0 0 10px;letter-spacing:.04em}h2{font-size:28px;letter-spacing:-.035em;line-height:1.45;margin:0 0 24px}h3{font-size:20px;line-height:1.5;letter-spacing:-.02em;margin:30px 0 12px}p{margin:0 0 18px}ul,ol{padding-left:25px;margin:12px 0 24px}li{margin:9px 0}.small{font-size:13px;color:var(--muted);line-height:1.8}.source{display:inline;font-size:13px;white-space:normal}.callout{padding:22px 24px;background:#edf7f4;border-left:4px solid #278c7d;border-radius:0 12px 12px 0;margin:24px 0}.callout p{margin:9px 0 0}.callout.warm{background:var(--warm);border-color:#bd872e}.table-wrap{overflow:auto;margin:26px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.8}caption{text-align:left;font-size:13px;font-weight:700;color:var(--muted);padding:0 0 12px}th,td{text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid var(--line);min-width:115px}th{background:#f0f5f4;font-weight:750}td:first-child{font-weight:650}th:first-child,td:first-child{padding-left:12px}code,kbd{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.89em;background:#eef3f2;border-radius:4px;padding:2px 5px}kbd{border:1px solid #c9d6d5}.flow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}.flow>div{border:1px solid var(--line);border-radius:12px;padding:18px}.flow b,.flow span{display:block}.flow b{font-size:15px}.flow span{font-size:13px;color:var(--muted)}.steps li{padding-left:6px;margin:14px 0}.link-row{margin:24px 0}.os-switch{display:flex;flex-wrap:wrap;gap:6px;padding:6px;border-radius:12px;background:#edf3f1;margin:28px 0 16px;width:fit-content}.os-button{background:none;border:0;padding:8px 18px;border-radius:8px;font-size:14px;min-height:44px;color:var(--muted)}.os-button.selected{background:white;color:var(--teal);font-weight:750;box-shadow:0 1px 4px #163f3620}.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.download-card{padding:24px;border:1px solid var(--line);border-radius:15px;background:#fbfcfb}.download-card h3{margin:0 0 14px}.download-card .eyebrow{margin-bottom:8px}.download-card p{font-size:15px}.download-card .button{width:100%;margin-bottom:10px}.download-card .small{font-size:12px;margin-top:10px}.platform-block{padding:1px 20px;border-left:3px solid #d5e5df;margin:22px 0}.value{color:var(--teal)}.settings-figure{margin:30px auto;max-width:640px}.settings-figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #233b40}.settings-figure figcaption{font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px}details{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:24px 0}summary{cursor:pointer;font-size:15px;font-weight:750}details p{margin-top:16px}.prompt{border:1px solid #d5e2e0;border-radius:14px;margin:24px 0;overflow:hidden}.prompt-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;background:#edf5f2}.prompt-head h3{margin:0;font-size:16px}.prompt-head .button{flex-shrink:0}pre{font-family:ui-monospace,SFMono-Regular,Consolas,"Malgun Gothic",monospace;font-size:14px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:24px;background:#f7faf8;color:#213c42}#rules-text{margin-top:18px;border-radius:10px;font-size:13px}.checklist{display:grid;gap:8px;margin:26px 0}.checklist label{display:flex;gap:13px;align-items:flex-start;padding:15px 18px;background:#f3f7f5;border:1px solid var(--line);border-radius:10px;font-size:15px;cursor:pointer}.checklist input{width:20px;height:20px;accent-color:var(--teal);flex-shrink:0;margin-top:5px}.record-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}.record-grid label,.field{display:block;font-size:14px;font-weight:650}.record-grid input,textarea{display:block;width:100%;padding:12px 14px;margin:8px 0 18px;border:1px solid #b5c9c7;border-radius:9px;background:white;color:var(--ink);font-size:15px;line-height:1.8}textarea{min-height:120px;resize:vertical}#record-text{min-height:340px;font-family:ui-monospace,Consolas,monospace;font-size:13px}.status{color:var(--teal);font-size:14px;margin-top:16px;min-height:26px}.sources{font-size:14px}footer{padding:36px 14px;color:var(--muted);text-align:center;font-size:13px;line-height:1.9}
+@media(max-width:1050px){.layout{grid-template-columns:1fr;max-width:900px}.toc{position:static;padding:0}.toc ol{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0}.toc li{margin:0}.toc .eyebrow,.toc .small{display:none}.toc a{background:#e8efec;font-size:12px;padding:7px 10px}.hero{padding:42px 34px}.section{padding:32px 28px}}
+@media(max-width:600px){html{scroll-padding-top:110px}body{font-size:16px}.top-inner{padding:12px 16px;gap:8px;flex-wrap:wrap}.brand{font-size:13px}.top .actions{gap:6px}.top .button{font-size:12px;padding:8px 10px;min-height:38px}#progress{font-size:11px}.layout{padding:20px 12px 40px;gap:16px}.hero{padding:30px 22px;border-radius:18px}.hero h1{font-size:34px}.lead{font-size:16px}.meta{gap:6px 12px;font-size:11px}.hero-grid{grid-template-columns:1fr;gap:16px}.hero-grid b{font-size:15px}.section{padding:28px 20px;margin-top:16px;border-radius:14px}h2{font-size:25px}h3{font-size:19px}.callout{padding:18px}.flow,.download-grid,.record-grid{grid-template-columns:1fr}.record-grid{gap:0}.download-card{padding:22px}.prompt-head{padding:12px;align-items:flex-start}.prompt-head h3{font-size:15px}.prompt-head .button{font-size:12px;padding:9px 12px}pre{font-size:13px;padding:18px}.table-wrap{margin-left:-5px;margin-right:-5px}td,th{padding:10px;font-size:13px;min-width:105px}.checklist label{padding:13px 12px}.settings-figure{margin:24px 0}.actions .button{max-width:100%}}
+@media print{html{scroll-behavior:auto}body{background:white;font-size:11pt;color:#111}.top,.toc,.skip,.button,.os-switch,.status,#record-preview{display:none!important}.layout{display:block;padding:0}.hero{background:white;color:#111;border:1px solid #bbb;padding:24px}.hero em,.hero .eyebrow,.lead,.meta,.hero-grid span{color:#333}.hero h1{font-size:30pt}.hero-grid{border-color:#ccc}.section{padding:20px 0;border:0;border-radius:0;margin:12px 0}h2{font-size:20pt}h3{font-size:14pt}.section,h3{break-inside:auto}h2,h3,.step,caption{break-after:avoid}tr,.flow>div,.download-card,.checklist label{break-inside:avoid}pre{font-size:9pt;background:#fafafa;border:1px solid #ddd}a{color:#111}.table-wrap{overflow:visible}table{font-size:9pt}.settings-figure{max-width:370px}details{display:none}.platform-block[hidden],.download-card[hidden]{display:block!important}footer{font-size:9pt}}
+.prompt-note{font-size:14px;line-height:1.8;padding:16px 18px;margin:0}.prompt-detail{margin:0;border:0;border-top:1px solid var(--line);border-radius:0;padding:0}.prompt-detail summary{padding:14px 18px;font-size:14px;color:var(--teal);background:#f7faf8}.prompt-detail pre{border-top:1px solid var(--line)}.optional-checks label{background:#fafbf9}
+@media(max-width:600px){.prompt-note,.prompt-detail summary{font-size:13px;padding:14px}.top #progress{font-size:11px}}
+@media print{.prompt details.prompt-detail{display:block!important;padding:0;border:0}.prompt-detail summary,.prompt-note{display:none}.prompt{overflow:visible;border:0}.prompt-head{padding:8px 0;background:white}.prompt-head h3{font-size:12pt}.prompt-detail pre{border:1px solid #ddd}}
+
+pre{white-space:pre-wrap} .hero em{font-style:normal}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="top-inner"><a class="brand" href="#main">동국대 AI 활용 특강 · 과제</a><div class="actions"><span id="progress" aria-live="polite">기본 0/7</span><button class="button secondary" id="print-guide" type="button">인쇄 / PDF</button><a class="button" href="#submit">체크와 기록</a></div></div></header>
+<div class="layout">
+<nav class="toc" aria-label="안내서 목차"><p class="eyebrow">ASSIGNMENT GUIDE</p><ol><li><a href="#read">이 안내서를 읽는 법</a></li><li><a href="#folder">1장 · 폴더와 프로젝트</a></li><li><a href="#agy">2장 · 뒤에서 일하는 AI, agy</a></li><li><a href="#whisper">3장 · 음성을 글로</a></li><li><a href="#model">4장 · 내 노트북에 맞는 모델</a></li><li><a href="#record">5장 · 시험 녹음 두 개</a></li><li><a href="#first">6장 · 첫 전사와 속도 시험</a></li><li><a href="#auto">7장 · 자동 처리 프로그램</a></li><li><a href="#check">8장 · 지어내지 않았나 확인</a></li><li><a href="#schedule">9장 · 5분마다 자동 실행</a></li><li><a href="#bot">10장 · 텔레그램 봇</a></li><li><a href="#chatid">11장 · 봇 시작과 내 번호</a></li><li><a href="#notify">12장 · 알림 설정과 시험</a></li><li><a href="#done">13장 · 정리 끝나면 알림</a></li><li><a href="#dash">Part 5 · 관제판 (권장)</a></li><li><a href="#phone">Part 6 · 휴대폰 자동 전송 (선택)</a></li><li><a href="#notion">Part 7 · Notion 저장 (선택)</a></li><li><a href="#ask">Part 8 · 기록에 질문하기 (심화)</a></li><li><a href="#help">20장 · 잘 안될 때</a></li><li><a href="#faq">21장 · 자주 묻는 질문</a></li><li><a href="#words">22장 · 용어</a></li><li><a href="#submit">23장 · 체크와 기록</a></li></ol><p class="small">위에서부터 하나씩.<br>막히면 20장.</p></nav>
+<main id="main">
+<section class="hero"><p class="eyebrow">1회차(10/8) 과제 · 10월 15일 2회차 전까지</p><h1>녹음하면 알아서 정리하는<br><em>내 비서 만들기</em></h1>
+<p class="lead">휴대폰으로 녹음한 파일을 노트북의 폴더에 넣기만 하면, ① 글로 옮기고 ② 읽기 좋게 정리하고 ③ 요약하고 ④ 휴대폰 텔레그램으로 “정리 끝났어요”를 보내 주는 나만의 비서를 만듭니다. 한 번 만들어 두면, 그다음부터 할 일은 녹음 버튼을 누르는 것뿐입니다.</p>
+<div class="meta"><span>안내: AI 특강 강사</span><span>Antigravity 앱 + Antigravity CLI(agy)</span><span>Windows · Mac</span><span>안내서 v1.2 · 2026.10.07</span></div>
+<div class="hero-grid"><div><b>기본 · Part 1~4</b><span>준비 → 첫 전사 → 자동 처리 → 텔레그램 알림</span></div><div><b>권장 · Part 5</b><span>브라우저 관제판</span></div><div><b>선택 · Part 6~8</b><span>휴대폰 자동 전송 · Notion · 기록에 질문</span></div></div></section>
+<section id="read" class="section"><p class="step">0장 · 먼저 읽기</p><h2>이 안내서를 읽는 법</h2>
+
+<p>이 과제는 <strong>노트북</strong>에서 합니다. 휴대폰은 녹음할 때만 씁니다. 1회차 수업 때 쓴 <strong>Antigravity 앱</strong>이 있으면 준비는 된 것입니다.</p>
+<h3>내 컴퓨터를 고르세요</h3>
+<p>아래에서 고르면 안내서 전체에서 내 컴퓨터 설명만 보입니다. 상자 속 프롬프트는 Windows·Mac 공통입니다. AI가 내 컴퓨터에 맞게 알아서 바꿔 진행합니다.</p>
+<div class="os-switch" role="group" aria-label="운영체제 고르기"><button type="button" class="os-button" data-os="windows" aria-pressed="false">Windows</button><button type="button" class="os-button" data-os="mac" aria-pressed="false">Mac</button><button type="button" class="os-button" data-os="all" aria-pressed="false">둘 다 보기</button></div>
+<p class="small" id="os-label" aria-live="polite"></p>
+<h3>회색 상자는 AI에게 보내는 프롬프트입니다</h3>
+<p><strong>「프롬프트 복사」</strong>를 누르고, Antigravity 대화 입력란에 붙여넣고(Windows <kbd>Ctrl</kbd>+<kbd>V</kbd> · Mac <kbd>⌘</kbd>+<kbd>V</kbd>) 보냅니다. <strong>직접 타이핑하지 마세요.</strong> 내용을 다 이해하지 않아도 됩니다. 1회차에 말씀드린 순서 그대로입니다 — <strong>먼저 맡기고, 결과를 보고, 궁금한 것만 묻습니다.</strong></p>
+<div class="callout"><b>오류는 정상입니다.</b> 사람마다 컴퓨터가 달라서 오류가 납니다. 막히면 화면의 빨간 글씨를 <strong>통째로 복사</strong>해서 붙여넣고 “이 오류 해결해 줘. 컴퓨터 초보자니까 한 단계씩 설명해 줘.”라고 보내세요. 오류를 읽고 이해하려고 애쓰지 않아도 됩니다. AI가 읽습니다.</div>
+<h3>얼마나 걸리나요</h3>
+<div class="table-wrap"><table><thead><tr><th>부분</th><th>내용</th><th>꼭 해야 하나요</th><th>시간</th></tr></thead><tbody><tr><td>Part 1~3</td><td>녹음 파일 → 글 → 정리 → 5분마다 자동</td><td><b>기본</b></td><td>2~3시간</td></tr><tr><td>Part 4</td><td>텔레그램으로 “정리 끝났어요” 알림</td><td><b>기본</b></td><td>30분</td></tr><tr><td>Part 5</td><td>브라우저 관제판(목록·실패 원인·다시 처리)</td><td>권장</td><td>1시간</td></tr><tr><td>Part 6~8</td><td>휴대폰 자동 전송 · Notion 저장 · 기록에 질문하기</td><td>선택</td><td>각 30분~1시간</td></tr></tbody></table></div>
+<p>한 번에 다 하지 않아도 됩니다. <strong>나눠서 하세요.</strong> 다음에 이어서 할 때는 같은 프로젝트에서 “지금까지 어디까지 했는지 확인해 줘”라고 먼저 보내면 됩니다.</p>
+<div class="callout warm"><b>제출</b> — 방법과 마감은 교수님 안내를 따릅니다. 텔레그램 알림 화면 캡처 한 장이면 충분합니다. 끝까지 못 갔어도 <strong>“○장까지 했는데 여기서 막혔습니다”</strong>와 오류 화면을 내면 그것도 제출입니다. 막힌 곳은 10월 15일 2회차에 같이 풉니다.</div>
+<p class="small">이 안내서는 AI 자동화 스터디 3기 심화실습 #2(ChatGPT 앱·Codex 판)를 Antigravity 앱과 Antigravity CLI(agy)에 맞게 옮긴 것입니다. 강사가 모든 학생 컴퓨터에서 끝까지 시험해 본 것은 아닙니다. 막힌 곳을 알려 주시면 안내서를 고칩니다.</p>
+
+</section>
+<section id="folder" class="section"><p class="step">Part 1 · 준비 · 1장</p><h2>작업 폴더와 Antigravity 프로젝트 만들기</h2>
+
+<p>녹음 비서가 일할 폴더 하나와, 그 폴더를 쓰는 Antigravity 프로젝트를 만듭니다. 1회차 실습 프로젝트(Dongguk Practice)와는 따로 만듭니다.</p>
+<h3>① 폴더 만들기 · 내가 합니다</h3>
+<div class="platform-block" data-platform="windows"><h3>Windows</h3><ol class="steps"><li><kbd>Windows</kbd>+<kbd>E</kbd>로 파일 탐색기를 엽니다.</li><li>왼쪽 <strong>문서</strong>를 누릅니다.</li><li>빈 곳에서 마우스 오른쪽 → <strong>새로 만들기 → 폴더</strong> → 이름 <code>녹음자동처리</code> → Enter.</li></ol><p class="small">위치는 보통 <code>C:\Users\내이름\Documents\녹음자동처리</code> 입니다. 문서 폴더가 OneDrive 안에 있으면 나중에 권한 오류가 날 수 있습니다. 그때는 20장 표를 보세요.</p></div>
+<div class="platform-block" data-platform="mac"><h3>Mac</h3><ol class="steps"><li>Finder를 엽니다.</li><li>화면 위 메뉴 <strong>이동 → 홈</strong>을 누릅니다. (집 모양, 내 이름 폴더)</li><li>메뉴 <strong>파일 → 새로운 폴더</strong> → 이름 <code>녹음자동처리</code> → Return.</li></ol><p class="small"><b>문서·데스크탑·다운로드 폴더가 아니라 홈 폴더 바로 아래</b>에 만듭니다. Mac은 보안 때문에, 예약해 둔 프로그램이 문서·데스크탑·다운로드 폴더를 열지 못하게 막을 수 있습니다. 위치는 <code>/Users/내이름/녹음자동처리</code> 입니다.</p></div>
+<h3>② Antigravity에 프로젝트 만들기 · 내가 합니다</h3>
+<ol class="steps"><li>Antigravity 왼쪽 Projects 근처의 <strong>폴더 + 아이콘</strong> → <strong>New Project</strong> → 이름 <code>녹음비서</code>.</li><li><strong>Add Folder</strong> → 방금 만든 <code>녹음자동처리</code> 폴더를 고릅니다. (그 위의 문서·홈 폴더 전체를 고르지 않습니다.)</li><li><strong>Create</strong> → 왼쪽에서 <code>녹음비서</code> 프로젝트를 고르고 <strong>새 대화</strong>를 엽니다. 실행 위치를 물으면 <strong>Local</strong>.</li></ol>
+<h3>③ AI에게 폴더 정리와 작업 원칙 맡기기</h3>
+<p>1회차에 해 본 「프로젝트 지침 남기기」입니다. 이 과제의 작업 원칙을 지침 파일 <code>AGENTS.md</code>로 남겨 두면, 새 대화를 열어도 AI가 읽고 시작합니다.</p>
+<div class="prompt"><div class="prompt-head"><h3>1장 · 폴더 준비와 작업 원칙</h3><button class="button secondary" type="button" data-copy="p1">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p1">지금부터 &quot;녹음하면 알아서 정리하는 내 비서&quot; 과제를 시작할 거야. 나는 코딩을 처음 해 보는 대학생이야.
+
+1. 이 컴퓨터가 Windows인지 Mac인지, 이 프로젝트의 녹음자동처리 폴더의 실제 전체 경로가 무엇인지 확인해서 알려 줘.
+2. 녹음자동처리 폴더 안에 inbox, notes, tools, models, logs, config 폴더를 만들어 줘.
+3. 녹음자동처리 폴더에 AGENTS.md 파일을 만들고 아래 작업 원칙을 적어 줘. 앞으로 새 대화에서도 이 파일을 먼저 읽고 따라 줘.
+
+--- AGENTS.md 에 적을 내용 ---
+# 녹음 비서 과제 작업 원칙
+- 이 컴퓨터의 운영체제: (1번에서 확인한 것)
+- 작업 폴더: (1번에서 확인한 전체 경로). 이 폴더 안에서만 파일을 만들고 고친다. 프로그램 설치 위치와 예약 실행 등록은 예외.
+- 학생은 코딩 초보자다. 설명은 쉬운 한국어로, 처음 나오는 용어는 짧게 풀어 쓴다.
+- 안내서의 프롬프트가 Windows 기준 표현이어도, 이 컴퓨터의 운영체제에 맞는 방법으로 바꿔 진행한다.
+- 관리자 비밀번호가 필요한 명령(sudo, 관리자 권한 설치)은 실행하지 말고, 학생이 직접 할 수 있게 한 줄씩 안내한다. 먼저 관리자 권한 없이 되는 방법을 찾는다.
+- config 폴더의 telegram_token.txt, notion_token.txt 는 비밀번호다. 절대 읽거나 화면·로그에 보여 주지 않는다.
+- 계획만 말하고 멈추지 말고, 만들고 실행하고 시험하고 고친다.
+- 나와 대화할 때는 끝날 때마다 &quot;실제로 확인한 것&quot;과 &quot;확인하지 못한 것&quot;을 나눠 알려 준다. 프로그램이 agy로 정리 문서를 만들 때는 문서 본문만 쓴다.
+- 오류가 나면 추측하지 말고 실제 오류 메시지를 보고 고친다.
+---
+
+4. 끝나면 폴더 구조를 보여 주고, 파일 탐색기(Mac은 Finder)에서 녹음자동처리 폴더를 열어 줘.</pre></details></div>
+<p>만들어진 구조입니다. 외울 필요는 없습니다. <strong>inbox 하나만 기억</strong>하세요.</p>
+<pre>녹음자동처리
+  ├─ inbox    ← ★ 녹음 파일을 여기에 넣으면 자동 처리 시작
+  ├─ notes    ← 정리된 문서가 여기에 생김
+  ├─ tools    ← 프로그램 (AI가 알아서 넣음)
+  ├─ models   ← 전사 모델 (AI가 알아서 넣음)
+  ├─ logs     ← 실행 기록 (오류 확인용)
+  ├─ config   ← 텔레그램 열쇠(토큰) 같은 비밀값
+  └─ AGENTS.md ← 이 과제의 작업 원칙</pre>
+
+</section>
+<section id="agy" class="section"><p class="step">Part 1 · 준비 · 2장</p><h2>뒤에서 일하는 AI, agy 준비하기</h2>
+
+<p>이 과제에는 AI가 <strong>두 가지 모습</strong>으로 나옵니다.</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>역할</th><th>누가 쓰나</th></tr></thead><tbody><tr><td><b>Antigravity 앱</b></td><td>내가 프롬프트를 붙여넣으면 일해 주는 화면. 1회차에 쓴 것</td><td>나</td></tr><tr><td><b>agy</b> (Antigravity CLI)</td><td>화면 없이 뒤에서 혼자 일하는 Antigravity. 녹음이 들어오면 글을 정리·요약한다</td><td>자동 처리 프로그램</td></tr></tbody></table></div>
+<p>밤에 내가 자고 있어도 정리가 되려면, 화면 없는 쪽(agy)이 있어야 합니다. 같은 Google 계정으로 로그인합니다.</p>
+<h3>① 설치는 AI에게 맡깁니다</h3>
+<div class="prompt"><div class="prompt-head"><h3>2장 · agy 설치</h3><button class="button secondary" type="button" data-copy="p2">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p2">이 컴퓨터에 Antigravity CLI(명령어 이름 agy)를 설치해 줘.
+
+1. 먼저 agy --version 이 실행되는지 확인해 줘. 이미 있으면 다시 설치하지 마.
+   agy라는 명령이 있어도 데스크톱 앱을 여는 명령일 수 있으니, agy --version 결과로 CLI가 맞는지 확인해 줘.
+2. 없으면 공식 안내(https://antigravity.google/docs/getting-started?tab=cli)의 방법으로 설치해 줘.
+   - Mac: curl -fsSL https://antigravity.google/cli/install.sh | bash
+   - Windows(PowerShell): irm https://antigravity.google/cli/install.ps1 | iex
+3. 설치 뒤 agy --version 으로 확인해 줘. 명령을 못 찾으면 설치 위치(Mac은 ~/.local/bin, Windows는 AppData\Local\agy\bin)가 PATH에 들어갔는지 확인하고 고쳐 줘.
+4. agy를 처음 실행할 때 화면 설정과 Google 로그인을 묻는 과정이 있는데, 그건 내가 직접 해야 해.
+   내가 할 수 있게 터미널을 여는 방법과 칠 명령 한 줄을 알려 줘.
+5. 설치된 agy의 전체 경로를 AGENTS.md 에 적어 줘. 자동 처리 프로그램이 이 경로로 부를 거야.</pre></details></div>
+<h3>② 처음 한 번 로그인 · 내가 합니다</h3>
+<p>agy는 처음 켤 때 몇 가지를 묻고 Google 로그인을 합니다. 이 단계만 터미널(글자로 명령하는 창)에서 직접 합니다. 한 번만 하면 됩니다.</p>
+<div class="platform-block" data-platform="windows"><h3>Windows</h3><ol class="steps"><li><kbd>Windows</kbd> 키를 누르고 <code>PowerShell</code>을 입력 → Enter. 파란색 또는 검은색 창이 열립니다.</li><li><code>agy</code> 를 입력하고 Enter. “명령을 찾을 수 없다”고 나오면 창을 닫고 PowerShell을 <strong>새로 열어</strong> 다시 칩니다.</li><li>색·화면 방식 같은 질문은 Enter로 기본값을 고릅니다. 이 폴더를 믿겠느냐(trust)고 물으면 예.</li><li>브라우저가 열리면 <strong>Antigravity와 같은 개인 Google 계정</strong>으로 로그인하고 허용합니다.</li><li>터미널로 돌아와 <code>안녕</code> 이라고 쳐서 답이 오면 성공. 창을 닫습니다.</li></ol></div>
+<div class="platform-block" data-platform="mac"><h3>Mac</h3><ol class="steps"><li><kbd>⌘</kbd>+<kbd>Space</kbd> → <code>터미널</code>(Terminal) 입력 → Return. 흰색 또는 검은색 창이 열립니다.</li><li><code>agy</code> 를 입력하고 Return. “command not found”가 나오면 창을 닫고 새 터미널을 열어 다시 칩니다. 그래도 안 되면 <code>~/.local/bin/agy</code> 를 칩니다.</li><li>색·화면 방식 같은 질문은 Return으로 기본값을 고릅니다. 이 폴더를 믿겠느냐(trust)고 물으면 예.</li><li>브라우저가 열리면 <strong>Antigravity와 같은 개인 Google 계정</strong>으로 로그인하고 허용합니다.</li><li>터미널로 돌아와 <code>안녕</code> 이라고 쳐서 답이 오면 성공. 창을 닫습니다.</li></ol></div>
+<h3>③ 화면 없이도 답하는지 확인</h3>
+<div class="prompt"><div class="prompt-head"><h3>2장 · agy 확인</h3><button class="button secondary" type="button" data-copy="p3">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p3">agy 로그인을 마쳤어. 화면 없이 한 번만 실행하는 방식으로 agy가 답하는지 확인해 줘.
+
+1. agy -p &quot;한 문장으로 자기소개해 줘&quot; 를 실행해 답이 나오는지 확인해 줘. 시간 제한은 --print-timeout 3m 정도로 걸어 줘.
+2. 답이 나오면 걸린 시간을 알려 줘.
+3. 응답 없이 멈추면 그대로 기다리지 말고 원인을 찾아 줘. 화면(터미널) 없이 실행할 때 agy가 멈추는 문제가 알려져 있어. 다른 실행 방법(출력 방식·옵션)을 시도해 보고 결과를 AGENTS.md 에 적어 줘.
+4. agy models 로 쓸 수 있는 모델 이름을 확인하고, 요약처럼 가벼운 일에 쓸 빠른 모델(Flash 계열) 이름을 AGENTS.md 에 적어 줘.</pre></details></div>
+<div class="callout warm"><b>agy가 끝내 안 되면</b> — 과제는 계속할 수 있습니다. 글로 옮기기(전사)까지는 agy 없이 됩니다. 정리·요약만 자동이 안 되는데, 그때는 20장 끝의 「손으로 정리하기」 프롬프트를 쓰면 됩니다. 일단 다음 장으로 넘어가세요.</div>
+
+</section>
+<section id="whisper" class="section"><p class="step">Part 1 · 준비 · 3장</p><h2>음성을 글로 바꾸는 프로그램 준비</h2>
+
+<p><strong>whisper.cpp</strong>는 음성을 글자로 바꿔 주는 무료 프로그램입니다. 녹음이 인터넷으로 나가지 않고 <strong>내 컴퓨터 안에서만</strong> 처리됩니다. 휴대폰 녹음 파일(.m4a)을 읽으려면 <strong>ffmpeg</strong>라는 변환 도구도 필요합니다. 이번 과제의 프로그램은 Windows·Mac 모두 쓰는 <strong>파이썬</strong>으로 만들기 때문에, 파이썬도 함께 준비합니다.</p>
+<div class="callout warm"><b>스터디 2기에서 가장 많이 막힌 곳입니다.</b> whisper.cpp는 휴대폰 녹음을 바로 못 읽습니다. 아래 프롬프트에 ffmpeg까지 들어 있으니 그대로 붙여넣으면 됩니다.</div>
+<div class="prompt"><div class="prompt-head"><h3>3장 · whisper.cpp · ffmpeg · 파이썬 준비</h3><button class="button secondary" type="button" data-copy="p4">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p4">녹음자동처리\tools 아래에 음성을 글로 바꾸는 도구를 준비해 줘. 관리자 비밀번호 없이 되는 방법을 먼저 써 줘.
+
+1) 파이썬
+- uv(파이썬을 관리자 권한 없이 설치·실행해 주는 도구)가 있는지 확인하고, 없으면 공식 방법으로 설치해 줘.
+  Mac: curl -LsSf https://astral.sh/uv/install.sh | sh
+  Windows(PowerShell): powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;
+- uv로 파이썬 3.12를 준비하고, 앞으로 이 과제의 파이썬 프로그램은 uv run 으로 실행해 줘.
+
+2) whisper.cpp
+- tools 아래나 이 컴퓨터에 whisper-cli(옛 이름 main) 실행 파일이 있는지 확인하고, 있으면 --help 로 실행되는지 확인해 줘.
+- 없으면 준비해 줘.
+  Windows: 공식 GitHub 릴리스의 최신 Windows x64 실행 파일을 받아 tools\whispercpp 에 정리.
+  Mac: Homebrew가 이미 있으면 brew install whisper-cpp. Homebrew가 없으면 관리자 비밀번호 없이 되는 방법을 먼저 찾아 줘
+       (예: whisper.cpp를 tools 아래에 직접 빌드. 이때 Xcode 명령줄 도구 설치 창이 뜨면 내가 &#x27;설치&#x27;를 누르면 된다고 알려 줘).
+
+3) ffmpeg
+- ffmpeg -version 이 실행되는지 확인하고, 없으면 tools\ffmpeg 에 준비해 줘.
+  Windows: 공식 안내에 있는 Windows용 빌드(zip)를 받아 압축 해제.
+  Mac: Homebrew가 있으면 brew install ffmpeg, 없으면 관리자 권한 없이 쓰는 정적 실행 파일.
+
+4) 마지막에 파이썬(uv), whisper-cli, ffmpeg 의 실제 실행 파일 전체 경로를 알려 주고 AGENTS.md 에도 적어 줘.
+각 단계를 컴퓨터 초보자가 이해할 수 있게 한국어로 설명해 줘.</pre></details></div>
+<div class="platform-block" data-platform="windows"><h3>Windows에서 이런 창이 뜨면</h3><ul><li><b>“Windows의 PC 보호”</b>(파란 창): 공개된 무료 프로그램을 처음 실행할 때 뜹니다. <strong>추가 정보 → 실행</strong>을 누릅니다.</li><li><b>백신이 whisper·ffmpeg를 지운다면</b>: AI에게 “Windows Defender 제외 폴더에 녹음자동처리\tools 를 추가하는 방법을 알려 줘”라고 보내세요.</li></ul></div>
+<div class="platform-block" data-platform="mac"><h3>Mac에서 이런 창이 뜨면</h3><ul><li><b>“명령어 라인 개발자 도구를 설치하겠습니까?”</b>: <strong>설치</strong>를 누르고 끝날 때까지 기다립니다(몇 분). 끝나면 AI에게 “설치 끝났어, 이어서 해 줘”.</li><li><b>“확인되지 않은 개발자”</b> 경고: AI에게 그 문구를 그대로 보내면 여는 방법을 알려 줍니다.</li><li><b>터미널에서 비밀번호를 물으면</b>: Mac 로그인 비밀번호를 칩니다. <strong>쳐도 화면에 글자가 안 보이는 게 정상</strong>입니다. 다 치고 Return.</li></ul></div>
+
+</section>
+<section id="model" class="section"><p class="step">Part 1 · 준비 · 4장</p><h2>내 노트북에 맞는 전사 모델 받기</h2>
+
+<p>whisper.cpp는 <strong>모델 파일</strong>이 있어야 동작합니다. 모델은 “귀와 뇌” 역할을 하는 파일입니다. 클수록 잘 알아듣지만 느리고, 노트북이 버거워합니다. 그래서 <strong>AI가 내 노트북 사양을 확인해서</strong> 고르게 합니다. 가능하면 가장 정확한 <code>medium-korean</code>을 쓰고, 사양이 낮으면 한 단계씩 내려갑니다.</p>
+<div class="table-wrap"><table><thead><tr><th>모델</th><th>파일 크기</th><th>실행 중 메모리</th><th>특징</th></tr></thead><tbody><tr><td><b>medium-korean</b><br>1순위</td><td>약 1.5GB</td><td>약 2GB</td><td>Whisper medium을 한국어 녹음 약 10만 문장으로 더 학습시킨 모델. 가장 정확하고 가장 느림</td></tr><tr><td>small</td><td>약 490MB</td><td>약 0.9GB</td><td>여러 언어용 모델. 한국어 지정(<code>-l ko</code>) 필수. 정확도·속도 중간</td></tr><tr><td>base-ko</td><td>약 150MB</td><td>약 0.4GB</td><td>한국어용 작은 모델. 가장 빠름. 오래된 노트북도 됨. <b>어느 경우든 예비로 받아 둡니다</b></td></tr></tbody></table></div>
+<div class="callout"><b>AI가 고르는 기준</b><br>① <b>medium-korean</b> — Apple 칩(M1 이상) Mac은 메모리 8GB 이상이면, 그 밖의 노트북은 메모리 16GB 이상이면서 논리 프로세서 8개 이상이면. 남은 저장 공간 3GB 이상.<br>② <b>small</b> — 메모리 8GB 이상인데 ①에 못 미칠 때.<br>③ <b>base-ko</b> — 메모리 8GB 미만이거나 저장 공간이 부족할 때.<br><b>최종 결정은 6장의 속도 시험</b>으로 합니다. 1분짜리 시험 녹음을 글로 옮기는 데 2분(녹음 길이의 2배)을 넘기면 한 단계 낮춥니다.</div>
+<div class="prompt"><div class="prompt-head"><h3>4장 · 사양 확인과 모델 받기</h3><button class="button secondary" type="button" data-copy="p5">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p5">이 노트북에 맞는 whisper.cpp 한국어 전사 모델을 골라서 받아 줘. 저장 위치는 녹음자동처리\models.
+
+1. 먼저 이 노트북의 사양을 확인해서 표로 보여 줘.
+   운영체제, CPU 이름과 코어 수(논리 프로세서 수), Apple 칩(M1 이상)인지, 메모리(RAM) 크기, 남은 저장 공간, NVIDIA 그래픽카드가 있는지.
+2. 아래 기준으로 1순위 모델을 골라 줘. 나는 가능하면 medium-korean 을 쓰고 싶어.
+   - medium-korean: Apple 칩 Mac이고 메모리 8GB 이상, 또는 그 밖의 컴퓨터는 메모리 16GB 이상이면서 논리 프로세서 8개 이상. 남은 저장 공간 3GB 이상.
+   - small: 메모리 8GB 이상인데 medium-korean 기준에 못 미칠 때.
+   - base-ko: 메모리 8GB 미만이거나 저장 공간이 부족할 때.
+   왜 그 모델을 골랐는지 쉬운 말로 설명해 줘.
+3. 고른 모델을 받아 줘. base-ko 는 어느 경우든 예비로 함께 받아 둬.
+   - medium-korean: https://huggingface.co/royshilkrot/whisper-medium-korean-ggml/resolve/main/whisper-medium-korean.bin
+     → whisper-medium-korean.bin, 약 1.53GB. Whisper medium을 한국어로 더 학습시킨 모델이야.
+   - small: https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
+     → ggml-small.bin, 약 488MB. 여러 언어용 모델이라 전사할 때 반드시 -l ko.
+   - base-ko: https://huggingface.co/wabisabisocial/whisper-base-korean-ggml/resolve/main/ggml-base-ko.bin
+     → ggml-base-ko.bin, 약 148MB.
+   어느 모델이든 전사할 때는 -l ko 로 한국어를 지정해.
+4. 받은 파일마다 크기가 위의 예상과 비슷한지 확인해 줘. 오류 페이지가 .bin 이름으로 저장되는 경우가 있어서 크기 확인이 중요해.
+   큰 파일이 중간에 끊기면 이어받기 방식으로 다시 받아 줘.
+5. 주소가 죽어 있으면 whisper.cpp 공식 모델 중 같은 크기(ggml-medium.bin / ggml-small.bin / ggml-base.bin)로 대신 받고, 파일 이름이 달라졌다고 알려 줘.
+6. 사양 표, 고른 모델과 이유, 받은 파일들의 전체 경로, 세 모델의 받는 주소를 AGENTS.md 에 적어 줘.
+   &quot;최종 모델은 속도 시험 뒤에 정한다&quot;고 함께 적어 줘.</pre></details></div>
+<p class="small">medium-korean은 1.5GB라 받는 데 시간이 걸립니다. 노트북을 전원에 연결하고, 받는 동안 5장의 시험 녹음을 만들어 두세요.</p>
+
+</section>
+<section id="record" class="section"><p class="step">Part 1 · 준비 · 5장</p><h2>시험 녹음 두 개 만들기</h2>
+
+<p><strong>처음부터 긴 강의 녹음으로 시작하지 마세요.</strong> 짧은 녹음 두 개로 먼저 합니다. 이 두 개는 나중에 <strong>“AI가 없는 말을 지어내지 않는지”</strong> 확인하는 데도 씁니다.</p>
+<p>휴대폰 녹음 앱(갤럭시 「음성 녹음」 / 아이폰 「음성 메모」)으로 아래 두 문장을 <strong>각각 따로</strong> 녹음합니다. 10~20초면 됩니다.</p>
+<h3>녹음 A · 파일 이름 <code>조모임A</code></h3>
+<pre>다음 주 교육평가 조별 발표를 준비하고 있어. 모일 장소는 아직 정하지 않았어.
+발표 자료 초안은 금요일까지 만들자는 제안이 나왔지만, 담당자는 아직 정하지 않았어.</pre>
+<h3>녹음 B · 파일 이름 <code>조모임B</code></h3>
+<pre>아까 이야기 이어서, 우리 조 인원은 네 명이 아니라 다섯 명으로 정정할게.
+장소는 여전히 미정이고, 리허설을 한 번 하면 좋겠다는 아이디어만 나온 상태야.</pre>
+<div class="callout"><b>나중에 확인할 것</b> — 정리 결과에서 <strong>인원은 다섯 명</strong>, <strong>장소·담당자는 미정</strong>, <strong>금요일 초안과 리허설은 확정이 아니라 제안</strong>으로 나와야 합니다. AI가 그럴듯한 담당자나 장소를 채워 넣으면 틀린 것입니다. 8장에서 확인합니다.</div>
+<h3>녹음을 컴퓨터로 옮기기 · 가장 쉬운 방법</h3>
+<ol class="steps"><li>휴대폰 녹음 앱에서 파일을 <strong>공유 → 카카오톡 → 나와의 채팅</strong>으로 보냅니다.</li><li>컴퓨터 카카오톡에서 「나와의 채팅」을 열고 파일을 <strong>저장</strong>합니다. 보통 「다운로드」 폴더에 저장됩니다.</li><li>저장된 파일을 <code>녹음자동처리</code> 안의 <strong><code>inbox</code></strong> 폴더로 끌어다 놓습니다.</li></ol>
+<div class="platform-block" data-platform="mac"><p class="small"><b>아이폰 + Mac</b>이면 음성 메모에서 <strong>공유 → AirDrop → 내 Mac</strong>으로 보내도 됩니다. 다운로드 폴더에 들어온 파일을 inbox로 옮기세요.</p></div>
+<p>어떤 방법이든 <strong>inbox에 파일만 들어가면</strong> 그 뒤는 똑같습니다. 휴대폰에서 자동으로 넘어오게 하는 방법은 Part 6(선택)에 있습니다.</p>
+<p class="small"><b>파일 이름 요령</b> — 파일 이름이 결과 폴더 이름이 됩니다. 한글은 괜찮지만 <code>? * : " &lt; &gt; | \ /</code> 같은 기호와 앞뒤 공백은 피하세요. 좋음: <code>조모임A.m4a</code> / 나쁨: <code>2026/10/09 녹음?.m4a</code></p>
+
+</section>
+<section id="first" class="section"><p class="step">Part 2 · 첫 전사 · 6장</p><h2>손으로 한 번 전사하고, 모델 정하기</h2>
+
+<p>자동화를 만들기 전에, whisper.cpp가 내 노트북에서 <strong>실제로</strong> 되는지 확인합니다. 이때 <strong>걸린 시간</strong>도 잽니다. 4장에서 고른 모델이 내 노트북에서 너무 느리면 한 단계 낮춥니다.</p>
+<div class="prompt"><div class="prompt-head"><h3>6장 · 전사 시험과 속도 시험</h3><button class="button secondary" type="button" data-copy="p6">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p6">녹음자동처리 폴더를 기준으로 whisper.cpp 전사 시험을 하고, 이 노트북에서 쓸 모델을 최종으로 정해 줘.
+
+1. inbox 안의 &quot;조모임A&quot;, &quot;조모임B&quot; 파일을 ffmpeg로 16kHz, 모노, 16bit wav로 바꿔 줘. (임시 파일은 끝나면 지워 줘.)
+2. 속도 시험용으로 조모임A와 조모임B를 이어 붙이고, 1분 안팎이 되도록 반복한 시험 파일을 만들어 줘.
+   whisper는 30초 단위로 처리해서, 아주 짧은 녹음으로는 속도를 제대로 잴 수 없어. 시험 파일의 길이(초)를 알려 줘.
+3. AGENTS.md 에 적은 1순위 모델로 시험 파일을 전사해 줘. 언어는 -l ko, 스레드(-t)는 이 노트북의 코어 수에 맞게.
+4. 전사에 걸린 시간을 재 줘. 녹음 길이의 2배를 넘기면 이 노트북에는 너무 느린 거야.
+   그럴 땐 한 단계 낮은 모델(medium-korean → small → base-ko)로 같은 시험을 다시 해 줘.
+   2배 안에 들어오는 가장 큰 모델을 최종 모델로 정해. 낮은 모델이 아직 없으면 AGENTS.md 에 적어 둔 주소에서 받아 줘.
+5. NVIDIA 그래픽카드가 있는데 medium-korean 이 2배를 넘기면, 그래픽카드를 쓰는 whisper.cpp 실행 파일이 이 노트북에서 되는지 한 번 시험해 보고, 되면 그걸로 다시 재 줘. 안 되면 넘어가.
+6. 최종 모델로 조모임A 만 전사해서 notes\수동시험\01_전사원문.md 로 저장해 줘. 한글이 깨지지 않게 UTF-8로.
+7. 모델별로 걸린 시간을 표로 보여 주고, 최종 모델과 이유를 쉬운 말로 설명해 줘.
+   최종 모델, 걸린 시간 배율(걸린 시간 ÷ 녹음 길이), 스레드 수를 AGENTS.md 에 적어 줘. 자동 처리 프로그램이 이 값을 쓸 거야.</pre></details></div>
+<p>결과 파일을 열어 보세요. 전사가 완벽하지 않아도 괜찮습니다. <strong>글자가 나왔으면 성공</strong>입니다. medium-korean이 아니어도 괜찮습니다. 흐름을 끝까지 만드는 게 먼저입니다.</p>
+<div class="callout"><b>왜 “녹음 길이의 2배”인가요?</b> — 배율이 2배면 75분 강의 녹음을 글로 옮기는 데 약 2시간 반이 걸립니다. 노트북이 켜져 있는 동안 뒤에서 하는 일이라 그 정도는 괜찮지만, 그보다 느리면 녹음이 쌓이기만 합니다. 나중에 노트북을 바꾸거나 더 빠른 결과가 필요하면 “AGENTS.md의 모델을 바꾸고 조모임A로 다시 재 줘”라고 보내면 됩니다.</div>
+
+</section>
+<section id="auto" class="section"><p class="step">Part 3 · 자동 처리 · 7장</p><h2>자동 처리 프로그램 만들기</h2>
+
+<p>이제 inbox에 들어온 녹음을 <strong>자동으로</strong> 처리하는 프로그램을 만듭니다. 이 장이 이 과제의 심장입니다.</p>
+<div class="callout"><b>「스크립트」가 뭔가요</b> — 컴퓨터에게 “이거 하고, 저거 하고, 그다음 이거 해”라고 미리 적어 둔 <strong>작업 지시서 파일</strong>입니다. 직접 쓸 필요 없습니다. 아래 프롬프트를 보내면 AI가 씁니다.</div>
+<p>녹음 하나가 처리되면 이런 문서 다섯 개가 생깁니다.</p>
+<div class="table-wrap"><table><thead><tr><th>파일</th><th>내용</th></tr></thead><tbody><tr><td><code>01_전사원문.md</code></td><td>들리는 대로 받아쓴 원문</td></tr><tr><td><code>02_정제본.md</code></td><td>“어, 음, 그” 같은 군말과 반복을 정리한 것</td></tr><tr><td><code>03_상세정리.md</code></td><td>녹음 종류(강의·회의·아이디어·전화…)에 맞춰 정리한 문서</td></tr><tr><td><code>04_요약.md</code></td><td>5~8줄 핵심 요약</td></tr><tr><td><code>05_확인사항.md</code></td><td><b>아직 안 정해진 것, 불확실한 것, 다시 확인할 것</b></td></tr></tbody></table></div>
+<p>아래 프롬프트는 깁니다. <strong>통째로</strong> 복사해서 붙여넣으세요.</p>
+<div class="prompt"><div class="prompt-head"><h3>7장 · 자동 처리 프로그램 만들기</h3><button class="button secondary" type="button" data-copy="p7">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p7">녹음자동처리 폴더에 process_recordings.py 를 만들어 줘. Windows·Mac 모두에서 uv run 으로 실행되는 파이썬 프로그램이야.
+
+목표:
+inbox 폴더에 새 음성 파일이 들어오면, whisper.cpp와 내가 받은 모델로 한국어 전사를 하고,
+agy(Antigravity CLI)로 정제본·상세정리·요약·확인사항까지 만드는 자동 처리 프로그램.
+
+상세 요구사항:
+
+1. 기본 경로
+- 루트: 이 프로그램이 있는 녹음자동처리 폴더 (경로를 코드에 박지 말고 파일 위치로 계산)
+- 입력: inbox / 결과: notes / 로그: logs
+- 맨 위에 설정 칸을 모아 둬: 전사 모델 파일 경로(6장에서 정한 최종 모델), 예비 모델(base-ko) 경로, whisper 스레드 수,
+  whisper-cli 경로, ffmpeg 경로, agy 전체 경로, agy가 쓸 모델 이름.
+  나중에 모델을 바꿀 때 그 줄 하나만 고치면 되게. 값은 AGENTS.md 에 적어 둔 것을 써.
+
+2. 처리할 확장자: .m4a .mp3 .wav .aac .ogg .opus .flac
+
+3. 오디오 변환 (중요)
+- whisper.cpp는 16kHz 모노 wav만 안정적으로 읽는다.
+- 그 형식이 아니면 ffmpeg로 16000Hz, 모노, 16bit PCM wav로 바꾼 뒤 전사한다. 임시 wav는 처리 후 지운다.
+
+4. 건너뛸 파일
+- 이름이 ~syncthing~ 으로 시작하거나 .tmp 로 끝나는 파일, 숨김 파일
+- 수정된 지 60초가 안 된 파일 (아직 복사 중일 수 있음)
+- notes\파일이름 폴더가 이미 있는 파일 (이미 처리한 것)
+
+5. 중복 실행 방지
+- logs 에 .running.lock 파일을 만들어 동시에 두 번 돌지 않게. 끝나면 지우고, 오류가 나도 반드시 정리.
+- lock 파일에는 실행 중인 프로그램 번호(PID)를 적어 둬. 다음 실행 때 그 프로그램이 아직 살아 있으면 이번 실행은 건너뛰고,
+  죽어 있으면 남은 lock을 지우고 진행해. (medium-korean 은 긴 강의 녹음에 몇 시간이 걸릴 수 있어서 시간만으로 판단하면 안 돼.)
+
+6. 전사 단계
+- whisper.cpp로 한국어 전사. 언어는 반드시 -l ko, 스레드는 설정 칸의 값.
+- 최종 모델 파일이 없거나 전사에 실패하면 예비 모델(base-ko)로 한 번 더 시도하고, 그 사실을 로그와 결과 폴더에 남긴다.
+- 두 모델 모두 없으면 &quot;모델 파일을 찾을 수 없다&quot;고 분명히 알리고 중단.
+- 결과는 notes\파일이름\01_전사원문.md. UTF-8(BOM 없음).
+
+7. agy 가공 단계 — 전사 결과로 아래 4개 파일을 만든다.
+- 02_정제본.md: 의미와 순서는 유지하고 말더듬, 의미 없는 반복, &quot;어·음·그&quot; 같은 추임새만 지운 전문. 요약하지 말 것.
+- 03_상세정리.md:
+  - 먼저 녹음 유형을 판단한다 (강의·수업 / 조모임·회의 / 혼자 말한 아이디어 / 전화 / 상담·인터뷰 / 일반 메모 등).
+  - 맨 위에 &quot;녹음 유형: ...&quot; 으로 표시하고, 그 유형에 맞는 제목과 섹션을 스스로 구성한다. 무조건 회의록 구조로 고정하지 말 것.
+  - 결정 사항·담당자·기한은 실제로 나온 경우에만 적는다. 나오지 않은 것을 지어내지 말 것.
+  - 이름·숫자·날짜·&quot;~가 아니라 ~로 정정&quot; 같은 표현은 절대 임의로 바꾸지 말 것.
+  - 구조 예시 — 강의: 주제/핵심 개념/예시/질문거리 · 조모임: 개요/논의/결정/할 일/다시 정할 것 · 아이디어: 핵심/배경/가능성/걱정/다음에 해 볼 것
+- 04_요약.md: 5~8줄 핵심 요약.
+- 05_확인사항.md: 미정인 것, 불확실하게 들린 것, 제안만 나오고 정해지지 않은 것, 다시 확인할 것. 없으면 &quot;확인할 사항 없음&quot;.
+- agy는 화면 없이 한 번 실행하는 방식(agy -p)으로 부르고, 시간 제한(--print-timeout 10m 정도)을 걸어 줘.
+  agy가 파일을 직접 쓰게 하든, 답을 받아 이 프로그램이 저장하든 더 안정적인 쪽으로 해 줘. 4개 파일이 실제로 생겼는지 마지막에 확인해 줘.
+- agy의 답이 그대로 문서가 된다. 각 프롬프트에 &quot;인사말·설명·「실제로 확인한 것」 같은 보고 없이 문서 본문만 써&quot;라고 분명히 넣어 줘.
+
+8. 오류 처리
+- 한 파일에서 오류가 나도 다음 파일은 계속 처리한다.
+- 모든 진행과 오류를 logs\run.log 에 시각과 함께 남긴다. 오류는 초보자가 원인을 볼 수 있을 만큼 자세히.
+
+9. agy 안전장치
+- agy를 못 부르거나, 시간이 넘었거나, 답이 비어 있으면 01_전사원문.md 까지만 남기고
+  같은 폴더에 00_다음할일.md 를 만들어 &quot;여기부터는 손으로 처리하세요&quot;라는 안내를 넣어 줘.
+
+10. 끝나면
+- 이 프로그램이 하는 일을 초보자도 이해할 수 있게 한국어로 설명해 줘.
+- 손으로 한 번 실행하는 방법(uv run process_recordings.py)도 알려 줘.
+- &quot;실제로 확인한 것&quot;과 &quot;확인하지 못한 것&quot;을 나눠 알려 줘.</pre></details></div>
+
+</section>
+<section id="check" class="section"><p class="step">Part 3 · 자동 처리 · 8장</p><h2>돌려 보고, AI가 지어내지 않았는지 확인하기</h2>
+
+<div class="prompt"><div class="prompt-head"><h3>8장 · 실행과 확인</h3><button class="button secondary" type="button" data-copy="p8">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p8">방금 만든 process_recordings.py 를 지금 한 번 실행해 줘.
+
+확인할 것:
+1. inbox의 조모임A, 조모임B 파일을 찾았는지
+2. notes 아래에 &quot;조모임A&quot;, &quot;조모임B&quot; 폴더가 생겼는지
+3. 각 폴더에 01_전사원문.md ~ 05_확인사항.md 다섯 파일이 생겼는지
+4. 한글이 깨지지 않는지
+5. logs\run.log 에 실행 기록이 남았는지
+
+문제가 있으면 실제 오류 메시지를 보고 원인을 설명하고 고쳐 줘.
+성공했으면 조모임B의 03_상세정리.md 와 05_확인사항.md 내용을 보여 줘.</pre></details></div>
+<div class="callout warm"><b>아무 일도 안 일어난다면 — 60초 규칙</b> · 프로그램은 수정된 지 60초가 안 된 파일을 건너뜁니다(아직 복사 중일 수 있어서). inbox에 넣고 바로 실행하면 아무 일도 안 생기는 게 <strong>정상</strong>입니다. 1분 기다렸다가 다시 하세요.</div>
+<h3>결과를 눈으로 확인하세요 — 이게 이 과제의 핵심입니다</h3>
+<p><code>notes\조모임B</code> 폴더를 열고 <code>03_상세정리.md</code>와 <code>05_확인사항.md</code>를 읽어 보세요. .md 파일은 메모장(Mac은 텍스트 편집기)으로 열면 됩니다.</p>
+<div class="table-wrap"><table><thead><tr><th>확인할 것</th><th>맞는 결과</th><th>틀린 결과</th></tr></thead><tbody><tr><td>조 인원</td><td><b>다섯 명</b> (네 명에서 정정됨)</td><td>네 명, 또는 둘 다</td></tr><tr><td>장소</td><td><b>미정</b></td><td>어딘가 정해진 것처럼 씀</td></tr><tr><td>담당자</td><td><b>미정</b></td><td>누군가 이름을 지어냄</td></tr><tr><td>금요일 초안, 리허설</td><td><b>제안 단계</b>라고 표시</td><td>확정된 결정으로 씀</td></tr><tr><td>05_확인사항.md</td><td>장소·담당자·인원 정정이 목록에 있음</td><td>비어 있거나 “없음”</td></tr></tbody></table></div>
+<p><strong>틀린 결과가 나오면</strong> 이렇게 보내세요.</p>
+<div class="prompt"><div class="prompt-head"><h3>8장 · 지어낸 내용 고치기</h3><button class="button secondary" type="button" data-copy="p9">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p9">조모임B의 정리 결과에서 (여기에 틀린 부분을 적기: 예 &quot;담당자를 지어냈어&quot; / &quot;장소를 정해진 것처럼 썼어&quot;).
+원문에 없는 내용을 만들어 내지 않도록 process_recordings.py 의 agy 프롬프트 문장을 고치고,
+notes\조모임B 폴더를 지운 뒤 다시 처리해서 결과를 보여 줘.</pre></details></div>
+<p>이 확인이 왜 중요할까요? <strong>AI는 빈칸을 그럴듯하게 채우는 버릇이 있기 때문</strong>입니다. 1회차에 본 “출처를 지어내는 AI”와 같은 이야기입니다. 정리본에 없던 결정이 들어가면 나중에 큰 오해가 생깁니다. <strong>“미정은 미정으로 남기는 비서”</strong>를 만드는 것이 목표입니다.</p>
+
+</section>
+<section id="schedule" class="section"><p class="step">Part 3 · 자동 처리 · 9장</p><h2>5분마다 알아서 돌게 하기</h2>
+
+<p>손으로 실행해서 성공했으면, 이제 컴퓨터가 <strong>5분마다 알아서</strong> 돌리게 합니다. Windows는 <strong>작업 스케줄러</strong>, Mac은 <strong>launchd</strong>라는 예약 기능을 씁니다. 프롬프트는 같습니다. AI가 내 컴퓨터에 맞는 쪽으로 합니다.</p>
+<div class="prompt"><div class="prompt-head"><h3>9장 · 5분마다 자동 실행 등록</h3><button class="button secondary" type="button" data-copy="p10">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p10">process_recordings.py 가 5분마다 자동으로 실행되게 이 컴퓨터의 예약 기능에 등록해 줘.
+(Windows는 작업 스케줄러, Mac은 launchd 의 LaunchAgent)
+
+요구사항:
+1. 작업 이름은 &quot;녹음자동처리&quot; (Mac은 com.student.rec-auto 처럼)
+2. 5분마다 계속 반복
+3. 내가 로그인한 상태에서 실행되면 충분해
+4. 창이 뜨지 않게 조용히 실행 (Windows는 콘솔 창이 깜빡이지 않게)
+5. 예약 실행은 터미널과 환경이 달라서 PATH가 비어 있을 수 있어. uv, agy, whisper-cli, ffmpeg 는 전체 경로로 불러 줘.
+6. 등록한 뒤 예약 기능으로 한 번 실행해서, 화면 없이 실행될 때도 agy가 답하는지 실제로 확인해 줘.
+   멈추거나 실패하면 logs\run.log 를 보고 원인을 찾아 고쳐 줘.
+7. 나중에 자동 실행을 끄는 방법과 다시 켜는 방법을 알려 줘. AGENTS.md 에도 적어 줘.</pre></details></div>
+<div class="platform-block" data-platform="mac"><p class="small"><b>Mac에서 “…가 다음 폴더에 접근하려고 합니다”</b> 같은 창이 뜨면 <strong>허용</strong>을 누릅니다. 1장에서 폴더를 홈 폴더 바로 아래에 만든 이유가 이것입니다. 문서·데스크탑 폴더에 만들었다면 예약 실행이 조용히 실패할 수 있습니다.</p></div>
+<div class="callout warm"><b>노트북이라면</b> — 노트북이 잠자기에 들어가면 자동 실행도 멈춥니다. 녹음을 넣었는데 결과가 안 보이면 먼저 <strong>컴퓨터가 켜져 있었는지</strong>부터 보세요. 다시 켜면 밀린 것들이 차례로 처리됩니다.</div>
+<p>여기까지 되면, 이제 이렇게 씁니다. ① 휴대폰으로 녹음한다 → ② 컴퓨터로 보내 inbox에 넣는다 → ③ 보통 10분 안에 notes 폴더에 정리 문서 다섯 개가 생긴다(5분마다 확인하고, 갓 들어온 파일은 1분 뒤에 처리하므로).</p>
+
+</section>
+<section id="bot" class="section"><p class="step">Part 4 · 텔레그램 알림 · 10장</p><h2>텔레그램 봇 만들기</h2>
+
+<p>지금은 정리가 끝났는지 폴더를 열어 봐야 압니다. 이제 <strong>휴대폰으로 “정리 끝났어요” 알림</strong>이 오게 합니다. 가장 재미있는 부분입니다. “봇”은 텔레그램 안에서 자동으로 메시지를 보내 주는 <strong>자동 계정</strong>입니다. 이 장은 휴대폰에서 직접 합니다.</p>
+<ol class="steps">
+<li>휴대폰에 <strong>텔레그램(Telegram)</strong> 앱이 없으면 설치하고 가입합니다.</li>
+<li>텔레그램 위쪽 돋보기(검색)에서 <strong><code>BotFather</code></strong>를 검색합니다. <strong>파란 체크(공식)</strong>가 있는 것을 고릅니다.</li>
+<li>대화를 열고 <code>/newbot</code> 을 보냅니다.</li>
+<li>봇의 <strong>표시 이름</strong>을 물으면 아무거나 씁니다. 예: <code>내 녹음 비서</code></li>
+<li>봇의 <strong>사용자명</strong>을 물으면 영어·숫자·<code>_</code>로, <strong>반드시 <code>bot</code>으로 끝나게</strong> 씁니다. 예: <code>minji_rec_2026_bot</code> (이미 있으면 숫자를 바꾸세요)</li>
+<li>성공하면 BotFather가 축하 메시지를 보냅니다. <strong>두 가지</strong>를 챙깁니다. <b>봇 주소</b>(<code>t.me/...</code> 링크)와 <b>토큰</b>(<code>Use this token to access the HTTP API:</code> 바로 아랫줄의 긴 글자, 예: <code>8887747616:ABCD...</code>).</li>
+</ol>
+<p><strong>토큰은 12장에서 컴퓨터의 메모장에 붙여넣습니다.</strong> 휴대폰의 토큰을 컴퓨터로 옮길 때는 <strong>컴퓨터 브라우저에서 <a href="https://web.telegram.org">web.telegram.org</a>에 로그인</strong>하세요. BotFather 대화가 그대로 보이니 거기서 토큰 줄을 복사하면 됩니다. 카톡 「나와의 채팅」으로 옮기지 마세요 — 카톡 서버에 남습니다.</p>
+<div class="callout warm"><b>토큰은 내 봇의 비밀번호입니다.</b> 새어 나가도 큰일은 안 납니다 — 이 토큰으로 할 수 있는 건 내 봇으로 메시지를 보내고 받는 것뿐입니다. 그래도 카톡·게시판·화면 캡처에 올리지 마세요. 특히 <strong>Antigravity 대화창을 캡처하면 토큰이 같이 찍히니</strong>, 12장에서는 토큰을 대화창에 넣지 않습니다. 실수로 노출했으면 BotFather에게 <code>/revoke</code>를 보내 새 토큰을 받으세요.</div>
+
+</section>
+<section id="chatid" class="section"><p class="step">Part 4 · 텔레그램 알림 · 11장</p><h2>봇 시작하고 내 번호(chat_id) 알아내기</h2>
+
+<h3>① 내 봇 시작하기</h3>
+<ol class="steps"><li>10장 축하 메시지의 <strong><code>t.me/...</code> 링크</strong>를 누릅니다.</li><li>내 봇 대화창이 열리면 아래 <strong>Start(시작)</strong>를 누릅니다. 끝입니다. 봇은 내가 먼저 말을 걸어야 나에게 메시지를 보낼 수 있습니다.</li></ol>
+<h3>② 내 chat_id 알아내기</h3>
+<ol class="steps"><li>텔레그램 검색에서 <strong><code>@userinfobot</code></strong>을 검색합니다.</li><li>대화를 열고 <strong>Start</strong>를 누릅니다.</li><li><strong>Id</strong> 옆의 숫자가 내 chat_id입니다. 예: <code>987654321</code>. 메모해 두세요.</li></ol>
+<p class="small"><code>@userinfobot</code>은 번호만 알려 주는 남의 봇입니다. <strong>알림을 보내는 건 10장에서 내가 만든 봇</strong>입니다. 검색에 안 나오면 <code>@getmyid_bot</code>을 쓰세요.</p>
+
+</section>
+<section id="notify" class="section"><p class="step">Part 4 · 텔레그램 알림 · 12장</p><h2>알림 설정 저장하고 시험하기</h2>
+
+<p>토큰은 <strong>Antigravity 대화창에 붙여넣지 않습니다.</strong> AI가 빈 파일을 만들고 열어 주면, <strong>내가 그 파일에 토큰을 붙여넣고 저장</strong>합니다. 그러면 토큰이 대화 기록·화면 캡처에 남지 않습니다. chat_id는 비밀이 아니라(그냥 내 번호) 대화창에 넣어도 됩니다.</p>
+<h3>① AI에게 자리 만들게 하기</h3>
+<p><b>[여기에 chat_id]</b>를 11장에서 메모한 숫자로 바꿔서 보내세요.</p>
+<div class="prompt"><div class="prompt-head"><h3>12장 · 알림 준비</h3><button class="button secondary" type="button" data-copy="p11">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p11">텔레그램 알림 준비를 해 줘. 토큰은 내가 직접 넣을 거니까 너는 자리만 만들어 줘.
+
+1. config\telegram_token.txt 라는 빈 파일을 만들고, 메모장(Mac은 텍스트 편집기)으로 열어 줘.
+2. config\telegram_chat_id.txt 파일을 만들고 안에 [여기에 chat_id] 만 넣어 줘.
+3. 이 두 파일을 읽어 텔레그램 메시지를 보내는 작은 파이썬 파일 app\notify.py 를 만들어 줘.
+   - 사용법: uv run app/notify.py &quot;보낼 메시지&quot;
+   - 토큰과 chat_id는 코드에 직접 쓰지 말고 반드시 config 폴더의 두 파일에서 읽는다. utf-8-sig 로 읽고 앞뒤 공백·줄바꿈은 지운다.
+   - 토큰 파일이 비어 있으면 &quot;config 폴더의 telegram_token.txt 에 토큰을 넣고 저장하세요&quot; 라고 알려 주고 끝낸다.
+   - 인터넷이 잠깐 끊겨도 프로그램이 죽지 않게, 오류는 조용히 logs 에 남긴다.
+4. ★ config\telegram_token.txt 의 내용은 지금도, 앞으로도 절대 읽거나 화면에 보여 주지 마. 비밀번호야.</pre></details></div>
+<h3>② 토큰 붙여넣기 · 내가 합니다</h3>
+<ol class="steps"><li>AI가 열어 준 <strong>메모장(텍스트 편집기) 창</strong>을 찾습니다. 안 열렸으면 <code>녹음자동처리\config\telegram_token.txt</code>를 더블클릭합니다.</li><li>10장의 <strong>토큰 한 줄</strong>만 붙여넣습니다. <code>숫자:영문</code> 한 줄입니다. 다른 글자가 같이 들어가면 안 됩니다.</li><li>저장하고(Windows <kbd>Ctrl</kbd>+<kbd>S</kbd> · Mac <kbd>⌘</kbd>+<kbd>S</kbd>) 창을 닫습니다. <strong>「다른 이름으로 저장」 창이 뜨면 안 됩니다</strong> — 뜨면 취소하고 1번의 파일을 다시 여세요.</li></ol>
+<div class="platform-block" data-platform="mac"><p class="small"><b>Mac 텍스트 편집기</b>가 「서식 있는 텍스트」로 열리면 메뉴 <strong>포맷 → 일반 텍스트로 만들기</strong>를 먼저 누른 뒤 붙여넣으세요.</p></div>
+<h3>③ 시험 메시지 보내기</h3>
+<div class="prompt"><div class="prompt-head"><h3>12장 · 시험 메시지</h3><button class="button secondary" type="button" data-copy="p12">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p12">토큰을 config\telegram_token.txt 에 저장했어. 파일 내용은 보여 주지 말고, uv run app/notify.py 로 &quot;녹음 자동 정리 알림 시험입니다&quot; 를 실제로 보내 줘. 내 휴대폰에 왔는지 나에게 물어봐 줘.</pre></details></div>
+<p>휴대폰에 시험 메시지가 오면 성공입니다.</p>
+<div class="table-wrap"><table><thead><tr><th>증상</th><th>해결</th></tr></thead><tbody><tr><td>BotFather가 “이미 쓰는 이름”이라고 함</td><td>사용자명 숫자를 바꾸세요. 반드시 <code>bot</code>으로 끝나야 하고 영문·숫자·<code>_</code>만 됩니다</td></tr><tr><td>메시지가 안 옴 ①</td><td><b>내 봇에게 Start를 눌렀나요?</b> (11장 ①)</td></tr><tr><td>메시지가 안 옴 ②</td><td>토큰 파일에 <code>Use this token…</code> 같은 다른 글자가 같이 들어갔는지. <code>숫자:영문</code> 한 줄만</td></tr><tr><td>“토큰이 비어 있다”고 함</td><td>저장을 눌렀는지. config 폴더에 <code>telegram_token.txt.txt</code> 같은 파일이 따로 생겼으면 그게 원인</td></tr><tr><td>“Unauthorized” 오류</td><td>토큰이 틀림. BotFather에서 <code>/mybots</code> → 내 봇 → <b>API Token</b>으로 다시 확인</td></tr><tr><td>“chat not found” 오류</td><td>chat_id가 틀렸거나 봇에게 Start를 안 누름</td></tr></tbody></table></div>
+
+</section>
+<section id="done" class="section"><p class="step">Part 4 · 텔레그램 알림 · 13장</p><h2>정리가 끝나면 알림 보내게 하기</h2>
+
+<div class="prompt"><div class="prompt-head"><h3>13장 · 처리 결과 알림 연결</h3><button class="button secondary" type="button" data-copy="p13">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p13">process_recordings.py 가 녹음 하나를 처리할 때마다 텔레그램 알림을 보내도록 고쳐 줘.
+
+먼저 안전 조치: 고치기 전에 process_recordings.py 를 process_recordings.py.bak 으로 백업해 줘.
+
+요구사항:
+1. 처리가 성공하면(01~05 문서가 다 만들어지면) app/notify.py 로 아래 형식을 보낸다.
+   ✅ 정리 완료: &lt;녹음 파일 이름&gt;
+   유형: &lt;03_상세정리.md 맨 위의 녹음 유형&gt;
+   요약: &lt;04_요약.md 첫 1~2줄&gt;
+   확인할 것: &lt;05_확인사항.md 첫 줄, 없으면 &quot;없음&quot;&gt;
+   요약·확인할 것에서는 **, #, - 같은 표시 기호를 빼고 보낸다.
+2. 처리 중 오류가 나면 아래 형식으로 보낸다.
+   ⚠️ 정리 실패: &lt;녹음 파일 이름&gt;
+   원인: &lt;실제 오류 메시지 요약&gt;
+3. 알림 전송이 실패해도 녹음 처리는 멈추지 않게 해 줘.
+4. 알림을 껐다 켤 수 있게 맨 위 설정 칸에 NOTIFY_ENABLED = True 스위치를 둬 줘.
+5. 고친 뒤 notes\조모임A 폴더를 지우고 한 번 실행해서, 실제로 알림이 오는지 확인해 줘.</pre></details></div>
+<p>이제 녹음을 넣고 10분쯤 기다리면 휴대폰이 울립니다. <strong>여기까지가 기본 과제입니다.</strong> 이 알림 화면을 캡처해 두세요. 제출은 교수님 안내를 따릅니다.</p>
+<div class="callout"><b>✅ 기본 과제 완료</b> — 실제 녹음 하나를 넣어 보세요. 다음 수업 녹음(교수님께 허락을 받고), 조모임, 혼자 떠오른 생각, 뭐든 좋습니다. 결과가 마음에 들면 2회차에 보여 주세요. 실제 이름·연락처가 들어간 내용은 공유하지 마세요.</div>
+
+</section>
+<section id="dash" class="section"><p class="step">Part 5 · 권장 · 14~16장</p><h2>브라우저 관제판 만들기</h2>
+
+<p>지금까지 처리한 녹음을 <strong>한 화면에서 보고, 실패한 것은 이유를 보고, 버튼 하나로 다시 처리</strong>하는 화면을 만듭니다. 인터넷에 공개되는 게 아니라 <strong>내 컴퓨터 안에서만</strong> 열리는 화면입니다. 1회차처럼, 다 만든 뒤 AI가 <strong>Aside에서 직접 눌러 보며 시험</strong>하게 합니다.</p>
+<h3>14장 · 처리 기록장</h3>
+<div class="prompt"><div class="prompt-head"><h3>14장 · 기록장 만들기</h3><button class="button secondary" type="button" data-copy="p14">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p14">녹음 처리 기록을 담는 기록장(SQLite)과 기록 도구를 만들고, process_recordings.py 가 기록을 남기게 연결해 줘.
+
+1. 기록장 파일: data/status.db (data 폴더가 없으면 만들어 줘)
+2. recordings 표 — id(자동 증가), filename(같은 이름은 한 줄만), status(done/failed/queued/processing),
+   rec_type(녹음 유형), summary(요약 첫 줄), error(실패 원인), notes_path(결과 폴더), created_at, updated_at
+3. 명령줄 도구 app/db.py
+   - uv run app/db.py init → 기록장과 표를 만든다 (있으면 그대로)
+   - uv run app/db.py set --filename &quot;조모임A.m4a&quot; --status done --rec-type &quot;조모임&quot; --summary &quot;...&quot; --notes-path &quot;notes/조모임A&quot;
+   - 같은 filename이 있으면 그 줄을 갱신한다. updated_at은 매번 현재 시각.
+4. process_recordings.py 를 고쳐서 (고치기 전 .bak 백업)
+   - 시작: processing / 성공: done + 유형 + 요약 + 결과 폴더 / 실패: failed + 실제 오류 요약
+   - 기록을 남긴 다음 텔레그램 알림. 기록이 실패해도 녹음 처리는 멈추지 않게.
+5. init 을 실행하고, notes 아래에 이미 있는 결과(이 장 전에 처리한 녹음)도 done 으로 채워 줘. 유형·요약은 그 폴더의 03·04 문서에서 읽는다.
+6. notes/조모임A 를 지운 뒤 한 번 돌려 status.db 에 done 으로 기록되는지 확인해 줘.</pre></details></div>
+<h3>15장 · 관제판 화면 — 목록과 상세</h3>
+<div class="prompt"><div class="prompt-head"><h3>15장 · 관제판 만들기</h3><button class="button secondary" type="button" data-copy="p15">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p15">FastAPI로 &quot;녹음 관제판&quot; 웹 앱을 만들어 줘. 필요한 패키지는 uv로 설치해 줘.
+
+1. 앱 파일: app/main.py, 화면 틀: app/templates, 정적 파일: app/static
+2. 첫 화면(/):
+   - data/status.db 의 recordings 를 최신순 표로. 각 줄: 상태 배지(done 초록, failed 빨강, processing 회색, queued 주황), 파일 이름, 녹음 유형, 요약 한 줄, 마지막 갱신 시각, &quot;상세&quot; 링크
+   - 맨 위에 전체 / 완료 / 실패 건수, 그리고 전체·완료·실패 필터
+   - 데이터가 없으면 &quot;아직 처리된 녹음이 없습니다&quot;
+3. 상세 화면(/detail/&lt;파일이름&gt;):
+   - 04_요약(맨 위에 크게), 05_확인사항(눈에 띄게), 03_상세정리, 02_정제본, 01_전사원문(접었다 펼 수 있게)을 보기 좋게
+   - failed 면 위쪽 빨간 상자에 &quot;실패 원인: ...&quot; 과 16장에서 만들 다시 처리 버튼 자리
+4. 글씨는 크게, 화면은 단순하게.
+5. 실행: 녹음자동처리 폴더에서 uv run uvicorn app.main:app --port 8500
+6. 실행한 뒤, 내가 지켜볼 수 있게 Aside 앞쪽 탭에서 http://127.0.0.1:8500 을 열어 목록과 상세를 직접 눌러 보며 시험해 줘. 내 마우스·키보드는 건드리지 마.</pre></details></div>
+<p class="small"><code>http://127.0.0.1:8500</code>은 “내 컴퓨터 안의 8500번 창구”라는 뜻입니다. 인터넷 주소가 아니라 다른 사람은 못 봅니다.</p>
+<h3>16장 · 다시 처리 버튼</h3>
+<div class="prompt"><div class="prompt-head"><h3>16장 · 다시 처리 버튼</h3><button class="button secondary" type="button" data-copy="p16">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p16">상세 화면에 &quot;다시 처리&quot; 버튼을 만들어 줘.
+
+1. 누르면 /reprocess/&lt;파일이름&gt; 으로 요청이 간다.
+2. 서버가 하는 일:
+   a. 원본 녹음이 inbox에 아직 있는지 확인. 없으면 다시 처리할 수 없는 이유를 화면에 안내하고 멈춘다.
+   b. 기존 결과 폴더 notes/&lt;파일이름&gt; 을 지우지 말고 notes/_다시처리보관/&lt;파일이름&gt;_&lt;시각&gt; 으로 옮긴다.
+   c. 기록장 상태를 queued 로 바꾼다 (error는 비움).
+3. 화면에 &quot;다시 처리 대기열에 넣었습니다. 다음 자동 실행(최대 5분) 때 처리됩니다.&quot; 를 보여 준다.
+4. &quot;지금 바로 처리&quot; 버튼도 만들어 줘. 누르면 process_recordings.py 를 뒤에서 한 번 실행하고 시작했다고만 바로 알려 준다.
+5. 만든 뒤 조모임B로 다시 처리를 시험해서, 목록의 상태가 queued → processing → done 으로 바뀌는지 Aside 앞쪽 탭에서 확인해 줘.</pre></details></div>
+<p>이제 흐름이 이렇게 됩니다. 녹음 → inbox → 10분쯤 안에 자동 정리 → 텔레그램 알림. 실패하면 관제판에서 원인 확인 → 다시 처리 버튼 → 완료 알림.</p>
+<p class="small">컴퓨터를 켤 때 관제판도 저절로 켜지게 하고 싶으면: “녹음 관제판이 로그인할 때 자동으로 켜지게 등록하고, 바탕화면에 http://127.0.0.1:8500 바로가기를 만들어 줘. 끄는 방법도 알려 줘.”</p>
+
+</section>
+<section id="phone" class="section"><p class="step">Part 6 · 선택 · 17장</p><h2>휴대폰에서 자동으로 보내기</h2>
+
+<p>카톡으로 옮기는 게 귀찮아지면 이걸 합니다. <strong>LocalSend</strong>는 같은 Wi-Fi 안에서 휴대폰과 컴퓨터가 서버를 거치지 않고 직접 파일을 주고받는 무료 앱입니다. <strong>아이폰·갤럭시, Windows·Mac 모두</strong> 됩니다.</p>
+<div class="callout"><b>그래도 안 되면 카톡으로 돌아가면 됩니다.</b> 5장의 카톡 방법은 언제나 됩니다. 자동 전송은 편의 기능이고, 과제 완료와 상관없습니다.</div>
+<div class="prompt"><div class="prompt-head"><h3>17장 · 컴퓨터에 LocalSend 설치</h3><button class="button secondary" type="button" data-copy="p17">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p17">이 컴퓨터에 LocalSend를 설치하고 녹음 받을 준비를 해 줘.
+1. Windows는 winget install LocalSend.LocalSend, Mac은 Homebrew가 있으면 brew install --cask localsend, 없으면 https://localsend.org 의 설치 파일로 안내해 줘.
+2. 설치 후 LocalSend를 실행해 줘.
+3. Windows라면 처음 실행 때 방화벽 창에서 &quot;개인 네트워크&quot;에 체크하고 &quot;액세스 허용&quot;을 눌러야 한다고 미리 알려 주고, 포트 53317(TCP/UDP)이 막혀 있는지 확인해 줘.
+4. LocalSend 설정에서 바꿀 것을 한 단계씩 알려 줘: 저장 폴더를 녹음자동처리/inbox 로(실제 전체 경로), 자동 수신(Quick Save) 켜기, 기기 이름을 &#x27;내 노트북&#x27;처럼.</pre></details></div>
+<h3>휴대폰 쪽 · 내가 합니다</h3>
+<ol class="steps"><li>App Store / Play 스토어에서 <strong>LocalSend</strong> 설치(무료).</li><li>아이폰은 처음 열 때 <strong>“로컬 네트워크 접근”</strong>을 꼭 <strong>허용</strong>합니다. (실수로 거부했으면 설정 → 개인정보 보호 및 보안 → 로컬 네트워크 → LocalSend 켬)</li><li>휴대폰과 노트북이 <strong>같은 Wi-Fi</strong>인지 확인합니다.</li><li>녹음 앱에서 녹음 → <strong>제목을 알아보기 쉽게 바꾸고</strong> → 공유 → <strong>LocalSend</strong> → <strong>내 노트북</strong> 탭.</li><li>노트북의 <code>inbox</code>에 파일이 생기면 성공입니다.</li></ol>
+<div class="callout warm"><b>자동 수신은 집·개인 Wi-Fi에서만 켜 두세요.</b> 켜 두면 같은 Wi-Fi의 누구나 내 노트북으로 파일을 보낼 수 있습니다. 학교·카페 Wi-Fi에서는 끄고 「수락」을 한 번씩 누르세요. 학교 Wi-Fi는 기기끼리 못 보게 막혀 있는 경우가 많습니다. 그럴 땐 <strong>휴대폰 핫스팟을 켜고 노트북을 거기에 연결</strong>하면 됩니다.</div>
+<p class="small">갤럭시에서 “녹음하면 손대지 않아도 저절로” 넘어가게 하고 싶다면 Syncthing이라는 방법도 있습니다. 설정이 어려워 이번 안내에서는 뺐습니다. 궁금하면 AI에게 “갤럭시 녹음 폴더를 Syncthing으로 노트북 inbox와 자동으로 맞추는 방법을 초보자용으로 알려 줘”라고 물어보세요.</p>
+
+</section>
+<section id="notion" class="section"><p class="step">Part 7 · 선택 · 18장</p><h2>Notion에도 자동 저장</h2>
+
+<p>정리 문서를 <strong>Notion 페이지로도</strong> 자동으로 만듭니다. 무료 계정으로 됩니다. Notion을 안 쓰면 건너뛰세요.</p>
+<h3>Notion에서 직접 하는 네 가지 · 10분</h3>
+<p>Notion은 내 계정에 로그인해야 하니 이 부분은 직접 합니다. (로그인만 내가 하고, 나머지 화면 조작은 AI에게 Aside로 맡겨도 됩니다.)</p>
+<ol class="steps">
+<li><b>보관함 페이지</b> — <a href="https://www.notion.so">notion.so</a> 로그인 → 새 페이지 → 제목 <code>녹음 자동 정리 보관함</code></li>
+<li><b>출입증(integration) 만들기</b> — <a href="https://www.notion.so/my-integrations">notion.so/my-integrations</a> → New integration → 이름 <code>녹음자동처리</code> → 저장 → Capabilities에서 읽기·쓰기·수정 켜기 → <b>Internal Integration Secret</b> 복사 (비밀번호입니다. 대화창이 아니라 메모장에 넣습니다)</li>
+<li><b>페이지에 출입증 연결 — 가장 많이 빼먹는 단계</b> — 보관함 페이지 오른쪽 위 ··· → Connections(연결) → <code>녹음자동처리</code> 연결. 이걸 안 하면 <code>object_not_found</code> 오류가 납니다.</li>
+<li><b>페이지 ID</b> — 보관함 페이지 주소 끝의 <strong>32자리 영문·숫자</strong>(<code>?</code> 앞까지)를 메모</li>
+</ol>
+<div class="prompt"><div class="prompt-head"><h3>18장 · Notion 연결</h3><button class="button secondary" type="button" data-copy="p18">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p18">Notion 자동 저장을 붙이고 싶어. 두 단계로 해 줘.
+
+[1단계] 비밀값 자리 만들기 (Secret은 내가 직접 넣을 거야)
+- config\notion_token.txt 빈 파일을 만들고 메모장(Mac은 텍스트 편집기)으로 열어 줘.
+- config\notion_page_id.txt 를 만들고 안에 [여기에 페이지 ID] 만 넣어 줘.
+- ★ notion_token.txt 의 내용은 절대 읽거나 보여 주지 마.
+- 1단계가 끝나면 멈추고, 내가 &quot;저장했어&quot;라고 하면 2단계로 가 줘.
+
+[2단계] 프로그램 확장 (고치기 전 .bak 백업)
+1. 03_상세정리.md 가 만들어지면 Notion 페이지도 만든다. 토큰 파일이 없거나 비어 있으면 멈추지 말고 &quot;Notion 설정 없어 건너뜀&quot;을 run.log 에 남긴다.
+2. 페이지 제목: [녹음정리] 원본파일명 - yyyy-MM-dd / 본문: 요약, 확인사항, 상세정리, 처리 일시
+3. Notion API 버전 헤더와 블록 개수·글자 수 제한을 지켜 나눠 보낸다.
+4. 성공하면 notes/파일이름/06_notion.md 에 페이지 주소를 남기고, 실패하면 원인(토큰 없음 / 페이지 ID 없음 / 연결 안 함 / 권한 / 인터넷)을 구분해 로그에 남긴다.
+5. notes/조모임A 결과로 Notion 업로드만 시험해서(전사는 다시 하지 말고) 페이지 주소를 알려 줘.</pre></details></div>
+<p>메모장이 열리면 12장처럼 Secret 한 줄을 붙여넣고 저장 → 닫기 → “저장했어. 파일 내용은 보여 주지 말고 2단계 진행해 줘.”라고 보내세요.</p>
+
+</section>
+<section id="ask" class="section"><p class="step">Part 8 · 심화 · 19장</p><h2>정리한 기록에 질문하기</h2>
+
+<p>쌓인 녹음 기록에 <strong>“조모임 장소 정해졌어?”</strong>처럼 물으면, 기록을 찾아 <strong>근거와 함께</strong> 답하는 화면을 관제판에 붙입니다. 1회차에 배운 “열어 본 자료만 근거로”를 내 녹음 기록에 적용하는 셈입니다.</p>
+<div class="prompt"><div class="prompt-head"><h3>19장 · 기록에 질문하기</h3><button class="button secondary" type="button" data-copy="p19">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p19">관제판(app/main.py)에 &quot;기록에 질문하기&quot; 화면(/ask)을 추가해 줘.
+
+1. 질문 범위를 고를 수 있게: 전체 기록 / 특정 녹음 하나
+2. 질문을 넣으면 notes 아래 02_정제본, 03_상세정리, 05_확인사항에서 관련 부분을 한국어 키워드로 찾는다. (첫 구현은 키워드 검색이면 충분해.)
+3. 찾은 구간(최대 5개, 각 1500자 이내)과 질문을 agy -p 로 넘겨 답을 받는다.
+   - 답에는 반드시 &quot;근거: 어느 녹음의 어느 문서&quot;를 붙인다.
+   - 기록에 없는 내용은 지어내지 말고 &quot;기록에서 찾지 못했습니다&quot;라고 한다.
+   - 미정으로 남은 것은 미정이라고 답한다.
+4. 답 아래 &quot;근거 펼치기&quot;로 실제 찾은 구간과 그 녹음의 상세 화면 링크를 보여 준다.
+5. 만든 뒤 Aside 앞쪽 탭에서 시험해 줘: &quot;조 인원은 몇 명으로 정리됐어?&quot; → 다섯 명과 근거. &quot;장소는 정해졌어?&quot; → 미정. &quot;오늘 날씨 어때?&quot; → 기록에 없다고 답해야 해.</pre></details></div>
+<p>여기까지 되면 <strong>녹음 → 정리 → 알림 → 관제 → 질문</strong>을 모두 갖춘 나만의 비서를 만든 것입니다.</p>
+
+</section>
+<section id="help" class="section"><p class="step">20장 · 막혔을 때</p><h2>잘 안될 때</h2>
+
+<p>스터디 2기·3기에서 실제로 나온 문제들입니다. <strong>여러분 컴퓨터가 이상한 게 아닙니다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>증상</th><th>이렇게 하세요</th></tr></thead><tbody><tr><td><b>아무 일도 안 일어남</b></td><td>① inbox에 파일이 있나 ② 넣은 지 60초 지났나 ③ notes에 같은 이름 폴더가 이미 있나(있으면 이미 처리한 것) ④ <code>logs/run.log</code> 열어 보기</td></tr><tr><td><b>01_전사원문만 생기고 나머지가 안 생김</b></td><td>agy 문제. 2장 ③ 프롬프트를 다시 보내 화면 없이 답하는지 확인. 급하면 아래 「손으로 정리하기」</td></tr><tr><td><b>손으로 실행하면 되는데 예약 실행에서만 안 됨</b></td><td>AI에게: “예약 실행에서만 실패해. PATH와 전체 경로, 작업 폴더, 권한을 확인하고 run.log 기준으로 고쳐 줘”</td></tr><tr><td><b>agy -p 가 응답 없이 멈춤</b></td><td>화면 없이 실행할 때 생기는 알려진 문제입니다. AI에게: “agy -p 가 멈춰. 시간 제한을 걸고, 다른 실행 방법을 시험해서 되는 방법으로 바꿔 줘”</td></tr><tr><td><b>agy 사용량 한도</b></td><td>요약 모델을 Flash 계열로 바꾸게 하세요. 한도가 풀릴 때까지 기다려도 됩니다. 결제는 하지 않습니다</td></tr><tr><td><b>한글이 깨져 보임</b></td><td>AI에게: “결과 .md 파일 한글이 깨져. 모든 출력을 UTF-8로 저장하게 고치고 이미 생긴 파일도 다시 저장해 줘”</td></tr><tr><td><b>“unknown format” · wav 오류</b></td><td>ffmpeg 변환이 빠진 것. 3장 프롬프트 다시</td></tr><tr><td><b>모델 파일을 찾을 수 없다</b></td><td>AI에게: “models 폴더의 실제 파일 이름으로 프로그램 맨 위 모델 경로를 맞춰 줘”</td></tr><tr><td><b>모델 파일이 0바이트 · 몇 KB</b></td><td>오류 페이지가 저장된 것. 파일을 지우고 4장 프롬프트 다시</td></tr><tr><td><b>전사가 너무 느림 · 노트북이 뜨거워짐</b></td><td>AI에게: “AGENTS.md의 전사 모델을 한 단계 낮은 것으로 바꾸고 조모임A로 다시 재 줘” (medium-korean → small → base-ko)</td></tr><tr><td><b>같은 녹음이 계속 반복 처리됨</b></td><td>AI에게: “같은 녹음이 반복 처리돼. notes 폴더 확인 로직과 파일 이름 특수문자 문제를 고쳐 줘”</td></tr><tr><td><b>텔레그램이 안 옴</b></td><td>① 내 봇에게 Start ② 토큰 파일에 토큰 한 줄만 ③ chat_id 숫자 확인 (12장 표)</td></tr><tr><td><b>관제판이 안 뜸</b></td><td>녹음자동처리 폴더에서 실행했는지. 8500번을 다른 프로그램이 쓰면 8600으로</td></tr><tr><td><b>노트북이 잠들면 멈춤</b></td><td>정상입니다. 켜면 밀린 것이 처리됩니다</td></tr></tbody></table></div>
+<div class="platform-block" data-platform="windows"><h3>Windows에서 자주 막히는 것</h3><div class="table-wrap"><table><thead><tr><th>증상</th><th>이렇게 하세요</th></tr></thead><tbody><tr><td>“이 시스템에서 스크립트를 실행할 수 없으므로…”</td><td>AI에게 그 빨간 글씨를 통째로 보내세요. 실행 정책을 이 과제에만 우회하는 방법으로 고쳐 줍니다</td></tr><tr><td>“Windows의 PC 보호” 파란 창</td><td>추가 정보 → 실행</td></tr><tr><td>백신이 whisper·ffmpeg를 지움</td><td>AI에게: “Windows Defender 제외 폴더에 녹음자동처리\tools 를 추가하는 방법을 알려 줘”</td></tr><tr><td>폴더를 찾을 수 없다 · 권한 오류</td><td>문서 폴더가 OneDrive 안에 있을 수 있습니다. AI에게: “OneDrive 때문이라면 C:\녹음자동처리 로 옮기고 경로를 전부 바꿔 줘”</td></tr><tr><td>예약 실행 때 검은 창이 깜빡임</td><td>AI에게: “작업 스케줄러 실행 때 창이 안 뜨게 바꿔 줘”</td></tr><tr><td>한글 사용자 이름(C:\Users\홍길동) 때문에 오류</td><td>AI에게: “한글 경로 문제라면 C:\rec 같은 영문 폴더로 옮기고 경로를 바꿔 줘”. 사용자 계정 이름을 직접 바꾸지 마세요</td></tr></tbody></table></div></div>
+<div class="platform-block" data-platform="mac"><h3>Mac에서 자주 막히는 것</h3><div class="table-wrap"><table><thead><tr><th>증상</th><th>이렇게 하세요</th></tr></thead><tbody><tr><td>예약 실행만 조용히 실패</td><td>폴더가 문서·데스크탑·다운로드 안에 있으면 Mac 보안이 막습니다. 1장처럼 홈 폴더 바로 아래로 옮기고 AI에게 경로를 바꾸게 하세요</td></tr><tr><td>“command not found: agy / uv”</td><td>터미널을 닫고 새로 열기. 그래도 안 되면 AI에게: “PATH에 ~/.local/bin 이 들어가게 고쳐 줘”</td></tr><tr><td>비밀번호를 쳐도 글자가 안 보임</td><td>정상입니다. 다 치고 Return</td></tr><tr><td>“확인되지 않은 개발자” 경고</td><td>그 문구를 AI에게 그대로 보내면 여는 방법을 알려 줍니다</td></tr><tr><td>Xcode 명령줄 도구 설치 창</td><td>설치를 누르고 끝날 때까지 기다린 뒤 “설치 끝났어, 이어서 해 줘”</td></tr></tbody></table></div></div>
+<h3>막혔을 때 만능 프롬프트</h3>
+<p>무엇이 문제인지 모르겠으면 이걸 보내세요. <strong>빨간 오류 메시지를 반드시 같이 넣으세요.</strong></p>
+<div class="prompt"><div class="prompt-head"><h3>막혔을 때</h3><button class="button secondary" type="button" data-copy="p20">프롬프트 복사</button></div><p class="prompt-note">버튼으로 프롬프트 전체를 복사해 <strong>Antigravity 대화 입력란</strong>에 붙여넣고 보내세요. 직접 타이핑하지 않습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p20">녹음 자동 정리 과제를 하다가 막혔어. 초보자도 따라 할 수 있게 점검하고 고쳐 줘.
+
+지금 상태:
+- (무엇을 하다가 막혔는지 한 줄: 예 &quot;8장에서 실행했는데 결과가 안 생겨&quot;)
+- (화면에 뜬 빨간 오류 메시지를 그대로 붙여넣기)
+
+점검해 줘:
+1. AGENTS.md 를 읽고, 녹음자동처리 아래 폴더와 process_recordings.py 가 있는지
+2. whisper-cli 와 ffmpeg 가 실제로 실행되는지
+3. models 의 .bin 파일과 프로그램의 모델 경로가 같은지
+4. agy -p 가 화면 없이 답하는지
+5. logs/run.log 의 마지막 오류
+6. (했다면) app/notify.py, db.py, main.py 와 data/status.db
+
+실제 오류 메시지를 기준으로 원인을 찾아 고쳐 줘. 추측만 하지 마.
+같은 시도가 두 번 실패하면 멈추고 상황과 다른 방법을 정리해 줘.</pre></details></div>
+<h3>손으로 정리하기 (agy가 끝내 안 될 때)</h3>
+<p><code>01_전사원문.md</code> 내용을 Antigravity 대화창이나 Gemini 앱에 직접 붙여넣으면 나머지는 손으로 만들 수 있습니다.</p>
+<div class="prompt"><div class="prompt-head"><h3>손으로 정리하기</h3><button class="button secondary" type="button" data-copy="p21">프롬프트 복사</button></div><p class="prompt-note">이 프롬프트는 Antigravity 대화창 또는 Gemini 앱에 붙여넣습니다.</p><details class="prompt-detail"><summary>프롬프트 내용 펼쳐보기 · AI에게 전달할 내용</summary><pre id="p21">아래 한국어 전사본으로 세 가지를 만들어 줘.
+
+1) 정제본: 의미와 순서는 그대로 두고, 말더듬·반복·&quot;어, 음, 그&quot; 추임새만 정리한 전문. 요약하지 말 것.
+2) 상세정리: 먼저 녹음 유형(강의/조모임/아이디어/전화/상담/메모 등)을 판단해 맨 위에 적고, 그 유형에 맞는 구조로 정리. 실제로 나온 결정·담당자·기한만 적고 없는 건 만들지 말 것. 이름·숫자·정정 표현은 그대로.
+3) 확인사항: 미정인 것, 불확실한 것, 제안만 나온 것, 다시 확인할 것 목록.
+
+전사본:
+&quot;&quot;&quot;
+(여기에 01_전사원문.md 내용 붙여넣기)
+&quot;&quot;&quot;</pre></details></div>
+<p>그래도 안 되면 <strong>어느 장</strong>에서, <strong>무엇을 했는데</strong>, <strong>어떤 화면</strong>이 나왔는지 세 가지를 적어 아래 기록에 남기고 2회차에 가져오세요. 교수님이 안내한 연락 창구로 보내도 됩니다.</p>
+
+</section>
+<section id="faq" class="section"><p class="step">21장</p><h2>자주 묻는 질문</h2>
+
+<h3>녹음 내용이 인터넷으로 나가나요?</h3>
+<p>음성 파일은 안 나갑니다. 전사(whisper.cpp)는 내 컴퓨터 안에서만 됩니다. 다만 <strong>정리·요약 단계에서는 전사된 글</strong>이 agy를 통해 Google로 갑니다. 텔레그램 알림에는 요약 두 줄이, Notion을 켰으면 정리 문서가 갑니다. 민감한 내용은 <code>01_전사원문.md</code>까지만 쓰는 선택도 됩니다. <strong>다른 사람의 목소리를 녹음할 때는 먼저 동의를 받으세요.</strong> 수업 녹음은 교수님 허락이 필요합니다.</p>
+<h3>돈이 드나요?</h3>
+<p>whisper.cpp·ffmpeg·uv·텔레그램·LocalSend·Notion 무료 계정은 모두 무료입니다. agy는 여러분의 Google 계정(학생 혜택 요금제)의 사용량 안에서 씁니다. 녹음 몇 개를 정리하는 정도는 부담이 없습니다. <strong>이 과제 때문에 결제하지 마세요.</strong></p>
+<h3>긴 녹음은 얼마나 걸리나요?</h3>
+<p>모델과 노트북에 따라 크게 다릅니다. 6장 속도 시험에서 잰 <strong>배율</strong>을 보세요. 20초 녹음에 30초 걸렸다면 1.5배이고, 10분 녹음은 약 15분 걸립니다. 대략 base-ko가 가장 빠르고, small은 그보다 몇 배, medium-korean은 small보다 또 몇 배 느립니다. Apple 칩 Mac은 그래픽 처리 장치를 함께 써서 훨씬 빠릅니다. 배터리로 돌면 더 걸리니 긴 녹음은 전원을 연결하고 돌리세요.</p>
+<h3>전사가 자꾸 틀려요</h3>
+<p>6장 속도 시험에서 2배 안에 들어온다면 한 단계 큰 모델로 올려 보세요(“AGENTS.md의 모델을 한 단계 큰 것으로 바꾸고 조모임A로 다시 재 줘”). 이미 medium-korean이라면 휴대폰을 말하는 사람 가까이 두고 소음을 줄이는 것이 가장 효과가 큽니다. 이 과제의 목표는 완벽한 전사가 아니라 <strong>자동으로 도는 흐름</strong>입니다.</p>
+<h3>컴퓨터를 껐다 켜면 다 사라지나요?</h3>
+<p>아니요. 정리 문서는 notes 폴더에, 기록장은 data/status.db 파일에 남습니다.</p>
+<h3>원리를 몰라도 되나요?</h3>
+<p>됩니다. 먼저 만들어 보고, 궁금해지면 AI에게 물어보세요. “process_recordings.py 가 하는 일을 순서대로 아주 쉽게 설명해 줘”, “전사는 누가 하고 요약은 누가 하는 거야?”처럼요. 2회차에서 같이 봅니다.</p>
+
+</section>
+<section id="words" class="section"><p class="step">22장</p><h2>처음 듣는 말</h2>
+<div class="table-wrap"><table><thead><tr><th>말</th><th>쉬운 설명</th></tr></thead><tbody><tr><td><b>전사</b></td><td>음성을 글자로 받아 적는 것</td></tr><tr><td><b>whisper.cpp</b></td><td>내 컴퓨터에서 음성을 글자로 바꿔 주는 무료 프로그램</td></tr><tr><td><b>모델 (.bin)</b></td><td>whisper.cpp의 “귀와 뇌” 파일. 클수록 정확하지만 느림. medium-korean은 한국어로 더 학습시킨 중간 크기 모델</td></tr><tr><td><b>배율</b></td><td>전사에 걸린 시간 ÷ 녹음 길이. 2배면 10분 녹음에 20분</td></tr><tr><td><b>ffmpeg</b></td><td>음성·영상 파일의 형식을 바꿔 주는 도구</td></tr><tr><td><b>Antigravity 앱</b></td><td>나와 대화하며 내 컴퓨터의 파일을 만들고 실행하는 Google의 AI 에이전트</td></tr><tr><td><b>agy (Antigravity CLI)</b></td><td>화면 없이 명령으로 부르는 Antigravity. 자동 처리 프로그램이 씀</td></tr><tr><td><b>터미널 · PowerShell</b></td><td>글자로 컴퓨터에 명령하는 창. Windows는 PowerShell, Mac은 터미널</td></tr><tr><td><b>PATH</b></td><td>컴퓨터가 명령 이름으로 프로그램을 찾는 주소록. “명령을 찾을 수 없다”의 단골 원인</td></tr><tr><td><b>uv · 파이썬</b></td><td>파이썬은 프로그램 언어, uv는 파이썬을 관리자 권한 없이 설치·실행해 주는 도구</td></tr><tr><td><b>스크립트 (.py)</b></td><td>컴퓨터에게 시킬 일을 미리 적어 둔 작업 지시서</td></tr><tr><td><b>작업 스케줄러 · launchd</b></td><td>“몇 분마다 이걸 실행해”라고 예약하는 기능. Windows는 작업 스케줄러, Mac은 launchd</td></tr><tr><td><b>봇 · 토큰 · chat_id</b></td><td>봇은 알림을 보내는 자동 계정, 토큰은 봇의 비밀번호, chat_id는 내 텔레그램 번호</td></tr><tr><td><b>SQLite</b></td><td>설치 없이 파일 하나로 쓰는 가벼운 기록장</td></tr><tr><td><b>127.0.0.1:8500</b></td><td>내 컴퓨터 안의 8500번 창구. 인터넷 주소 아님</td></tr><tr><td><b>AGENTS.md</b></td><td>이 폴더에서 AI가 지킬 작업 원칙을 적은 파일. 새 대화에서도 먼저 읽음</td></tr><tr><td><b>config 폴더</b></td><td>토큰 같은 비밀값을 넣어 두는 곳. 대화창에 안 넣으려고 씀</td></tr></tbody></table></div>
+</section>
+<section id="submit" class="section"><p class="step">23장 · 정리</p><h2>체크리스트와 진행 기록</h2>
+
+<p>한 것만 체크하세요. 아래 기록은 자동으로 어디에도 보내지지 않습니다. <strong>「기록 파일 저장」</strong>을 누르면 다운로드 폴더에 .md 파일로 저장됩니다. 2회차에 가져오거나 교수님이 안내한 곳에 제출하세요.</p>
+<h3>기본</h3><div class="checklist">
+<label><input type="checkbox" data-check><span>1장 녹음자동처리 폴더와 녹음비서 프로젝트, AGENTS.md가 있다</span></label>
+<label><input type="checkbox" data-check><span>2장 agy에 로그인했고, 화면 없이 답하는 것을 확인했다</span></label>
+<label><input type="checkbox" data-check><span>3~4장 whisper.cpp · ffmpeg가 준비됐고, 내 노트북 사양에 맞는 모델을 받았다</span></label>
+<label><input type="checkbox" data-check><span>5~6장 조모임A · B 녹음을 inbox에 넣고, 손으로 전사해 글자가 나왔고, 속도 시험으로 모델을 정했다</span></label>
+<label><input type="checkbox" data-check><span>7~8장 자동 처리로 문서 다섯 개가 생겼고, 인원 다섯 명 · 장소 미정이 맞게 나왔다</span></label>
+<label><input type="checkbox" data-check><span>9장 5분마다 자동 실행이 등록됐다</span></label>
+<label><input type="checkbox" data-check><span>10~13장 텔레그램으로 「정리 완료」 알림이 왔다</span></label>
+</div>
+<h3>권장 · 선택</h3><div class="checklist">
+<label><input type="checkbox" data-check data-optional><span>Part 5 관제판에서 목록·상세·다시 처리가 된다</span></label>
+<label><input type="checkbox" data-check data-optional><span>Part 6 휴대폰에서 LocalSend로 inbox에 바로 들어온다</span></label>
+<label><input type="checkbox" data-check data-optional><span>Part 7 Notion에 페이지가 생긴다</span></label>
+<label><input type="checkbox" data-check data-optional><span>Part 8 기록에 질문하면 근거와 함께 답한다</span></label>
+</div>
+<div class="record-grid"><label>내 컴퓨터 (선택)<input id="rec-device" placeholder="예: Windows 11 노트북 / MacBook Air M2"></label><label>다음 시간에 묻고 싶은 것<input id="rec-question" placeholder="예: agy가 예약 실행에서만 멈춰요"></label></div>
+<label class="field">어디까지 했고, 어디서 막혔나<textarea id="rec-stuck" placeholder="예: 9장까지 했고, 예약 실행에서 agy가 응답 없이 멈춥니다. run.log 마지막 줄: ..."></textarea></label>
+<div class="actions"><button class="button" type="button" id="save-record">기록 파일 저장 (.md)</button><span class="status" id="save-status" role="status"></span></div>
+<div class="callout warm"><b>올리기 전에</b> — 캡처에 실제 이름·전화번호·대화 내용이 들어 있으면 가리세요. 텔레그램 토큰·Notion Secret이 보이는 화면은 절대 올리지 마세요.</div>
+<p style="font-size:22px;font-weight:750;margin-top:30px">녹음 버튼 하나가 문서 다섯 개가 됩니다.<br>한 번 만들면, 그다음은 비서가 합니다.</p>
+
+</section>
+
+<footer>동국대학교 AI 활용 특강 · 녹음 비서 과제 안내서 v1.2 · 원본: AI 자동화 스터디 3기 심화실습 #2<br>공식 안내: <a href="https://antigravity.google/docs/getting-started?tab=cli">Antigravity CLI 설치</a> · <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a> · <a href="https://docs.astral.sh/uv/">uv</a> · <a href="https://core.telegram.org/bots/tutorial">텔레그램 봇</a> · <a href="https://localsend.org">LocalSend</a></footer>
+</main></div>
+<script>'use strict';
+(() => {
+  // 운영체제 고르기 — 안내서 전체에서 Windows/Mac 한쪽 설명만 보이게
+  const setOS = os => {
+    document.querySelectorAll('[data-os]').forEach(b => {
+      const on = b.dataset.os === os; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', String(on));
+    });
+    document.querySelectorAll('[data-platform]').forEach(el => { el.hidden = os !== 'all' && el.dataset.platform !== os; });
+    const label = document.getElementById('os-label');
+    if (label) label.textContent = os === 'windows' ? 'Windows 설명만 보는 중' : os === 'mac' ? 'Mac 설명만 보는 중' : 'Windows · Mac 모두 보는 중';
+  };
+  document.querySelectorAll('[data-os]').forEach(b => b.addEventListener('click', () => setOS(b.dataset.os)));
+  const guess = /Mac/i.test(navigator.platform || navigator.userAgent) ? 'mac' : /Win/i.test(navigator.platform || navigator.userAgent) ? 'windows' : 'all';
+  setOS(guess);
+
+  // 프롬프트 복사
+  document.querySelectorAll('[data-copy]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const target = document.getElementById(button.dataset.copy);
+      const text = target.textContent;
+      try {
+        if (!navigator.clipboard) throw new Error('no clipboard');
+        await navigator.clipboard.writeText(text);
+        button.textContent = '복사 완료';
+        setTimeout(() => { button.textContent = '프롬프트 복사'; }, 2500);
+      } catch (_) {
+        const d = target.closest('details'); if (d) d.open = true;
+        const sel = window.getSelection(); const r = document.createRange(); r.selectNodeContents(target);
+        sel.removeAllRanges(); sel.addRange(r);
+        button.textContent = 'Ctrl+C / ⌘C로 복사';
+      }
+    });
+  });
+
+  // 진행 체크와 기록 저장
+  const checks = Array.from(document.querySelectorAll('[data-check]'));
+  const basic = checks.filter(c => !c.hasAttribute('data-optional'));
+  const progress = document.getElementById('progress');
+  const update = () => { progress.textContent = '기본 ' + basic.filter(c => c.checked).length + '/' + basic.length; };
+  checks.forEach(c => c.addEventListener('change', update)); update();
+  const val = id => (document.getElementById(id).value || '').trim() || '미입력';
+  const record = () => [
+    '# 녹음 비서 과제 진행 기록', '',
+    '- 안내서: 04_과제안내_녹음비서 (Antigravity 판) v1.0',
+    '- 저장 시각: ' + new Date().toISOString(),
+    '- 기본: ' + basic.filter(c => c.checked).length + '/' + basic.length, '',
+    '## 한 것', '', ...checks.map(c => '- [' + (c.checked ? 'x' : ' ') + '] ' + c.nextElementSibling.textContent.trim()), '',
+    '## 컴퓨터', '', val('rec-device'), '',
+    '## 어디까지 했고, 어디서 막혔나', '', val('rec-stuck'), '',
+    '## 다음 시간에 묻고 싶은 것', '', val('rec-question'), '',
+    '> 학생이 직접 적은 기록입니다. 토큰·비밀번호·실제 이름은 넣지 마세요.', ''
+  ].join('\n');
+  document.getElementById('save-record').addEventListener('click', () => {
+    const blob = new Blob(['﻿' + record()], { type: 'text/markdown;charset=utf-8' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = '녹음비서_과제기록_' + new Date().toISOString().slice(0, 10) + '.md';
+    document.body.appendChild(a); a.click(); a.remove();
+    document.getElementById('save-status').textContent = '저장했습니다. 다운로드 폴더를 확인하세요.';
+  });
+  document.getElementById('print-guide').addEventListener('click', () => window.print());
+})();
+</script>
+</body></html>

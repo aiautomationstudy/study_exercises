@@ -14,6 +14,11 @@
 
 ## 동국대 AI 특강
 
+2회차(10월 15일): [내 웹앱 만들기 실습 안내](https://aiautomationstudy.github.io/study_exercises/동국대/학사_특강/2회차_웹앱만들기_실습안내.html)
+
+Gemini·ChatGPT·Claude에게 Antigravity용 요청문 작성을 맡기고, 작은 웹앱을 제작·확인·수정하는 개인 실습입니다.
+[안내서 원문](동국대/학사_특강/2회차_웹앱만들기_실습안내.md), [학습 진도 완성 예시](https://aiautomationstudy.github.io/study_exercises/동국대/학사_특강/2회차_학습진도_완성예시.html)를 함께 제공합니다.
+
 [실습 자료 모아 보기](https://aiautomationstudy.github.io/study_exercises/동국대/학사_특강/)
 
 `동국대/학사_특강/index.html`에서 학생 사전준비 안내, 실습 프롬프트(Pro·Plus), 퀴즈 예시 2종,

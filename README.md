@@ -1,5 +1,12 @@
 # study_exercises
 
+## AI 자동화 스터디 3기
+
+[4주차 실습 막힘 해결 안내서](https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html)
+
+컴퓨터를 잘 모르는 참가자가 Codex에 해결을 맡길 문장을 복사할 수 있습니다.
+정본 Markdown은 `3기/실습/3기_4주차_실습하다_막혔을때_해결안내.md`입니다.
+
 ## 동국대 AI 특강
 
 [실습 자료 모아 보기](https://aiautomationstudy.github.io/study_exercises/동국대/학사_특강/)

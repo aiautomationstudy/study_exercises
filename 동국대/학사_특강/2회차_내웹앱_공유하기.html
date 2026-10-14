@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>내가 만든 웹앱, 다른 사람과 함께 쓰기</title><style>
+:root{color-scheme:light;--bg:#f5f1ea;--ink:#1c2430;--brand:#0e7c74;--line:#e4ded3}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 'Apple SD Gothic Neo','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:880px;margin:auto;padding:32px 22px 72px;background:white}
+h1{font-size:30px;line-height:1.4}h2{font-size:24px;line-height:1.5;border-top:2px solid var(--line);padding-top:26px;margin-top:40px}h3{font-size:19px;line-height:1.5;margin-top:26px}
+a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px}li{margin:7px 0}ul,ol{padding-left:24px}
+.top{font-size:15px;margin-bottom:18px}.prompt{background:#f7f5f0;border:1px solid var(--line);border-radius:12px;padding:14px;margin:18px 0}
+pre{white-space:pre-wrap;font-family:inherit;font-size:16px;line-height:1.8;overflow-wrap:anywhere;margin:14px 0 0}pre code{background:none;padding:0;border:0;font:inherit}
+code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{font-family:inherit;font-size:16px;line-height:1.4;font-weight:700;background:var(--brand);color:white;border:0;border-radius:8px;padding:10px 18px;min-height:44px;cursor:pointer}.copy-status{margin-left:12px;font-size:14px;color:var(--brand)}
+.tablewrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f7f5f0}hr{border:0;border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:600px){body{font-size:16px}main{padding:22px 16px 60px}h1{font-size:25px}h2{font-size:21px}pre{font-size:15px}}
+@media print{body{background:white}main{max-width:none}.copy,.copy-status{display:none}.prompt{break-inside:avoid}a{color:inherit}}
+</style></head><body><main><div class="top"><a href="index.html">실습 자료 목록으로</a></div>
+<h1>내가 만든 웹앱, 다른 사람과 함께 쓰기</h1>
+<p><strong>동국대 AI 특강 · 2회차 실습 뒤 · 기말 프로젝트에도 그대로 씁니다</strong></p>
+<p>지금 만든 앱은 <strong>내 컴퓨터 안에만</strong> 있습니다. 친구가 열 수 있는 <strong>인터넷 주소</strong>를 만들어 봅니다.<br>
+아래 방법은 <strong>모두 무료이고 카드 등록이 필요 없습니다.</strong></p>
+<h2>어떤 방법을 쓸까?</h2>
+<div class="tablewrap"><table><thead><tr><th>하고 싶은 것</th><th>방법</th></tr></thead><tbody><tr><td>만든 앱을 친구에게 링크로 보여 주기 (오늘 만든 앱, 기말 프로젝트 모두)</td><td><a href="#pages">① GitHub Pages</a></td></tr><tr><td>친구들이 쓴 글이나 답을 모두가 같이 보는 앱 (게시판, 질문함, 투표, 신청서, 선생님이 학생 답을 모아 보는 퀴즈)</td><td><a href="#pages">① GitHub Pages</a> + <a href="#firebase">② Firebase 데이터베이스</a></td></tr><tr><td>Gemini의 Canvas로 만든 앱</td><td><a href="#canvas">③ Canvas 공유 단추</a></td></tr></tbody></table></div>
+<p><strong>링크만 공유하면, 각자 입력한 내용은 각자 브라우저에만 남습니다.</strong> 오늘 만든 공부 체크 앱이 그렇습니다. 친구가 쓴 내용을 내 화면에서도 보려면 ②가 필요합니다.</p>
+<a id="pages"></a>
+<h2>① GitHub Pages — 학기 내내 쓰는 내 앱 주소</h2>
+<ul><li>주소는 <code>https://내아이디.github.io/앱이름/</code> 모양입니다. 이 실습 자료도 GitHub Pages로 올렸습니다.</li><li>무료입니다. 단, 앱 파일이 <strong>누구나 볼 수 있게 공개</strong>됩니다. 실제 이름·연락처·성적은 넣지 않습니다.</li><li>팀원을 초대해 함께 고칠 수 있고, 고친 기록이 남습니다.</li></ul>
+<h3>꼭 할 것 · 15분</h3>
+<ol><li><a href="https://github.com">github.com</a>에서 <strong>Sign up</strong>으로 가입합니다. 아이디가 주소에 들어가니 영문 소문자로 정합니다.</li><li>앱 파일이 어디 있는지 확인합니다. Antigravity에 「방금 만든 앱 폴더를 파일 탐색기(Mac은 Finder)에서 열어 줘」라고 보냅니다.</li><li>GitHub 오른쪽 위 <strong>+</strong> → <strong>New repository</strong>를 누릅니다. <strong>Repository name</strong>에 앱 이름을 영문 소문자·숫자·하이픈(-)으로 씁니다(예: <code>study-planner</code>). <strong>Public</strong>을 고르고 <strong>Create repository</strong>를 누릅니다.</li><li>새 화면에서 <strong>uploading an existing file</strong>을 누릅니다(안 보이면 <strong>Add file</strong> → <strong>Upload files</strong>). 앱 폴더 <strong>안의 파일을 모두</strong> 선택해 끌어다 놓고, 아래 <strong>Commit changes</strong>를 누릅니다. 폴더째가 아니라 <code>index.html</code>이 보이는 그 안의 파일들을 올립니다.</li><li>위쪽 <strong>Settings</strong> → 왼쪽 <strong>Pages</strong>를 누릅니다. <strong>Source</strong>는 <strong>Deploy from a branch</strong>, <strong>Branch</strong>는 <strong>main</strong>과 <strong>/(root)</strong>를 고르고 <strong>Save</strong>를 누릅니다.</li><li>1~2분 뒤 새로고침하면 위쪽에 <strong>Your site is live at …</strong> 이 나옵니다. <strong>Visit site</strong>를 눌러 열리면 그 주소를 친구에게 보냅니다. 길면 10분까지 걸립니다.</li></ol>
+<h3>고칠 때</h3>
+<p>Antigravity로 앱을 고친 뒤, GitHub 저장소에서 <strong>Add file</strong> → <strong>Upload files</strong>를 누르고 바뀐 파일을 다시 끌어다 놓은 다음 <strong>Commit changes</strong>를 누릅니다. 이름이 같은 파일은 새 것으로 바뀝니다. 몇 분 뒤 같은 주소에 반영됩니다.</p>
+<h3>기말 프로젝트 팀이라면</h3>
+<ul><li>팀에서 한 명이 저장소를 만들고 <strong>Settings</strong> → <strong>Collaborators</strong> → <strong>Add people</strong>로 팀원의 GitHub 아이디를 초대합니다. 초대를 받은 팀원도 파일을 올릴 수 있습니다.</li><li>두 사람이 같은 파일을 따로 고쳐 올리면 <strong>나중에 올린 것이 앞의 것을 덮어씁니다.</strong> 누가 언제 올릴지 팀에서 정합니다.</li></ul>
+<h3>Antigravity에게 맡겨도 됩니다</h3>
+<p>처음 한 번은 Git 설치와 GitHub 로그인을 물어봅니다. 그다음부터는 「고친 거 GitHub에도 올려 줘」 한마디면 됩니다.</p>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">이 앱 폴더를 내 GitHub에 새 저장소로 올리고, GitHub Pages로 인터넷 주소를 만들어 줘.
+저장소 이름은 [study-planner]로 하고, 공개(Public)로 해 줘.
+프로그램 설치나 GitHub 로그인처럼 내가 직접 해야 하는 일은 한 단계씩 쉽게 알려 줘.
+다 되면 실제 주소를 열어서 앱이 잘 열리는지 확인하고 주소를 알려 줘.
+</code></pre></div>
+<a id="firebase"></a>
+<h2>② Firebase — 여러 사람이 같은 데이터를 쓰는 앱</h2>
+<p>학과 게시판·질문함·투표·행사 신청처럼 <strong>소통용 웹앱</strong>이나, 선생님이 학생들의 답을 모아 보는 <strong>교수-학습용 앱</strong>에 필요합니다.<br>
+Google 계정으로 쓰는 Google의 서비스입니다. <strong>무료 Spark 요금제</strong>에서 데이터베이스(Firestore)와 Google 로그인을 카드 등록 없이 쓸 수 있습니다. 앱 주소는 ①의 GitHub Pages 주소를 그대로 씁니다.</p>
+<h3>꼭 할 것</h3>
+<p>앱을 만들던 Antigravity 대화에 아래 문장을 보내고, [ ] 부분을 내 앱에 맞게 바꿉니다.</p>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">이 앱에서 [친구들이 쓴 글]을 모두가 같이 볼 수 있게 하고 싶어.
+Firebase의 무료 Spark 요금제로 Firestore 데이터베이스를 연결해 줘.
+결제 수단 등록(Blaze 요금제)이 필요한 기능은 쓰지 마. App Hosting과 Cloud Functions도 쓰지 마.
+누가 읽고, 쓰고, 지울 수 있는지 보안 규칙도 정해서 적용해 줘.
+내가 Firebase 콘솔(console.firebase.google.com)에서 직접 눌러야 하는 것은 한 단계씩 쉽게 알려 줘.
+다 되면 다른 컴퓨터에서도 같은 내용이 보이는지 내가 확인하는 방법을 알려 줘.
+</code></pre></div>
+<h3>꼭 지킬 것</h3>
+<ul><li><strong>카드를 등록하라는 화면이 나오면 멈춥니다.</strong> 이 수업과 기말 프로젝트는 무료 요금제로 충분합니다. Antigravity에 「Publish my app」이라고만 하면 카드 등록이 필요한 App Hosting으로 진행될 수 있습니다.</li><li><strong>보안 규칙을 꼭 정합니다.</strong> 규칙 없이 「테스트 모드」로 두면 주소를 아는 사람 누구나 데이터를 지울 수 있습니다.</li><li>실제 학번·연락처·성적은 넣지 않습니다.</li><li>무료 사용량을 넘어도 돈이 나가지 않습니다. 그달 남은 기간 동안 그 기능이 멈출 뿐이고, 수업 과제 규모에서는 넘을 일이 거의 없습니다.</li></ul>
+<a id="canvas"></a>
+<h2>③ Gemini Canvas로 만든 앱이라면 — 공유 단추 하나</h2>
+<p><a href="https://gemini.google.com">Gemini</a> 입력창 아래 <strong>파일 추가(＋)</strong> → <strong>Canvas</strong>를 고르고 만든 앱은 이렇게 공유합니다.</p>
+<ol><li>Canvas 오른쪽 위 <strong>공유 및 내보내기</strong> → <strong>공유</strong>를 누릅니다.</li><li>링크 옆 <strong>링크 복사</strong>를 누르고 친구에게 보냅니다.</li></ol>
+<ul><li>링크는 컴퓨터나 휴대폰의 <strong>인터넷 브라우저</strong>(gemini.google.com)에서 열립니다. Gemini 휴대폰 앱에서는 열리지 않습니다.</li><li>만 18세 이상만 공유할 수 있습니다.</li><li>여러 사람이 데이터를 함께 쓰는 Canvas 앱이면, 링크를 가진 사람 누구나 그 데이터를 보고 고칠 수 있습니다.</li><li>Antigravity로 만든 앱에는 이 단추가 없습니다. ①을 쓰세요.</li></ul>
+<h2>잘 안될 때 참고</h2>
+<ul><li><strong>주소를 열면 404가 나와요:</strong> 5~10분 기다린 뒤 다시 엽니다. 그래도 같으면 저장소 첫 화면에 <code>index.html</code>이 바로 보이는지 확인합니다. 폴더 안에 또 폴더가 있으면 그 안의 파일을 올려야 합니다.</li><li><strong>하얀 화면만 나와요:</strong> 파일을 일부만 올렸을 수 있습니다. 앱 폴더 안의 파일을 모두 다시 올립니다.</li><li><strong>수업 중에 1분 만에 임시 주소가 필요해요:</strong> <a href="https://app.netlify.com/drop">netlify.com/drop</a>에 앱 폴더를 끌어다 놓으면 바로 주소가 나옵니다. 가입하지 않으면 1시간 뒤 사라집니다. 오래 둘 앱은 ①로 올립니다.</li><li>그 밖에 막히면 <a href="2회차_막혔을때_해결안내.html">막혔을 때 안내</a>의 순서대로 합니다. 하던 AI에게 「GitHub Pages 주소가 404야. 해결해 줘」처럼 막힌 상황을 그대로 말하면 됩니다.</li></ul>
+<p><a href="index.html">실습 자료 목록으로 돌아가기</a></p>
+<script>
+document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',async()=>{
+ const text=button.parentElement.querySelector('pre').textContent;
+ const status=button.parentElement.querySelector('.copy-status');
+ try{await navigator.clipboard.writeText(text);status.textContent='복사했어요. 대화창에 붙여넣으세요.';}
+ catch{const range=document.createRange();range.selectNodeContents(button.parentElement.querySelector('pre'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='문장을 선택했어요. Ctrl+C로 복사하세요.';}
+}));
+</script></main></body></html>

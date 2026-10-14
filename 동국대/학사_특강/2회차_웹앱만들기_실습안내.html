@@ -1,60 +1,48 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동국대 AI 특강 2회차 · 웹앱 만들기 실습 안내</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f1ea;color:#1c2430;font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.75}main{max-width:920px;margin:auto;padding:38px 22px 60px}a{color:#0e7c74}h1{font-size:clamp(28px,5vw,40px);line-height:1.3;margin:8px 0 18px}h2{font-size:25px;line-height:1.4;margin:34px 0 16px;border-bottom:3px solid #c856b8;padding-bottom:10px}h3{font-size:19px;margin:20px 0 8px}.lead,.muted{color:#5e6773}.note{background:#e1f2ef;padding:16px 20px;border-radius:12px;margin:20px 0}.warn{background:#fbf3e6}nav{display:flex;flex-wrap:wrap;gap:8px 18px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:20px;border:1px solid #e3ddd2;border-radius:10px;font:inherit;font-size:15px;line-height:1.7}button,.button{display:inline-block;font:inherit;font-weight:700;background:#0e7c74;color:#fff;padding:10px 20px;border:0;border-radius:8px;cursor:pointer;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c856b8;outline-offset:3px}label{display:block;font-weight:700;margin-top:12px}input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #aab1b8;border-radius:6px;color:inherit;background:white}textarea{min-height:85px}details{margin:18px 0;padding:16px 20px;background:#fff;border:1px solid #e3ddd2;border-radius:10px}summary{font-weight:700;cursor:pointer}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #ddd5c9;padding:10px 8px}th{background:#e1f2ef}code{overflow-wrap:anywhere}.status{color:#0e7c74;margin-left:10px}.checklist{padding-left:22px}.step{scroll-margin-top:20px}footer{margin-top:35px;color:#5e6773;font-size:14px}@media(max-width:520px){main{padding:25px 16px}th,td{font-size:14px;padding:8px 5px}}@media print{button,.button,nav{display:none}main{max-width:none;padding:0}body{background:white}pre,details,.note{break-inside:avoid}h2{break-after:avoid}}</style></head><body><main>
-<a href="index.html">실습 자료 목록</a><p class="muted">10월 15일 · 개인 실습 · Antigravity</p><h1>AI와 함께 내 웹앱 만들기</h1>
-<p class="lead">요청문도 AI에게 작성하게 합니다. 내가 바라는 결과를 정하고, 만든 앱은 내 손으로 확인합니다.</p>
-<div class="note"><strong>오늘 끝낼 일</strong><ol><li>평소 쓰는 Gemini·ChatGPT·Claude에 Antigravity용 요청문을 작성하게 합니다.</li><li>그 요청문을 Antigravity에 보내 작은 웹앱을 만듭니다.</li><li>직접 눌러 확인하고, 수정하거나 조건을 한 번 바꿉니다.</li></ol></div>
-<nav aria-label="실습 순서"><a href="#before">시작 전</a><a href="#choose">1. 내 앱 정하기</a><a href="#prompt">2. 요청문 맡기기</a><a href="#build">3. 만들기</a><a href="#test">4. 확인·수정</a><a href="#remember">5. 지침 남기기</a><a href="#help">잘 안될 때</a></nav>
-<section id="before" class="step"><h2>시작 전 · 지난 실습 확인</h2><p>1회차 안내서의 라운드 3까지 진행한 결과를 준비하세요. 끝내지 못했어도 지금까지 한 화면과 막힌 지점을 보여 주면 됩니다.</p><ul><li>라운드 1: 조사 결과와 직접 열어 대조한 출처</li><li>라운드 2: 퀴즈 화면과 직접 눌러 본 결과</li><li>라운드 3: 남긴 지침과 새 대화에서 확인한 결과</li></ul><p>Antigravity에서 지난번 실습 프로젝트(<strong>Dongguk Practice</strong>)를 엽니다. 이번 파일은 그 안의 <code>webapp-session2</code> 폴더에 만듭니다. 이전 실습은 그대로 둡니다.</p><p>녹음 비서 과제도 해 보았다면 <strong>된 것 또는 막힌 곳 하나</strong>를 준비하세요.</p></section>
-<section id="choose" class="step"><h2>1. 내 앱 정하기 · 5분</h2><p>기본 예시는 <strong>이번 주 학습 진도 체크 앱</strong>입니다. 내 과목이나 다른 작은 불편으로 바꿔도 됩니다. 오늘은 중요한 기능 하나가 작동하면 충분합니다.</p><p>아래 네 칸을 내 상황에 맞게 고치세요. 예: 실습 준비물 체크, 독서 계획 체크, 시험 공부 진도 체크. 실제 학생 명단·성적·상담 기록은 넣지 않습니다.</p><label for="user">누가 쓸지</label><input id="user" value="교육학과 대학생인 나" maxlength="150"><label for="problem">해결할 불편</label><textarea id="problem" maxlength="500">이번 주 공부할 일과 끝낸 일을 자꾸 잊는다.</textarea><label for="feature">핵심 기능</label><textarea id="feature" maxlength="500">할 일을 추가하고, 완료 표시를 했다가 취소한다.</textarea><label for="criteria">직접 확인할 기준</label><textarea id="criteria" maxlength="1000">1. 할 일을 추가하면 목록에 정확히 나타난다.
-2. 빈칸이나 공백만 넣으면 추가하지 않고 이유를 알려 준다.
-3. 완료 표시와 취소가 모두 되고, 새로고침해도 내 목록과 표시가 남는다.</textarea><p class="muted">입력한 내용은 이 페이지에서만 요청문에 넣습니다. 이 안내서는 입력 내용을 서버에 보내거나 저장하지 않습니다.</p></section>
-<section id="prompt" class="step"><h2>2. 요청문 작성을 AI에게 맡기기</h2><p><strong>보낼 곳: 평소 쓰는 Gemini·ChatGPT·Claude의 일반 대화창 중 하나.</strong></p><p>아래 버튼을 누르면 위의 네 칸이 반영됩니다. AI가 답한 <strong>Antigravity용 요청문 전체</strong>를 다음 단계에서 사용합니다.</p><p><button type="button" data-copy="meta">내 내용으로 요청문 작성 부탁 복사</button><span class="status" id="status-meta" role="status"></span></p><pre id="meta">Antigravity가 아래 웹앱을 만들고 실행할 프롬프트를 작성해 줘.
-나는 코딩을 모르는 대학생이야. Antigravity에 그대로 붙여넣을 요청문만 답해 줘.
-
-누가 쓸지: 교육학과 대학생인 나
-해결할 불편: 이번 주 공부할 일과 끝낸 일을 자꾸 잊는다.
-핵심 기능: 할 일을 추가하고, 완료 표시를 했다가 취소한다.
-확인 기준:
-1. 할 일을 추가하면 목록에 정확히 나타난다.
-2. 빈칸이나 공백만 넣으면 추가하지 않고 이유를 알려 준다.
-3. 완료 표시와 취소가 모두 되고, 새로고침해도 내 목록과 표시가 남는다.
-
-범위는 내 컴퓨터에서 먼저 써 보는 작은 웹앱이야.
-기존 Antigravity 실습 프로젝트 안의 webapp-session2 폴더에 만들어야 해. 다른 실습 파일은 그대로 둬.
-유료 서비스, 외부 AI 연결, 로그인, 공개 배포 없이 작동하도록 해 줘.
-계획만 설명하지 않고 실제 파일을 만들고, 실행 방법과 확인 결과를 알려 주게 써 줘.</pre><p>답을 읽고 내 기능·확인 기준이 들어 있는지 봅니다. 로그인이나 결제 같은 일이 추가됐으면 아래 문장으로 줄입니다.</p><details><summary>AI가 너무 큰 앱을 제안했을 때</summary><p><button type="button" data-copy="review">범위 줄이는 문장 복사</button><span class="status" id="status-review" role="status"></span></p><pre id="review">방금 작성한 프롬프트에서 내가 바라는 기능과 확인 기준은 그대로 두고, 처음 만드는 사람이 실행하기 쉽게 더 짧게 정리해 줘.
-로그인·결제·외부 AI 연결·공개 배포는 이번 실습에서 빼 줘. Antigravity에 붙여넣을 요청문만 답해 줘.</pre></details></section>
-<section id="build" class="step"><h2>3. Antigravity에서 만들기 · 제작 시간 18분 안에</h2><ol><li>Antigravity의 기존 실습 프로젝트에서 <strong>새 대화</strong>를 엽니다.</li><li>앞 단계에서 AI가 답한 요청문을 그대로 붙여넣습니다. 처음 보낸 ‘요청문 작성 부탁’ 문장을 다시 보내는 단계가 아닙니다.</li><li>계획을 읽고 내 의도와 맞으면 진행합니다. 원하지 않는 삭제·공개·결제 요청이 나오면 멈추고 손을 듭니다.</li><li>완료하면 AI가 알려 준 미리보기 주소나 파일을 열어 앱을 확인합니다. 주소가 없으면 ‘내가 어디를 열면 되는지, 직접 실행할 수 있게 준비해 줘’라고 합니다.</li></ol><p>앱을 만드는 동안 다음 단계의 확인 표를 읽고 예상 결과부터 생각하세요.</p><details><summary>요청문 작성용 AI를 쓸 수 없을 때 · AI가 작성한 실행 예시</summary><p>내 조건을 고친 뒤 Antigravity에 보내세요. 이 예시는 요청문을 만드는 과정을 건너뛸 때 쓰는 대안입니다.</p><p><button type="button" data-copy="execute">Antigravity 실행 예시 복사</button><span class="status" id="status-execute" role="status"></span></p><pre id="execute">이번 주 공부할 일과 완료 상태를 관리하는 작은 웹앱을 만들어 줘.
-기존 실습 프로젝트 안에 webapp-session2 폴더를 만들고 그 안에서만 작업해. 다른 파일은 고치지 마.
-사용자는 교육학과 대학생인 나야. 화면은 한국어로 만들고 컴퓨터와 휴대폰에서 읽기 쉽게 해 줘.
-할 일 추가, 완료 표시와 취소, 내 브라우저에 목록과 완료 상태 저장이 필요해.
-확인 기준은 다음과 같아.
-1. 할 일을 추가하면 목록에 입력한 내용이 정확히 나타난다.
-2. 빈칸이나 공백만 넣으면 추가하지 않고 이유를 알려 준다.
-3. 완료 표시와 취소가 모두 되고, 새로고침해도 목록과 표시가 남는다.
-외부 AI 연결, 유료 서비스, 로그인, 공개 배포 없이 내 컴퓨터에서 실행하는 작은 앱으로 만들어.
-계획 설명에 그치지 말고 실제 파일을 만들어. index.html 하나로 작동하면 충분해.
-직접 실행할 수 있게 필요한 미리보기를 준비하고, 내가 열 주소나 파일을 알려 줘.
-웹 확인에 Aside가 필요하면 기존 연결을 사용해. 연결 문제로 만들기까지 멈추지 말고 파일을 먼저 완성해.
-위 기준으로 실제 확인한 결과와 확인하지 못한 것을 나눠 알려 줘. 마지막에는 내가 눌러 볼 순서를 짧게 적어 줘.</pre></details></section>
-<section id="test" class="step"><h2>4. 내 손으로 확인하고 고치기 · 12분</h2><p>AI가 시험했다고 답했어도 직접 누릅니다. 아래는 기본 앱의 확인 기준입니다. 다른 주제면 같은 방식으로 내 기능을 확인하세요.</p><table><thead><tr><th>내가 할 행동</th><th>기대 결과</th></tr></thead><tbody><tr><td>‘형성평가 개념 복습’ 입력 후 추가</td><td>그 문장이 목록에 나타남</td></tr><tr><td>빈칸 또는 공백만 넣고 추가</td><td>목록은 그대로, 입력 안내 표시</td></tr><tr><td>완료 체크 후 다시 취소</td><td>상태와 완료 개수가 바뀌고 돌아옴</td></tr><tr><td>한 항목을 체크하고 새로고침</td><td>목록과 완료 상태 유지</td></tr></tbody></table><p><strong>실패했으면:</strong> 한 행동·기대 결과·실제 결과를 자기 앱에 맞게 써서 Antigravity의 같은 대화에 보냅니다.</p><details><summary>수정 요청 예시 · 실제로 이 문제가 있을 때 사용</summary><p><button type="button" data-copy="fix">수정 요청 예시 복사</button><span class="status" id="status-fix" role="status"></span></p><pre id="fix">내 앱에서 한 가지를 고쳐 줘.
-한 행동: 아무것도 입력하지 않고 추가를 눌렀다.
-기대 결과: 목록은 그대로이고, 할 일을 입력하라는 안내가 나온다.
-실제 결과: 빈 할 일이 목록에 생겼다.
-이 차이만 고치고, 할 일 추가와 완료 표시·취소가 여전히 되는지 다시 확인해 줘.
-기존 목록과 다른 파일은 그대로 두고, 바꾼 것과 실제 확인 결과를 알려 줘.</pre></details><p><strong>모두 됐으면:</strong> 제목을 내 과목으로 바꾸거나 문구 하나를 바꾸게 하고, 원래 기능이 여전히 되는지 다시 확인합니다. 예: ‘완료’를 ‘복습 끝’으로 바꾸기.</p><p>할 일은 <strong>내 브라우저에 저장</strong>합니다. 다른 기기와 공유되지 않습니다. 브라우저 데이터를 지우면 사라질 수 있으므로 실습에는 가상 자료를 쓰세요.</p></section>
-<section id="remember" class="step"><h2>5. 확인한 것을 지침으로 남기기</h2><p><strong>보낼 곳: Antigravity의 지금 대화.</strong> 실제로 확인한 기준에 맞게 아래 문장을 고쳐 보냅니다.</p><p><button type="button" data-copy="rule">프로젝트 지침 남기는 문장 복사</button><span class="status" id="status-rule" role="status"></span></p><pre id="rule">이번 웹앱에서 내가 직접 확인한 기준을 다음 대화에도 남기고 싶어.
-webapp-session2/AGENTS.md에 아래 프로젝트 지침을 추가해 줘. 기존 내용이 있으면 그대로 두고 추가한 부분을 보여 줘.
-지침: 이 앱을 수정할 때 빈칸·공백만 있는 할 일은 추가되지 않게 유지한다. 할 일 추가, 완료 표시·취소, 새로고침 뒤 저장 상태를 직접 시험하고, 확인하지 못한 것은 구분해 알린다.
-근거: 내가 이 동작을 앱에서 직접 확인했고, 다음 수정에서도 유지해야 한다.</pre><p>추가한 지침을 보고, <strong>새 대화</strong>에서 아래 작은 수정을 맡깁니다. 지침을 읽었다는 말과 실제로 지킨 결과를 구분합니다. 시간이 부족하면 수업 뒤 이어 하세요.</p><p><button type="button" data-copy="new">새 대화에서 확인하는 문장 복사</button><span class="status" id="status-new" role="status"></span></p><pre id="new">webapp-session2/AGENTS.md와 앱 파일을 먼저 읽어 줘.
-이 앱의 제목을 ‘나의 교육학 공부 계획’으로 바꿔 줘. 다른 기능과 기존 목록은 그대로 둬.
-프로젝트 지침에 적힌 확인 기준으로 다시 시험하고, 실제 결과와 확인하지 못한 것을 알려 줘.</pre><p><strong>마지막 기록:</strong> 내 앱의 목적 / 직접 확인한 결과 / 실패 또는 바꾼 조건 / 남긴 지침. 제출 장소와 성적 반영은 교수님의 안내를 따릅니다.</p></section>
-<section id="help" class="step"><h2>잘 안될 때 참고</h2><details><summary>만들기가 안 되거나 AI가 계획만 말할 때</summary><p><button type="button" data-copy="wait">실제 작업 진행 문장 복사</button><span class="status" id="status-wait" role="status"></span></p><pre id="wait">계획은 확인했어. 이번에는 webapp-session2 폴더에 실제 파일을 만들고, 내 컴퓨터에서 열어 볼 수 있게 진행해 줘.
-진행을 막는 문제가 있으면 무엇인지와 지금 가능한 대안을 짧게 알려 줘. 한도를 다 썼다면 재시도하지 말고 알려 줘.</pre><p>같은 오류가 두 번 나거나 사용 한도가 끝났으면 재시도를 반복하지 말고 손을 드세요.</p></details><details><summary>Aside 연결·설치·로그인 문제</summary><p>앱 파일은 먼저 만들고, 확인이 안 된 부분을 구분해 달라고 합니다. Windows에서는 Antigravity를 완전히 종료한 뒤 다시 열어 보세요. 계속 안 되면 <a href="03_학생_사전준비안내.html">기존 사전준비 안내</a>의 해결 방법을 봅니다. 보안을 끄거나 서명 검사를 건너뛰지 않습니다.</p><p>Aside가 <code>file://</code> 주소를 열지 못하면 Antigravity에 ‘앱 파일은 그대로 두고, 브라우저에서 열 수 있는 로컬 미리보기 주소를 준비해 줘’라고 합니다. 권한을 무조건 넓히거나 재설치하지 않습니다.</p><table><thead><tr><th>녹음 과제에서 막힌 곳</th><th>대처</th></tr></thead><tbody><tr><td>ffmpeg·whisper 없음</td><td>과제를 진행하던 AI에게 설치 여부를 확인하고, 빠진 도구를 설치한 뒤 짧은 녹음으로 시험하게 합니다. 이번 웹앱에는 설치하지 않아도 됩니다.</td></tr><tr><td>휴대폰 녹음 파일 이동·동기화</td><td>파일 하나를 노트북으로 직접 옮겨 먼저 시험합니다. 자동 동기화는 그 뒤에 확인합니다.</td></tr><tr><td>Notion 권한</td><td>연결이 필요한 과제일 때만, 본인이 사용할 페이지의 연결 권한을 확인합니다. 이번 웹앱에는 Notion이 필요 없습니다.</td></tr><tr><td>Windows 한글 계정 경로</td><td>실습용 폴더만 단순한 경로로 준비하게 하고, 계정 이름·기존 파일은 그대로 둡니다.</td></tr></tbody></table><p>실습에서는 ffmpeg·whisper·Notion·휴대폰 동기화가 필요하지 않습니다. 이 도구나 동기화에서 막힌 녹음 과제는 <a href="04_과제안내_녹음비서.html">과제 안내</a>의 해당 단계와 오류를 보여 주세요. Windows 계정 이름에 한글이 있어 경로 오류가 나면 AI에게 ‘한글 경로 문제인지 확인하고, 이번 실습용 폴더만 단순한 경로에 준비해 줘. 내 계정 이름과 기존 파일은 그대로 둬’라고 합니다.</p><p>로그인·본인 확인·로봇 확인은 직접 합니다. 비밀번호·인증 코드를 AI 대화에 붙이지 않습니다.</p></details><details><summary>사용 한도 또는 장비 문제로 제작을 못 할 때</summary><p><a class="button" href="2회차_학습진도_완성예시.html">학습 진도 완성 예시 열기</a></p><p>예시를 직접 누르며 확인 표를 실행하고, 내 주제로 바꿀 조건과 수정 요청을 작성합니다. 예시 확인에 참여한 것과 내 앱 제작 완료는 구분해 기록하세요.</p></details><details><summary>저장되지 않거나 앱 화면이 하얗게 나올 때</summary><p>기대 결과·실제 화면·오류 문구를 Antigravity에 알려 고치게 합니다. 저장이 안 되면 ‘현재 브라우저에서 저장 가능한지 확인하고, 안 되면 저장이 안 됨을 화면에 알려 줘’라고 합니다. AI가 준 주소가 닫혔으면 미리보기를 다시 실행하게 합니다. 전체 프로젝트를 지우거나 처음부터 재설치하지 않습니다.</p></details></section>
-<footer>10월 15일 동국대 AI 특강 2회차 · <a href="2회차_웹앱만들기_실습안내.md">안내서 원문</a> · <a href="index.html">전체 자료</a></footer></main>
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동국대 AI 특강 2회차 · 말하면 만들어 주는 내 웹앱</title><style>
+:root{color-scheme:light;--bg:#f5f1ea;--ink:#1c2430;--brand:#0e7c74;--line:#e4ded3}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 'Apple SD Gothic Neo','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:880px;margin:auto;padding:32px 22px 72px;background:white}
+h1{font-size:30px;line-height:1.4}h2{font-size:24px;line-height:1.5;border-top:2px solid var(--line);padding-top:26px;margin-top:40px}h3{font-size:19px;line-height:1.5;margin-top:26px}
+a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px}li{margin:7px 0}ul,ol{padding-left:24px}
+.top{font-size:15px;margin-bottom:18px}.prompt{background:#f7f5f0;border:1px solid var(--line);border-radius:12px;padding:14px;margin:18px 0}
+pre{white-space:pre-wrap;font-family:inherit;font-size:16px;line-height:1.8;overflow-wrap:anywhere;margin:14px 0 0}pre code{background:none;padding:0;border:0;font:inherit}
+code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{font-family:inherit;font-size:16px;line-height:1.4;font-weight:700;background:var(--brand);color:white;border:0;border-radius:8px;padding:10px 18px;min-height:44px;cursor:pointer}.copy-status{margin-left:12px;font-size:14px;color:var(--brand)}
+.tablewrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f7f5f0}hr{border:0;border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:600px){body{font-size:16px}main{padding:22px 16px 60px}h1{font-size:25px}h2{font-size:21px}pre{font-size:15px}}
+@media print{body{background:white}main{max-width:none}.copy,.copy-status{display:none}.prompt{break-inside:avoid}a{color:inherit}}
+</style></head><body><main><div class="top"><a href="index.html">실습 자료 목록으로</a></div>
+<h1>동국대 AI 특강 2회차 · 말하면 만들어 주는 내 웹앱</h1>
+<p><strong>10월 15일 실습 안내</strong></p>
+<p>오늘 기억할 한 문장: <strong>필요한 것을 말하면, 코딩 에이전트가 만들어 줍니다.</strong><br>
+코드를 몰라도, 어려운 용어를 몰라도, 멋진 문장이 아니어도 됩니다. 친구에게 카톡 보내듯 편하게 말하세요.</p>
+<h2>꼭 할 것 · 35분</h2>
+<ol><li><strong>만들고 싶은 것 한 가지를 정합니다.</strong> 공부·과제·교육봉사·과외에서 귀찮았던 일이면 됩니다. 떠오르지 않으면 <a href="#ideas">아래 예시</a>에서 고르세요.</li><li><strong>Antigravity를 열고, Dongguk Practice 프로젝트에서 새 대화를 시작합니다.</strong></li><li><strong>만들고 싶은 것을 편하게 써서 보냅니다.</strong> 끝에 「새 폴더 만들어서 거기에 만들어 줘」를 붙이면 지난주 실습 파일과 섞이지 않습니다.</li><li><strong>다 되면 열어서 직접 눌러 봅니다.</strong> 여는 방법을 모르면 「다 만들었으면 내 브라우저에서 열어 줘」라고 보냅니다.</li><li><strong>마음에 안 드는 곳을 말로 고칩니다.</strong> 한 번에 하나씩, 두세 번 해 봅니다.</li></ol>
+<h3>강사가 보낸 말 그대로</h3>
+<p>강사가 수업 전날 Antigravity에 실제로 보낸 말입니다. 4분이 안 돼 시험 공부 체크 앱이 만들어졌습니다. <a href="2회차_학습진도_완성예시.html">그 앱 열어 보기</a></p>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">시험 기간만 되면 뭘 공부했는지 자꾸 까먹어. 과목이랑 공부할 거 적어 두고, 다 하면 체크하는 앱 하나 만들어 줘. 시험까지 며칠 남았는지도 보였으면 좋겠어. 새 폴더 만들어서 거기에 만들어 줘.
+</code></pre></div>
+<p>그대로 보내도 되고, 내 상황에 맞게 바꿔도 됩니다. 같은 말을 보내도 AI는 매번 조금씩 다르게 만듭니다. 내 앱이 강사 앱과 달라도 정상입니다.</p>
+<h3>이렇게 말하면 됩니다</h3>
+<div class="tablewrap"><table><thead><tr><th>이럴 때</th><th>이렇게 말해 보세요</th></tr></thead><tbody><tr><td>다 됐다는데 어디 있는지 모를 때</td><td>어디에 만들었어? 내 브라우저에서 열어 줘</td></tr><tr><td>버튼이나 글씨가 불편할 때</td><td>버튼이 너무 작아. 폰에서도 누르기 편하게 해 줘</td></tr><tr><td>눌렀는데 아무 일도 없을 때</td><td>추가 눌렀는데 아무것도 안 생겨. 고쳐 줘</td></tr><tr><td>무슨 일인지 궁금할 때</td><td>방금 뭐 한 거야? 쉽게 설명해 줘</td></tr><tr><td>오래 걸릴 때</td><td>왜 오래 걸려? 몇 분 더 걸릴 것 같아?</td></tr><tr><td>계획만 보여 주고 멈췄을 때</td><td>좋아, 그대로 만들어 줘</td></tr><tr><td>기능을 더하고 싶을 때</td><td>다 한 건 아래로 내려가게 해 줘</td></tr></tbody></table></div>
+<a id="ideas"></a>
+<h3>무엇을 만들까? 예시</h3>
+<div class="tablewrap"><table><thead><tr><th>만들 것</th><th>이렇게 말해 보세요</th></tr></thead><tbody><tr><td>개념 카드 퀴즈</td><td>교육학 개념이랑 뜻을 넣으면 퀴즈로 내 주고, 틀린 건 다시 나오게 해 줘</td></tr><tr><td>조별 과제 역할표</td><td>조원 이름이랑 맡은 일, 마감일을 적으면 누가 뭘 하는지 한눈에 보이게 해 줘</td></tr><tr><td>발표 순서 뽑기</td><td>이름을 넣으면 발표 순서를 랜덤으로 뽑아서 크게 보여 줘</td></tr><tr><td>독서 기록장</td><td>읽은 책이랑 한 줄 느낌을 적고 별점 매기는 앱 만들어 줘</td></tr><tr><td>칭찬 스티커판</td><td>교육봉사 아이들 이름을 넣고, 칭찬할 때마다 스티커를 붙이는 판 만들어 줘</td></tr></tbody></table></div>
+<p>기말 프로젝트에서 생각해 둔 주제가 있으면, 그중 작은 조각 하나를 오늘 먼저 만들어 봐도 좋습니다.</p>
+<h2>막혔을 때 · 이 순서로</h2>
+<p><strong>AI가 모르는 건 딱 두 가지입니다. 내가 지금 무엇을 하려는지, 어디서 어떻게 막혔는지.</strong><br>
+이 두 가지만 알려 주면 대부분 해결됩니다. 화면에 빨간 오류 글씨가 보이면 통째로 복사해서 같이 붙여넣습니다. 뜻은 몰라도 됩니다.</p>
+<ol><li><strong>하던 Antigravity 대화에 말합니다.</strong> 예: 「조별 과제 앱 만드는 중인데, 추가 버튼을 눌러도 아무것도 안 생겨. 네가 해결해 줘.」</li><li><strong>같은 실패가 두 번 나오면 ChatGPT나 Gemini에 물어봅니다.</strong> 이 안내서 주소, 막힌 상황, Antigravity가 한 말을 함께 붙입니다.</li><li><strong>먼저 해 본 친구에게 물어봅니다.</strong> 「여기까지 했는데 이 화면 좀 봐 줄래?」</li><li><strong>그래도 안 되면 손을 듭니다.</strong> 수업 밖이면 교수님께 여쭤봅니다.</li></ol>
+<p>그대로 복사해 쓸 문장은 <a href="2회차_막혔을때_해결안내.html">막혔을 때 안내</a>에 있습니다.</p>
+<h2>잘 안될 때 참고</h2>
+<ul><li><strong>Antigravity 사용 한도를 다 썼다고 나오면:</strong> 결제하지 마세요. <a href="06_Antigravity_사용한도_안내.html">사용 한도 안내</a>를 봅니다. 그동안 <a href="https://gemini.google.com">Gemini</a> 입력창 아래에서 <strong>Canvas</strong>를 고르고 같은 말을 보내면, Gemini 화면 안에서 앱을 만들어 볼 수 있습니다. Canvas는 모든 Gemini 사용자가 쓸 수 있습니다.</li><li><strong>개인정보:</strong> 실제 이름·성적·연락처·비밀번호는 넣지 않습니다. 예시 내용으로 충분합니다. 「지우기·결제·공개 전엔 나한테 먼저 물어봐」라고 한 줄 말해 둡니다.</li><li><strong>만든 앱은 지금은 내 컴퓨터에서만 열립니다.</strong> 친구들이 링크로 열게 하는 방법은 기말 프로젝트 때 AI에게 「이 앱을 친구들이 링크로 열 수 있게 하려면 어떻게 해?」라고 물어보세요.</li></ul>
+<p><a href="index.html">실습 자료 목록으로 돌아가기</a></p>
 <script>
-const fields=['user','problem','feature','criteria'];
-function metaText(){const v=fields.map(id=>document.getElementById(id).value.trim());if(v.some(x=>!x)){document.getElementById('status-meta').textContent='네 칸을 모두 채워 주세요.';return null;}return "Antigravity가 아래 웹앱을 만들고 실행할 프롬프트를 작성해 줘.\n나는 코딩을 모르는 대학생이야. Antigravity에 그대로 붙여넣을 요청문만 답해 줘.\n\n누가 쓸지: 교육학과 대학생인 나\n해결할 불편: 이번 주 공부할 일과 끝낸 일을 자꾸 잊는다.\n핵심 기능: 할 일을 추가하고, 완료 표시를 했다가 취소한다.\n확인 기준:\n1. 할 일을 추가하면 목록에 정확히 나타난다.\n2. 빈칸이나 공백만 넣으면 추가하지 않고 이유를 알려 준다.\n3. 완료 표시와 취소가 모두 되고, 새로고침해도 내 목록과 표시가 남는다.\n\n범위는 내 컴퓨터에서 먼저 써 보는 작은 웹앱이야.\n기존 Antigravity 실습 프로젝트 안의 webapp-session2 폴더에 만들어야 해. 다른 실습 파일은 그대로 둬.\n유료 서비스, 외부 AI 연결, 로그인, 공개 배포 없이 작동하도록 해 줘.\n계획만 설명하지 않고 실제 파일을 만들고, 실행 방법과 확인 결과를 알려 주게 써 줘.".replace('교육학과 대학생인 나',v[0]).replace('이번 주 공부할 일과 끝낸 일을 자꾸 잊는다.',v[1]).replace('할 일을 추가하고, 완료 표시를 했다가 취소한다.',v[2]).replace("1. 할 일을 추가하면 목록에 정확히 나타난다.\n2. 빈칸이나 공백만 넣으면 추가하지 않고 이유를 알려 준다.\n3. 완료 표시와 취소가 모두 되고, 새로고침해도 내 목록과 표시가 남는다.",v[3]);}
-function fallbackCopy(text){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();return ok;}
-for(const id of fields)document.getElementById(id).addEventListener('input',()=>{const text=metaText();if(text)document.getElementById('meta').textContent=text;});
-document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const id=b.dataset.copy;const text=id==='meta'?metaText():document.getElementById(id).textContent;if(text===null)return;if(id==='meta')document.getElementById(id).textContent=text;const status=document.getElementById('status-'+id);try{if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(text);status.textContent='복사했습니다. 안내된 대화창에 붙여넣으세요.';}catch(e){if(fallbackCopy(text))status.textContent='복사했습니다. 안내된 대화창에 붙여넣으세요.';else{status.textContent='자동 복사가 안 됩니다. 아래 문장을 선택해 직접 복사하세요.';const range=document.createRange();range.selectNodeContents(document.getElementById(id));const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);}}}));
-</script></body></html>
+document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',async()=>{
+ const text=button.parentElement.querySelector('pre').textContent;
+ const status=button.parentElement.querySelector('.copy-status');
+ try{await navigator.clipboard.writeText(text);status.textContent='복사했어요. 대화창에 붙여넣으세요.';}
+ catch{const range=document.createRange();range.selectNodeContents(button.parentElement.querySelector('pre'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='문장을 선택했어요. Ctrl+C로 복사하세요.';}
+}));
+</script></main></body></html>

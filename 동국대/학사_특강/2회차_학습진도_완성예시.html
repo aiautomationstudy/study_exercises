@@ -1,9 +1,2452 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>학습 진도 체크 · 동국대 AI 특강 완성 예시</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f1ea;color:#1c2430;font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.75}main{max-width:920px;margin:auto;padding:38px 22px 60px}a{color:#0e7c74}h1{font-size:clamp(28px,5vw,40px);line-height:1.3;margin:8px 0 18px}h2{font-size:25px;line-height:1.4;margin:34px 0 16px;border-bottom:3px solid #c856b8;padding-bottom:10px}h3{font-size:19px;margin:20px 0 8px}.lead,.muted{color:#5e6773}.note{background:#e1f2ef;padding:16px 20px;border-radius:12px;margin:20px 0}.warn{background:#fbf3e6}nav{display:flex;flex-wrap:wrap;gap:8px 18px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:20px;border:1px solid #e3ddd2;border-radius:10px;font:inherit;font-size:15px;line-height:1.7}button,.button{display:inline-block;font:inherit;font-weight:700;background:#0e7c74;color:#fff;padding:10px 20px;border:0;border-radius:8px;cursor:pointer;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c856b8;outline-offset:3px}label{display:block;font-weight:700;margin-top:12px}input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #aab1b8;border-radius:6px;color:inherit;background:white}textarea{min-height:85px}details{margin:18px 0;padding:16px 20px;background:#fff;border:1px solid #e3ddd2;border-radius:10px}summary{font-weight:700;cursor:pointer}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #ddd5c9;padding:10px 8px}th{background:#e1f2ef}code{overflow-wrap:anywhere}.status{color:#0e7c74;margin-left:10px}.checklist{padding-left:22px}.step{scroll-margin-top:20px}footer{margin-top:35px;color:#5e6773;font-size:14px}@media(max-width:520px){main{padding:25px 16px}th,td{font-size:14px;padding:8px 5px}}@media print{button,.button,nav{display:none}main{max-width:none;padding:0}body{background:white}pre,details,.note{break-inside:avoid}h2{break-after:avoid}}main{max-width:820px}.task{display:flex;align-items:center;gap:14px;background:white;padding:16px;margin:10px 0;border-radius:10px}.task input{width:24px;height:24px;flex-shrink:0}.task label{flex:1;margin:0;overflow-wrap:anywhere}.task button{background:#5e6773;padding:6px 12px;font-size:14px}.done label{text-decoration:line-through;color:#5e6773}form{display:flex;gap:10px}form input{min-width:0;flex:1}form button{white-space:nowrap;flex-shrink:0}.progress{font-size:30px;font-weight:700;color:#0e7c74}@media(max-width:500px){form{flex-wrap:wrap}form input{flex-basis:100%}} </style></head><body><main><a href="2회차_웹앱만들기_실습안내.html">실습 안내서</a><p class="muted">동국대 AI 특강 · 완성 예시</p><h1>나의 교육학 공부 계획</h1><p>이번 주에 할 공부를 적고, 끝내면 표시하세요.</p><form id="add-form"><label for="task-input" class="muted" style="position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden">추가할 할 일</label><input id="task-input" placeholder="예: 형성평가 개념 복습" maxlength="120" autocomplete="off"><button type="submit">추가</button></form><p id="message" role="status" aria-live="polite"></p><p class="progress" id="progress"></p><div id="tasks"></div><p><button id="sample" type="button">가상 예시 3개 추가</button></p><p class="muted" id="storage-note">목록은 이 브라우저에만 저장됩니다. 실명이나 성적을 넣지 마세요.</p><footer>이 페이지는 확인 연습용 예시입니다. 내 앱 제작을 대신하지 않습니다.</footer></main><script>
-const KEY='dongguk-session2-demo-v1';let tasks=[];let storageOK=true;
-try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(v))tasks=v.filter(x=>x&&typeof x.text==='string'&&typeof x.id==='string'&&typeof x.done==='boolean').slice(0,200);}catch(e){storageOK=false;}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(tasks));}catch(e){storageOK=false;}if(!storageOK)document.getElementById('storage-note').textContent='이 브라우저에서 저장을 쓸 수 없습니다. 새로고침하면 목록이 사라질 수 있습니다.';}
-function render(){const list=document.getElementById('tasks');list.replaceChildren();document.getElementById('progress').textContent=tasks.filter(x=>x.done).length+' / '+tasks.length+'개 완료';if(!tasks.length){const p=document.createElement('p');p.textContent='아직 할 일이 없습니다. 위에서 하나 추가해 보세요.';list.appendChild(p);}for(const t of tasks){const row=document.createElement('div');row.className='task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.id='task-'+t.id;cb.checked=t.done;cb.addEventListener('change',()=>{t.done=cb.checked;save();render();});const label=document.createElement('label');label.htmlFor=cb.id;label.textContent=t.text;const del=document.createElement('button');del.type='button';del.textContent='삭제';del.setAttribute('aria-label',t.text+' 삭제');del.addEventListener('click',()=>{tasks=tasks.filter(x=>x.id!==t.id);save();render();});row.append(cb,label,del);list.append(row);}}
-function add(text){if(tasks.length>=200){document.getElementById('message').textContent='예시에서는 할 일을 200개까지 저장합니다.';return false;}tasks.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(16).slice(2),text,done:false});save();render();return true;}
-document.getElementById('add-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('task-input');const text=input.value.trim();if(!text){document.getElementById('message').textContent='할 일을 입력해 주세요.';input.focus();return;}if(add(text)){input.value='';document.getElementById('message').textContent='할 일을 추가했습니다.';input.focus();}});
-document.getElementById('sample').addEventListener('click',()=>{for(const text of ['형성평가 개념 복습','수업 설계 사례 읽기','교육심리 발표 준비'])if(!tasks.some(x=>x.text===text))add(text);document.getElementById('message').textContent='가상 예시를 추가했습니다.';});save();render();
-</script></body></html>
+<!DOCTYPE html>
+<!-- 동국대 AI 특강 2회차 강사 시연 앱. 2026-10-14 강사가 Antigravity(agy 1.3.4)에 한 문단을 보내 만든 index.html·style.css·app.js를 한 파일로 합쳤다. 앱 내용은 Antigravity가 만든 그대로다. -->
+
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시험 완벽 대비 스터디 플래너 | Exam Study Tracker</title>
+  <style>
+/* ==========================================================================
+   시험 완벽 대비 스터디 플래너 (Exam Study Tracker) - Modern Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fcfdfe;
+  --bg-input: #f1f5f9;
+  --bg-input-focus: #ffffff;
+
+  --border-color: #e2e8f0;
+  --border-subtle: #edf2f7;
+  --border-focus: #3b82f6;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Accent & Status Colors */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eef2ff;
+  --primary-text: #4338ca;
+
+  --accent-red: #ef4444;
+  --accent-red-bg: #fef2f2;
+  --accent-orange: #f97316;
+  --accent-orange-bg: #fff7ed;
+  --accent-emerald: #10b981;
+  --accent-emerald-bg: #ecfdf5;
+  --accent-blue: #3b82f6;
+  --accent-blue-bg: #eff6ff;
+
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #131b2e;
+  --bg-card: #182238;
+  --bg-card-hover: #1e2b47;
+  --bg-input: #1e293b;
+  --bg-input-focus: #26334a;
+
+  --border-color: #27354f;
+  --border-subtle: #1e293b;
+  --border-focus: #6366f1;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-light: rgba(99, 102, 241, 0.15);
+  --primary-text: #a5b4fc;
+
+  --accent-red-bg: rgba(239, 68, 68, 0.15);
+  --accent-orange-bg: rgba(249, 115, 22, 0.15);
+  --accent-emerald-bg: rgba(16, 185, 129, 0.15);
+  --accent-blue-bg: rgba(59, 130, 246, 0.15);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.15rem;
+  font-size: 0.925rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-input);
+  border-color: var(--text-muted);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover);
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+}
+
+/* ==========================================================================
+   Dashboard Bar (Summary Cards)
+   ========================================================================== */
+.dashboard-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.summary-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.04), rgba(249, 115, 22, 0.05));
+  border-color: rgba(79, 70, 229, 0.25);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--accent-orange-bg);
+  color: var(--accent-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.card-icon.blue {
+  background-color: var(--accent-blue-bg);
+  color: var(--accent-blue);
+}
+
+.card-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.card-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.next-exam-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.next-subject-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.next-exam-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.stat-percentage {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.stat-subtext {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Mini stats in card */
+.stats-grid-card {
+  justify-content: space-around;
+  text-align: center;
+}
+
+.mini-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mini-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.mini-stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.text-accent {
+  color: var(--accent-orange) !important;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--border-color);
+}
+
+/* ==========================================================================
+   Toolbar (Search, Sort, Filters)
+   ========================================================================== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  background-color: var(--bg-card);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  max-width: 420px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.6rem 2.2rem 0.6rem 2.5rem;
+  background-color: var(--bg-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.search-box input:focus {
+  outline: none;
+  background-color: var(--bg-input-focus);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.control-group select {
+  padding: 0.5rem 0.85rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition);
+}
+
+.control-group select:focus {
+  border-color: var(--border-focus);
+}
+
+/* ==========================================================================
+   Subjects Grid & Cards
+   ========================================================================== */
+.subjects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.subject-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.subject-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Subject Card Top Accent Bar */
+.card-accent-bar {
+  height: 5px;
+  width: 100%;
+}
+
+.card-accent-bar.color-blue { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+.card-accent-bar.color-purple { background: linear-gradient(90deg, #8b5cf6, #c084fc); }
+.card-accent-bar.color-emerald { background: linear-gradient(90deg, #10b981, #34d399); }
+.card-accent-bar.color-amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.card-accent-bar.color-rose { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+.card-accent-bar.color-indigo { background: linear-gradient(90deg, #6366f1, #818cf8); }
+
+.subject-header {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.subject-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.subject-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.subject-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-card-action {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.btn-card-action:hover {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.btn-card-action.btn-delete:hover {
+  color: var(--danger);
+  background-color: var(--accent-red-bg);
+}
+
+.subject-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.exam-datetime {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.subject-goal {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background-color: var(--bg-input);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   D-Day Badges
+   ========================================================================== */
+.dday-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* D-Day 당일 (불꽃, 펄스 애니메이션) */
+.dday-today {
+  background-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  animation: pulse-red 1.8s infinite;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* D-1 ~ D-3 (초긴급) */
+.dday-urgent {
+  background-color: var(--accent-red-bg);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* D-4 ~ D-7 (임박) */
+.dday-soon {
+  background-color: var(--accent-orange-bg);
+  color: var(--accent-orange);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+/* D-8 이상 (여유) */
+.dday-normal {
+  background-color: var(--accent-emerald-bg);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* 시험 종료 */
+.dday-past {
+  background-color: var(--bg-input);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* Subject Progress */
+.subject-progress-section {
+  padding: 0.85rem 1.25rem 0.5rem;
+  background-color: var(--bg-card);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.subject-progress-bar {
+  height: 6px;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.subject-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* ==========================================================================
+   Tasks Checklist Section
+   ========================================================================== */
+.tasks-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.tasks-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex: 1;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+/* Custom Scrollbar */
+.tasks-list::-webkit-scrollbar {
+  width: 5px;
+}
+.tasks-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: var(--transition);
+  group: true;
+}
+
+.task-item:hover {
+  border-color: var(--border-color);
+  background-color: var(--bg-card-hover);
+}
+
+.task-item.completed {
+  opacity: 0.65;
+  background-color: transparent;
+  border-color: var(--border-subtle);
+}
+
+.task-checkbox-wrapper {
+  margin-top: 0.15rem;
+}
+
+.custom-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-muted);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: var(--transition);
+}
+
+.custom-checkbox:hover {
+  border-color: var(--primary);
+}
+
+.custom-checkbox:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.custom-checkbox:checked::before {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.task-content {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  word-break: break-word;
+  transition: var(--transition);
+}
+
+.task-item.completed .task-content {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-priority-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-orange-bg);
+  color: var(--accent-orange);
+  margin-right: 0.35rem;
+}
+
+.btn-task-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  opacity: 0.4;
+  transition: var(--transition);
+}
+
+.task-item:hover .btn-task-delete {
+  opacity: 1;
+}
+
+.btn-task-delete:hover {
+  color: var(--danger);
+}
+
+.tasks-empty {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Add Task Input Form */
+.add-task-form {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.task-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.add-task-input {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.add-task-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  background-color: var(--bg-input-focus);
+}
+
+.btn-priority-toggle {
+  position: absolute;
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.2rem;
+  transition: var(--transition);
+}
+
+.btn-priority-toggle.active {
+  color: #f59e0b;
+}
+
+.btn-add-task {
+  padding: 0.5rem 0.85rem;
+  background-color: var(--primary-light);
+  color: var(--primary-text);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-add-task:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* ==========================================================================
+   Empty State
+   ========================================================================== */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--bg-card);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-top: 1rem;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.empty-state h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+.empty-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Modals (<dialog>)
+   ========================================================================== */
+.app-modal {
+  margin: auto;
+  border: none;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: 0;
+  width: 90%;
+  max-width: 520px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.app-modal::backdrop {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modal-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.required {
+  color: var(--danger);
+}
+
+.form-group input {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  background-color: var(--bg-input-focus);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* Color Picker */
+.color-picker {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.color-option {
+  cursor: pointer;
+  position: relative;
+}
+
+.color-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.color-dot {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.color-option input:checked + .color-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px var(--bg-card), 0 0 0 4px var(--primary);
+}
+
+.color-dot.color-blue { background-color: #3b82f6; }
+.color-dot.color-purple { background-color: #8b5cf6; }
+.color-dot.color-emerald { background-color: #10b981; }
+.color-dot.color-amber { background-color: #f59e0b; }
+.color-dot.color-rose { background-color: #f43f5e; }
+.color-dot.color-indigo { background-color: #6366f1; }
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-card-hover);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+/* Settings Modal */
+.settings-options {
+  gap: 1.75rem;
+}
+
+.settings-group h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.settings-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.file-label {
+  cursor: pointer;
+}
+
+.danger-zone {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+}
+
+.danger-zone h4 {
+  color: var(--danger);
+}
+
+/* ==========================================================================
+   Toast Notifications
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slide-in 0.3s ease;
+  pointer-events: auto;
+}
+
+.toast i {
+  font-size: 1.1rem;
+}
+
+.toast.toast-success i { color: var(--accent-emerald); }
+.toast.toast-error i { color: var(--danger); }
+.toast.toast-info i { color: var(--primary); }
+
+@keyframes slide-in {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.app-footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .header-actions,
+  .toolbar,
+  .add-task-form,
+  .btn-card-action,
+  .btn-task-delete,
+  .app-footer,
+  .toast-container {
+    display: none !important;
+  }
+
+  .app-container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .subject-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    margin-bottom: 1rem;
+  }
+
+  .tasks-list {
+    max-height: none !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .subjects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .toolbar-controls {
+    justify-content: space-between;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+}
+
+</style>
+  <!-- Google Fonts & Phosphor Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 상단 헤더 -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="logo-area">
+          <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <h1>시험 스터디 플래너</h1>
+            <p class="subtitle">과목별 D-Day 카운트다운과 체크리스트로 시험을 완벽하게 준비하세요</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="themeToggleBtn" class="btn btn-icon" title="다크/라이트 모드 전환" aria-label="테마 전환">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button id="printBtn" class="btn btn-secondary" title="인쇄하거나 PDF로 저장">
+            <i class="fa-solid fa-print"></i> <span>인쇄 / PDF</span>
+          </button>
+          <button id="addSubjectBtn" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> <span>새 과목 추가</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 대시보드 요약 위젯 바 -->
+    <section class="dashboard-bar">
+      <!-- 가장 임박한 D-Day 카드 -->
+      <div class="summary-card highlight-card">
+        <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="card-details">
+          <span class="card-label">가장 가까운 시험</span>
+          <div class="next-exam-info" id="nextExamInfo">
+            <span class="dday-badge dday-urgent" id="nextExamDday">D-Day</span>
+            <span class="next-subject-name" id="nextExamSubject">등록된 과목 없음</span>
+          </div>
+          <span class="next-exam-date" id="nextExamDate">-</span>
+        </div>
+      </div>
+
+      <!-- 전체 진행률 -->
+      <div class="summary-card">
+        <div class="card-icon blue"><i class="fa-solid fa-chart-pie"></i></div>
+        <div class="card-details">
+          <div class="card-label-row">
+            <span class="card-label">전체 공부 달성률</span>
+            <span class="stat-percentage" id="totalProgressPercent">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="totalProgressBar" style="width: 0%;"></div>
+          </div>
+          <span class="stat-subtext" id="totalTaskCount">0 / 0 완료</span>
+        </div>
+      </div>
+
+      <!-- 통계: 과목 수 & 남은 할 일 -->
+      <div class="summary-card stats-grid-card">
+        <div class="mini-stat">
+          <span class="mini-stat-label"><i class="fa-solid fa-book-open"></i> 시험 과목</span>
+          <span class="mini-stat-value" id="totalSubjectCount">0</span>
+        </div>
+        <div class="mini-stat divider"></div>
+        <div class="mini-stat">
+          <span class="mini-stat-label"><i class="fa-solid fa-list-check"></i> 남은 공부</span>
+          <span class="mini-stat-value text-accent" id="remainingTaskCount">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 필터 및 정렬 툴바 -->
+    <section class="toolbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="과목명 또는 공부할 내용 검색...">
+        <button id="clearSearchBtn" class="clear-btn" style="display: none;">&times;</button>
+      </div>
+
+      <div class="toolbar-controls">
+        <div class="control-group">
+          <label for="sortSelect"><i class="fa-solid fa-arrow-down-wide-short"></i> 정렬:</label>
+          <select id="sortSelect">
+            <option value="dday-asc">시험 임박순 (D-Day 빠른 순)</option>
+            <option value="progress-asc">진행률 낮은 순 (급한 순)</option>
+            <option value="name-asc">과목 이름순</option>
+            <option value="dday-desc">시험 늦은 순</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="filterTaskStatus"><i class="fa-solid fa-filter"></i> 보기:</label>
+          <select id="filterTaskStatus">
+            <option value="all">전체 할 일</option>
+            <option value="pending">남은 공부만</option>
+            <option value="completed">완료된 공부만</option>
+          </select>
+        </div>
+
+        <button id="dataManageBtn" class="btn btn-outline" title="데이터 백업 및 초기화">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- 과목 리스트 컨테이너 -->
+    <main class="subjects-container" id="subjectsContainer">
+      <!-- 자바스크립트로 동적 렌더링 -->
+    </main>
+
+    <!-- 빈 상태 안내 (과목이 없을 때) -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon"><i class="fa-regular fa-calendar-check"></i></div>
+      <h3>등록된 시험 과목이 없습니다</h3>
+      <p>이번 시험에 응시할 과목과 시험 일자를 추가하고, 공부할 목표를 체크리스트로 관리해보세요!</p>
+      <div class="empty-actions">
+        <button class="btn btn-primary" id="emptyAddBtn">
+          <i class="fa-solid fa-plus"></i> 첫 과목 추가하기
+        </button>
+        <button class="btn btn-secondary" id="loadSampleBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> 예시 과목 불러오기
+        </button>
+      </div>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <footer class="app-footer">
+      <p>🎯 시험 기간 파이팅! 꾸준함이 최고의 결과를 만듭니다. &bull; 자동 저장 지원</p>
+    </footer>
+  </div>
+
+  <!-- 과목 추가 / 수정 모달 다이얼로그 -->
+  <dialog id="subjectModal" class="app-modal">
+    <form id="subjectForm" method="dialog">
+      <div class="modal-header">
+        <h3 id="modalTitle"><i class="fa-solid fa-book"></i> 새 시험 과목 추가</h3>
+        <button type="button" class="btn-close" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editSubjectId">
+        
+        <div class="form-group">
+          <label for="subjectNameInput">과목명 <span class="required">*</span></label>
+          <input type="text" id="subjectNameInput" placeholder="예: 교육평가, 교육심리, 교육과정" required autofocus>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="examDateInput">시험 날짜 <span class="required">*</span></label>
+            <input type="date" id="examDateInput" required>
+          </div>
+          <div class="form-group flex-1">
+            <label for="examTimeInput">시험 시간 (선택)</label>
+            <input type="time" id="examTimeInput">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subjectGoalInput">목표 / 메모 (선택)</label>
+          <input type="text" id="subjectGoalInput" placeholder="예: A+ 목표! 핵심 이론 서술형 완벽 대비">
+        </div>
+
+        <div class="form-group">
+          <label>카드 테마 컬러</label>
+          <div class="color-picker" id="colorPicker">
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="blue" checked>
+              <span class="color-dot color-blue" title="블루"></span>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="purple">
+              <span class="color-dot color-purple" title="퍼플"></span>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="emerald">
+              <span class="color-dot color-emerald" title="에메랄드"></span>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="amber">
+              <span class="color-dot color-amber" title="앰버"></span>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="rose">
+              <span class="color-dot color-rose" title="로즈"></span>
+            </label>
+            <label class="color-option">
+              <input type="radio" name="subjectColor" value="indigo">
+              <span class="color-dot color-indigo" title="인디고"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="cancelModalBtn">취소</button>
+        <button type="submit" class="btn btn-primary" id="saveSubjectBtn">저장하기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 데이터 설정/백업 모달 -->
+  <dialog id="settingsModal" class="app-modal">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-sliders"></i> 데이터 관리 및 백업</h3>
+      <button type="button" class="btn-close" id="closeSettingsModalBtn">&times;</button>
+    </div>
+    <div class="modal-body settings-options">
+      <div class="settings-group">
+        <h4><i class="fa-solid fa-file-arrow-down"></i> 백업 및 복원</h4>
+        <p class="settings-desc">작성한 시험 과목과 공부 목록을 파일로 내보내거나 불러올 수 있습니다.</p>
+        <div class="settings-actions">
+          <button id="exportDataBtn" class="btn btn-secondary">
+            <i class="fa-solid fa-download"></i> 데이터 JSON 내보내기
+          </button>
+          <label class="btn btn-outline file-label">
+            <i class="fa-solid fa-upload"></i> 데이터 JSON 가져오기
+            <input type="file" id="importFileInput" accept=".json" style="display: none;">
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-group danger-zone">
+        <h4><i class="fa-solid fa-triangle-exclamation"></i> 데이터 초기화</h4>
+        <p class="settings-desc">모든 데이터를 기본 예시 데이터로 재설정하거나 깨끗하게 비웁니다.</p>
+        <div class="settings-actions">
+          <button id="resetSampleDataBtn" class="btn btn-outline">
+            <i class="fa-solid fa-rotate-left"></i> 예시 데이터로 재설정
+          </button>
+          <button id="clearAllDataBtn" class="btn btn-danger">
+            <i class="fa-solid fa-trash-can"></i> 전체 데이터 삭제
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" id="closeSettingsBtn">닫기</button>
+    </div>
+  </dialog>
+
+  <!-- 토스트 알림 컨테이너 -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script>
+/**
+ * 시험 완벽 대비 스터디 플래너 (Exam Study Tracker)
+ * Vanilla JavaScript Implementation with LocalStorage persistence
+ */
+
+(function () {
+  'use strict';
+
+  // Storage Keys
+  const STORAGE_KEY_SUBJECTS = 'exam_tracker_subjects_v2';
+  const STORAGE_KEY_THEME = 'exam_tracker_theme_v1';
+
+  // Application State
+  let subjects = [];
+  let currentSearchQuery = '';
+  let currentSortOption = 'dday-asc';
+  let currentFilterOption = 'all';
+
+  // DOM Elements
+  const subjectsContainer = document.getElementById('subjectsContainer');
+  const emptyState = document.getElementById('emptyState');
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const printBtn = document.getElementById('printBtn');
+  const addSubjectBtn = document.getElementById('addSubjectBtn');
+  const emptyAddBtn = document.getElementById('emptyAddBtn');
+  const loadSampleBtn = document.getElementById('loadSampleBtn');
+
+  // Summary Elements
+  const nextExamInfo = document.getElementById('nextExamInfo');
+  const nextExamDday = document.getElementById('nextExamDday');
+  const nextExamSubject = document.getElementById('nextExamSubject');
+  const nextExamDate = document.getElementById('nextExamDate');
+  const totalProgressPercent = document.getElementById('totalProgressPercent');
+  const totalProgressBar = document.getElementById('totalProgressBar');
+  const totalTaskCount = document.getElementById('totalTaskCount');
+  const totalSubjectCount = document.getElementById('totalSubjectCount');
+  const remainingTaskCount = document.getElementById('remainingTaskCount');
+
+  // Toolbar Elements
+  const searchInput = document.getElementById('searchInput');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  const sortSelect = document.getElementById('sortSelect');
+  const filterTaskStatus = document.getElementById('filterTaskStatus');
+  const dataManageBtn = document.getElementById('dataManageBtn');
+
+  // Modal Elements
+  const subjectModal = document.getElementById('subjectModal');
+  const subjectForm = document.getElementById('subjectForm');
+  const modalTitle = document.getElementById('modalTitle');
+  const editSubjectId = document.getElementById('editSubjectId');
+  const subjectNameInput = document.getElementById('subjectNameInput');
+  const examDateInput = document.getElementById('examDateInput');
+  const examTimeInput = document.getElementById('examTimeInput');
+  const subjectGoalInput = document.getElementById('subjectGoalInput');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const cancelModalBtn = document.getElementById('cancelModalBtn');
+
+  // Settings Modal Elements
+  const settingsModal = document.getElementById('settingsModal');
+  const closeSettingsModalBtn = document.getElementById('closeSettingsModalBtn');
+  const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+  const exportDataBtn = document.getElementById('exportDataBtn');
+  const importFileInput = document.getElementById('importFileInput');
+  const resetSampleDataBtn = document.getElementById('resetSampleDataBtn');
+  const clearAllDataBtn = document.getElementById('clearAllDataBtn');
+
+  // Toast Container
+  const toastContainer = document.getElementById('toastContainer');
+
+  // =========================================================================
+  // Initialization
+  // =========================================================================
+  function init() {
+    initTheme();
+    loadData();
+    setupEventListeners();
+    setupDialogBackdropDismiss(subjectModal);
+    setupDialogBackdropDismiss(settingsModal);
+    renderApp();
+  }
+
+  // =========================================================================
+  // Theme Management (Light / Dark)
+  // =========================================================================
+  function initTheme() {
+    const savedTheme = localStorage.getItem(STORAGE_KEY_THEME);
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const activeTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    updateThemeIcon(activeTheme);
+  }
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem(STORAGE_KEY_THEME, newTheme);
+    updateThemeIcon(newTheme);
+    showToast(`테마가 ${newTheme === 'dark' ? '다크 모드' : '라이트 모드'}로 변경되었습니다.`, 'info');
+  }
+
+  function updateThemeIcon(theme) {
+    if (!themeToggleBtn) return;
+    const icon = themeToggleBtn.querySelector('i');
+    if (theme === 'dark') {
+      icon.className = 'fa-solid fa-sun';
+      themeToggleBtn.setAttribute('title', '라이트 모드로 전환');
+    } else {
+      icon.className = 'fa-solid fa-moon';
+      themeToggleBtn.setAttribute('title', '다크 모드로 전환');
+    }
+  }
+
+  // =========================================================================
+  // Data Management & Samples
+  // =========================================================================
+  function generateId() {
+    return 'id_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 5);
+  }
+
+  function formatRelativeDate(daysFromNow) {
+    const d = new Date();
+    d.setDate(d.getDate() + daysFromNow);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  function createSampleSubjects() {
+    return [
+      {
+        id: generateId(),
+        name: '교육평가 (Educational Assessment)',
+        examDate: formatRelativeDate(3),
+        examTime: '10:00',
+        goal: 'A+ 목표! 타당도·신뢰도 및 형성평가 완벽 정복',
+        color: 'indigo',
+        createdAt: new Date().toISOString(),
+        tasks: [
+          { id: generateId(), text: '신뢰도와 타당도 유형별(내용·공인·예언·구인) 차이점 정리', completed: true, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '규준지향평가(상대평가) vs 준거지향평가(절대평가) 특성 및 장단점 비교', completed: true, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '진단평가, 형성평가, 총괄평가의 기능과 피드백 절차 복습', completed: false, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '수행평가의 루브릭(채점기준표) 설계 원리 및 기출 서술형 문항 풀기', completed: false, isPriority: false, createdAt: new Date().toISOString() }
+        ]
+      },
+      {
+        id: generateId(),
+        name: '교육심리학 (Educational Psychology)',
+        examDate: formatRelativeDate(6),
+        examTime: '14:00',
+        goal: '발달이론 및 학습동기 이론 서술형 완벽 대비',
+        color: 'emerald',
+        createdAt: new Date().toISOString(),
+        tasks: [
+          { id: generateId(), text: '피아제(Piaget) vs 비고츠키(Vygotsky) 인지발달이론 비교 분석', completed: false, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '학습동기 이론 (자기결정성 이론, 귀인이론, 기대-가치 이론) 정리', completed: false, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '콜버그 도덕성 발달단계 & 브론펜브레너 생태체계이론 복습', completed: true, isPriority: false, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '행동주의(고전적·조작적 조건형성)와 반두라 사회인지학습이론 비교', completed: false, isPriority: false, createdAt: new Date().toISOString() }
+        ]
+      },
+      {
+        id: generateId(),
+        name: '교육과정 및 교육방법 (Curriculum)',
+        examDate: formatRelativeDate(11),
+        examTime: '13:30',
+        goal: '타일러·위긴스 모형과 2022 개정 총론 핵심 암기',
+        color: 'blue',
+        createdAt: new Date().toISOString(),
+        tasks: [
+          { id: generateId(), text: '타일러(Tyler)의 합리적 교육과정 개발모형 4단계 정리', completed: false, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '위긴스와 맥타이의 백워드(Backward) 교육과정 설계 모형 단계별 분석', completed: false, isPriority: true, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '공식적 교육과정, 잠재적 교육과정, 영(Null) 교육과정 개념 및 사례 암기', completed: false, isPriority: false, createdAt: new Date().toISOString() },
+          { id: generateId(), text: '2022 개정 교육과정 총론 주요 변화(학생 맞춤형, 디지털·AI 소양) 정리', completed: false, isPriority: false, createdAt: new Date().toISOString() }
+        ]
+      }
+    ];
+  }
+
+  function loadData() {
+    const raw = localStorage.getItem(STORAGE_KEY_SUBJECTS);
+    if (raw) {
+      try {
+        subjects = JSON.parse(raw);
+      } catch (e) {
+        console.error('Failed to parse subjects data from storage:', e);
+        subjects = createSampleSubjects();
+        saveData();
+      }
+    } else {
+      // First run: provide helpful sample subjects
+      subjects = createSampleSubjects();
+      saveData();
+    }
+  }
+
+  function saveData() {
+    try {
+      localStorage.setItem(STORAGE_KEY_SUBJECTS, JSON.stringify(subjects));
+    } catch (e) {
+      console.error('Failed to save data:', e);
+      showToast('데이터 저장 중 오류가 발생했습니다.', 'error');
+    }
+  }
+
+  // =========================================================================
+  // D-Day Calculations
+  // =========================================================================
+  function calculateDDay(examDateStr, examTimeStr) {
+    if (!examDateStr) return { diffDays: 0, badgeText: '미정', badgeClass: 'dday-past', isPast: false };
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    const parts = examDateStr.split('-');
+    const targetDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+
+    const diffTime = targetDate.getTime() - today.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) {
+      return {
+        diffDays: 0,
+        badgeText: 'D-DAY 오늘!',
+        badgeClass: 'dday-today',
+        icon: 'fa-solid fa-fire',
+        isPast: false
+      };
+    } else if (diffDays > 0) {
+      let badgeClass = 'dday-normal';
+      let icon = 'fa-regular fa-clock';
+
+      if (diffDays <= 3) {
+        badgeClass = 'dday-urgent';
+        icon = 'fa-solid fa-triangle-exclamation';
+      } else if (diffDays <= 7) {
+        badgeClass = 'dday-soon';
+        icon = 'fa-solid fa-hourglass-half';
+      }
+
+      return {
+        diffDays: diffDays,
+        badgeText: `D-${diffDays}`,
+        badgeClass: badgeClass,
+        icon: icon,
+        isPast: false
+      };
+    } else {
+      return {
+        diffDays: diffDays,
+        badgeText: `D+${Math.abs(diffDays)} (종료)`,
+        badgeClass: 'dday-past',
+        icon: 'fa-solid fa-check',
+        isPast: true
+      };
+    }
+  }
+
+  function formatDisplayDate(dateStr, timeStr) {
+    if (!dateStr) return '날짜 미정';
+    const [yyyy, mm, dd] = dateStr.split('-');
+    const dateObj = new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+    const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][dateObj.getDay()];
+    
+    let result = `${yyyy}년 ${parseInt(mm)}월 ${parseInt(dd)}일 (${dayOfWeek})`;
+    if (timeStr) {
+      result += ` ${timeStr}`;
+    }
+    return result;
+  }
+
+  // =========================================================================
+  // Rendering
+  // =========================================================================
+  function renderApp() {
+    renderDashboard();
+    renderSubjectsList();
+  }
+
+  function renderDashboard() {
+    // Subject Count
+    totalSubjectCount.textContent = subjects.length;
+
+    // Total Tasks Count & Progress
+    let totalTasks = 0;
+    let completedTasks = 0;
+
+    subjects.forEach((subj) => {
+      subj.tasks.forEach((task) => {
+        totalTasks++;
+        if (task.completed) completedTasks++;
+      });
+    });
+
+    const percent = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+    totalProgressPercent.textContent = `${percent}%`;
+    totalProgressBar.style.width = `${percent}%`;
+    totalTaskCount.textContent = `${completedTasks} / ${totalTasks} 완료`;
+    remainingTaskCount.textContent = `${totalTasks - completedTasks}개`;
+
+    // Nearest Exam Calculation
+    const futureOrTodayExams = subjects
+      .map((s) => ({
+        ...s,
+        ddayInfo: calculateDDay(s.examDate, s.examTime)
+      }))
+      .filter((s) => s.ddayInfo.diffDays >= 0)
+      .sort((a, b) => a.ddayInfo.diffDays - b.ddayInfo.diffDays);
+
+    if (futureOrTodayExams.length > 0) {
+      const nearest = futureOrTodayExams[0];
+      nextExamDday.textContent = nearest.ddayInfo.badgeText;
+      nextExamDday.className = `dday-badge ${nearest.ddayInfo.badgeClass}`;
+      nextExamSubject.textContent = nearest.name;
+      nextExamDate.textContent = formatDisplayDate(nearest.examDate, nearest.examTime);
+    } else if (subjects.length > 0) {
+      nextExamDday.textContent = '시험 완료';
+      nextExamDday.className = 'dday-badge dday-past';
+      nextExamSubject.textContent = '모든 시험이 종료되었습니다 👏';
+      nextExamDate.textContent = '수고하셨습니다!';
+    } else {
+      nextExamDday.textContent = 'D-Day';
+      nextExamDday.className = 'dday-badge dday-normal';
+      nextExamSubject.textContent = '등록된 과목 없음';
+      nextExamDate.textContent = '새 과목을 추가해 보세요';
+    }
+  }
+
+  function getFilteredAndSortedSubjects() {
+    let list = [...subjects];
+
+    // Filter by search query (subject name or task text)
+    if (currentSearchQuery.trim()) {
+      const q = currentSearchQuery.trim().toLowerCase();
+      list = list.filter((subj) => {
+        const nameMatch = subj.name.toLowerCase().includes(q);
+        const goalMatch = subj.goal && subj.goal.toLowerCase().includes(q);
+        const taskMatch = subj.tasks.some((t) => t.text.toLowerCase().includes(q));
+        return nameMatch || goalMatch || taskMatch;
+      });
+    }
+
+    // Sort
+    list.sort((a, b) => {
+      const ddayA = calculateDDay(a.examDate, a.examTime).diffDays;
+      const ddayB = calculateDDay(b.examDate, b.examTime).diffDays;
+
+      if (currentSortOption === 'dday-asc') {
+        // Prioritize upcoming/today exams first, then passed ones
+        const rankA = ddayA < 0 ? 10000 + Math.abs(ddayA) : ddayA;
+        const rankB = ddayB < 0 ? 10000 + Math.abs(ddayB) : ddayB;
+        return rankA - rankB;
+      } else if (currentSortOption === 'dday-desc') {
+        return ddayB - ddayA;
+      } else if (currentSortOption === 'name-asc') {
+        return a.name.localeCompare(b.name, 'ko');
+      } else if (currentSortOption === 'progress-asc') {
+        const calcProg = (s) => (s.tasks.length === 0 ? 0 : s.tasks.filter((t) => t.completed).length / s.tasks.length);
+        return calcProg(a) - calcProg(b);
+      }
+      return 0;
+    });
+
+    return list;
+  }
+
+  function renderSubjectsList() {
+    const list = getFilteredAndSortedSubjects();
+
+    if (subjects.length === 0) {
+      emptyState.style.display = 'block';
+      subjectsContainer.innerHTML = '';
+      return;
+    }
+
+    emptyState.style.display = 'none';
+
+    if (list.length === 0) {
+      subjectsContainer.innerHTML = `
+        <div class="empty-state" style="grid-column: 1 / -1; margin-top: 0;">
+          <div class="empty-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>검색 결과가 없습니다</h3>
+          <p>'${escapeHtml(currentSearchQuery)}'에 일치하는 과목이나 공부 항목이 없습니다.</p>
+        </div>
+      `;
+      return;
+    }
+
+    subjectsContainer.innerHTML = '';
+
+    list.forEach((subj) => {
+      const card = createSubjectCardElement(subj);
+      subjectsContainer.appendChild(card);
+    });
+  }
+
+  function createSubjectCardElement(subj) {
+    const ddayInfo = calculateDDay(subj.examDate, subj.examTime);
+    const totalTasks = subj.tasks.length;
+    const completedTasks = subj.tasks.filter((t) => t.completed).length;
+    const progressPercent = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+
+    const card = document.createElement('article');
+    card.className = 'subject-card';
+    card.dataset.id = subj.id;
+
+    // Filter tasks for display if needed
+    let displayedTasks = subj.tasks;
+    if (currentFilterOption === 'pending') {
+      displayedTasks = subj.tasks.filter((t) => !t.completed);
+    } else if (currentFilterOption === 'completed') {
+      displayedTasks = subj.tasks.filter((t) => t.completed);
+    }
+
+    const tasksHtml =
+      displayedTasks.length === 0
+        ? `<div class="tasks-empty">
+            ${
+              currentFilterOption === 'completed'
+                ? '완료된 공부 항목이 없습니다.'
+                : currentFilterOption === 'pending'
+                ? '남은 공부 항목이 없습니다! 🎉'
+                : '아직 등록된 공부 항목이 없습니다.<br>아래에서 첫 공부 항목을 추가해보세요!'
+            }
+          </div>`
+        : displayedTasks
+            .map(
+              (task) => `
+          <li class="task-item ${task.completed ? 'completed' : ''}" data-task-id="${task.id}">
+            <label class="task-checkbox-wrapper">
+              <input type="checkbox" class="custom-checkbox task-check" ${task.completed ? 'checked' : ''} aria-label="할 일 완료 체크">
+            </label>
+            <div class="task-content">
+              ${task.isPriority ? '<span class="task-priority-badge"><i class="fa-solid fa-star"></i> 중요</span>' : ''}
+              <span>${escapeHtml(task.text)}</span>
+            </div>
+            <button class="btn-task-delete" title="공부 항목 삭제" aria-label="삭제">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+        `
+            )
+            .join('');
+
+    card.innerHTML = `
+      <div class="card-accent-bar color-${subj.color || 'blue'}"></div>
+      <div class="subject-header">
+        <div class="subject-title-row">
+          <h2 class="subject-name">${escapeHtml(subj.name)}</h2>
+          <div class="subject-actions">
+            <button class="btn-card-action btn-edit" title="과목 정보 수정" aria-label="수정">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn-card-action btn-delete" title="과목 삭제" aria-label="삭제">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="subject-meta-row">
+          <span class="dday-badge ${ddayInfo.badgeClass}">
+            <i class="${ddayInfo.icon}"></i> ${ddayInfo.badgeText}
+          </span>
+          <span class="exam-datetime" title="시험 일시">
+            <i class="fa-regular fa-calendar"></i> ${formatDisplayDate(subj.examDate, subj.examTime)}
+          </span>
+        </div>
+
+        ${subj.goal ? `<div style="margin-top: 0.5rem;"><span class="subject-goal"><i class="fa-solid fa-bullseye"></i> ${escapeHtml(subj.goal)}</span></div>` : ''}
+      </div>
+
+      <div class="subject-progress-section">
+        <div class="progress-header">
+          <span>진행률 (${completedTasks}/${totalTasks})</span>
+          <span>${progressPercent}%</span>
+        </div>
+        <div class="subject-progress-bar">
+          <div class="subject-progress-fill" style="width: ${progressPercent}%; background-color: var(--${subj.color === 'amber' ? 'accent-orange' : subj.color === 'emerald' ? 'accent-emerald' : 'primary'});"></div>
+        </div>
+      </div>
+
+      <div class="tasks-section">
+        <ul class="tasks-list">
+          ${tasksHtml}
+        </ul>
+
+        <form class="add-task-form">
+          <div class="task-input-wrapper">
+            <input type="text" class="add-task-input" placeholder="새 공부 항목 추가 (예: 3장 요약정리)" required>
+            <button type="button" class="btn-priority-toggle" title="중요 항목으로 표시">
+              <i class="fa-regular fa-star"></i>
+            </button>
+          </div>
+          <button type="submit" class="btn-add-task">
+            <i class="fa-solid fa-plus"></i> 추가
+          </button>
+        </form>
+      </div>
+    `;
+
+    // Bind card internal events
+    attachCardEvents(card, subj);
+
+    return card;
+  }
+
+  // =========================================================================
+  // Card Event Listeners
+  // =========================================================================
+  function attachCardEvents(card, subject) {
+    const subjectId = subject.id;
+
+    // Edit Subject
+    const editBtn = card.querySelector('.btn-edit');
+    editBtn.addEventListener('click', () => {
+      openEditSubjectModal(subject);
+    });
+
+    // Delete Subject
+    const deleteBtn = card.querySelector('.btn-delete');
+    deleteBtn.addEventListener('click', () => {
+      if (confirm(`'${subject.name}' 과목을 정말 삭제하시겠습니까?\n포함된 모든 공부 항목도 함께 삭제됩니다.`)) {
+        deleteSubject(subjectId);
+      }
+    });
+
+    // Toggle Task Checkbox
+    const taskCheckboxes = card.querySelectorAll('.task-check');
+    taskCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', (e) => {
+        const taskItem = e.target.closest('.task-item');
+        const taskId = taskItem.dataset.taskId;
+        toggleTaskCompletion(subjectId, taskId, e.target.checked);
+      });
+    });
+
+    // Delete Task
+    const deleteTaskBtns = card.querySelectorAll('.btn-task-delete');
+    deleteTaskBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const taskItem = e.target.closest('.task-item');
+        const taskId = taskItem.dataset.taskId;
+        deleteTask(subjectId, taskId);
+      });
+    });
+
+    // Priority Toggle inside Add Task Input
+    const priorityBtn = card.querySelector('.btn-priority-toggle');
+    let isPrioritySelected = false;
+    priorityBtn.addEventListener('click', () => {
+      isPrioritySelected = !isPrioritySelected;
+      priorityBtn.classList.toggle('active', isPrioritySelected);
+      const icon = priorityBtn.querySelector('i');
+      if (isPrioritySelected) {
+        icon.className = 'fa-solid fa-star';
+        priorityBtn.setAttribute('title', '중요 항목 해제');
+      } else {
+        icon.className = 'fa-regular fa-star';
+        priorityBtn.setAttribute('title', '중요 항목으로 표시');
+      }
+    });
+
+    // Add Task Form Submit
+    const addTaskForm = card.querySelector('.add-task-form');
+    const addTaskInput = card.querySelector('.add-task-input');
+
+    addTaskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = addTaskInput.value.trim();
+      if (!text) return;
+
+      addTask(subjectId, text, isPrioritySelected);
+      addTaskInput.value = '';
+      isPrioritySelected = false;
+      priorityBtn.classList.remove('active');
+      priorityBtn.querySelector('i').className = 'fa-regular fa-star';
+    });
+  }
+
+  // =========================================================================
+  // Subject & Task Actions
+  // =========================================================================
+  function deleteSubject(subjectId) {
+    const target = subjects.find((s) => s.id === subjectId);
+    subjects = subjects.filter((s) => s.id !== subjectId);
+    saveData();
+    renderApp();
+    showToast(`'${target ? target.name : '과목'}'이(가) 삭제되었습니다.`, 'info');
+  }
+
+  function toggleTaskCompletion(subjectId, taskId, isCompleted) {
+    const subj = subjects.find((s) => s.id === subjectId);
+    if (!subj) return;
+
+    const task = subj.tasks.find((t) => t.id === taskId);
+    if (!task) return;
+
+    task.completed = isCompleted;
+    saveData();
+    renderApp();
+
+    if (isCompleted) {
+      showToast('공부 완료! 한 걸음 더 전진했습니다! 🚀', 'success');
+    }
+  }
+
+  function deleteTask(subjectId, taskId) {
+    const subj = subjects.find((s) => s.id === subjectId);
+    if (!subj) return;
+
+    subj.tasks = subj.tasks.filter((t) => t.id !== taskId);
+    saveData();
+    renderApp();
+    showToast('공부 항목이 삭제되었습니다.', 'info');
+  }
+
+  function addTask(subjectId, text, isPriority) {
+    const subj = subjects.find((s) => s.id === subjectId);
+    if (!subj) return;
+
+    const newTask = {
+      id: generateId(),
+      text: text,
+      completed: false,
+      isPriority: !!isPriority,
+      createdAt: new Date().toISOString()
+    };
+
+    subj.tasks.push(newTask);
+    saveData();
+    renderApp();
+    showToast('공부할 항목이 추가되었습니다!', 'success');
+  }
+
+  // =========================================================================
+  // Modal (Add / Edit Subject)
+  // =========================================================================
+  function openAddSubjectModal() {
+    subjectForm.reset();
+    editSubjectId.value = '';
+    modalTitle.innerHTML = '<i class="fa-solid fa-book"></i> 새 시험 과목 추가';
+
+    // Set default date to today + 7 days
+    examDateInput.value = formatRelativeDate(7);
+
+    // Default color radio
+    const defaultColorRadio = subjectForm.querySelector('input[name="subjectColor"][value="blue"]');
+    if (defaultColorRadio) defaultColorRadio.checked = true;
+
+    subjectModal.showModal();
+    subjectNameInput.focus();
+  }
+
+  function openEditSubjectModal(subj) {
+    subjectForm.reset();
+    editSubjectId.value = subj.id;
+    modalTitle.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> 과목 정보 수정';
+
+    subjectNameInput.value = subj.name;
+    examDateInput.value = subj.examDate || '';
+    examTimeInput.value = subj.examTime || '';
+    subjectGoalInput.value = subj.goal || '';
+
+    const colorRadio = subjectForm.querySelector(`input[name="subjectColor"][value="${subj.color || 'blue'}"]`);
+    if (colorRadio) colorRadio.checked = true;
+
+    subjectModal.showModal();
+    subjectNameInput.focus();
+  }
+
+  function handleSubjectFormSubmit(e) {
+    e.preventDefault();
+
+    const name = subjectNameInput.value.trim();
+    const examDate = examDateInput.value;
+    const examTime = examTimeInput.value;
+    const goal = subjectGoalInput.value.trim();
+    const colorInput = subjectForm.querySelector('input[name="subjectColor"]:checked');
+    const color = colorInput ? colorInput.value : 'blue';
+
+    if (!name || !examDate) {
+      alert('과목명과 시험 날짜를 입력해주세요.');
+      return;
+    }
+
+    const id = editSubjectId.value;
+
+    if (id) {
+      // Edit existing
+      const subj = subjects.find((s) => s.id === id);
+      if (subj) {
+        subj.name = name;
+        subj.examDate = examDate;
+        subj.examTime = examTime;
+        subj.goal = goal;
+        subj.color = color;
+        showToast(`'${name}' 과목 정보가 수정되었습니다.`, 'success');
+      }
+    } else {
+      // Add new
+      const newSubject = {
+        id: generateId(),
+        name: name,
+        examDate: examDate,
+        examTime: examTime,
+        goal: goal,
+        color: color,
+        createdAt: new Date().toISOString(),
+        tasks: []
+      };
+      subjects.push(newSubject);
+      showToast(`'${name}' 과목이 추가되었습니다!`, 'success');
+    }
+
+    saveData();
+    subjectModal.close();
+    renderApp();
+  }
+
+  // =========================================================================
+  // Settings & Backup/Restore
+  // =========================================================================
+  function exportData() {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(subjects, null, 2));
+    const downloadAnchor = document.createElement('a');
+    const now = new Date();
+    const filename = `exam-study-tracker-backup-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}.json`;
+    downloadAnchor.setAttribute('href', dataStr);
+    downloadAnchor.setAttribute('download', filename);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    showToast('데이터 백업 파일이 다운로드되었습니다.', 'success');
+  }
+
+  function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if (Array.isArray(imported)) {
+          subjects = imported;
+          saveData();
+          renderApp();
+          settingsModal.close();
+          showToast('성공적으로 데이터를 불러왔습니다!', 'success');
+        } else {
+          alert('올바른 백업 파일 형식이 아닙니다.');
+        }
+      } catch (err) {
+        alert('JSON 파일을 파싱하는 중 오류가 발생했습니다.');
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+  }
+
+  function resetSampleData() {
+    if (confirm('현재 작성된 데이터가 샘플 데이터로 덮어씌워집니다. 진행하시겠습니까?')) {
+      subjects = createSampleSubjects();
+      saveData();
+      renderApp();
+      settingsModal.close();
+      showToast('샘플 데이터로 재설정되었습니다.', 'info');
+    }
+  }
+
+  function clearAllData() {
+    if (confirm('등록된 모든 과목과 공부 목록이 영구히 삭제됩니다. 정말 삭제하시겠습니까?')) {
+      subjects = [];
+      saveData();
+      renderApp();
+      settingsModal.close();
+      showToast('모든 데이터가 삭제되었습니다.', 'info');
+    }
+  }
+
+  // =========================================================================
+  // Toast Utility
+  // =========================================================================
+  function showToast(message, type = 'info') {
+    if (!toastContainer) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+
+    let iconClass = 'fa-solid fa-circle-info';
+    if (type === 'success') iconClass = 'fa-solid fa-circle-check';
+    if (type === 'error') iconClass = 'fa-solid fa-circle-exclamation';
+
+    toast.innerHTML = `
+      <i class="${iconClass}"></i>
+      <span>${escapeHtml(message)}</span>
+    `;
+
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(1rem)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, 2800);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // Native Dialog Light-Dismiss (Clicking outside modal closes it)
+  function setupDialogBackdropDismiss(dialog) {
+    if (!dialog) return;
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+      if (!isInDialog) {
+        dialog.close();
+      }
+    });
+  }
+
+  // =========================================================================
+  // Global Event Listeners
+  // =========================================================================
+  function setupEventListeners() {
+    // Theme toggle
+    themeToggleBtn.addEventListener('click', toggleTheme);
+
+    // Print
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Add Subject buttons
+    addSubjectBtn.addEventListener('click', openAddSubjectModal);
+    emptyAddBtn.addEventListener('click', openAddSubjectModal);
+    loadSampleBtn.addEventListener('click', resetSampleData);
+
+    // Modal close buttons
+    closeModalBtn.addEventListener('click', () => subjectModal.close());
+    cancelModalBtn.addEventListener('click', () => subjectModal.close());
+    subjectForm.addEventListener('submit', handleSubjectFormSubmit);
+
+    // Settings Modal
+    dataManageBtn.addEventListener('click', () => settingsModal.showModal());
+    closeSettingsModalBtn.addEventListener('click', () => settingsModal.close());
+    closeSettingsBtn.addEventListener('click', () => settingsModal.close());
+    exportDataBtn.addEventListener('click', exportData);
+    importFileInput.addEventListener('change', importData);
+    resetSampleDataBtn.addEventListener('click', resetSampleData);
+    clearAllDataBtn.addEventListener('click', clearAllData);
+
+    // Search
+    searchInput.addEventListener('input', (e) => {
+      currentSearchQuery = e.target.value;
+      clearSearchBtn.style.display = currentSearchQuery ? 'block' : 'none';
+      renderSubjectsList();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      currentSearchQuery = '';
+      clearSearchBtn.style.display = 'none';
+      renderSubjectsList();
+      searchInput.focus();
+    });
+
+    // Sort & Filter
+    sortSelect.addEventListener('change', (e) => {
+      currentSortOption = e.target.value;
+      renderSubjectsList();
+    });
+
+    filterTaskStatus.addEventListener('change', (e) => {
+      currentFilterOption = e.target.value;
+      renderSubjectsList();
+    });
+  }
+
+  // Run on DOM Ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="내 지침과 사진으로 네이버·티스토리 글을 작성하고, 검토·발행·확인한 기록을 내 GitHub 프로젝트에 쌓는 실습 안내서"><title>3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</title><style>
+:root{color-scheme:light;--bg:#f5f1ea;--card:#fff;--ink:#1c2430;--muted:#596575;--line:#ded9ce;--brand:#096b63;--soft:#e4f3ef;--box:#f7f5f0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:980px;margin:0 auto;padding:24px 24px 72px}article{background:var(--card);padding:32px 40px;border:1px solid var(--line);border-radius:16px}
+.top{display:flex;flex-wrap:wrap;gap:10px 24px;margin:0 0 12px;font-size:15px}.date{color:var(--muted);font-size:14px;margin:0 0 14px}
+a{color:var(--brand);text-underline-offset:3px}a:hover{color:#034a44}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #bd7000;outline-offset:4px}
+h1{font-size:32px;line-height:1.4;margin:0 0 22px}h2{font-size:25px;line-height:1.5;border-top:1px solid var(--line);padding-top:24px;margin:42px 0 14px}h3{font-size:20px;line-height:1.5;margin:26px 0 12px}h1,h2,h3{scroll-margin-top:var(--nav-offset,116px)}
+p{margin:12px 0}strong{font-weight:800}li{margin:6px 0}ul,ol{padding-left:1.6em}blockquote{margin:20px 0;background:var(--soft);border-left:4px solid var(--brand);border-radius:8px;padding:12px 18px}blockquote p{margin:5px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+code{font-family:Consolas,Menlo,monospace;font-size:.94em;background:var(--box);border-radius:4px;padding:2px 4px}
+.prompt{border:1px solid #bfcfc9;border-radius:12px;background:var(--box);margin:18px 0 24px;overflow:hidden}.prompt-tools{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+button.copy{flex:0 0 auto;border:0;border-radius:7px;background:var(--brand);color:white;padding:10px 15px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;min-height:44px}button.copy:hover{background:#034a44}
+pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;font-size:15px;line-height:1.8;tab-size:2}pre code{background:none;padding:0;font:inherit}.copy-status{min-height:0;margin:0;padding:0 16px;color:var(--brand);font-size:14px}.copy-status:not(:empty){padding-bottom:12px}
+.tablewrap{overflow-x:auto;max-width:100%;margin:18px 0;scrollbar-width:thin}table{width:100%;border-collapse:collapse;font-size:15px}td,th{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;min-width:105px}th{background:var(--box);font-weight:800}table td:first-child{min-width:130px}
+.quick{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:3;background:var(--bg);padding:9px 0 14px}.quick a{background:white;border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:14px;font-weight:700;text-decoration:none}
+.step-menu{background:var(--soft);padding:14px 18px;border-radius:10px;margin:22px 0}.step-menu summary{cursor:pointer;font-weight:800}.step-menu ol{margin:12px 0}.step-menu li{font-size:16px}
+.skip{position:absolute;top:-80px;left:16px;z-index:10;background:white;padding:10px}.skip:focus{top:8px}footer{color:var(--muted);font-size:14px;margin-top:24px}
+@media(max-width:600px){body{font-size:16px}main{padding:14px 12px 48px}article{padding:24px 18px}h1{font-size:25px}h2{font-size:22px}h3{font-size:18px}.prompt-tools{padding:10px 12px;font-size:12px;gap:8px}pre{font-size:14px;padding:14px}.quick{gap:6px}.quick a{padding:5px 10px;font-size:13px}td,th{padding:8px;min-width:120px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white}main{max-width:none;padding:0}article{border:0;padding:0}.top,.quick,.copy,.copy-status,.skip,footer,.step-menu{display:none}pre{font-size:11px}.prompt{break-inside:avoid}.tablewrap{overflow:visible}h2,h3{break-after:avoid}a{color:inherit}}
+</style></head><body><a class="skip" href="#guide-title">본문으로 이동</a><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료실로 돌아가기</a><a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3%EA%B8%B0/%EC%8B%A4%EC%8A%B5/3%EA%B8%B0_%EA%B8%B0%EB%B3%B8%EC%8B%A4%EC%8A%B5_%EB%82%B4_%EC%A7%80%EC%B9%A8%EC%9C%BC%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%ED%8F%AC%EC%8A%A4%ED%8C%85_%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0.md">안내서 원문</a></div><p class="date">AI 자동화 스터디 3기 · 기본 실습 · 2026년 10월 16일</p><nav class="quick" aria-label="안내서 바로가기"><a href="#prepare">사전준비</a><a href="#step-3">내 프로젝트</a><a href="#step-5">글 작성</a><a href="#step-6">발행 확인</a><a href="#step-10">막혔을 때</a><a href="#step-11">결과 공유</a></nav><article aria-labelledby="guide-title"><h1 id="guide-title">3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</h1><details class="step-menu"><summary>단계별로 찾아가기</summary><ol><li><a href="#prepare">먼저: 실습 전 준비</a></li><li><a href="#step-1">1. 이번 실습에서 완성할 것</a></li><li><a href="#step-2">2. 시작 전에 준비하기</a></li><li><a href="#step-3">3. 내 GitHub 저장소와 프로젝트 만들기</a></li><li><a href="#step-4">4. 내 지침과 참고 글 읽히기</a></li><li><a href="#step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</a></li><li><a href="#step-6">6. 검토한 글을 발행하고 연결하기</a></li><li><a href="#step-7">7. 티스토리 Search Console 연결과 색인 요청</a></li><li><a href="#step-8">8. 다음 글부터 줄어드는 작업</a></li><li><a href="#step-9">9. 글이 쌓이면 광고 신청 준비하기</a></li><li><a href="#step-10">10. 막혔을 때 이렇게 요청하세요</a></li><li><a href="#step-11">11. 수업 결과 제출과 다음 대화 재개</a></li></ol></details>
+<p>작성일: 2026-10-15 · 공개 안내 정리: 2026-10-16 · 대상: Codex와 Aside로 자신의 블로그를 운영하려는 수강생</p>
+<p><strong>한 번의 글쓰기에서 끝내지 않고, 다음 글도 이어서 만들 수 있는 나만의 블로그 프로젝트를 만듭니다.</strong> GitHub에 원고와 작업 기록을 보관하고, 본인의 자료와 작성 지침을 읽어 네이버·티스토리 글을 각각 작성합니다. 검토한 글을 실제로 발행하고, 사진·링크·검색 등록 상태까지 확인하는 것이 실습 목표입니다.</p>
+<p>이 자료는 모든 수강생이 사용할 수 있는 작업 안내입니다. <strong>특정 블로그팀의 내부 지침, 카카오톡 대화, 강의자료 원문과 그 요약은 포함하지 않습니다.</strong> 블로그팀 소속자는 본인이 열람할 수 있는 소속 방의 지침을, 다른 수강생은 자신의 지침이나 참여 중인 모임의 지침을 적용하세요. 소속 방이 없어도 개인 주제와 작성 기준으로 실습할 수 있습니다.</p>
+<h2 id="prepare">먼저: 실습 전 준비</h2>
+<p>모임에서 함께 진행할 기본 실습 안내서입니다. 미리 준비하거나 먼저 따라 해 보셔도 됩니다. <strong>ChatGPT 앱(Codex)과 Aside 연결을 아직 하지 않았다면 <a href="https://study.saedongne.com/automation/board.html?id=1175">사전준비 안내서</a>부터 진행하세요.</strong> 기존 안내서에 적힌 3주차 날짜와 관계없이, 앱·Aside 설치와 연결 방법을 참고하면 됩니다. 이미 연결한 분은 반복 설치할 필요가 없습니다.</p>
+<p>처음에는 <strong>2~6번의 준비 → 내 프로젝트 만들기 → 초안 검토 → 발행 확인</strong>을 순서대로 진행합니다. 7번 검색 등록은 계정과 연결 상태에 따라 이어가고, 8번의 정기 실행과 9번 광고 신청은 선택 사항입니다. 준비가 덜 됐다면 원고 작성과 검토까지 진행하고 같은 프로젝트에서 이어가세요.</p>
+<h3 id="section-2">처음 따라 할 때의 순서</h3>
+<p>이 MD를 내려받아 Codex에서 읽게 하고, 아래 순서로 <strong>각 단계의 결과를 확인한 뒤</strong> 다음 프롬프트를 실행하세요. 모든 프롬프트를 한꺼번에 붙여 넣지 않습니다. <code>[ ]</code>는 본인 정보로 바꿉니다.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>할 일</th>
+<th>다음으로 넘어갈 기준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2번에서 계정·소재·사진과 내 작업 정보 준비</td>
+<td>내 블로그 주소와 실제 로그인 계정이 일치</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3번에서 내 저장소 만들고 해당 폴더를 Codex 프로젝트로 열기</td>
+<td>로컬 경로와 내 GitHub 비공개 저장소 확인</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4번에서 각자의 지침과 공개 참고 글 확인</td>
+<td>적용할 기준과 두 글의 역할이 준비 카드에 기록</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5번에서 초안·미리보기 만들고 검토</td>
+<td>사실·사진·구성·지침 적합성 확인</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6번에서 검토한 두 글 발행·연결·검증</td>
+<td>실제 공개 URL 두 개, 본문·사진·링크 정상</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7번에서 가능한 검색 등록 작업 진행</td>
+<td>연결·접수·색인 상태를 구분해 기록</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8번에서 작업 자료·개선 기준 축적</td>
+<td>파일 저장, 커밋, 원격 푸시 결과 확인</td>
+</tr>
+</tbody></table></div>
+<p>첫 실습은 사용자가 직접 단계별로 요청하는 방식입니다. 8번의 정기 실행과 9번의 광고 신청은 선택 확장입니다. <strong>이 파일을 열었다고 일정·발행·광고 신청이 자동으로 등록되지는 않습니다.</strong></p>
+<h2 id="step-1">1. 이번 실습에서 완성할 것</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>결과물</th>
+<th>완료 모습</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>나의 블로그 프로젝트</td>
+<td>내 컴퓨터의 작업 폴더 + 내 GitHub 비공개 저장소</td>
+</tr>
+<tr>
+<td>다음에도 쓸 수 있는 시작 지침</td>
+<td><code>AGENTS.md</code>, 작업 현황, 참고 기록, 글 준비 양식</td>
+</tr>
+<tr>
+<td>같은 주제를 다르게 풀어낸 두 글</td>
+<td>티스토리 상세 글 1편 + 네이버 글 1편</td>
+</tr>
+<tr>
+<td>두 플랫폼의 연결</td>
+<td>네이버 본문에서 관련 티스토리 글로 연결</td>
+</tr>
+<tr>
+<td>발행 검증</td>
+<td>공개 주소, 본문, 사진, 연결 링크 확인 기록</td>
+</tr>
+<tr>
+<td>검색 등록</td>
+<td>티스토리 Search Console 연결·사이트맵 상태와 새 글 색인 요청 결과</td>
+</tr>
+</tbody></table></div>
+<p>첫 수업에서는 <strong>두 글 한 묶음의 작성·검토·발행</strong>을 목표로 합니다. 광고 신청과 반복 일정은 글을 운영하면서 이어가는 확장 실습입니다. 로그인·소유권 확인이나 외부 심사가 필요한 부분은 수업 시간 안에 끝나지 않을 수 있습니다.</p>
+<h3 id="section-4">자동화의 흐름</h3>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 지침·소재·사진
+       ↓
+참고 글 확인 → 주제와 두 글의 역할 결정
+       ↓
+티스토리 HTML + 네이버 원고 작성
+       ↓
+내 검토 → 발행 → 공개 화면 확인
+       ↓
+색인 요청·발행 기록 → 커밋·푸시
+       ↓
+다음 소재로 같은 프로젝트에서 반복
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h2 id="step-2">2. 시작 전에 준비하기</h2>
+<ul>
+<li>Codex를 사용할 수 있는 계정과 앱.</li>
+<li>Aside와 필요한 브라우저·컴퓨터 제어 기능. 사용할 수 있는 기능은 각자의 환경에서 확인합니다.</li>
+<li>본인 GitHub 계정. 기존 저장소를 쓴다면 그 저장소의 접근 권한.</li>
+<li>본인 네이버 블로그와 티스토리 블로그. 아직 없다면 먼저 블로그 개설을 완료합니다.</li>
+<li>Search Console에 사용할 본인 Google 계정.</li>
+<li>이번에 쓸 소재, 직접 찍었거나 사용할 권한이 있는 사진, 확인 가능한 사실.</li>
+<li>본인의 작성 지침 또는 본인이 열람할 수 있는 소속 모임의 지침.</li>
+</ul>
+<p><strong>로그인은 본인이 Aside에서 먼저 해두세요.</strong> 네이버 블로그, 티스토리 관리 화면, Google Search Console을 각각 열어 계정과 블로그 주소가 맞는지 확인합니다. GitHub 연결도 확인합니다. 같은 브라우저에서 로그인했더라도 다른 계정이나 다른 블로그가 선택돼 있을 수 있습니다.</p>
+<p>카카오톡 방을 참고한다면 PC 앱에서 해당 방을 열어두세요. Aside는 웹 브라우저이므로 카카오톡 PC 앱의 대화는 별도의 컴퓨터 제어 경로가 필요할 수 있습니다. 앱 제어가 지원되지 않으면 본인이 열람 권한이 있는 지침 파일을 로컬에 준비해 AI가 읽도록 합니다.</p>
+<p>비밀번호·인증번호·쿠키는 프롬프트나 저장소에 적지 않습니다. 로그인, 본인 인증, CAPTCHA, 새로운 접근 권한과 약관 동의가 필요한 단계는 화면의 안내에 따라 본인이 확인하고 이어갑니다.</p>
+<p>ChatGPT/Codex 로그인과 GitHub의 Git 푸시 인증은 별개입니다. GitHub 웹에 로그인했더라도 로컬 Git의 인증이 안 되어 있으면 푸시가 막힐 수 있습니다. 연결이 안 되면 AI에게 현재 인증·권한 상태와 필요한 로그인 화면을 확인하게 하세요. 도구 설치·유료 이용이 필요한 경우에는 현재 지원 여부와 비용을 먼저 확인합니다. 제공되지 않는 기능을 설치됐다고 가정해서 진행하지 않습니다.</p>
+<p>Aside나 앱 제어를 사용할 수 없더라도 로컬 원고 작성·기록·커밋을 진행할 수 있습니다. 발행 단계는 본인이 편집기에 최종 원고와 사진을 넣는 방법으로 이어가고, 실제 공개 URL을 다시 전달해 검증·보관을 마무리합니다. 직접 로그인·동의가 필요한 단계는 그 화면만 처리한 뒤 같은 프로젝트에서 계속하세요.</p>
+<h3 id="section-6">한 번만 채울 내 작업 정보</h3>
+<p>아래 양식의 <code>[ ]</code>를 채워 Codex에 전달하세요. 지침 본문을 이 공용 실습 자료에 붙여 넣을 필요는 없습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 작업 정보
+- 프로젝트 폴더: [내 컴퓨터의 작업 폴더]
+- GitHub 저장소: [없으면 새로 만들기 / 기존 저장소 주소]
+- 네이버 블로그: [내 블로그 주소]
+- 티스토리 블로그: [내 블로그 주소]
+- 지침 위치: [내가 열람할 수 있는 카카오톡 방 이름 또는 로컬 파일 경로]
+- 참고할 공개 글: [주소가 있으면 입력]
+- 사진 폴더: [내 사진 폴더 경로]
+- 이번 소재와 확인된 사실: [짧게 입력]
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>예를 들어 소재는 ‘주말 걷기 코스를 고르는 방법’처럼 본인이 설명할 수 있는 것으로 고릅니다. 후기를 쓰려면 실제로 간 곳·한 일·느낀 점을 먼저 제공하세요. 경험이 부족하면 자료를 확인한 정보형 글로 진행할 수 있습니다.</p>
+<h2 id="step-3">3. 내 GitHub 저장소와 프로젝트 만들기</h2>
+<p>Codex에 아래 프롬프트를 입력합니다. <strong>현재 열려 있는 수업용 프로젝트와 내 블로그 작업 폴더를 구분하세요.</strong> 다른 사람의 예제 저장소를 그대로 자신의 운영 저장소로 사용하지 않습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 블로그 운영용 GitHub 비공개 저장소를 blog라는 이름으로 만들어줘.
+같은 이름의 저장소나 로컬 폴더가 이미 있으면 먼저 내용을 확인하고,
+기존 자료를 보존하면서 이어 쓸지 판단해줘.
+
+내 컴퓨터의 데스크탑 Project 폴더 아래에 클론해줘.
+운영체제와 실제 경로를 확인해서 진행하고, 그 폴더를 작업 기준으로 삼아줘.
+현재 열린 다른 프로젝트에 블로그 파일을 섞지 마.
+
+AGENTS.md, README.md, PROGRESS.md, docs/REFERENCE_NOTES.md,
+docs/WRITING_GUIDE.md, docs/IMPROVEMENTS.md, docs/guidelines/,
+templates/writing-brief.md, posts/ 폴더를 준비해줘.
+work/는 개인 원본 자료용으로 만들고 Git에서 제외해줘.
+.env와 인증정보도 Git에서 제외해줘.
+
+시작 지침에는 본인 지침 확인, 사실 확인, 두 플랫폼의 역할 분리,
+사진 직접 업로드, 발행 후 공개 화면 검증, 작업 기록을 넣어줘.
+팀 내부 지침이나 카카오톡 대화는 원문·요약 모두 공유 파일에 복제하지 마.
+재배포할 수 없는 지침은 로컬 개인 자료로만 읽게 해줘.
+
+준비한 파일을 확인하고 커밋·푸시한 뒤 실제 작업 폴더를 알려줘.
+이 단계에서는 블로그 글을 발행하지 마.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>준비가 끝나면 <strong>만든 블로그 폴더를 Codex 프로젝트로 열고 그 안에서 계속합니다.</strong> 저장소 생성이나 클론이 막히면 GitHub 로그인·권한을 확인합니다. 로컬 폴더만 만들어진 상태를 GitHub 보관 완료로 판단하지 않습니다.</p>
+<p>예상 구조는 다음과 같습니다. 글 폴더 이름과 세부 파일명은 자신의 프로젝트에 맞춰도 됩니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">blog/
+├── AGENTS.md                 # 다음 대화에서도 적용할 시작 지침
+├── README.md                 # 프로젝트와 작업 순서
+├── PROGRESS.md               # 완료·미완료 작업과 다음 할 일
+├── docs/
+│   ├── WRITING_GUIDE.md      # 현재 적용 중인 내 작성 기준
+│   ├── REFERENCE_NOTES.md    # 공개 참고 링크와 짧은 구조 메모
+│   ├── IMPROVEMENTS.md       # 받은 피드백과 다음 글에 반영할 개선점
+│   └── guidelines/          # Git 보관이 허용된 지침과 버전 이력
+├── templates/
+│   └── writing-brief.md      # 글을 시작할 때 채울 준비 카드
+├── posts/
+│   └── 이번-글/
+│       ├── brief.md
+│       ├── naver.txt
+│       ├── tistory.html
+│       ├── assets/
+│       └── publication.json
+└── work/                     # Git 제외: 개인 지침 원본·임시 자료
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>GitHub에 푸시하는 것과 블로그에 발행하는 것은 별도 작업입니다.</strong> 저장소는 원고·사진·수정 이력을 보관합니다. 티스토리와 네이버에 반영됐는지는 각 플랫폼의 공개 페이지로 확인합니다.</p>
+<h3 id="section-8">커밋·푸시·발행·배포는 무엇이 다른가요?</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>작업</th>
+<th>하는 일</th>
+<th>블로그 공개 글이 바뀌나요?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>저장</td>
+<td>내 컴퓨터에 원고와 기록 파일을 남김</td>
+<td>아니요</td>
+</tr>
+<tr>
+<td>커밋</td>
+<td>관련 변경을 묶어 Git에 수정 이유와 이력을 남김</td>
+<td>아니요</td>
+</tr>
+<tr>
+<td>푸시</td>
+<td>커밋한 이력을 내 GitHub 저장소에도 보관</td>
+<td>아니요</td>
+</tr>
+<tr>
+<td>발행·수정</td>
+<td>네이버·티스토리 편집기에 최종 원고를 반영하고 공개</td>
+<td>해당 플랫폼에 반영됩니다</td>
+</tr>
+<tr>
+<td>배포</td>
+<td>직접 만든 사이트·프로그램의 변경을 실행 환경에 반영</td>
+<td>별도 시스템을 연결한 경우에만 관련됩니다</td>
+</tr>
+</tbody></table></div>
+<p><strong>이 실습의 Git 저장소는 작업하면서 쌓이는 자료와 판단을 보관하는 공간입니다.</strong> 블로그 글을 발행하지 않은 날에도 조사·기획·초안·수정 내용을 커밋할 수 있습니다. 별도 사이트나 프로그램을 만들지 않았다면 ‘배포’할 것은 없습니다. GitHub에 푸시했다고 블로그 발행까지 완료됐다고 판단하지 않습니다.</p>
+<h2 id="step-4">4. 내 지침과 참고 글 읽히기</h2>
+<p>카카오톡의 과거 대화를 전부 수집할 필요는 없습니다. 본인이 지정한 방에서 이번 작업에 필요한 지침과 참고 링크를 중심으로 읽게 합니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">앞서 알려준 내 지침 위치와 공개 참고 글을 읽고 이번 글을 준비해줘.
+소속 블로그팀이 있으면 내가 참여 중인 방의 지침을 적용하고,
+소속 방이 없으면 내가 준 개인 작성 기준을 적용해줘.
+
+지침의 공유일·버전·바뀐 조건을 먼저 대조해줘.
+MD 파일은 파일 내용을 실제로 열어 읽고, 첨부된 다른 자료도 필요한 범위를 확인해줘.
+내부 자료는 내가 열람할 수 있는 것만 쓰고 공용 자료나 GitHub에 복제하지 마.
+
+내 최근 글과 주제가 맞는 공개 이웃·팀원 글을 참고해줘.
+제목만 본 글과 본문까지 읽은 글을 구분하고,
+공개 링크와 배울 수 있는 구성만 짧게 기록해줘.
+남의 문장·사진·경험을 내 것으로 가져오지 마.
+
+Aside 작업 전 설치된 aside-browser 스킬과 서비스 전용 스킬을 확인해줘.
+가능하면 전용 커넥터나 API를 쓰고,
+브라우저가 필요하면 Aside 배경 탭에서 작업해줘.
+Aside로 안 되는 부분은 이유를 설명하고 사용할 수 있는 다른 경로로 이어가줘.
+
+이번 소재에 맞는 네이버 글과 티스토리 글의 역할,
+사진 배치, 아직 필요한 사실을 준비 카드에 정리해줘.
+이미 제공한 사실은 다시 묻지 말고 핵심적으로 부족한 것만 확인해줘.
+우선 기획과 준비까지만 해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>완료 확인:</strong> 적용할 지침의 출처·공유일을 파악했고, 두 글이 각각 독자에게 무엇을 줄지 설명돼 있으면 다음 단계로 갑니다. 읽지 못한 자료가 있다면 내용을 추정하지 않고 다른 확인 가능한 자료로 보완합니다.</p>
+<h2 id="step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</h2>
+<p>두 플랫폼에 같은 글을 그대로 복사하는 대신, 같은 소재로 각각의 읽을거리를 만듭니다. 아래는 실습을 위한 일반적인 구성 예시이며, 각자의 지침에 따라 조정하세요.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>네이버 글</th>
+<th>티스토리 글</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>독자가 공감할 상황과 핵심 답</td>
+<td>그 답을 더 자세히 실행하는 방법</td>
+</tr>
+<tr>
+<td>사진과 짧은 문단으로 읽기 쉽게</td>
+<td>HTML로 순서·비교·도움말을 정리</td>
+</tr>
+<tr>
+<td>필요한 설명을 글 안에서 완결</td>
+<td>독자의 후속 질문을 충분히 해결</td>
+</tr>
+<tr>
+<td>추가 설명이 필요한 곳에 상세 글 링크</td>
+<td>링크를 타고 온 사람이 얻을 추가 가치</td>
+</tr>
+</tbody></table></div>
+<p>예를 들어 네이버는 ‘내게 맞는 걷기 코스를 고를 때 보게 되는 것’을, 티스토리는 ‘거리·교통·휴식 장소를 비교하는 방법’을 다룰 수 있습니다. 이 예시도 실제 방문 경험으로 바꾸어 쓰지 않습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">준비 카드와 내 지침에 맞춰 네이버·티스토리 원고를 각각 작성해줘.
+두 글은 같은 소재를 공유하되 제목·도입·전개를 각각 설계해줘.
+네이버 글 자체에서 독자의 기본 질문에 답하고,
+티스토리는 그보다 더 구체적인 정보와 방법을 제공해줘.
+
+네이버는 짧은 문단과 소제목, 자연스러운 사진 설명으로 구성해줘.
+티스토리는 주제에 맞는 사진·여백·색상을 사용한 HTML로 만들고,
+스타일이 블로그 전체에 영향을 주지 않게 글 영역 안으로 한정해줘.
+휴대전화에서도 글과 사진이 잘 보이게 해줘.
+
+사용할 권한이 있는 사진을 골라 assets에 보관해줘.
+삽화가 필요하면 역할을 먼저 정해서 만들고, 사실을 입증하는 사진처럼 설명하지 마.
+정보가 부족한 부분은 만들어 채우지 말고 확인하거나 글의 범위를 조정해줘.
+
+티스토리 원고, 네이버 편집용 원고, 사진 배치와 미리보기를 저장해줘.
+네이버에서 티스토리로 연결할 문구와 위치도 정해줘.
+두 글의 사실·표현·중복·지침 적합성·사진·모바일 가독성을 검토해줘.
+내가 검토할 수 있도록 원고와 미리보기를 열어줘. 아직 발행하지 마.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h3 id="section-11">내 검토에서 볼 다섯 가지</h3>
+<ol>
+<li>내가 실제로 한 일과 자료로 확인한 정보를 정확히 구분했는가?</li>
+<li>제목에서 약속한 답을 본문이 충분히 제공하는가?</li>
+<li>두 글을 모두 읽었을 때 각각 얻는 것이 있는가?</li>
+<li>사진이 제대로 배치됐고 사용할 권한이 있는가?</li>
+<li>내 지침의 필수 조건을 충족했는가?</li>
+</ol>
+<p>수정이 필요하면 ‘도입을 더 구체적으로’, ‘두 번째 사진을 방법 설명 옆에’, ‘이 문장은 내가 한 경험이 아니니 바꿔줘’처럼 해당 부분을 지정하세요.</p>
+<h2 id="step-6">6. 검토한 글을 발행하고 연결하기</h2>
+<p>첫 실습에서는 아래처럼 발행할 글과 공개 범위를 명확하게 요청합니다. 티스토리를 먼저 발행하면 네이버에 실제 상세 주소를 넣을 수 있습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">검토한 이번 티스토리 글과 네이버 글을 내 블로그에 공개 발행해줘.
+제목·본문·사진은 검토한 최종 원고를 사용해줘.
+카테고리와 태그는 내 지침과 글의 내용에 맞게 적용해줘.
+
+티스토리를 먼저 발행해서 실제 공개 주소를 확보한 뒤,
+네이버 본문의 연결 문구에 그 상세 주소를 넣고 발행해줘.
+사진은 두 플랫폼 편집기에 직접 업로드해줘.
+티스토리 HTML에는 업로드된 네이티브 이미지 토큰을 사용해줘.
+
+저장·발행 후에는 공개 화면을 열어 제목과 본문 누락,
+이미지 실제 로딩, 연결 링크, 공개 상태를 확인해줘.
+HTML 코드·마크다운 표시·이미지 토큰이 글에 그대로 보이지 않는지도 확인해줘.
+문제가 있으면 고치고 다시 공개 화면으로 검증해줘.
+
+게시물 주소·발행일·검증 시점·결과를 publication.json에 기록해줘.
+최종 원고와 PROGRESS.md를 갱신하고 커밋·푸시해줘.
+카카오톡에는 아직 보내지 마.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>완료 확인:</strong> 실제 공개 URL 두 개가 있고, 사진이 표시되며, 네이버의 링크가 이번 티스토리 글로 이동해야 합니다. 편집기에 입력한 상태나 ‘발행’ 버튼을 눌렀다는 보고만으로 완료 처리하지 않습니다.</p>
+<p>카카오톡 공유는 선택입니다. 공유가 필요하면 <code>이번 두 글의 링크를 [방 이름]에 [메시지 내용]으로 조용히 보내줘</code>처럼 대상과 내용을 지정하세요. AI는 전송 옵션의 <strong>조용히 보내기</strong> 항목과 전송된 메시지를 확인하고, 작업 기록에는 보낸 시점과 공개 링크만 남깁니다. 해당 기능을 사용할 수 없다면 일반 전송으로 바꾸기 전에 알려달라고 요청하세요.</p>
+<h2 id="step-7">7. 티스토리 Search Console 연결과 색인 요청</h2>
+<h3 id="section-14">최초 한 번: 사이트 연결 확인</h3>
+<p>티스토리는 사이트맵을 자동 생성하며 일반적인 주소는 <code>https://내블로그.tistory.com/sitemap.xml</code>입니다. Google Search Console 플러그인도 제공합니다. 실제 관리 화면에서 제공 여부와 연결 상태를 확인하고, 개인 도메인을 사용하면 그 도메인의 속성·사이트맵 주소를 기준으로 합니다. <a href="https://notice.tistory.com/m/2537">티스토리 사이트맵 안내</a>, <a href="https://notice.tistory.com/2536?category=156669">서치콘솔 플러그인 안내</a>.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 티스토리의 Google Search Console 연결을 확인하고 준비해줘.
+기존에 연결돼 있으면 중복 등록하지 마.
+현재 티스토리 관리 화면과 Search Console에서
+내 Google 계정, 실제 블로그 주소, 속성의 소유권 확인 상태를 대조해줘.
+
+제공되는 공식 연결 방식으로 진행할 수 있게 준비해주고,
+Google 권한 동의나 인증이 필요하면 내가 확인할 화면을 보여줘.
+소유권이 확인된 뒤 실제 사이트맵 주소와 제출 상태를 확인해줘.
+이미 제출돼 있으면 상태만 확인해줘.
+결과와 확인 시점을 프로젝트에 기록해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h3 id="section-15">새 글 발행 후: URL 검사와 요청</h3>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">방금 발행한 내 티스토리 글의 실제 URL을 Search Console에서 검사해줘.
+필요하면 실제 URL 테스트를 하고, 색인 가능한 상태인지 확인해줘.
+아직 색인되지 않았고 제출이 필요한 새 글이면 색인 생성을 요청해줘.
+이미 요청을 접수한 같은 URL에는 변경 사유 없이 반복 요청하지 마.
+
+현재 검사 상태, 요청 접수 여부, 확인 시간을 publication.json에 기록해줘.
+요청 접수와 색인 완료를 구분해서 알려줘.
+권한 부족이나 요청 제한이 있으면 그 상태를 기록하고 다음 조치를 알려줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>사이트맵 제출과 플러그인 연결은 Google의 발견·수집을 돕습니다. <strong>연결됐다는 사실이나 ‘색인 생성 요청됨’은 색인 완료·검색 노출 보장이 아닙니다.</strong> 요청에는 제한이 있으며 이후 URL 검사로 상태를 확인합니다. <a href="https://support.google.com/webmasters/answer/9012289?hl=ko">Google URL 검사 안내</a>.</p>
+<p>일반 블로그 글을 무조건 색인시키는 만능 API로 구성하지 않습니다. Google의 Indexing API는 <code>JobPosting</code> 또는 <code>VideoObject</code>에 포함된 <code>BroadcastEvent</code> 페이지용입니다. 이 실습의 일반 포스팅은 해당 API의 대상이 아닙니다. <a href="https://developers.google.com/search/apis/indexing-api/v3/using-api?hl=ko">Google Indexing API 적용 범위</a>.</p>
+<p>네이버 블로그는 네이버의 검색 허용 설정과 공개 상태를 확인합니다. 티스토리 속성으로 네이버 글까지 색인 요청할 수는 없습니다. 네이버 주소의 Search Console 소유권을 확인할 수 있는지 별도로 판단하고, 할 수 없다면 불가 상태를 기록합니다.</p>
+<h2 id="step-8">8. 다음 글부터 줄어드는 작업</h2>
+<p>첫 글을 완료하면 다음부터는 기존 프로젝트에서 소재만 새로 전달합니다.</p>
+<h3 id="section-17">작업할 때마다 내 저장소에 쌓을 것</h3>
+<p><strong>발행된 글만 모으는 것이 아닙니다.</strong> 각자의 작성 기준, 지금까지 쓴 원고, 참고한 공개 자료, 사용자의 수정 의견과 개선 결과를 저장소에 축적합니다. 다음 글에서는 이 기록을 먼저 읽고 최근 지침과 대조해서 더 나은 원고를 만듭니다. 대화창의 기억에만 의존하지 않도록 실제 파일로 남기는 것이 핵심입니다.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>축적할 자료</th>
+<th>권장 위치</th>
+<th>남길 내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>내가 만든 작성 기준</td>
+<td><code>docs/WRITING_GUIDE.md</code>, <code>AGENTS.md</code></td>
+<td>선호하는 문체·구성, 반복 실수와 검토 순서</td>
+</tr>
+<tr>
+<td>저장·공유가 허용된 지침</td>
+<td><code>docs/guidelines/</code></td>
+<td>출처·공유일·버전, 적용 시점과 이전 버전 대비 변경점</td>
+</tr>
+<tr>
+<td>기존 글과 진행 중인 원고</td>
+<td><code>posts/글별폴더/</code></td>
+<td>준비 카드, 플랫폼별 최종 원고, 사용 가능한 사진, 발행 기록</td>
+</tr>
+<tr>
+<td>공개 참고 글과 자료</td>
+<td><code>docs/REFERENCE_NOTES.md</code></td>
+<td>URL, 확인일, 본문 열람 여부, 배울 구성과 이번 글에 적용할 점</td>
+</tr>
+<tr>
+<td>받은 피드백과 개선 결과</td>
+<td><code>docs/IMPROVEMENTS.md</code></td>
+<td>어느 글의 어떤 문제가 있었는지, 수정 이유와 다음 검토 항목</td>
+</tr>
+<tr>
+<td>작업 상태와 다음 순서</td>
+<td><code>PROGRESS.md</code></td>
+<td>완료한 작업, 미완료 항목, 관련 파일 위치</td>
+</tr>
+</tbody></table></div>
+<p>각자의 비공개 저장소라도 다른 사람의 내부 자료를 자유롭게 올릴 수 있는 것은 아닙니다. <strong>본인 작성 기준과 저장 권한이 있는 지침은 Git에 쌓고, 재배포·외부 저장이 허용되지 않는 소속 방 지침은 Git에서 제외한 <code>work/</code>에 둡니다.</strong> 저장소에는 그 자료의 확인일·버전·로컬 위치만 남깁니다. 카카오톡 대화 전체와 인증정보는 커밋하지 않습니다. 공개 참고 글도 전문을 복제하지 않고 링크와 짧은 분석을 남깁니다.</p>
+<p>기존에 블로그에만 있던 <strong>본인 글</strong>은 본문과 사진 사용 권한을 확인하여 원고로 보관하고, 공개 URL·확인일을 함께 기록합니다. 이후 웹에서 직접 수정했다면 공개 본문과 보관 원고를 비교해 최신 상태를 맞춥니다. 예전 원고는 Git 이력으로 추적할 수 있습니다.</p>
+<p>다음 프롬프트를 한 번 적용해 프로젝트의 마무리 순서로 정하세요.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">이 프로젝트는 글 발행뿐 아니라 작업 자료를 계속 축적하는 저장소로 운영해줘.
+내 작성 기준, 저장이 허용된 지침, 기존 글과 초안,
+공개 참고 링크, 받은 피드백과 개선 결과를 알맞은 파일에 남겨줘.
+기존 블로그 글은 본인 글인지 확인하고 공개 본문과 비교해서 보관해줘.
+비공개 지침은 저장 권한에 따라 Git 보관 자료와 work/의 로컬 자료를 구분해줘.
+팀 내부 자료 원문·재배포 불가 요약·카카오톡 대화·인증정보는 커밋하지 마.
+
+앞으로 글 조사·기획·작성·수정 작업을 마치면
+원고와 참고 기록, 개선 기준, PROGRESS.md를 실제 변경에 맞춰 갱신해줘.
+변경 파일과 diff를 확인한 뒤 이번 작업의 파일만 커밋·푸시해줘.
+실패하거나 충돌이 있으면 자료를 보존하고 미완료 상태를 알려줘.
+이 순서를 AGENTS.md에 반영해서 다음 대화에서도 이어가게 해줘.
+기록·커밋·푸시 요청을 블로그 발행이나 외부 메시지 전송 권한으로 해석하지 마.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h3 id="section-18">쌓인 자료로 다음 글을 업그레이드하기</h3>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">이 블로그 프로젝트에서 다음 글을 준비해줘.
+AGENTS.md와 PROGRESS.md를 읽고 기존 작성 기준과 최근 발행 글을 확인해줘.
+docs/WRITING_GUIDE.md, REFERENCE_NOTES.md, IMPROVEMENTS.md와
+이번 주제에 관련된 기존 원고도 읽어 이전 피드백을 반영해줘.
+내 지침 위치에 새 안내가 있으면 공유일·버전과 변경 조건부터 대조해줘.
+허가 없이 다른 방이나 대화 전체를 수집하지 마.
+
+이번 소재는 [소재], 내가 확인한 사실은 [사실], 사진은 [폴더]야.
+최근 글과 소재·도입·구성이 반복되지 않게 참고 글을 확인하고,
+네이버와 티스토리의 역할을 나눠 원고와 미리보기를 준비해줘.
+원고를 검토할 수 있게 보여줘.
+기획·초안·참고 링크·이번에 개선한 점을 저장소에 남기고 커밋·푸시해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>좋은 도입이나 구성이 있었다면 왜 효과적이었는지 기록하고, 반복 표현·정보 누락·사진 문제를 고쳤다면 다음 검토 기준으로 반영합니다. 조회·검색·광고 자료를 볼 수 있는 경우에는 확인 기간과 실제 수치를 구분해 기록하세요. 한 번의 조회수 변화만으로 특정 문장이나 형식이 원인이라고 단정하지 않습니다.</p>
+<h3 id="section-19">지침이 완전히 바뀌어도 이어갈 수 있게</h3>
+<p>새 지침은 기존 기준에 몇 줄 덧붙이는 방식으로만 처리하지 않습니다. 주제·독자·문체·필수 조건·두 플랫폼의 역할이 모두 달라질 수 있습니다. <strong>새 지침이 이전 지침을 대체한다면 현재 적용 기준을 새로 작성하고, 이전 기준은 적용 종료된 이력으로 보관합니다.</strong> 기존 글과 참고 자료는 필요할 때만 활용하고, 새 방향과 맞지 않는 구성은 반복하지 않습니다. 누적 자료가 최신 지침보다 우선하지 않게 합니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">새 지침 [내가 열람할 수 있는 위치]를 실제로 읽고 현재 기준과 비교해줘.
+출처·공유일·버전과 적용 범위를 확인하고,
+추가인지 부분 변경인지 전체 대체인지 구분해줘.
+전체 대체라면 현재 작성 기준과 준비 카드, 자동화 작업 순서를 새로 구성해줘.
+폐기된 조건이 예전 원고·템플릿·시작 지침 때문에 다시 적용되지 않게 해줘.
+이전 기준은 적용 종료 시점을 기록해 이력으로만 보관해줘.
+
+최근 글과 공개 참고 글에서 새 지침에도 맞는 요소만 선택해줘.
+기존 공개 글을 소급 수정해야 하는지는 새 지침의 적용 범위로 판단하고,
+명시되지 않은 기존 글 수정·재발행은 실행하지 마.
+이미 등록된 반복 작업이 있다면 저장된 프롬프트도 새 기준과 대조하고,
+기존에 허용한 범위 안에서 갱신해 실제 저장 결과를 확인해줘.
+없다면 일정이 있다고 보고하거나 새 일정을 임의로 만들지 마.
+변경 기준과 관련 파일을 저장 권한에 맞춰 기록하고 커밋·푸시해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h3 id="section-20">커밋·푸시도 자동으로 되나요?</h3>
+<p><strong>작업 요청과 시작 지침에 포함하면 AI가 해당 작업을 마치면서 기록·커밋·푸시까지 처리할 수 있습니다.</strong> GitHub 인증과 권한이 정상이어야 하며, ‘커밋 완료’와 ‘원격 푸시 완료’를 각각 확인합니다. 파일만 만들어 두었다고 항상 실행되는 것은 아닙니다. <code>AGENTS.md</code>는 작업 중 지침이고, Git 자체는 글을 읽고 학습하거나 정해진 시간에 실행하는 도구가 아닙니다.</p>
+<p>정해진 시간마다 자료를 확인하고 저장하려면 별도의 반복 작업을 실제 등록해야 합니다. 로컬 실행은 컴퓨터와 앱 상태 등 실행 환경을 확인해야 합니다. 일정이 필요 없다면 글을 작업할 때마다 아래처럼 마무리하면 충분합니다. <a href="https://learn.chatgpt.com/docs/automations">Codex 자동화 안내</a>.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">오늘 작업한 초안·수정 원고·허용된 참고 자료·개선 기준을 파일로 정리해줘.
+PROGRESS.md를 갱신하고, 민감정보와 내부 원문이 없는지 diff를 확인해줘.
+이번 작업에 해당하는 변경만 커밋·푸시해줘.
+원격 반영 여부와 다음에 이어갈 파일을 알려줘.
+블로그 발행이나 별도 배포는 내가 요청한 경우에만 진행해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>검토가 끝나면 6번의 발행 프롬프트와 7번의 색인 요청 프롬프트로 이어갑니다. 나중에는 <code>이번 두 원고를 공개 발행하고, 연결 링크·사진 검증·필요한 색인 요청·기록·커밋·푸시까지 해줘</code>처럼 한 요청으로 묶을 수 있습니다. 이미 받은 소재와 사실, 반복 작업 순서는 프로젝트 파일에서 읽게 합니다.</p>
+<p><strong>운영 방식도 명시적으로 정할 수 있습니다.</strong> 초안 작성만 자동화할지, 확인된 자료로 정해진 일정에 발행까지 할지 구분하세요. 발행까지 맡기려면 대상 블로그, 지침 위치, 사용할 자료, 공개 범위, 횟수, 부족한 자료가 있을 때의 처리 방식을 먼저 정합니다. 먼저 한 묶음을 성공적으로 검증한 후 범위를 넓히는 것이 실습하기 좋습니다.</p>
+<p>자동화할 단계를 아래처럼 나눌 수 있습니다. 작업마다 새 지침과 누적 자료를 읽도록 하고, 완료한 글과 요청을 식별해 중복 실행을 막습니다.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>자동화 단계</th>
+<th>맡길 수 있는 범위</th>
+<th>확인할 결과</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>자료 확인</td>
+<td>지정한 지침의 변경 확인, 본인 기존 글·관련 공개 글 참고</td>
+<td>실제 읽은 자료, 최신 적용 기준, 필요한 사실</td>
+</tr>
+<tr>
+<td>작성·개선</td>
+<td>두 플랫폼 기획·초안·사진 배치, 기존 피드백 반영</td>
+<td>검토 가능한 원고와 미리보기</td>
+</tr>
+<tr>
+<td>발행</td>
+<td>사전에 정한 대상·횟수·공개 범위 안에서 편집기 반영</td>
+<td>공개 URL, 본문·사진·연결 링크</td>
+</tr>
+<tr>
+<td>검색 후속</td>
+<td>티스토리 소유권·사이트맵·필요한 색인 요청 확인</td>
+<td>요청 접수와 실제 색인 상태를 구분한 기록</td>
+</tr>
+<tr>
+<td>저장소 축적</td>
+<td>원고·허용된 자료·피드백·발행 기록 갱신, 커밋·푸시</td>
+<td>원격 반영과 다음 작업의 시작 파일</td>
+</tr>
+</tbody></table></div>
+<p>브라우저 로그인 만료, 자료 누락, 지침 간 충돌로 완료하지 못한 단계는 미완료로 남기고 가능한 독립 작업을 이어갑니다. 원고가 준비됐다는 이유만으로 발행·색인·푸시도 완료됐다고 묶어서 보고하지 않습니다.</p>
+<h3 id="section-21">선택 확장: 정기적인 초안 준비</h3>
+<p>원한다면 별도 요청으로 실제 반복 작업을 설정합니다. 아래 예시를 입력하지 않았다면 정기 실행은 만들어지지 않습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">매주 토요일 오전 10시(한국 시간)에 이 블로그 프로젝트에서
+내가 지정한 지침과 허용한 자료를 확인하고 다음 글 후보와 두 플랫폼 초안을 준비해줘.
+자료가 부족하면 부족한 항목을 정리하고 새 경험을 만들어내지 마.
+이미 발행한 글은 다시 만들거나 발행하지 마.
+공개 발행·광고 신청·카카오톡 전송은 이 일정에 포함하지 마.
+검토할 초안이 준비됐거나 내가 처리할 문제가 생겼을 때 알려줘.
+이 일정이 실제로 등록됐는지와 실행에 필요한 환경을 확인해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>정기 실행은 사용하는 도구의 지원 범위, 실행할 컴퓨터·앱의 상태, 로그인 유지 여부에 영향을 받습니다. 특정 브라우저 탭이 계속 열려 있을 것이라고 가정하지 않게 하고, 첫 실행 결과를 확인하세요.</p>
+<h2 id="step-9">9. 글이 쌓이면 광고 신청 준비하기</h2>
+<p>블로그에서 광고로 수익을 받으려면 <strong>티스토리는 Google 애드센스, 네이버는 애드포스트</strong>를 살펴봅니다. Google Ads는 광고를 집행하는 서비스이므로 블로그에 광고를 달아 수익을 받는 애드센스와 구분합니다.</p>
+<p>‘몇 편만 쓰면 무조건 승인’이라는 공통 기준으로 진행하지 않습니다. 꾸준히 글을 쌓으면서 독창적인 내용, 읽기 편한 구조, 사진·링크의 정상 동작과 현재 공식 가입·심사 조건을 확인합니다. 애드센스는 고유 콘텐츠와 사용자 경험을 안내하고, 네이버는 가입과 광고를 게재할 미디어의 등록·검수를 구분합니다. <a href="https://support.google.com/adsense/answer/7299563?hl=ko">애드센스 콘텐츠 준비</a>, <a href="https://help.naver.com/service/30005/contents/17695?lang=ko&osType=COMMONOS">애드포스트 가입 조건</a>.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>플랫폼</th>
+<th>진행 순서</th>
+<th>확인해야 할 상태</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>티스토리</td>
+<td>애드센스 기존 계정 확인 → 사이트 추가·연결 → 검토 요청 → 승인 후 광고 설정</td>
+<td>단순 연동인지, 검토 중인지, 승인됐는지, 보완이 필요한지</td>
+</tr>
+<tr>
+<td>네이버</td>
+<td>애드포스트 가입 → 내 블로그 미디어 등록 → 검수 → 광고 노출 설정 확인</td>
+<td>가입만 했는지, 미디어가 승인됐는지, 광고 사용이 켜져 있는지</td>
+</tr>
+</tbody></table></div>
+<p>애드센스는 사이트 승인 전 광고가 게재되지 않습니다. 네이버도 가입만으로 미디어 검수 통과를 뜻하지 않습니다. 메뉴와 심사 결과는 실제 계정 화면에서 확인합니다. <a href="https://support.google.com/adsense/answer/7584263?hl=ko">애드센스 사이트 연결·검토</a>, <a href="https://help.naver.com/service/5593/contents/15308?lang=ko&osType=PC">네이버 광고 설정</a>.</p>
+<p>먼저 준비 상태만 확인하는 프롬프트입니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 티스토리 애드센스와 네이버 애드포스트의 현재 상태를 확인해줘.
+이미 가입·신청·승인돼 있으면 중복 신청하지 마.
+각 서비스의 최신 공식 조건과 실제 계정 화면을 근거로
+가입, 사이트·미디어 등록, 검토, 승인, 광고 설정 단계를 구분해줘.
+현재 원고·사진·메뉴·공개 상태에서 보완할 점도 알려줘.
+민감한 지급 정보는 저장소에 기록하지 마.
+우선 확인과 신청 준비까지만 해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>신청할 준비가 됐으면 대상 서비스를 지정해 신청 진행을 요청합니다. 약관 동의·본인 인증·지급 정보 입력은 본인이 확인해야 하는 화면을 거칩니다. 승인 뒤에는 광고 게재, 수익 집계, 지급 설정도 각각 확인합니다. 승인만으로 수익이나 입금이 발생했다고 보고하지 않습니다.</p>
+<h2 id="step-10">10. 막혔을 때 이렇게 요청하세요</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>상황</th>
+<th>Codex에 요청할 내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>로그인된 페이지를 못 찾음</td>
+<td>‘Aside의 현재 탭과 로그인 상태를 다시 확인하고 내 블로그 주소와 대조해줘.’</td>
+</tr>
+<tr>
+<td>카카오톡 방을 못 읽음</td>
+<td>‘앱 제어 지원 여부를 확인하고, 안 되면 내가 준비한 지침 파일을 읽는 경로로 이어가줘.’</td>
+</tr>
+<tr>
+<td>MD 지침이 링크로만 남음</td>
+<td>‘파일 내용을 실제로 열어 읽고 확인하지 못한 부분은 구분해줘.’</td>
+</tr>
+<tr>
+<td>티스토리 HTML 모드가 멈춤</td>
+<td>‘현재 메뉴나 확인창 상태부터 확인하고 사용 가능한 다른 브라우저 제어 경로로 이어가줘.’</td>
+</tr>
+<tr>
+<td>사진이 빈칸·깨진 이미지로 나옴</td>
+<td>‘사진을 편집기에 직접 업로드하고 공개 화면의 실제 이미지 로딩을 확인해줘.’</td>
+</tr>
+<tr>
+<td>문단·굵기·소제목이 무너짐</td>
+<td>‘편집기에서 해당 플랫폼 서식으로 적용하고 미리보기와 공개 본문을 대조해줘.’</td>
+</tr>
+<tr>
+<td>네이버 링크가 잘못된 글로 이동</td>
+<td>‘이번에 발행한 티스토리의 실제 주소로 고치고 클릭 결과를 확인해줘.’</td>
+</tr>
+<tr>
+<td>색인 요청은 됐는데 검색에 안 나옴</td>
+<td>‘요청 접수일과 현재 URL 검사 결과를 비교하고, 반복 제출 전에 원인을 확인해줘.’</td>
+</tr>
+<tr>
+<td>광고 신청이 보류됨</td>
+<td>‘실제 보류 사유와 공식 안내를 확인해서 필요한 보완만 정리해줘.’</td>
+</tr>
+<tr>
+<td>GitHub와 공개 글 내용이 다름</td>
+<td>‘공개 본문과 보관 원고를 비교해서 수정한 내용을 기록하고 저장소를 갱신해줘.’</td>
+</tr>
+</tbody></table></div>
+<h2 id="step-11">11. 수업 결과 제출과 다음 대화 재개</h2>
+<p>수업 결과는 다음 항목이면 충분합니다.</p>
+<ul>
+<li>내 프로젝트 폴더와 비공개 GitHub 저장소 준비 여부.</li>
+<li>티스토리·네이버 공개 글 주소 각 1개.</li>
+<li>두 글의 역할 차이와 연결 링크 확인 결과.</li>
+<li>공개 이미지·본문 확인 시점.</li>
+<li>Search Console 연결·사이트맵·색인 요청의 실제 상태 또는 진행하지 못한 이유.</li>
+<li>다음 글에서 이어갈 작업 한 줄.</li>
+</ul>
+<p><strong>제출할 때 내부 지침, 카카오톡 대화, 로그인·지급 정보를 첨부하지 않습니다.</strong> 공유는 이 실습 파일과 공개 글 주소, 공개해도 되는 작업 결과로 합니다. 비공개 운영 저장소를 수업 제출 때문에 공개로 바꿀 필요는 없습니다.</p>
+<p>새 대화나 새 계정에서는 블로그 프로젝트 폴더를 열고 아래 문장을 넣습니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">이 블로그 프로젝트를 이어서 관리해줘.
+AGENTS.md, README.md, PROGRESS.md와 각 글의 publication.json을 읽고
+작성 기준과 참고 자료의 위치를 확인해줘.
+이전 발행·전송·색인 요청은 완료 기록을 먼저 보고 중복 실행하지 마.
+현재 상태를 파악한 뒤 내가 요청하는 다음 작업을 진행해줘.
+</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<h3 id="section-25">앞으로 쌓아갈 운영 기록</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
+<thead>
+<tr>
+<th>글</th>
+<th>적용한 지침 확인일</th>
+<th>티스토리 URL</th>
+<th>네이버 URL</th>
+<th>사진·링크 확인</th>
+<th>색인 요청 상태</th>
+<th>다음 보완</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>첫 실습</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>두 번째 글</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<p>이 자료의 검색·광고 안내는 2026-10-15에 공식 문서를 확인했습니다. 메뉴와 조건이 바뀌면 현재 공식 안내와 본인의 화면을 기준으로 진행하세요. 특정 팀 지침은 이 자료에 포함돼 있지 않으며, 개인이 열람할 수 있는 최신 지침을 별도로 적용합니다.</p>
+</article><footer>한 단계씩 결과를 확인한 뒤 이어가세요. 원고·검토·발행 기록은 본인의 비공개 프로젝트에 쌓고, 공유할 때는 공개 가능한 결과만 올립니다.</footer><script>
+const quickNav = document.querySelector('.quick');
+const updateOffset = () => document.documentElement.style.setProperty('--nav-offset', (quickNav.getBoundingClientRect().height + 16) + 'px');
+updateOffset();
+if (typeof ResizeObserver !== 'undefined') new ResizeObserver(updateOffset).observe(quickNav);
+document.querySelectorAll('.copy').forEach(button => {
+  button.addEventListener('click', async () => {
+    const box = button.closest('.prompt');
+    const pre = box.querySelector('pre');
+    const status = box.querySelector('.copy-status');
+    try {
+      if (!navigator.clipboard || !window.isSecureContext) throw new Error('clipboard unavailable');
+      await navigator.clipboard.writeText(pre.textContent);
+      status.textContent = '복사했습니다. ChatGPT 앱(Codex)의 내 블로그 프로젝트 입력창에 붙여넣으세요.';
+      button.textContent = '복사됨 ✓';
+      setTimeout(() => { button.textContent = '문장 복사'; }, 4000);
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(pre);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      status.textContent = '문장을 선택했습니다. Ctrl+C(Mac은 Cmd+C)로 복사한 뒤 입력창에 붙여넣으세요.';
+    }
+  });
+});
+</script></main></body></html>

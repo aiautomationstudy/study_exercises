@@ -14,6 +14,7 @@
     h2 { font-size: 21px; margin: 28px 0 14px; }
     .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .card { display: block; padding: 22px; background: white; border: 1px solid #e3ddd2; border-radius: 16px; color: inherit; text-decoration: none; }
+    .card.wide { grid-column: 1 / -1; }
     .card:hover { border-color: #0e7c74; }
     .card:focus-visible { outline: 3px solid #0e7c74; outline-offset: 4px; }
     .card strong { display: block; font-size: 19px; margin-bottom: 8px; }
@@ -29,6 +30,7 @@
     <p class="intro">필요한 자료를 누르면 바로 열립니다. 실습 프롬프트는 문서의 「프롬프트 복사」 버튼을 눌러 사용하세요.</p>
     <h2>2회차 · 10월 15일</h2>
     <nav class="cards" aria-label="2회차 웹앱 실습 자료">
+      <a class="card wide" href="https://docs.google.com/presentation/d/1_XW97OK2dwX2z5WZZXbg7Rmv8DTIXKDS/edit?usp=sharing&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><strong>오늘 발표자료 · 말하면, 만들어 줍니다</strong><span>2회차 수업 슬라이드입니다. 구글 슬라이드에서 열리고, 로그인하지 않아도 볼 수 있습니다.</span></a>
       <a class="card" href="2회차_웹앱만들기_실습안내.html"><strong>2회차 실습 안내</strong><span>만들고 싶은 것을 편하게 말하면 Antigravity가 만들어 줍니다. 오늘 할 일과 바로 쓸 말.</span></a>
       <a class="card" href="2회차_막혔을때_해결안내.html"><strong>막혔을 때 안내</strong><span>AI가 모르는 두 가지만 알려 주세요. 하던 AI → 다른 AI → 먼저 해 본 친구 순서로.</span></a>
       <a class="card" href="2회차_AI와_개인정보_보안.html"><strong>AI와 개인정보·보안</strong><span>100% 믿지도, 겁내서 안 쓰지도 말고 알고 쓰기. 학습 설정 끄는 곳과 실습에서 지킬 것.</span></a>

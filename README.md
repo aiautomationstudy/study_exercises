@@ -1,5 +1,14 @@
 # study_exercises
 
+## AI 시대 개발자 성장 로드맵
+
+[웹에서 읽기 — E3 Junior에서 E7 Senior Staff까지](https://aiautomationstudy.github.io/study_exercises/ai-developer-roadmap/)
+
+개발자 레벨과 직급에 따라 문제의 범위·기대 성과·다음 단계 준비가 어떻게 달라지는지 정리한 16편의 가이드입니다.
+자기 진단, 레벨별 실습, AI 협업, 기술 기반, 창업 경로, 실행 계획과 기록 양식을 제공합니다.
+영상의 커리어 회고와 기업의 공개 성장 기준·연구를 바탕으로 작성했으며, 회사별 공식 승진 기준과는 구분합니다.
+[Markdown 원문과 전체 목차](ai-developer-roadmap/README.md) · [출처](ai-developer-roadmap/15-sources.md)
+
 ## AI 자동화 스터디 3기
 
 [기본실습 — 내 지침으로 블로그 포스팅 자동화하기](https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_기본실습_내_지침으로_블로그_포스팅_자동화하기.html)

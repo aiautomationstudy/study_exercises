@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · E4 Mid-level Engineer: 프로젝트를 끝까지 책임지는 사람 | AI 시대 개발자 성장 로드맵</title>
+<meta name="description" content="요구사항부터 출시·운영·복구까지 프로젝트를 완수하는 책임.">
+<meta name="theme-color" content="#123e3b"><link rel="canonical" href="https://aiautomationstudy.github.io/study_exercises/ai-developer-roadmap/04-e4-mid-level.html">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="assets/style.css"><script src="assets/site.js" defer></script>
+</head><body class="chapter">
+<a class="skip-link" href="#main">본문으로 바로 가기</a>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">↗</span><span>AI 시대 개발자 <b>성장 로드맵</b></span></a><span class="edition">2026.10 · 16편의 가이드</span></header>
+<div class="layout"><aside class="sidebar"><details id="chapter-menu" open><summary>전체 문서 <span aria-hidden="true">⌄</span></summary>
+<label class="search-label" for="chapter-search">문서 제목 검색</label><input id="chapter-search" type="search" placeholder="레벨, AI, 창업…" autocomplete="off">
+<nav id="chapter-nav" aria-label="전체 문서"><a href="index.html">처음으로 · 읽기 안내</a>
+<a href="01-level-map.html">01 · 개발자 레벨 지도: E3에서 E7까지</a>
+<a href="02-self-assessment.html">02 · 자기 진단: 직함보다 최근의 증거</a>
+<a href="03-e3-junior.html">03 · E3 Junior Engineer: 작은 문제를 믿고 맡길 수 있는 사람</a>
+<a href="04-e4-mid-level.html" aria-current="page">04 · E4 Mid-level Engineer: 프로젝트를 끝까지 책임지는 사람</a>
+<a href="05-e5-senior.html">05 · E5 Senior Engineer: 팀의 다음 문제를 정하는 사람</a>
+<a href="06-e6-staff.html">06 · E6 Staff Engineer: 다른 숙련자들이 함께 성과를 내게 하는 사람</a>
+<a href="07-e7-senior-staff.html">07 · E7 Senior Staff Engineer: 기회를 발견하고 중요한 결과를 만드는 사람</a>
+<a href="08-principal-and-paths.html">08 · Principal 이후와 경로 선택</a>
+<a href="09-ai-collaboration.html">09 · 레벨별 AI 협업: 생성보다 판단과 검증의 범위를 키우기</a>
+<a href="10-technical-foundations.html">10 · 레벨별 기술 기반: 만들면서 원리를 익히는 순서</a>
+<a href="11-entrepreneur-path.html">11 · 같은 레벨을 제품과 창업에서 연습하기</a>
+<a href="12-growth-plan.html">12 · 다음 레벨을 준비하는 2주·6주·12주 계획</a>
+<a href="13-templates.html">13 · 바로 쓰는 진단·성과·피드백 양식</a>
+<a href="14-video-notes.html">14 · 참고 영상에서 가져온 성장 원칙</a>
+<a href="15-sources.html">15 · 출처와 더 읽을 자료</a></nav><p id="search-status" class="search-status" role="status"></p>
+</details><p class="sidebar-note">작게 만들고, 끝까지 확인하고,<br>책임의 범위를 넓혀 갑니다.</p></aside>
+<main id="main" tabindex="-1"><div class="reading-meta"><span>GUIDE 04 / 15</span><a class="source-link" href="04-e4-mid-level.md" download>Markdown 원문 ↓</a></div>
+<article class="prose"><h1 id="04-e4-mid-level-engineer-프로젝트를-끝까지-책임지는-사람">04 · E4 Mid-level Engineer: 프로젝트를 끝까지 책임지는 사람</h1>
+<p><strong>핵심 질문: “목표를 받으면 방법을 정하고 출시 뒤 문제까지 처리할 수 있는가?”</strong></p>
+<p>이 단계의 독립성은 도움을 받지 않는다는 뜻이 아닙니다. 필요한 결정을 내리고, 적절한 때 도움을 구하고, 출시·운영의 빈틈을 직접 찾아 메우는 능력입니다. 영상은 E3→E4 전환에서 독립적인 완수를 강조합니다. <a href="https://www.youtube.com/watch?v=lEzkHeqd-Ck&amp;t=1102s">18:22~18:54</a></p>
+<h2 id="e3와-e4의-차이">E3와 E4의 차이</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="가로로 스크롤할 수 있는 표"><table>
+<thead>
+<tr>
+<th>장면</th>
+<th>작은 기능을 맡을 때</th>
+<th>프로젝트를 책임질 때</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>요청</td>
+<td>정해진 화면을 구현한다</td>
+<td>필요한 화면·저장·권한·실패 흐름을 정한다</td>
+</tr>
+<tr>
+<td>일정</td>
+<td>작업 하나의 진행 상황을 알린다</td>
+<td>의존 관계와 위험을 보고 범위를 조정한다</td>
+</tr>
+<tr>
+<td>오류</td>
+<td>재현하고 수정을 받는다</td>
+<td>원인 가설을 세우고 확인하며 해결을 이끈다</td>
+</tr>
+<tr>
+<td>출시</td>
+<td>배포 도움을 받는다</td>
+<td>확인·되돌리기·운영 담당까지 준비한다</td>
+</tr>
+<tr>
+<td>완료</td>
+<td>기능이 동작한다</td>
+<td>사용자에게 전달되고 후속 문제도 정리된다</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="https://dropbox.github.io/dbx-career-framework/ic2_software_engineer.html">Dropbox IC2</a>는 정의된 프로젝트의 설계·구현·출시를, <a href="https://dropbox.github.io/dbx-career-framework/ic3_software_engineer.html">IC3</a>는 더 열린 문제와 여러 구성 요소에 걸친 독립적인 해결을 설명합니다. 이 자료는 그 사이의 책임 확장을 참고합니다. 번호의 대응표는 아닙니다.</p>
+<h2 id="연습-프로젝트-소규모-모임-예약">연습 프로젝트: 소규모 모임 예약</h2>
+<p>사용자가 가능한 시간을 고르고 자신의 예약을 변경·취소하게 만듭니다. 가짜 계정과 가짜 일정으로 먼저 시험합니다. 외부 발송·실결제는 이 과제에 필요하지 않습니다.</p>
+<p><strong>기능보다 먼저 정할 것</strong></p>
+<ul>
+<li>한 시간대에 몇 명까지 예약할 수 있는가?</li>
+<li>같은 시간에 두 사람이 마지막 자리를 누르면 어떻게 되는가?</li>
+<li>예약자는 자기 예약만 볼 수 있는가? 운영자는 무엇을 볼 수 있는가?</li>
+<li>통신이 끊겼을 때 성공 여부를 어떻게 알리는가?</li>
+<li>삭제·취소는 어떤 기록을 남기는가?</li>
+<li>장애가 나면 누가 어떤 순서로 되돌리는가?</li>
+</ul>
+<p>화면의 버튼을 숨기는 것만으로 접근 권한이 지켜지지 않습니다. 실제 데이터를 주는 서버 또는 저장 서비스에서도 해당 사용자의 권한을 검사해야 합니다.</p>
+<h2 id="하나의-프로젝트를-완수하는-순서">하나의 프로젝트를 완수하는 순서</h2>
+<ol>
+<li><strong>목표:</strong> 누가 어떤 일을 끝낼 수 있어야 하는지 한 문장으로 씁니다.</li>
+<li><strong>범위:</strong> 이번에 하지 않을 기능까지 정해 작업의 끝을 만듭니다.</li>
+<li><strong>구조:</strong> 화면→요청→처리→저장의 흐름과 외부 서비스를 적습니다.</li>
+<li><strong>작업 분할:</strong> 먼저 예약 한 건을 끝까지 처리한 뒤 변경·취소를 더합니다.</li>
+<li><strong>검증:</strong> 정상, 오류, 동시 요청, 권한을 나누어 확인합니다.</li>
+<li><strong>출시:</strong> 실제 주소·설정·데이터·로그를 확인합니다. 내 컴퓨터의 성공과 구분합니다.</li>
+<li><strong>복구:</strong> 이전 코드로 되돌리는 것과 데이터 복원이 별개인지 확인합니다.</li>
+<li><strong>사용 후 확인:</strong> 사용자가 막힌 곳을 고치고 알려 줍니다.</li>
+</ol>
+<h2 id="ai를-맡기는-단위도-프로젝트에-맞춥니다">AI를 맡기는 단위도 프로젝트에 맞춥니다</h2>
+<p>한 번에 “예약 서비스를 완성해”라고 맡기면 확인할 범위가 커집니다. <strong>목표는 전체로 공유하고 변경은 작게 검증</strong>합니다.</p>
+<pre><code class="language-text">이 프로젝트의 목표는 예약 생성·변경·취소다.
+먼저 데이터·권한·중복 예약·실패·복구 흐름을 검토해 줘.
+단순한 구조를 제안하고, 대안 하나와 장단점을 비교해 줘.
+작업을 나누되 각 단계가 실제로 확인 가능한 결과를 갖게 해 줘.
+현재 단계의 구현과 확인을 끝낸 뒤 다음 단계로 가자.
+완료 보고에는 실행한 검사와 확인하지 못한 부분을 나눠 줘.
+</code></pre>
+<p>사용 중인 API나 라이브러리의 동작은 공식 문서와 설치 버전에서 확인합니다. AI가 제안한 명령을 실행했다면 결과를 읽고, “성공했다”는 설명과 실제 종료·화면·저장 결과가 맞는지 봅니다.</p>
+<h2 id="e4에서-필요한-기술-판단">E4에서 필요한 기술 판단</h2>
+<p>웹 요청과 응답, 데이터 저장과 식별자, 로그인과 권한의 차이, 중복 처리 방지, 테스트, 로그, 설정 관리, 배포와 복구를 프로젝트 안에서 익힙니다. 복잡한 분산 시스템을 먼저 만들 필요는 없습니다.</p>
+<p>오류를 고칠 때는 <strong>재현→가설→한 가지 확인→수정→기존 동작 확인</strong>을 반복합니다. 그때그때 AI가 권한 새 라이브러리를 넣기보다 현재 구조에서 원인을 좁힙니다.</p>
+<h2 id="남겨야-할-성과-묶음">남겨야 할 성과 묶음</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="가로로 스크롤할 수 있는 표"><table>
+<thead>
+<tr>
+<th>자료</th>
+<th>보여 주는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>목표·범위·일정 한 장</td>
+<td>무엇을 책임졌는가</td>
+</tr>
+<tr>
+<td>구조·데이터 흐름</td>
+<td>어떻게 동작하는가</td>
+</tr>
+<tr>
+<td>테스트 결과</td>
+<td>무엇까지 확인했는가</td>
+</tr>
+<tr>
+<td>배포·복구 기록</td>
+<td>실제 서비스에서 책임졌는가</td>
+</tr>
+<tr>
+<td>사용자 피드백과 수정</td>
+<td>전달 후에도 끝까지 챙겼는가</td>
+</tr>
+</tbody>
+</table></div>
+<p>서비스가 아직 실제로 사용되지 않았다면 “운영 완료” 대신 “시험 환경에서 확인”이라고 적습니다. 이 구분 자체가 신뢰를 만듭니다.</p>
+<h2 id="e4에서-오래-머무는-이유와-e5-전환">E4에서 오래 머무는 이유와 E5 전환</h2>
+<p>주어진 프로젝트를 빨리 끝내는 것만 반복하면 다음 문제를 정하는 경험은 늘지 않을 수 있습니다. 영상에서도 E4→E5가 가장 어려웠던 전환으로 소개되며, 제품 방향·협업·멘토링·더 긴 시야가 강조됩니다. <a href="https://www.youtube.com/watch?v=lEzkHeqd-Ck&amp;t=1194s">19:54~21:24</a></p>
+<p>다음 프로젝트는 요청을 받기 전에 제안해 보세요.</p>
+<ul>
+<li>가장 자주 생기는 사용자 불편 세 가지를 모읍니다.</li>
+<li>왜 지금 하나를 먼저 풀어야 하는지 비교합니다.</li>
+<li>최소한의 해결 방법과 결과 측정 방법을 적습니다.</li>
+<li>동료 또는 협업자에게 의견을 받고 함께 실행합니다.</li>
+</ul>
+<p><strong>다음 레벨을 준비했다는 신호:</strong> 프로젝트를 혼자 끝내는 데 더해 “다음에 무엇을 해야 하는가”를 근거로 설명하고, 다른 사람과 함께 성과를 냅니다.</p>
+<p>다음: <a href="05-e5-senior.html">E5 · 팀의 방향과 성과를 만들기</a></p></article>
+<nav class="pager" aria-label="이전·다음 문서"><a href="03-e3-junior.html"><small>이전 문서</small>03 · E3 Junior Engineer: 작은 문제를 믿고 맡길 수 있는 사람</a><a href="05-e5-senior.html"><small>다음 문서</small>05 · E5 Senior Engineer: 팀의 다음 문제를 정하는 사람 →</a></nav>
+<footer>기준일 2026.10.18 · 학습과 성장 대화를 위한 자료<br><a href="15-sources.html">출처와 해석의 한계</a> · <a href="README.md">읽기 안내 원문</a> · <a href="#main">맨 위로 ↑</a></footer>
+</main><aside class="toc-panel"><p class="eyebrow">이 문서의 목차</p><nav aria-label="현재 문서 목차"><div class="toc">
+<ul>
+<li><a href="#e3와-e4의-차이">E3와 E4의 차이</a></li>
+<li><a href="#연습-프로젝트-소규모-모임-예약">연습 프로젝트: 소규모 모임 예약</a></li>
+<li><a href="#하나의-프로젝트를-완수하는-순서">하나의 프로젝트를 완수하는 순서</a></li>
+<li><a href="#ai를-맡기는-단위도-프로젝트에-맞춥니다">AI를 맡기는 단위도 프로젝트에 맞춥니다</a></li>
+<li><a href="#e4에서-필요한-기술-판단">E4에서 필요한 기술 판단</a></li>
+<li><a href="#남겨야-할-성과-묶음">남겨야 할 성과 묶음</a></li>
+<li><a href="#e4에서-오래-머무는-이유와-e5-전환">E4에서 오래 머무는 이유와 E5 전환</a></li>
+</ul>
+</div>
+</nav><a class="toc-start" href="02-self-assessment.html">오늘의 첫 행동<br><b>최근 작업 3개로 점검하기 →</b></a></aside></div>
+<div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
+</body></html>

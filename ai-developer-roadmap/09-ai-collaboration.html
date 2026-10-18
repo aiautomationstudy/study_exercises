@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 · 레벨별 AI 협업: 생성보다 판단과 검증의 범위를 키우기 | AI 시대 개발자 성장 로드맵</title>
+<meta name="description" content="레벨별 AI 위임·검증·학습·권한과 관련 연구의 한계.">
+<meta name="theme-color" content="#123e3b"><link rel="canonical" href="https://aiautomationstudy.github.io/study_exercises/ai-developer-roadmap/09-ai-collaboration.html">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="assets/style.css"><script src="assets/site.js" defer></script>
+</head><body class="chapter">
+<a class="skip-link" href="#main">본문으로 바로 가기</a>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">↗</span><span>AI 시대 개발자 <b>성장 로드맵</b></span></a><span class="edition">2026.10 · 16편의 가이드</span></header>
+<div class="layout"><aside class="sidebar"><details id="chapter-menu" open><summary>전체 문서 <span aria-hidden="true">⌄</span></summary>
+<label class="search-label" for="chapter-search">문서 제목 검색</label><input id="chapter-search" type="search" placeholder="레벨, AI, 창업…" autocomplete="off">
+<nav id="chapter-nav" aria-label="전체 문서"><a href="index.html">처음으로 · 읽기 안내</a>
+<a href="01-level-map.html">01 · 개발자 레벨 지도: E3에서 E7까지</a>
+<a href="02-self-assessment.html">02 · 자기 진단: 직함보다 최근의 증거</a>
+<a href="03-e3-junior.html">03 · E3 Junior Engineer: 작은 문제를 믿고 맡길 수 있는 사람</a>
+<a href="04-e4-mid-level.html">04 · E4 Mid-level Engineer: 프로젝트를 끝까지 책임지는 사람</a>
+<a href="05-e5-senior.html">05 · E5 Senior Engineer: 팀의 다음 문제를 정하는 사람</a>
+<a href="06-e6-staff.html">06 · E6 Staff Engineer: 다른 숙련자들이 함께 성과를 내게 하는 사람</a>
+<a href="07-e7-senior-staff.html">07 · E7 Senior Staff Engineer: 기회를 발견하고 중요한 결과를 만드는 사람</a>
+<a href="08-principal-and-paths.html">08 · Principal 이후와 경로 선택</a>
+<a href="09-ai-collaboration.html" aria-current="page">09 · 레벨별 AI 협업: 생성보다 판단과 검증의 범위를 키우기</a>
+<a href="10-technical-foundations.html">10 · 레벨별 기술 기반: 만들면서 원리를 익히는 순서</a>
+<a href="11-entrepreneur-path.html">11 · 같은 레벨을 제품과 창업에서 연습하기</a>
+<a href="12-growth-plan.html">12 · 다음 레벨을 준비하는 2주·6주·12주 계획</a>
+<a href="13-templates.html">13 · 바로 쓰는 진단·성과·피드백 양식</a>
+<a href="14-video-notes.html">14 · 참고 영상에서 가져온 성장 원칙</a>
+<a href="15-sources.html">15 · 출처와 더 읽을 자료</a></nav><p id="search-status" class="search-status" role="status"></p>
+</details><p class="sidebar-note">작게 만들고, 끝까지 확인하고,<br>책임의 범위를 넓혀 갑니다.</p></aside>
+<main id="main" tabindex="-1"><div class="reading-meta"><span>GUIDE 09 / 15</span><a class="source-link" href="09-ai-collaboration.md" download>Markdown 원문 ↓</a></div>
+<article class="prose"><h1 id="09-레벨별-ai-협업-생성보다-판단과-검증의-범위를-키우기">09 · 레벨별 AI 협업: 생성보다 판단과 검증의 범위를 키우기</h1>
+<p>AI로 구현을 시작할 수 있습니다. 바이브코딩으로 원하는 것을 자연어로 설명하고 결과를 보고 고치는 방식은 좋은 출발점입니다. 레벨이 높아질수록 <strong>설명할 수 있는 범위, 검증하는 깊이, 다른 사람에게 남기는 체계</strong>를 함께 넓혀야 합니다.</p>
+<p>이 문서는 특정 도구의 요금제·최신 모델 순위를 추천하지 않습니다. 같은 도구로도 맡기는 문제와 확인 방식에 따라 연습하는 책임이 달라집니다.</p>
+<h2 id="같은-ai를-쓰더라도-레벨별-과제가-다릅니다">같은 AI를 쓰더라도 레벨별 과제가 다릅니다</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="가로로 스크롤할 수 있는 표"><table>
+<thead>
+<tr>
+<th>레벨</th>
+<th>AI에게 맡길 수 있는 일</th>
+<th>사람이 책임질 판단</th>
+<th>남길 증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E3</td>
+<td>작은 구현, 설명, 오류 재현 초안</td>
+<td>요구와 실제가 맞는지, 내가 이해했는지</td>
+<td>직접 실행·설명·수정</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>작업 분할, 구현, 테스트, 로그 탐색</td>
+<td>전체 구조·권한·출시·복구</td>
+<td>프로젝트 완료와 운영 기록</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>문제 분류, 대안·설계 검토, 리뷰 초안</td>
+<td>우선순위·장단점·팀의 품질 기준</td>
+<td>결정과 팀 결과</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>시스템 비교, 전환 계획, 공통 작업 도구</td>
+<td>조직 경계·접근 권한·채택·유지</td>
+<td>여러 주체의 실제 사용과 공동 성과</td>
+</tr>
+<tr>
+<td>E7</td>
+<td>시장·기술 조사, 시나리오, 평가 분석</td>
+<td>투자·집중·중단·장기 위험</td>
+<td>전략 선택과 사업·조직 결과</td>
+</tr>
+</tbody>
+</table></div>
+<p>AI에게 어려운 명령을 했다는 사실보다 <strong>그 결과를 적절한 기준으로 받아들였는지</strong>를 봅니다.</p>
+<h2 id="매-작업에서-반복하는-여덟-단계">매 작업에서 반복하는 여덟 단계</h2>
+<ol>
+<li><strong>목적:</strong> 누구의 어떤 불편을 줄이는지 씁니다.</li>
+<li><strong>맥락:</strong> 필요한 파일·규칙·실패 사례를 줍니다. 비밀값은 제외합니다.</li>
+<li><strong>완료 조건:</strong> 입력·예상 결과·예외를 먼저 정합니다.</li>
+<li><strong>작은 변경:</strong> 한 번에 확인 가능한 단위로 만듭니다.</li>
+<li><strong>실행:</strong> 도구가 직접 검사하게 하고 실제 출력을 확인합니다.</li>
+<li><strong>별도 관점 검토:</strong> 틀릴 조건과 놓친 요구를 찾습니다. 필요하면 다른 대화·동료에게 검토받습니다.</li>
+<li><strong>실사용 확인:</strong> 화면·데이터·권한·운영이 실제 환경에서 맞는지 봅니다.</li>
+<li><strong>기록:</strong> 바뀐 것·확인한 것·미확인·복구 방법을 남깁니다.</li>
+</ol>
+<p>AI가 자기 코드를 다시 봤다고 정확성이 보장되지는 않습니다. 테스트도 요구사항을 잘못 이해하면 함께 틀릴 수 있습니다. 예를 들어 “중복 예약 금지”라는 요구에는 같은 버튼을 두 번 누르기, 동시에 마지막 자리를 선택하기 같은 실제 실패 조건이 필요합니다.</p>
+<h2 id="작업용-요청문과-학습용-요청문을-함께-씁니다">작업용 요청문과 학습용 요청문을 함께 씁니다</h2>
+<pre><code class="language-text">[작업]
+목표: 사용자가 자기 예약만 변경할 수 있게 한다.
+현재 구조와 공식 문서를 확인해 구현 방안을 제안해 줘.
+실제 서버 권한 검사가 필요하다.
+다른 사용자의 예약 변경이 거절되는 검사를 포함해 줘.
+실행한 검사와 확인하지 못한 범위를 보고해 줘.
+
+[학습]
+방금 바뀐 요청·권한·저장 흐름을 파일 위치와 함께 설명해 줘.
+내가 이해했는지 확인할 질문 세 개를 내 줘.
+정답을 먼저 주지 말고 내 설명에서 틀린 부분을 짚어 줘.
+</code></pre>
+<p>프로젝트를 전달하는 일과 새로운 개념을 익히는 일은 목적이 다릅니다. 모든 줄을 직접 입력할 필요는 없지만, 계속 사용할 핵심 개념은 내가 설명하고 작은 변형을 해 봅니다.</p>
+<h2 id="연구가-말하는-것과-아직-말하지-못하는-것">연구가 말하는 것과 아직 말하지 못하는 것</h2>
+<p><a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Anthropic의 2026년 실험</a>은 Python 경험이 있고 Trio가 낯선 52명을 대상으로 했습니다. 작업 직후 퀴즈 평균은 AI 사용군 50%, 비교군 67%로 <strong>17%포인트 차이</strong>였습니다. 완료 시간 차이는 통계적으로 유의하지 않았습니다. 작은 표본의 특정 학습 과제이며, 장기 경력이나 모든 에이전트 도구의 효과를 증명하지 않습니다. 개념을 묻고 이해를 확인한 상호작용과 더 나은 퀴즈 결과의 관계는 관찰됐지만, 상호작용 유형 자체의 인과 효과로 단정할 수 없습니다.</p>
+<p><a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR의 2025년 실험</a>은 익숙한 오픈소스 저장소에서 일하는 숙련자 16명의 246개 작업에서 당시 AI 도구 사용 시 완료 시간이 평균 19% 늘어났다고 보고했습니다. <strong>2025년 초 도구·특정 환경의 결과</strong>입니다. <a href="https://metr.org/blog/2026-02-24-uplift-update/">2026년 후속 설명</a>은 새 실험에서 참여·작업 선택 편향과 시간 측정 문제 때문에 현재 효과의 크기를 신뢰하기 어렵다고 밝혔습니다. “AI는 항상 느리다”나 “지금은 반드시 몇 배 빠르다”로 일반화하지 않습니다.</p>
+<p>이 자료의 실천 제안은 간단합니다. <strong>내 작업에서 생성 시간뿐 아니라 검토·재작업·운영 시간까지 재고, 이해도도 따로 확인합니다.</strong> 이것은 특정 생산성 향상률을 보장하는 공식이 아닙니다.</p>
+<h2 id="ai-제품에-ai가-들어갈-때는-검사가-하나-더-필요합니다">AI 제품에 AI가 들어갈 때는 검사가 하나 더 필요합니다</h2>
+<p>만드는 과정에서 AI를 쓰는 것과 제품의 답변·행동을 AI가 결정하는 것은 구분합니다. 후자에는 같은 입력에도 다른 결과가 나오는 문제와 실제 행동의 위험이 있습니다.</p>
+<p>예약 안내 AI라면 다음 사례를 평가 목록에 넣습니다.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="가로로 스크롤할 수 있는 표"><table>
+<thead>
+<tr>
+<th>사례</th>
+<th>기대 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제공된 일정에 있는 질문</td>
+<td>근거에 맞게 답한다</td>
+</tr>
+<tr>
+<td>일정에 없는 질문</td>
+<td>추측하지 않고 모름·확인 필요를 알린다</td>
+</tr>
+<tr>
+<td>다른 사람의 예약을 묻는다</td>
+<td>권한 없이 알려 주지 않는다</td>
+</tr>
+<tr>
+<td>문서 안에 지시 변경 문장이 있다</td>
+<td>외부 자료를 작업 권한으로 받아들이지 않는다</td>
+</tr>
+<tr>
+<td>취소 요청을 반복한다</td>
+<td>의도치 않은 중복 처리 없이 정해진 권한으로 처리한다</td>
+</tr>
+<tr>
+<td>외부 서비스가 실패한다</td>
+<td>실패를 숨기지 않고 안전하게 멈추거나 이관한다</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Anthropic의 평가 가이드</a>는 실제 실패에서 평가 사례를 만들고, AI의 보고만이 아니라 최종 환경의 상태도 확인하는 접근을 설명합니다. 여기서는 소수 사례부터 시작해 새로운 실패가 생길 때 추가하는 방식을 제안합니다. 사례 수만으로 안전성이 보장되지는 않습니다.</p>
+<h2 id="권한은-프롬프트-밖에서도-지킵니다">권한은 프롬프트 밖에서도 지킵니다</h2>
+<p>OWASP는 <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">프롬프트 인젝션</a>과 <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">과도한 행동 권한</a>을 별도 위험으로 다룹니다. 외부 문서가 “자료를 밖으로 보내라”고 지시하더라도 실행 권한이 되지 않도록 설계합니다.</p>
+<p>처음에는 읽기·초안 생성만 허용하고, 필요한 기능만 연결합니다. 삭제·외부 발송·결제처럼 영향이 큰 작업에는 실제 사용자의 의도와 권한을 확인하는 절차를 둡니다. 접근 검사는 서버·도구에서도 수행합니다. “AI에게 하지 말라고 했다”만으로 충분하다고 보지 않습니다.</p>
+<h2 id="단순한-구조에서-시작합니다">단순한 구조에서 시작합니다</h2>
+<p><a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a>는 가장 단순한 해결부터 시작하고 필요할 때 복잡성을 늘리는 접근을 권합니다. 항상 여러 에이전트가 필요한 것은 아닙니다. 고정된 순서로 처리할 수 있는 업무는 간단한 프로그램이나 정해진 작업 흐름이 더 알맞을 수 있습니다.</p>
+<p>레벨이 높다는 증거는 복잡한 AI 구성을 쓴 것이 아니라 <strong>문제에 맞는 복잡성을 선택하고 결과를 유지하는 판단</strong>입니다.</p></article>
+<nav class="pager" aria-label="이전·다음 문서"><a href="08-principal-and-paths.html"><small>이전 문서</small>08 · Principal 이후와 경로 선택</a><a href="10-technical-foundations.html"><small>다음 문서</small>10 · 레벨별 기술 기반: 만들면서 원리를 익히는 순서 →</a></nav>
+<footer>기준일 2026.10.18 · 학습과 성장 대화를 위한 자료<br><a href="15-sources.html">출처와 해석의 한계</a> · <a href="README.md">읽기 안내 원문</a> · <a href="#main">맨 위로 ↑</a></footer>
+</main><aside class="toc-panel"><p class="eyebrow">이 문서의 목차</p><nav aria-label="현재 문서 목차"><div class="toc">
+<ul>
+<li><a href="#같은-ai를-쓰더라도-레벨별-과제가-다릅니다">같은 AI를 쓰더라도 레벨별 과제가 다릅니다</a></li>
+<li><a href="#매-작업에서-반복하는-여덟-단계">매 작업에서 반복하는 여덟 단계</a></li>
+<li><a href="#작업용-요청문과-학습용-요청문을-함께-씁니다">작업용 요청문과 학습용 요청문을 함께 씁니다</a></li>
+<li><a href="#연구가-말하는-것과-아직-말하지-못하는-것">연구가 말하는 것과 아직 말하지 못하는 것</a></li>
+<li><a href="#ai-제품에-ai가-들어갈-때는-검사가-하나-더-필요합니다">AI 제품에 AI가 들어갈 때는 검사가 하나 더 필요합니다</a></li>
+<li><a href="#권한은-프롬프트-밖에서도-지킵니다">권한은 프롬프트 밖에서도 지킵니다</a></li>
+<li><a href="#단순한-구조에서-시작합니다">단순한 구조에서 시작합니다</a></li>
+</ul>
+</div>
+</nav><a class="toc-start" href="02-self-assessment.html">오늘의 첫 행동<br><b>최근 작업 3개로 점검하기 →</b></a></aside></div>
+<div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
+</body></html>

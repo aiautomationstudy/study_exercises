@@ -14,13 +14,42 @@ button.copy{flex:0 0 auto;border:0;border-radius:7px;background:var(--brand);col
 pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;font-size:15px;line-height:1.8;tab-size:2}pre code{background:none;padding:0;font:inherit}.copy-status{min-height:0;margin:0;padding:0 16px;color:var(--brand);font-size:14px}.copy-status:not(:empty){padding-bottom:12px}
 .tablewrap{overflow-x:auto;max-width:100%;margin:18px 0;scrollbar-width:thin}table{width:100%;border-collapse:collapse;font-size:15px}td,th{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;min-width:105px}th{background:var(--box);font-weight:800}table td:first-child{min-width:130px}
 .quick{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:3;background:var(--bg);padding:9px 0 14px}.quick a{background:white;border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:14px;font-weight:700;text-decoration:none}
-.step-menu{background:var(--soft);padding:14px 18px;border-radius:10px;margin:22px 0}.step-menu summary{cursor:pointer;font-weight:800}.step-menu ol{margin:12px 0}.step-menu li{font-size:16px}
+.easy-start{border:2px solid var(--brand);border-radius:14px;padding:8px 22px 20px;margin:24px 0}.easy-start h2{border:0;padding-top:0;margin-top:20px}.step-menu{background:var(--soft);padding:14px 18px;border-radius:10px;margin:22px 0}.step-menu summary{cursor:pointer;font-weight:800}.step-menu ol{margin:12px 0}.step-menu li{font-size:16px}
 .skip{position:absolute;top:-80px;left:16px;z-index:10;background:white;padding:10px}.skip:focus{top:8px}footer{color:var(--muted);font-size:14px;margin-top:24px}
 @media(max-width:600px){body{font-size:16px}main{padding:14px 12px 48px}article{padding:24px 18px}h1{font-size:25px}h2{font-size:22px}h3{font-size:18px}.prompt-tools{padding:10px 12px;font-size:12px;gap:8px}pre{font-size:14px;padding:14px}.quick{gap:6px}.quick a{padding:5px 10px;font-size:13px}td,th{padding:8px;min-width:120px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{body{background:white}main{max-width:none;padding:0}article{border:0;padding:0}.top,.quick,.copy,.copy-status,.skip,footer,.step-menu{display:none}pre{font-size:11px}.prompt{break-inside:avoid}.tablewrap{overflow:visible}h2,h3{break-after:avoid}a{color:inherit}}
-</style></head><body><a class="skip" href="#guide-title">본문으로 이동</a><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료실로 돌아가기</a><a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3%EA%B8%B0/%EC%8B%A4%EC%8A%B5/3%EA%B8%B0_%EA%B8%B0%EB%B3%B8%EC%8B%A4%EC%8A%B5_%EB%82%B4_%EC%A7%80%EC%B9%A8%EC%9C%BC%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%ED%8F%AC%EC%8A%A4%ED%8C%85_%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0.md">안내서 원문</a></div><p class="date">AI 자동화 스터디 3기 · 기본 실습 · 2026년 10월 16일</p><nav class="quick" aria-label="안내서 바로가기"><a href="#prepare">사전준비</a><a href="#step-3">내 프로젝트</a><a href="#step-5">글 작성</a><a href="#step-6">발행 확인</a><a href="#step-10">막혔을 때</a><a href="#step-11">결과 공유</a></nav><article aria-labelledby="guide-title"><h1 id="guide-title">3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</h1><details class="step-menu"><summary>단계별로 찾아가기</summary><ol><li><a href="#prepare">먼저: 실습 전 준비</a></li><li><a href="#step-1">1. 이번 실습에서 완성할 것</a></li><li><a href="#step-2">2. 시작 전에 준비하기</a></li><li><a href="#step-3">3. 내 GitHub 저장소와 프로젝트 만들기</a></li><li><a href="#step-4">4. 내 지침과 참고 글 읽히기</a></li><li><a href="#step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</a></li><li><a href="#step-6">6. 검토한 글을 발행하고 연결하기</a></li><li><a href="#step-7">7. 티스토리 Search Console 연결과 색인 요청</a></li><li><a href="#step-8">8. 다음 글부터 줄어드는 작업</a></li><li><a href="#step-9">9. 글이 쌓이면 광고 신청 준비하기</a></li><li><a href="#step-10">10. 막혔을 때 이렇게 요청하세요</a></li><li><a href="#step-11">11. 수업 결과 제출과 다음 대화 재개</a></li></ol></details>
-<p>작성일: 2026-10-15 · 공개 안내 정리: 2026-10-16 · 대상: Codex와 Aside로 자신의 블로그를 운영하려는 수강생</p>
+</style></head><body><a class="skip" href="#guide-title">본문으로 이동</a><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료실로 돌아가기</a><a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3%EA%B8%B0/%EC%8B%A4%EC%8A%B5/3%EA%B8%B0_%EA%B8%B0%EB%B3%B8%EC%8B%A4%EC%8A%B5_%EB%82%B4_%EC%A7%80%EC%B9%A8%EC%9C%BC%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%ED%8F%AC%EC%8A%A4%ED%8C%85_%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0.md">안내서 원문</a></div><p class="date">AI 자동화 스터디 3기 · 기본 실습 · 쉬운 시작 보완 2026년 10월 19일</p><nav class="quick" aria-label="안내서 바로가기"><a href="#easy-start">처음 하는 분</a><a href="#prepare">사전준비</a><a href="#step-3">내 프로젝트</a><a href="#step-5">글 작성</a><a href="#step-6">발행 확인</a><a href="#step-10">막혔을 때</a><a href="#step-11">결과 공유</a></nav><article aria-labelledby="guide-title"><h1 id="guide-title">3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</h1><section class="easy-start" aria-labelledby="easy-start"><h2 id="easy-start">처음 하는 분은 여기부터</h2>
+<p><strong>오늘은 내 블로그에 쓸 글 한 편을 만들어 봅니다.</strong> 아래 설명을 전부 읽거나 프로그램 설치 방법을 외우지 않아도 됩니다. 먼저 글을 만들고, 내가 읽어 고친 뒤 공개할지 정합니다.</p>
+<h3>내가 할 일은 세 가지입니다</h3>
+<ol>
+<li><strong>Codex를 엽니다.</strong> 이전에 블로그 작업을 했다면 그 대화로 돌아갑니다. 아직 앱을 준비하지 못했다면 <a href="https://study.saedongne.com/automation/board.html?id=1175">사전준비 안내</a>부터 봅니다.</li>
+<li><strong>아래 문장을 복사해 입력칸에 붙이고 보냅니다.</strong> 네이버·티스토리를 둘 다 갖고 있을 필요는 없습니다. 있는 블로그 한 곳부터 시작합니다. 블로그가 없으면 없다고 말하면 됩니다.</li>
+<li><strong>AI가 물으면 내 글감과 경험을 알려 주고, 원고를 읽어 봅니다.</strong> 로그인·본인 확인은 본인이 화면에서 합니다. 비밀번호는 대화창에 쓰지 않습니다.</li>
+</ol>
+<div class="prompt"><div class="prompt-tools"><span>이 문장을 복사해 Codex에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>이 안내서를 읽고 내 블로그 실습을 도와줘.
+https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_기본실습_내_지침으로_블로그_포스팅_자동화하기.html
+나는 컴퓨터를 잘 몰라. 쉬운 말로 지금 할 일 한 가지씩만 알려줘.
+이미 설치한 프로그램과 예전 작업은 확인해서 그대로 이어 써줘.
+내 블로그가 있는지, 어떤 글을 쓸지부터 필요한 것만 물어봐.
+우선 내 경험이나 확인된 사실로 글 한 편을 만들고 내가 읽어 고치게 해줘.
+로그인·본인 확인이 필요하면 내가 할 화면만 알려줘.
+글 공개는 내가 최종 원고를 확인하고 보내라고 한 뒤에 해줘.
+광고 신청·결제·자동 발행 예약·카톡 전송은 지금 하지 마.
+내가 다음에도 이어 쓸 수 있게 원고와 진행 기록을 내 작업 폴더에 남겨줘.
+마지막에 오늘 된 것과 다음에 할 것을 쉬운 말로 알려줘.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>입력 예:</strong> “네이버 블로그는 있어요. 지난 주말에 직접 걸었던 산책길 이야기를 쓰고 싶어요. 사진은 두 장 있어요.” 경험이 없다면 정보를 찾아 설명하는 글로 시작해도 됩니다. AI가 내 경험을 지어내게 하지는 않습니다.</p>
+<h3>여기까지 되면 첫 단계 성공입니다</h3>
+<ul>
+<li>내가 읽고 고친 <strong>글 한 편이 내 컴퓨터에 저장</strong>되어 있습니다.</li>
+<li>공개까지 원했다면 <strong>실제 블로그 글 주소를 열어</strong> 글과 사진이 보이는지 확인합니다. 파일을 저장한 것과 공개한 것은 다릅니다.</li>
+<li>다음에 같은 대화에서 <strong>“지난 블로그 작업 기록을 읽고 다음 글을 이어서 도와줘”</strong>라고 말할 수 있습니다.</li>
+</ul>
+<p><strong>막히면:</strong> 오류 화면을 찍어 Codex에 “여기서 막혔어. 이미 된 것은 보존하고, 지금 내가 할 한 가지만 쉽게 알려줘”라고 보냅니다. 혼자 해결되지 않으면 게시판에 <strong>하던 일·막힌 화면·이미 해 본 것</strong>을 적어 주세요. 비밀번호·인증번호·토큰이 보이는 부분은 가립니다.</p>
+<p><strong>처음에는 건너뛰어도 됩니다:</strong> 두 번째 블로그, 검색 등록, 광고 신청, 정기 자동 발행, 웹앱 만들기. 첫 글이 된 다음 필요한 것부터 더합니다. 더 넓은 준비를 한 번에 맡기려면 <a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3기/실습/3기_블로그_실습_한번에_맡기기.md">한 번에 맡기는 MD</a>를 사용할 수 있습니다.</p>
+<h3>아래부터는 필요할 때 찾아보는 자세한 안내입니다</h3>
+<p>어려운 말은 이렇게 이해하면 됩니다. <strong>프로젝트</strong>는 내 블로그 작업방, <strong>저장소(GitHub)</strong>는 원고와 수정 기록을 보관하는 곳, <strong>Aside</strong>는 AI가 로그인된 웹사이트에서 일하도록 돕는 브라우저입니다. 설치·연결·작업 폴더 준비는 AI에게 확인을 맡기고, 직접 필요한 단계만 함께 합니다.</p></section><details class="step-menu"><summary>단계별로 찾아가기</summary><ol><li><a href="#prepare">먼저: 실습 전 준비</a></li><li><a href="#step-1">1. 이번 실습에서 완성할 것</a></li><li><a href="#step-2">2. 시작 전에 준비하기</a></li><li><a href="#step-3">3. 내 GitHub 저장소와 프로젝트 만들기</a></li><li><a href="#step-4">4. 내 지침과 참고 글 읽히기</a></li><li><a href="#step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</a></li><li><a href="#step-6">6. 검토한 글을 발행하고 연결하기</a></li><li><a href="#step-7">7. 티스토리 Search Console 연결과 색인 요청</a></li><li><a href="#step-8">8. 다음 글부터 줄어드는 작업</a></li><li><a href="#step-9">9. 글이 쌓이면 광고 신청 준비하기</a></li><li><a href="#step-10">10. 막혔을 때 이렇게 요청하세요</a></li><li><a href="#step-11">11. 수업 결과 제출과 다음 대화 재개</a></li></ol></details>
+<p>아래는 두 플랫폼 운영과 검색 등록 등 필요할 때 찾아보는 자세한 과정입니다. 처음에는 위의 쉬운 시작부터 진행하세요.</p>
 <p><strong>한 번의 글쓰기에서 끝내지 않고, 다음 글도 이어서 만들 수 있는 나만의 블로그 프로젝트를 만듭니다.</strong> GitHub에 원고와 작업 기록을 보관하고, 본인의 자료와 작성 지침을 읽어 네이버·티스토리 글을 각각 작성합니다. 검토한 글을 실제로 발행하고, 사진·링크·검색 등록 상태까지 확인하는 것이 실습 목표입니다.</p>
 <p>이 자료는 모든 수강생이 사용할 수 있는 작업 안내입니다. <strong>특정 블로그팀의 내부 지침, 카카오톡 대화, 강의자료 원문과 그 요약은 포함하지 않습니다.</strong> 블로그팀 소속자는 본인이 열람할 수 있는 소속 방의 지침을, 다른 수강생은 자신의 지침이나 참여 중인 모임의 지침을 적용하세요. 소속 방이 없어도 개인 주제와 작성 기준으로 실습할 수 있습니다.</p>
 <h2 id="prepare">먼저: 실습 전 준비</h2>

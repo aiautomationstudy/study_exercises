@@ -108,19 +108,23 @@ details.reference>summary,.beginner summary{font-size:18px;font-weight:800;color
 <p>처음 만드는 폴더 이름은 <strong>ai-practice</strong>로 적으세요. 이미 이 실습을 하던 폴더가 있으면 그것을 씁니다.</p>
 <h2 id="easy-section-3">1. AI에게 준비 확인 맡기기</h2>
 <p>아래 문장을 복사해 보냅니다. 영어 명령을 직접 입력할 필요는 없습니다.</p>
-<div class="prompt"><div class="bar"><button type="button" class="copy">문장 복사</button><span class="st" role="status" aria-live="polite"></span></div><pre>나는 컴퓨터 초보야. 이 대화에서 실습을 이어가고 싶어.
-이미 설치한 앱과 만든 파일은 보존하고, 내 실습 폴더부터 확인해줘.
-ChatGPT 앱(Codex)에서 Aside로 직접 웹 작업을 할 준비가 됐는지 확인해줘.
-설치된 aside-browser 스킬과 현재 공식 가이드를 읽고, 실제 연결 상태를 확인해줘.
-웹 작업은 Codex인 네가 aside repl로 직접 해줘. Aside 안의 별도 AI에게 작업을 넘기지 마.
-준비가 덜 됐다면 아래 준비 안내서에서 내 컴퓨터에 해당하는 부분만 확인해줘.
+<div class="prompt"><div class="bar"><button type="button" class="copy">문장 복사</button><span class="st" role="status" aria-live="polite"></span></div><pre>나는 컴퓨터 초보야. 이미 설치한 앱과 만든 파일은 보존하고 내 실습 폴더에서 이어가줘.
+ChatGPT 앱(Codex)에서 Aside로 직접 웹 작업을 할 준비를 확인해줘.
+1. 내 운영체제, Aside 브라우저 로그인, CLI 실제 경로·버전, Codex 안에서의 계정 확인 결과를 각각 확인해줘.
+2. aside-browser 스킬을 실제로 읽고 경로를 알려줘. 없으면 아래 준비 안내서의 스킬 설치 방법을 따라줘. aside skills list는 Codex 스킬 설치 확인과 다르다는 점에 주의해줘.
+3. 스킬과 현재 공식 가이드를 읽고 Codex인 네가 aside repl로 아래 실습 폴더 페이지를 직접 열어, 화면에서 읽은 안내서 제목 세 개와 그 주소를 알려줘.
+https://github.com/aiautomationstudy/study_exercises/tree/main/3기/실습
+내 다른 탭·마우스·키보드는 건드리지 말고, 기억·로컬 파일·다른 브라우저로 대신하지 마.
+아직 준비가 덜 됐다면 이 안내서에서 내 컴퓨터에 해당하는 부분만 읽어줘.
 https://github.com/aiautomationstudy/study_exercises/blob/main/3기/실습/3기_3주차_사전준비_안내서.md
 준비 안내서 읽기와 Aside 자체 설치·복구에 필요한 공개 자료는 공식 주소와 위 안내서에서 내려받아도 돼.
-반복 설치하거나 보안 설정을 모두 끄지 말고, 같은 오류가 두 번 나면 멈추고 알려줘.
-내가 로그인하거나 허락해야 할 때는 어느 화면에서 무엇을 누르는지 한 가지씩 알려줘.
-끝나면 준비된 것, 아직 안 된 것, 내가 다음에 할 일을 쉬운 말로 알려줘.
-아직 조사나 글 작성은 시작하지 마.</pre></div>
-<p><strong>다음으로 넘어갈 때:</strong> AI가 내 작업 폴더와 Aside 연결을 확인했다고 알려 줍니다. 「명령을 찾지 못했다」·「로그인 필요」·「연결 실패」라면 아직 준비 중입니다. AI가 안내한 한 가지를 처리한 뒤 <strong>“했어. 다시 확인해줘”</strong>라고 답합니다.</p>
+같은 실패를 두 번 반복하지 마. 이미 일반 PowerShell에서 성공한 결과가 있으면 재사용해줘.
+인증키 삭제·보안 해제·전체 권한 전환·Pro 결제·Remote Control 활성화부터 하지 마.
+로그인이나 허락이 필요하면 내가 할 한 가지만 알려줘. 승인 요청이 정책에 막혔다면 반복하지 마.
+끝에는 브라우저 / CLI·계정 / 스킬 / 실제 페이지 읽기를 각각 성공 또는 미완료로 알려줘.
+네 줄이 출력돼도 실패가 있으면 준비 완료라고 하지 마. 아직 조사 결과물은 만들지 마.</pre></div>
+<p><strong>다음으로 넘어갈 때:</strong> 브라우저·CLI·스킬 확인과 <strong>Codex가 실제 페이지를 읽은 결과</strong>가 모두 나왔습니다. 계정 목록만 나온 것은 아직 준비 완료가 아닙니다. 「명령을 찾지 못했다」·「로그인 필요」·「연결 실패」라면 아직 준비 중입니다. AI가 안내한 한 가지를 처리한 뒤 <strong>“했어. 다시 확인해줘”</strong>라고 답합니다.</p>
+<p><strong>Aside 준비에서 막혔다면:</strong> <a href="https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html#aside">명령 없음·스킬 없음·Windows 인증 오류별 안내</a>에서 내 상황에 맞는 항목 하나만 보세요.</p>
 <h2 id="easy-section-4">2. 서울숲 안내문 한 장 만들기</h2>
 <p><strong>1단계의 같은 대화</strong>에 아래 문장을 보냅니다. 이번에는 주제를 고르거나 빈칸을 채울 필요가 없습니다.</p>
 <div class="prompt"><div class="bar"><button type="button" class="copy">문장 복사</button><span class="st" role="status" aria-live="polite"></span></div><pre>서울숲에 처음 가는 사람을 위한 한 장 안내문을 만들어줘.
@@ -345,7 +349,7 @@ Codex인 네가 Aside에서 서울시·서울숲의 공식 안내 페이지를 �
 이 컴퓨터에서 네가 직접 다음을 해 줘. 내가 할 일은 최소로 줄여 줘.
 1. Aside CLI를 설치해 줘. 먼저 PowerShell에서 Test-Path "$env:LOCALAPPDATA\Aside\CLI\current\aside.exe" 로 이미 있는지 보고, True면 다시 설치하지 말고 공식 업데이트(--update)만 확인해 줘. False면 맨 아래 [Aside 공식 Windows 설치 명령]을 PowerShell에서 그대로 실행해 줘. 아직 Aside가 없어서 하는 설치이니 PowerShell로 공식 주소에서 내려받으면 돼. 서명 확인을 빼거나 Windows 보안을 끄지 마. 설치 직후 aside 라고만 쳐서 안 잡히면 ChatGPT 앱이 설치 전부터 켜져 있어 새 경로를 아직 모르는 것이니, 위의 전체 경로로 실행해 확인해 줘.
 2. aside --update, aside guide, aside account list 를 실행해서 CLI가 작동하고 내 Aside 계정이 로그인돼 있는지 확인해 줘. Aside 계정 로그인과 대상 웹사이트 로그인은 별개임을 알려 줘. 이번 직접 조작 실습을 위해 ChatGPT Subscription 연결·새 API 키·Aside 결제를 요구하지 마.
-3. Codex가 실제로 읽는 사용자 skills 폴더에 aside-browser 스킬을 설치해 줘. 현재 공식 문서의 사용자 경로(~/.agents/skills 또는 Windows의 해당 사용자 홈)를 확인하고 설치해 줘. 잘못된 위치에 파일만 두고 설치됐다고 하지 마. Aside가 공식으로 제공하는 방법을 먼저 찾고, 없으면 "Aside를 쓰기 전에 aside --update 와 aside guide 를 실행해 읽고 그대로 따른다"는 내용의 작은 SKILL.md를 만들어 줘. 출처가 불분명한 다른 사람의 설치 스크립트는 쓰지 마. 스킬 파일 경로와 새 채팅에서 읽는 방법을 확인해 줘.
+3. 먼저 aside skills install --help를 읽고, 지원하면 공식 명령 aside skills install --target codex로 aside-browser 스킬을 설치해 줘. 실제 SKILL.md 저장 경로와 name·description을 확인하고 파일을 읽어 줘. 현재 공식 사용자 경로는 사용자 홈의 .agents/skills이므로, 다른 위치에 저장됐다면 이 Codex가 실제로 인식하는지 확인해 줘. aside skills list에 나오는 Aside 서비스용 스킬 목록과 혼동하지 마. 기존 파일은 보존하고 접근 거부·미지원이면 정확한 오류를 알려 줘. 스킬이 새 대화에서 인식되지 않으면 앱을 다시 열어 확인해 줘.
 4. Codex가 실제로 쓰는 전역 지침 파일(전역 AGENTS.md, CODEX_HOME이 다르면 그 실제 홈)을 찾아서, 원래 있던 내용은 그대로 두고 아래 규칙을 덧붙여 줘. 특정 프로젝트 폴더의 파일에 적고 끝내지 마.
    "웹사이트를 열고, 읽고, 입력하고, 결과를 확인하는 모든 웹 작업은 Aside(aside CLI와 aside-browser 스킬)로 한다. 쓰기 전에 aside --update 와 aside guide 를 실행해 읽는다. 스터디 실습에서는 Codex가 aside repl로 직접 읽고 클릭한다. aside exec, aside "할 일", aside URL처럼 Aside 안의 AI 작업을 시작하는 명령은 사용하지 않는다. 웹 읽기·클릭과 결과 열기는 aside repl 안에서 한다(같은 주소가 이미 열려 있으면 새로 열지 말고 새로고침한다). Aside가 안 되면 다른 브라우저로 바꾸지 말고 먼저 나에게 알린다. 단, Aside CLI 자체를 설치·업데이트·복구할 때는 Aside 공식 주소(releases.aside.com, docs.aside.com)를 PowerShell로 내려받아도 된다."
    "Aside의 탭·DOM 조작으로 백그라운드에서 처리한다. 실제 마우스 이동·클릭이나 전역 키보드 입력을 하지 않고, 창을 앞으로 가져오거나 내가 보고 있는 탭·데스크톱을 바꾸지 않는다. 작업 대상 탭만 다루고 내가 다른 일을 하는 탭은 건드리지 않는다. 이번 스터디는 Codex가 aside repl로 직접 읽고 클릭한다. aside exec, aside "할 일", aside URL처럼 Aside 안의 AI 작업을 시작하는 명령은 사용하지 않는다. 웹 읽기·클릭과 결과 열기는 aside repl 안에서 한다(같은 주소가 이미 열려 있으면 새로 열지 말고 새로고침한다). 백그라운드로 안 되는 단계는 다른 방법을 먼저 찾고, 화면 조작이 꼭 필요하면 필요한 조작과 영향을 설명한 뒤 내 허락을 받는다."
@@ -381,11 +385,22 @@ if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or
 </ol>
 <p>아래 상자로 준비가 됐는지 확인합니다.</p>
 <div class="prompt"><div class="bar"><button type="button" class="copy">복사</button><span class="st" role="status"></span></div>
-<pre>지금부터 실습을 할 거야. 나는 컴퓨터를 잘 몰라. 앞으로 쉬운 말로 짧게 대답해 줘.
-실습을 시작하기 전에 Aside 연결만 확인해 줘. 아직 아무 웹사이트도 열지 마.
-aside-browser 스킬을 읽고 aside --update 와 aside account list 를 실행해서 네 줄로 알려 줘. ① aside 명령을 찾았는지(찾았으면 버전) ② 내 Aside 계정이 로그인돼 있는지 ③ aside-browser 스킬을 읽은 경로 ④ 웹 작업 규칙을 적어 둔 전역 지침 파일 경로. 명령이 오류를 내면 그 오류 문구를 영어 그대로 보여 줘.
-aside 명령을 찾지 못하면 설치하려고 하지 말고 「aside 명령을 찾지 못했다」라고만 알려 줘.</pre></div>
-<p><b>네 줄이 다 나오면 1단계로 갑니다.</b> 웹사이트를 실제로 읽는 확인은 1단계에서 합니다.</p>
+<pre>나는 컴퓨터 초보야. 이미 설치한 앱과 만든 파일은 보존하고 내 실습 폴더에서 이어가줘.
+ChatGPT 앱(Codex)에서 Aside로 직접 웹 작업을 할 준비를 확인해줘.
+1. 내 운영체제, Aside 브라우저 로그인, CLI 실제 경로·버전, Codex 안에서의 계정 확인 결과를 각각 확인해줘.
+2. aside-browser 스킬을 실제로 읽고 경로를 알려줘. 없으면 아래 준비 안내서의 스킬 설치 방법을 따라줘. aside skills list는 Codex 스킬 설치 확인과 다르다는 점에 주의해줘.
+3. 스킬과 현재 공식 가이드를 읽고 Codex인 네가 aside repl로 아래 실습 폴더 페이지를 직접 열어, 화면에서 읽은 안내서 제목 세 개와 그 주소를 알려줘.
+https://github.com/aiautomationstudy/study_exercises/tree/main/3기/실습
+내 다른 탭·마우스·키보드는 건드리지 말고, 기억·로컬 파일·다른 브라우저로 대신하지 마.
+아직 준비가 덜 됐다면 이 안내서에서 내 컴퓨터에 해당하는 부분만 읽어줘.
+https://github.com/aiautomationstudy/study_exercises/blob/main/3기/실습/3기_3주차_사전준비_안내서.md
+준비 안내서 읽기와 Aside 자체 설치·복구에 필요한 공개 자료는 공식 주소와 위 안내서에서 내려받아도 돼.
+같은 실패를 두 번 반복하지 마. 이미 일반 PowerShell에서 성공한 결과가 있으면 재사용해줘.
+인증키 삭제·보안 해제·전체 권한 전환·Pro 결제·Remote Control 활성화부터 하지 마.
+로그인이나 허락이 필요하면 내가 할 한 가지만 알려줘. 승인 요청이 정책에 막혔다면 반복하지 마.
+끝에는 브라우저 / CLI·계정 / 스킬 / 실제 페이지 읽기를 각각 성공 또는 미완료로 알려줘.
+네 줄이 출력돼도 실패가 있으면 준비 완료라고 하지 마. 아직 조사 결과물은 만들지 마.</pre></div>
+<p><b>네 줄에 실패나 찾지 못한 항목이 있으면 아직 준비 중입니다.</b> 스킬을 실제로 읽고 Codex에서 웹페이지 읽기까지 확인한 뒤 다음으로 갑니다.</p>
 <ul>
 <li><b>「aside 명령을 찾지 못했다」</b>고 하면 → 바로 아래 <b>복구 상자</b>를 붙여넣습니다.</li>
 <li>영어로 <b><code>Cannot open Windows installation key</code></b>가 보이면 → 다시 로그인하지 말고 <a href="#install-key">「Windows 설치 인증키 오류」</a>를 따릅니다.</li>
@@ -420,7 +435,7 @@ if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or
 <li>Codex가 끝났다고 하면 <b>ChatGPT 앱을 완전히 끄고 다시 엽니다.</b> 창을 닫은 뒤 화면 오른쪽 아래 작업 표시줄에 ChatGPT 아이콘이 남아 있으면 그것도 종료합니다. 방금 설치한 aside 명령을 앱이 알아보게 하려는 것입니다.</li>
 <li>다시 열고 <b>Codex</b> → 왼쪽 목록에서 <b>같은 채팅</b>을 누른 뒤, 위의 <b>준비 확인 상자</b>를 다시 붙여넣습니다.</li>
 </ol>
-<div class="note"><b>복구 상자를 두 번 보내도 안 되면:</b> Aside 창에서 <b>Settings → Developers</b>로 들어가 CLI를 설치하는 단추(<b>Install</b> 또는 <b>Reinstall</b> 중 보이는 것)를 누릅니다. 그다음 ChatGPT 앱을 다시 켜고 준비 확인 상자를 다시 붙여넣습니다. <code>Cannot open Windows installation key</code> 오류가 나오면 <a href="#install-key">「잘 안될 때」의 「Windows 설치 인증키 오류」</a>를 따릅니다.</div>
+<div class="note"><b>복구 상자를 두 번 보내도 안 되면:</b> 같은 재설치를 반복하지 말고 <a href="https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html#aside">오류별 안내</a>로 갑니다. 이미 CLI가 있으면 인증 오류를 설치 누락과 구분합니다. <code>Cannot open Windows installation key</code> 오류가 나오면 <a href="#install-key">「잘 안될 때」의 「Windows 설치 인증키 오류」</a>를 따릅니다.</div>
 
 </section>
 
@@ -772,23 +787,10 @@ if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or
 </tbody>
 </table></div>
 
-<h3 id="install-key">Windows 설치 인증키 오류</h3>
-<p><code>Cannot open Windows installation key aside.install.sig</code>는 Aside가 설치 확인에 쓰는 인증키를 Windows에서 열지 못했다는 뜻입니다. 프로그램이 설치되어 있고 <code>aside --update</code>가 성공해도 이 오류가 날 수 있습니다. <b>이 오류만으로 한글 사용자 이름이 원인이라고 단정할 수는 없습니다.</b></p>
-<ol>
-<li>Aside 창과 ChatGPT 앱(Codex)을 <b>평소 사용하는 같은 Windows 계정</b>에서 엽니다. 두 앱 모두 <b>「관리자 권한으로 실행」은 누르지 않습니다.</b></li>
-<li>아래 상자를 ChatGPT 앱(Codex)에 붙여넣습니다.</li>
-</ol>
-<div class="prompt"><div class="bar"><button type="button" class="copy">복사</button><span class="st" role="status"></span></div>
-<pre>Aside CLI에서 "Cannot open Windows installation key aside.install.sig" 오류가 나. aside --update는 되지만 aside account list는 실패해.
-설치를 반복하기 전에 현재 Windows 계정, aside 실행 파일 경로와 버전, 실제 오류 문구를 확인해 줘. 한글 경로가 원인이라고 추측해서 사용자 이름을 바꾸지 마.
-Aside 공식 개발자 안내 https://docs.aside.com/help/developers 를 다른 읽기 도구로 확인하는 것은 이번 진단에서 허용해. 웹 실습은 계속 Aside로 해 줘.
-공식 안내의 Settings &gt; Developers에서 제공하는 CLI 설치·업데이트·재설치 방법을 확인해 줘. 내가 눌러야 하는 곳은 화면에 보이는 이름으로 한 단계씩 알려 줘.
-설치 인증키 삭제·초기화, Windows 보안 끄기, 인증서 검사 생략, 로그아웃은 하지 마. 키·쿠키·비밀번호 값도 출력하지 마.
-다시 확인해도 같은 오류면 재설치를 반복하지 말고 멈춰. Aside 지원팀에 보낼 버전·오류 문구·시도한 조치를 짧게 정리해 줘. 메일은 보내지 마.</pre></div>
-<ol start="3">
-<li>계속 같은 오류라면 <b>Aside → Settings → Send feedback</b>으로 오류를 보냅니다. 또는 <a href="https://docs.aside.com/help/troubleshooting">Aside 공식 문제 해결 안내</a>에 나온 <b>support@aside.com</b>으로 Codex가 정리한 내용을 보내세요. <b>비밀번호·인증키·대화 전체는 보내지 않습니다.</b></li>
-</ol>
-<p><b>끝났는지 보는 법:</b> 준비 4의 확인 상자에서 내 Aside 계정이 보이고, 1단계 웹 조사가 성공하면 준비가 끝난 것입니다. 지원팀 답변을 기다리는 동안에는 이미 만든 실습 폴더와 파일을 그대로 두세요.</p>
+<h3 id="install-key">Windows 설치 인증키·권한 오류</h3>
+<p><code>Cannot open Windows installation key</code>는 Windows 정품 인증 오류가 아닙니다. 브라우저와 CLI의 실제 Windows 실행 계정을 확인합니다. 일반 PowerShell에서 성공해도 Codex에서는 별도 보호된 실행 공간 때문에 실패할 수 있습니다.</p>
+<p><a href="https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html#aside-auth">오류별 비교 문장과 다음 행동</a>을 보세요. 이미 한 계정 확인·승인 요청·재설치는 반복하지 않습니다. 키 삭제·전체 권한 전환·Windows 보안 해제·Pro 결제부터 하지 마세요. 승인 창이 정책에 막히면 그 사실을 기록하고 멈춥니다.</p>
+<p>Codex에서 실제 페이지를 읽지 못했다면 아직 연결 완료가 아닙니다. <a href="https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html#aside-fallback">임시로 실습을 이어가는 방법</a>은 연결 복구와 구분합니다.</p>
 </section>
 
 <section id="homework" aria-labelledby="homework-title">

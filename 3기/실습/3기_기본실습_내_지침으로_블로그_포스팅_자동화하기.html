@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="내 지침과 사진으로 네이버·티스토리 글을 작성하고, 검토·발행·확인한 기록을 내 GitHub 프로젝트에 쌓는 실습 안내서"><title>3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</title><style>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="내 기준으로 블로그 글 한 편을 쓰고 고쳐 저장하는 쉬운 실습 안내서. 단계별 문장 복사와 완료 확인을 제공합니다."><title>3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</title><style>
 :root{color-scheme:light;--bg:#f5f1ea;--card:#fff;--ink:#1c2430;--muted:#596575;--line:#ded9ce;--brand:#096b63;--soft:#e4f3ef;--box:#f7f5f0}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
@@ -19,42 +19,156 @@ pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break
 @media(max-width:600px){body{font-size:16px}main{padding:14px 12px 48px}article{padding:24px 18px}h1{font-size:25px}h2{font-size:22px}h3{font-size:18px}.prompt-tools{padding:10px 12px;font-size:12px;gap:8px}pre{font-size:14px;padding:14px}.quick{gap:6px}.quick a{padding:5px 10px;font-size:13px}td,th{padding:8px;min-width:120px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{body{background:white}main{max-width:none;padding:0}article{border:0;padding:0}.top,.quick,.copy,.copy-status,.skip,footer,.step-menu{display:none}pre{font-size:11px}.prompt{break-inside:avoid}.tablewrap{overflow:visible}h2,h3{break-after:avoid}a{color:inherit}}
-</style></head><body><a class="skip" href="#guide-title">본문으로 이동</a><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료실로 돌아가기</a><a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3%EA%B8%B0/%EC%8B%A4%EC%8A%B5/3%EA%B8%B0_%EA%B8%B0%EB%B3%B8%EC%8B%A4%EC%8A%B5_%EB%82%B4_%EC%A7%80%EC%B9%A8%EC%9C%BC%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%ED%8F%AC%EC%8A%A4%ED%8C%85_%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0.md">안내서 원문</a></div><p class="date">AI 자동화 스터디 3기 · 기본 실습 · 쉬운 시작 보완 2026년 10월 19일</p><nav class="quick" aria-label="안내서 바로가기"><a href="#easy-start">처음 하는 분</a><a href="#prepare">사전준비</a><a href="#step-3">내 프로젝트</a><a href="#step-5">글 작성</a><a href="#step-6">발행 확인</a><a href="#step-10">막혔을 때</a><a href="#step-11">결과 공유</a></nav><article aria-labelledby="guide-title"><h1 id="guide-title">3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</h1><section class="easy-start" aria-labelledby="easy-start"><h2 id="easy-start">처음 하는 분은 여기부터</h2>
-<p><strong>오늘은 내 블로그에 쓸 글 한 편을 만들어 봅니다.</strong> 아래 설명을 전부 읽거나 프로그램 설치 방법을 외우지 않아도 됩니다. 먼저 글을 만들고, 내가 읽어 고친 뒤 공개할지 정합니다.</p>
-<h3>내가 할 일은 세 가지입니다</h3>
-<ol>
-<li><strong>Codex를 엽니다.</strong> 이전에 블로그 작업을 했다면 그 대화로 돌아갑니다. 아직 앱을 준비하지 못했다면 <a href="https://study.saedongne.com/automation/board.html?id=1175">사전준비 안내</a>부터 봅니다.</li>
-<li><strong>아래 문장을 복사해 입력칸에 붙이고 보냅니다.</strong> 네이버·티스토리를 둘 다 갖고 있을 필요는 없습니다. 있는 블로그 한 곳부터 시작합니다. 블로그가 없으면 없다고 말하면 됩니다.</li>
-<li><strong>AI가 물으면 내 글감과 경험을 알려 주고, 원고를 읽어 봅니다.</strong> 로그인·본인 확인은 본인이 화면에서 합니다. 비밀번호는 대화창에 쓰지 않습니다.</li>
-</ol>
-<div class="prompt"><div class="prompt-tools"><span>이 문장을 복사해 Codex에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>이 안내서를 읽고 내 블로그 실습을 도와줘.
-https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_기본실습_내_지침으로_블로그_포스팅_자동화하기.html
-나는 컴퓨터를 잘 몰라. 쉬운 말로 지금 할 일 한 가지씩만 알려줘.
-이미 설치한 프로그램과 예전 작업은 확인해서 그대로 이어 써줘.
-내 블로그가 있는지, 어떤 글을 쓸지부터 필요한 것만 물어봐.
-우선 내 경험이나 확인된 사실로 글 한 편을 만들고 내가 읽어 고치게 해줘.
-로그인·본인 확인이 필요하면 내가 할 화면만 알려줘.
-글 공개는 내가 최종 원고를 확인하고 보내라고 한 뒤에 해줘.
-광고 신청·결제·자동 발행 예약·카톡 전송은 지금 하지 마.
-내가 다음에도 이어 쓸 수 있게 원고와 진행 기록을 내 작업 폴더에 남겨줘.
-마지막에 오늘 된 것과 다음에 할 것을 쉬운 말로 알려줘.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
-<p><strong>입력 예:</strong> “네이버 블로그는 있어요. 지난 주말에 직접 걸었던 산책길 이야기를 쓰고 싶어요. 사진은 두 장 있어요.” 경험이 없다면 정보를 찾아 설명하는 글로 시작해도 됩니다. AI가 내 경험을 지어내게 하지는 않습니다.</p>
-<h3>여기까지 되면 첫 단계 성공입니다</h3>
+
+/* First-time readers: one recipe before optional reference material. */
+.beginner{background:var(--card,#fff);border-radius:16px;padding:26px 22px;margin:18px 0}
+.beginner h2{margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+.beginner h1{margin-top:0}.beginner p,.beginner li{max-width:74ch}
+details.reference{border:1px solid var(--line);background:var(--card,#fff);border-radius:14px;padding:18px;margin:24px 0}
+details.reference>summary,.beginner summary{font-size:18px;font-weight:800;color:var(--brand);cursor:pointer;padding:10px 0;min-height:44px}
+.recipe-nav{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 18px}.recipe-nav a{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.beginner kbd{font-family:inherit}.beginner pre{font-family:inherit;font-size:16px}
+@media(max-width:600px){.beginner{padding:20px 16px}.beginner pre{font-size:15px}}
+</style></head><body><a class="skip" href="#guide-title">본문으로 이동</a><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료실로 돌아가기</a><a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3%EA%B8%B0/%EC%8B%A4%EC%8A%B5/3%EA%B8%B0_%EA%B8%B0%EB%B3%B8%EC%8B%A4%EC%8A%B5_%EB%82%B4_%EC%A7%80%EC%B9%A8%EC%9C%BC%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%ED%8F%AC%EC%8A%A4%ED%8C%85_%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0.md">안내서 원문</a></div><p class="date">AI 자동화 스터디 3기 · 기본 실습 · 쉬운 따라 하기 개정 2026년 10월 27일</p><nav class="quick" aria-label="안내서 바로가기"><a href="#easy-section-3">1단계 시작</a><a href="#easy-help">막혔을 때</a><a href="#more-guide">선택 확장</a></nav><article aria-labelledby="guide-title"><h1 id="guide-title">3기 기본실습 — 내 지침으로 블로그 포스팅 자동화하기</h1><section id="easy-start" class="beginner"><p>쉬운 따라 하기 개정: 2026-10-27</p>
+<p><strong>오늘은 내 말투와 기준에 맞는 블로그 글 한 편을 만들고, 고쳐서 저장합니다.</strong> 이미 블로그가 있으면 한 곳만 씁니다. 블로그가 없어도 원고부터 만들 수 있습니다.</p>
+<p><strong>오늘의 순서: 글감 알려 주기 → 원고 읽기 → 고쳐서 저장하기.</strong> 공개 발행은 원할 때 이어갑니다. 두 번째 블로그·GitHub 보관·검색 등록·광고·정기 발행은 첫 글 다음에 필요한 것부터 더합니다.</p>
+<h2 id="easy-section-1">시작 전에: 이 안내서는 어디에서 보나요?</h2>
+<p><strong>컴퓨터에서 이 안내서를 열어 두세요.</strong> 휴대폰으로 읽고 있다면 같은 주소를 컴퓨터에서도 엽니다. 실습은 컴퓨터에서 합니다.</p>
+<p>화면 두 개를 번갈아 씁니다.</p>
 <ul>
-<li>내가 읽고 고친 <strong>글 한 편이 내 컴퓨터에 저장</strong>되어 있습니다.</li>
-<li>공개까지 원했다면 <strong>실제 블로그 글 주소를 열어</strong> 글과 사진이 보이는지 확인합니다. 파일을 저장한 것과 공개한 것은 다릅니다.</li>
-<li>다음에 같은 대화에서 <strong>“지난 블로그 작업 기록을 읽고 다음 글을 이어서 도와줘”</strong>라고 말할 수 있습니다.</li>
+<li><strong>이 안내서:</strong> 읽고 「문장 복사」를 누르는 곳입니다.</li>
+<li><strong>ChatGPT 앱(Codex):</strong> 복사한 문장을 보내고, AI의 답을 읽는 곳입니다. 인터넷 주소창이나 스터디 Q&amp;A에 붙이지 않습니다.</li>
 </ul>
-<p><strong>막히면:</strong> 오류 화면을 찍어 Codex에 “여기서 막혔어. 이미 된 것은 보존하고, 지금 내가 할 한 가지만 쉽게 알려줘”라고 보냅니다. 혼자 해결되지 않으면 게시판에 <strong>하던 일·막힌 화면·이미 해 본 것</strong>을 적어 주세요. 비밀번호·인증번호·토큰이 보이는 부분은 가립니다.</p>
-<p><strong>처음에는 건너뛰어도 됩니다:</strong> 두 번째 블로그, 검색 등록, 광고 신청, 정기 자동 발행, 웹앱 만들기. 첫 글이 된 다음 필요한 것부터 더합니다. 더 넓은 준비를 한 번에 맡기려면 <a href="https://github.com/aiautomationstudy/study_exercises/blob/main/3기/실습/3기_블로그_실습_한번에_맡기기.md">한 번에 맡기는 MD</a>를 사용할 수 있습니다.</p>
-<h3>아래부터는 필요할 때 찾아보는 자세한 안내입니다</h3>
-<p>어려운 말은 이렇게 이해하면 됩니다. <strong>프로젝트</strong>는 내 블로그 작업방, <strong>저장소(GitHub)</strong>는 원고와 수정 기록을 보관하는 곳, <strong>Aside</strong>는 AI가 로그인된 웹사이트에서 일하도록 돕는 브라우저입니다. 설치·연결·작업 폴더 준비는 AI에게 확인을 맡기고, 직접 필요한 단계만 함께 합니다.</p></section><details class="step-menu"><summary>단계별로 찾아가기</summary><ol><li><a href="#prepare">먼저: 실습 전 준비</a></li><li><a href="#step-1">1. 이번 실습에서 완성할 것</a></li><li><a href="#step-2">2. 시작 전에 준비하기</a></li><li><a href="#step-3">3. 내 GitHub 저장소와 프로젝트 만들기</a></li><li><a href="#step-4">4. 내 지침과 참고 글 읽히기</a></li><li><a href="#step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</a></li><li><a href="#step-6">6. 검토한 글을 발행하고 연결하기</a></li><li><a href="#step-7">7. 티스토리 Search Console 연결과 색인 요청</a></li><li><a href="#step-8">8. 다음 글부터 줄어드는 작업</a></li><li><a href="#step-9">9. 글이 쌓이면 광고 신청 준비하기</a></li><li><a href="#step-10">10. 막혔을 때 이렇게 요청하세요</a></li><li><a href="#step-11">11. 수업 결과 제출과 다음 대화 재개</a></li></ol></details>
+<p><strong>매번 이렇게 합니다.</strong></p>
+<ol>
+<li>이 안내서에서 초록색 <strong>「문장 복사」</strong>를 누릅니다.</li>
+<li><strong>ChatGPT 앱(Codex)</strong>으로 갑니다. 화면 아래 <strong>메시지를 쓰는 빈칸</strong>을 한 번 누릅니다.</li>
+<li>키보드의 <strong>Ctrl을 누른 채 V</strong>를 누릅니다. Mac은 <strong>⌘를 누른 채 V</strong>입니다.</li>
+<li>글이 들어갔는지 보고 <strong>보내기 화살표</strong>를 누릅니다.</li>
+<li>AI의 답을 읽고 필요한 질문에 답합니다. <strong>한 단계가 끝난 뒤 다음 문장</strong>을 보냅니다.</li>
+</ol>
+<p>문장이 길어도 직접 입력하거나 외울 필요는 없습니다. 복사 단추가 없는 Markdown 화면이라면 문장 상자 안의 글 전체를 선택해 복사하세요.</p>
+<h2 id="easy-section-2">0. 앱과 내 작업 폴더 열기</h2>
+<p><strong>전에 하던 실습이 있나요?</strong> ChatGPT 앱(Codex)의 왼쪽 목록에서 그때의 대화를 누르세요. 같은 일을 다시 시작하거나 파일을 지울 필요는 없습니다.</p>
+<p><strong>처음인가요?</strong></p>
+<ol>
+<li>컴퓨터에서 <strong>ChatGPT 앱</strong>을 열고 <strong>Codex</strong>를 선택합니다.</li>
+<li><strong>새 채팅(New chat)</strong>을 엽니다. 파일을 저장할 폴더를 고르라는 화면이 나오면, 아래 방법으로 내 실습 폴더를 만듭니다.</li>
+<li>폴더 선택 화면에서 <strong>문서 → 새 폴더</strong>를 누르고 아래 안내된 이름을 적습니다. 만든 폴더를 선택합니다. <strong>폴더</strong>는 이번 실습의 파일을 모아 두는 곳입니다.</li>
+<li><strong>Aside</strong>도 켜 둡니다. AI가 인터넷을 열어 일하는 모습을 확인하는 프로그램입니다.</li>
+</ol>
+<p>화면에 「프로젝트 추가(Add new project)」나 「폴더 열기」가 보이면 그것으로 내 실습 폴더를 열어도 됩니다. 모델 이름이나 추론 설정은 지금 바꾸지 않아도 됩니다.</p>
+<p><strong>앱이 없거나 로그인부터 안 되나요?</strong> <a href="https://study.saedongne.com/automation/board.html?id=1175">앱·Aside 준비 안내</a>를 보세요. 이미 설치한 프로그램은 다시 설치하지 않습니다. 로그인은 <strong>본인 계정</strong>으로 하고, 비밀번호·인증번호는 AI 대화창에 쓰지 않습니다.</p>
+<p>처음 만드는 폴더 이름은 <strong>blog-practice</strong>로 적으세요. 전에 블로그를 작업한 폴더와 대화가 있으면 그대로 이어갑니다. <strong>다른 실습 폴더에 원고를 섞지 않습니다.</strong></p>
+<details>
+<summary>Aside 연결을 아직 확인하지 못했다면: 준비 문장 펼치기</summary>
+<p>다음 문장으로 준비를 확인한 뒤 1단계로 갑니다. 연결이 안 돼도 글 한 편을 쓰고 저장하는 단계는 진행할 수 있습니다. 실제 블로그 화면 조작은 연결을 확인한 뒤 합니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>나는 컴퓨터 초보야. 이 대화에서 실습을 이어가고 싶어.
+이미 설치한 앱과 만든 파일은 보존하고, 내 실습 폴더부터 확인해줘.
+ChatGPT 앱(Codex)에서 Aside로 직접 웹 작업을 할 준비가 됐는지 확인해줘.
+설치된 aside-browser 스킬과 현재 공식 가이드를 읽고, 실제 연결 상태를 확인해줘.
+웹 작업은 Codex인 네가 aside repl로 직접 해줘. Aside 안의 별도 AI에게 작업을 넘기지 마.
+준비가 덜 됐다면 아래 준비 안내서에서 내 컴퓨터에 해당하는 부분만 확인해줘.
+https://github.com/aiautomationstudy/study_exercises/blob/main/3기/실습/3기_3주차_사전준비_안내서.md
+준비 안내서 읽기와 Aside 자체 설치·복구에 필요한 공개 자료는 공식 주소와 위 안내서에서 내려받아도 돼.
+반복 설치하거나 보안 설정을 모두 끄지 말고, 같은 오류가 두 번 나면 멈추고 알려줘.
+내가 로그인하거나 허락해야 할 때는 어느 화면에서 무엇을 누르는지 한 가지씩 알려줘.
+끝나면 준비된 것, 아직 안 된 것, 내가 다음에 할 일을 쉬운 말로 알려줘.
+아직 조사나 글 작성은 시작하지 마.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+</details>
+<h2 id="easy-section-3">1. 내 블로그와 글감 알려 주기</h2>
+<p>아래 문장을 보냅니다. AI가 질문하면 <strong>내 답을 한두 문장씩</strong> 적어 보내세요. 모르는 것은 “모르겠어요”라고 답해도 됩니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>내 블로그 글 한 편을 함께 만들자. 나는 컴퓨터를 잘 몰라.
+이미 만든 블로그 폴더·원고·작업 기록이 있으면 확인해서 이어 써줘.
+처음이면 지금 선택한 blog-practice 폴더를 사용해줘. 다른 프로젝트에 파일을 섞지 마.
+다음 세 가지를 한 번에 하나씩 물어보고, 내 대답을 기다려줘.
+1. 사용할 블로그가 네이버인지 티스토리인지, 아니면 아직 없는지
+2. 이번에 쓰고 싶은 주제와 내가 직접 겪었거나 확인한 사실
+3. 내 글에 원하는 말투와 꼭 지킬 기준
+한 곳만 선택하고, 사진이 없으면 글부터 진행해줘.
+내 경험을 지어내거나 남의 글을 내 글처럼 옮기지 마.
+지금은 질문과 정리까지만 해줘. 발행·광고 신청·결제·예약은 하지 마.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>답하는 예:</strong> “네이버 블로그가 있어요. 지난 주말에 걸었던 동네 산책길을 쓰고 싶어요. 담백한 존댓말로, 다녀온 척 지어내지 않고 써 주세요.”</p>
+<p>지침 파일이 없어도 <strong>“문단은 짧게, 과장하지 않기, 내가 준 사실만 쓰기”</strong>처럼 말하면 됩니다. 팀 지침이 있다면 본인이 볼 수 있는 자료만 제공합니다. 사진이나 과거 카톡 대화를 처음부터 전부 준비할 필요는 없습니다.</p>
+<p><strong>다음으로 넘어갈 때:</strong> 쓸 주제 하나와 내 작성 기준이 정해졌습니다.</p>
+<h2 id="easy-section-4">2. 원고를 읽고 한 가지 고치기</h2>
+<p>1단계의 <strong>같은 대화</strong>에 보냅니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>지금까지 내가 알려준 사실과 작성 기준으로 블로그 글 한 편을 써줘.
+먼저 제목 하나와 짧은 문단으로 된 600자 안팎의 초안을 이 대화에 보여줘.
+내가 제공하지 않은 경험·날짜·가격·효과를 만들어내지 마.
+새 정보가 필요하면 공식 자료를 확인하고, 확인 못 한 것은 미확인으로 남겨줘.
+초안을 보여준 뒤 내가 읽고 수정 의견을 줄 때까지 기다려줘.
+아직 블로그 편집기에 넣거나 공개 발행하지 마.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>원고를 읽고 <strong>내가 고치고 싶은 점 한 가지</strong>를 답합니다.</p>
+<ul>
+<li>“글이 길어요. 절반으로 줄여 주세요.”</li>
+<li>“첫 문장을 더 담백하게 바꿔 주세요.”</li>
+<li>“그곳에는 가지 않았어요. 방문 후기처럼 쓴 부분을 고쳐 주세요.”</li>
+</ul>
+<p><strong>다음으로 넘어갈 때:</strong> 내 수정 의견이 반영됐고, 내가 말하지 않은 경험이나 잘못된 사실이 없습니다.</p>
+<h2 id="easy-section-5">3. 고친 원고를 내 컴퓨터에 저장하기</h2>
+<p>같은 대화에 보냅니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>지금 고친 최종 원고를 내 블로그 실습 폴더에 첫-블로그-글.txt로 저장해줘.
+같은 이름의 파일이 있으면 먼저 확인하고, 이전 원고는 사본으로 보존해줘.
+내 글쓰기 기준과 오늘 한 일, 다음에 할 일도 같은 폴더에 기록해줘.
+저장한 원고 파일을 내가 열어 읽을 수 있게 안내해줘.
+폴더 위치와 파일 이름을 알려주고, 내가 원고가 저장된 것을 확인할 때까지 기다려줘.
+블로그 공개 발행·새 계정 만들기·광고 신청·자동 발행 예약은 하지 마.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p><strong>내 눈으로 확인할 것:</strong> 저장한 <strong>첫-블로그-글.txt</strong>를 열었을 때 방금 고친 원고가 보입니다. 파일을 여는 방법을 모르겠으면 <strong>“그 파일을 여는 순서를 한 가지씩 알려줘”</strong>라고 답하세요.</p>
+<p><strong>여기까지 되면 오늘의 기본실습을 마쳤습니다.</strong> 블로그가 없거나 아직 로그인하지 못했어도 원고를 고쳐 저장했다면 여기까지 진행한 것입니다. 다음에는 남은 단계부터 이어가세요.</p>
+<h2 id="easy-section-6">선택: 원할 때 블로그에 올리기</h2>
+<p><strong>저장</strong>은 내 컴퓨터에 파일을 두는 것이고, <strong>발행</strong>은 블로그 독자에게 공개하는 것입니다. 공개해도 되는 원고인지 읽어 본 뒤, 아래 문장을 보냅니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>방금 확인한 최종 원고를 내가 선택한 블로그 한 곳에 올리고 싶어.
+먼저 대상 블로그 주소와 실제 로그인 계정이 맞는지 나와 확인해줘.
+내 글쓰기 기준을 적용하고, 사진은 내가 사용해도 되는 것만 써줘.
+웹 조작은 Codex인 네가 Aside의 aside repl로 직접 해줘. 내 다른 탭은 건드리지 마.
+로그인·본인 인증이 필요하면 내가 직접 할 화면만 안내하고 기다려줘.
+우선 편집기에 넣고 미리보기를 보여줘. 최종 발행은 내가 확인하고 허락한 뒤에 해줘.
+발행 뒤 실제 공개 글 주소를 열어 본문·사진·링크를 확인하고 내 작업 폴더에 기록해줘.
+이미 발행됐는지 불명확하면 먼저 조회하고 중복 발행하지 마.
+직접 조작이 안 되면 억지로 반복하지 말고, 내가 붙여넣는 순서를 한 가지씩 안내해줘.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>공개를 원하지 않으면 이 단계는 건너뜁니다. AI가 직접 올리지 못해도, 내가 편집기에 붙여넣고 발행한 뒤 <strong>실제 글 주소</strong>를 알려 주어 확인할 수 있습니다. 비밀번호·인증번호는 대화창에 쓰지 않습니다.</p>
+<h2 id="easy-section-7">다음 글도 같은 방식으로 쓰려면</h2>
+<p>ChatGPT 앱(Codex)의 왼쪽 목록에서 <strong>이번 블로그 대화</strong>를 다시 열고 보냅니다.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>지난 블로그 작업 기록과 내 작성 기준을 읽고 다음 글을 도와줘.
+이미 만든 원고와 발행한 글을 확인하고 중복해서 만들거나 올리지 마.
+오늘 쓸 주제부터 한 번에 하나씩 물어봐줘.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>새 대화에서 시작한다면 <strong>전에 원고를 저장한 블로그 폴더</strong>를 먼저 열어 주세요. 새 대화가 예전 작업을 전부 기억한다고 가정하지 말고, 기록을 읽게 합니다.</p>
+<h2 id="easy-help">막히면 여기만 보세요</h2>
+<p>다음 문장을 <strong>지금까지 실습하던 ChatGPT 앱(Codex)의 같은 대화</strong>에 보냅니다. 오류 문구가 있으면 바로 다음 메시지에 그대로 보내세요.</p>
+<div class="prompt"><div class="prompt-tools"><span>같은 실습 대화에 보내세요</span><button type="button" class="copy">문장 복사</button></div><pre><code>여기서 막혔어. 나는 컴퓨터를 잘 몰라.
+이미 만든 파일과 끝낸 작업은 보존하고, 현재 상태부터 확인해줘.
+지금 내가 해야 할 한 가지만, 어느 화면에서 무엇을 누르는지 알려줘.
+같은 방법이 두 번 실패했다면 또 반복하지 말고 다른 방법을 확인해줘.
+지금 안 되는 기능은 됐다고 하지 말고, 된 것과 안 된 것을 구분해줘.</code></pre><p class="copy-status" role="status" aria-live="polite"></p></div>
+<p>AI가 대답하지 않아 문장을 보낼 수 없다면 <a href="https://study.saedongne.com/automation/board.html?id=1268">실습하다 막혔을 때, 이렇게 해 보세요</a>를 먼저 보세요. 그래도 안 되면 <a href="https://study.saedongne.com/automation/board.html?board=16">묻고 답하기</a>에 <strong>어느 실습·어느 단계인지, 오류 문구, 이미 해 본 방법</strong>을 적어 주세요. 화면을 올릴 때는 이름·비밀번호·인증번호·토큰을 가립니다.</p>
+<details>
+<summary>내 상황에 맞는 도움말 펼치기</summary>
+<div class="tablewrap" tabindex="0" role="region" aria-label="상황별 도움말"><table>
+<tr><th>지금 보이는 상황</th><th>이렇게 하세요</th></tr>
+<tr><td>복사를 눌렀는데 글이 안 들어가요</td><td>ChatGPT 앱(Codex)의 메시지 입력칸을 한 번 누른 뒤 Ctrl+V를 누르세요. Mac은 ⌘+V입니다.</td></tr>
+<tr><td>AI가 질문하고 기다려요</td><td>질문에 짧게 답하세요. 모르는 것은 “몰라요. 확인하는 방법을 하나씩 알려주세요”라고 씁니다.</td></tr>
+<tr><td>「aside 명령을 못 찾겠다」·「스킬이 없다」고 해요</td><td>준비 확인 문장과 준비 안내서로 확인을 맡기세요. 무조건 전체 접근 권한을 켜거나 같은 재설치를 반복하지 않습니다.</td></tr>
+<tr><td>「Cannot open Windows installation key」가 나와요</td><td>그 오류를 그대로 보내고, <a href="https://study.saedongne.com/automation/board.html?id=1175">준비 안내서</a>의 같은 이름 오류 항목을 보세요.</td></tr>
+<tr><td>결과 파일이 어디 있는지 모르겠어요</td><td>“방금 만든 파일이 있는 폴더를 내가 열 수 있게 해줘. 파일 이름도 알려줘”라고 보냅니다.</td></tr>
+<tr><td>화면이 달라서 단추를 못 찾겠어요</td><td>“내 화면에는 그 단추가 없어. 지금 보이는 화면을 보고 다음 한 가지만 알려줘”라고 씁니다. 필요한 부분만 캡처해 보냅니다.</td></tr>
+<tr><td>ffmpeg·Python이 없다고 해요</td><td>오늘의 웹 안내문·글 한 편 실습은 음성·영상 처리가 필요하지 않습니다. “이번 단계에 정말 필요한지 확인하고 불필요한 설치는 건너뛰어줘”라고 보냅니다.</td></tr>
+<tr><td>휴대폰 사진·파일이 안 보여요</td><td>쓸 파일을 먼저 컴퓨터로 옮기거나, 실습 대화에 직접 첨부합니다. 휴대폰 사진이 자동으로 컴퓨터에 들어왔다고 가정하지 않습니다.</td></tr>
+<tr><td>Notion 자료에 접근 권한이 없대요</td><td>그 자료를 볼 수 있는 본인 계정인지 확인합니다. 다른 사람 자료라면 소유자에게 열람 권한을 요청합니다. 오늘 첫 실습은 Notion 없이 진행할 수 있습니다.</td></tr>
+<tr><td>Windows 한글 사용자 이름·폴더에서 오류가 나요</td><td>“실제 오류와 파일 위치를 확인하고 기존 자료는 보존해줘. 필요하면 사용 가능한 영문 이름의 실습 폴더에서 이어가줘”라고 보냅니다. Windows 계정 이름은 바꾸지 않습니다.</td></tr>
+</table></div>
+</details>
+<h2 id="easy-section-9">결과를 나누고 싶다면</h2>
+<p><a href="https://study.saedongne.com/automation/board.html?board=13">과제·실습 공유</a>에서 <strong>글쓰기</strong>를 누릅니다. 해 본 일과 막힌 점을 적고, 결과 화면을 이미지로 넣은 뒤 <strong>완료하고 올리기</strong>를 누릅니다. 이미 올린 글은 <strong>고치기</strong>로 보완하면 됩니다.</p>
+<p>내 컴퓨터의 파일 주소나 <code>localhost</code> 주소는 다른 사람이 열 수 없습니다. 공개한 글 주소나 화면 캡처를 올리세요. 비공개 원고·내부 지침·계정 정보는 올리지 않습니다.</p>
+<p>앱·작업 폴더 참고: <a href="https://learn.chatgpt.com/docs/quickstart">OpenAI 빠른 시작</a>, <a href="https://learn.chatgpt.com/docs/projects">프로젝트와 대화</a>.</p></section>
+<details id="more-guide" class="reference"><summary>더 해 보고 싶은 분만: GitHub 보관·두 블로그·검색·광고·정기 발행 펼치기</summary><p><strong>여기부터는 선택 확장입니다.</strong> 위에서 원고 한 편을 고쳐 저장했다면 오늘의 기본실습을 마친 것입니다. 아래 항목은 필요한 기능을 추가할 때만 보세요.</p><details class="step-menu"><summary>단계별로 찾아가기</summary><ol><li><a href="#prepare">먼저: 실습 전 준비</a></li><li><a href="#step-1">1. 이번 실습에서 완성할 것</a></li><li><a href="#step-2">2. 시작 전에 준비하기</a></li><li><a href="#step-3">3. 내 GitHub 저장소와 프로젝트 만들기</a></li><li><a href="#step-4">4. 내 지침과 참고 글 읽히기</a></li><li><a href="#step-5">5. 네이버·티스토리 글을 서로 다르게 작성하기</a></li><li><a href="#step-6">6. 검토한 글을 발행하고 연결하기</a></li><li><a href="#step-7">7. 티스토리 Search Console 연결과 색인 요청</a></li><li><a href="#step-8">8. 다음 글부터 줄어드는 작업</a></li><li><a href="#step-9">9. 글이 쌓이면 광고 신청 준비하기</a></li><li><a href="#step-10">10. 막혔을 때 이렇게 요청하세요</a></li><li><a href="#step-11">11. 수업 결과 제출과 다음 대화 재개</a></li></ol></details>
 <p>아래는 두 플랫폼 운영과 검색 등록 등 필요할 때 찾아보는 자세한 과정입니다. 처음에는 위의 쉬운 시작부터 진행하세요.</p>
 <p><strong>한 번의 글쓰기에서 끝내지 않고, 다음 글도 이어서 만들 수 있는 나만의 블로그 프로젝트를 만듭니다.</strong> GitHub에 원고와 작업 기록을 보관하고, 본인의 자료와 작성 지침을 읽어 네이버·티스토리 글을 각각 작성합니다. 검토한 글을 실제로 발행하고, 사진·링크·검색 등록 상태까지 확인하는 것이 실습 목표입니다.</p>
 <p>이 자료는 모든 수강생이 사용할 수 있는 작업 안내입니다. <strong>특정 블로그팀의 내부 지침, 카카오톡 대화, 강의자료 원문과 그 요약은 포함하지 않습니다.</strong> 블로그팀 소속자는 본인이 열람할 수 있는 소속 방의 지침을, 다른 수강생은 자신의 지침이나 참여 중인 모임의 지침을 적용하세요. 소속 방이 없어도 개인 주제와 작성 기준으로 실습할 수 있습니다.</p>
 <h2 id="prepare">먼저: 실습 전 준비</h2>
 <p>모임에서 함께 진행할 기본 실습 안내서입니다. 미리 준비하거나 먼저 따라 해 보셔도 됩니다. <strong>ChatGPT 앱(Codex)과 Aside 연결을 아직 하지 않았다면 <a href="https://study.saedongne.com/automation/board.html?id=1175">사전준비 안내서</a>부터 진행하세요.</strong> 기존 안내서에 적힌 3주차 날짜와 관계없이, 앱·Aside 설치와 연결 방법을 참고하면 됩니다. 이미 연결한 분은 반복 설치할 필요가 없습니다.</p>
-<p>처음에는 <strong>2~6번의 준비 → 내 프로젝트 만들기 → 초안 검토 → 발행 확인</strong>을 순서대로 진행합니다. 7번 검색 등록은 계정과 연결 상태에 따라 이어가고, 8번의 정기 실행과 9번 광고 신청은 선택 사항입니다. 준비가 덜 됐다면 원고 작성과 검토까지 진행하고 같은 프로젝트에서 이어가세요.</p>
+<p>두 플랫폼 운영으로 넓히는 분은 <strong>2~6번의 준비 → 내 프로젝트 만들기 → 초안 검토 → 발행 확인</strong>을 순서대로 진행합니다. 7번 검색 등록은 계정과 연결 상태에 따라 이어가고, 8번의 정기 실행과 9번 광고 신청은 선택 사항입니다. 준비가 덜 됐다면 원고 작성과 검토까지 진행하고 같은 프로젝트에서 이어가세요.</p>
 <h3 id="section-2">처음 따라 할 때의 순서</h3>
 <p>이 MD를 내려받아 Codex에서 읽게 하고, 아래 순서로 <strong>각 단계의 결과를 확인한 뒤</strong> 다음 프롬프트를 실행하세요. 모든 프롬프트를 한꺼번에 붙여 넣지 않습니다. <code>[ ]</code>는 본인 정보로 바꿉니다.</p>
 <div class="tablewrap" tabindex="0" role="region" aria-label="표: 좌우로 이동해 읽기"><table>
@@ -135,7 +249,7 @@ https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_기본실�
 <td>티스토리 Search Console 연결·사이트맵 상태와 새 글 색인 요청 결과</td>
 </tr>
 </tbody></table></div>
-<p>첫 수업에서는 <strong>두 글 한 묶음의 작성·검토·발행</strong>을 목표로 합니다. 광고 신청과 반복 일정은 글을 운영하면서 이어가는 확장 실습입니다. 로그인·소유권 확인이나 외부 심사가 필요한 부분은 수업 시간 안에 끝나지 않을 수 있습니다.</p>
+<p>아래 확장 과정에서는 <strong>두 글 한 묶음의 작성·검토·발행</strong>을 목표로 합니다. 광고 신청과 반복 일정은 글을 운영하면서 이어가는 확장 실습입니다. 로그인·소유권 확인이나 외부 심사가 필요한 부분은 수업 시간 안에 끝나지 않을 수 있습니다.</p>
 <h3 id="section-4">자동화의 흐름</h3>
 <div class="prompt"><div class="prompt-tools"><span>내용을 확인하고 필요한 문장을 복사하세요</span><button class="copy" type="button">문장 복사</button></div><pre><code class="language-text">내 지침·소재·사진
        ↓
@@ -673,7 +787,8 @@ AGENTS.md, README.md, PROGRESS.md와 각 글의 publication.json을 읽고
 </tr>
 </tbody></table></div>
 <p>이 자료의 검색·광고 안내는 2026-10-15에 공식 문서를 확인했습니다. 메뉴와 조건이 바뀌면 현재 공식 안내와 본인의 화면을 기준으로 진행하세요. 특정 팀 지침은 이 자료에 포함돼 있지 않으며, 개인이 열람할 수 있는 최신 지침을 별도로 적용합니다.</p>
-</article><footer>한 단계씩 결과를 확인한 뒤 이어가세요. 원고·검토·발행 기록은 본인의 비공개 프로젝트에 쌓고, 공유할 때는 공개 가능한 결과만 올립니다.</footer><script>
+</details>
+</article><footer>한 단계씩 결과를 확인하세요. 첫 원고는 내 컴퓨터에 저장하고, 익숙해지면 비공개 GitHub 보관과 발행으로 이어가세요. 공유할 때는 공개 가능한 결과만 올립니다.</footer><script>
 const quickNav = document.querySelector('.quick');
 const updateOffset = () => document.documentElement.style.setProperty('--nav-offset', (quickNav.getBoundingClientRect().height + 16) + 'px');
 updateOffset();
@@ -699,4 +814,13 @@ document.querySelectorAll('.copy').forEach(button => {
     }
   });
 });
+
+// Old links still lead to the correct section inside the folded reference.
+function revealGuideHash(){
+ let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}
+ if(!target)return;
+ let el=target;while(el){if(el.tagName==='DETAILS')el.open=true;el=el.parentElement;}
+ requestAnimationFrame(()=>target.scrollIntoView());
+}
+window.addEventListener('hashchange',revealGuideHash);revealGuideHash();
 </script></main></body></html>

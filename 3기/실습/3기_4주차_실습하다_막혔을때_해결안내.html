@@ -11,12 +11,21 @@ pre{white-space:pre-wrap;font-family:inherit;font-size:16px;line-height:1.8;over
 code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{font-family:inherit;font-size:16px;line-height:1.4;font-weight:700;background:var(--brand);color:white;border:0;border-radius:8px;padding:10px 18px;min-height:44px;cursor:pointer}.copy-status{margin-left:12px;font-size:14px;color:var(--brand)}
 .tablewrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f7f5f0}hr{border:0;border-top:1px solid var(--line);margin-top:36px}
 @media(max-width:600px){body{font-size:16px}main{padding:22px 16px 60px}h1{font-size:25px}h2{font-size:21px}pre{font-size:15px}}
+.self-check{border:2px solid var(--brand);border-radius:14px;padding:20px;margin:26px 0}.self-check h2{border:0;margin:0;padding:0}.self-check label{display:block;font-weight:700;margin-top:14px}.self-check select{display:block;width:100%;font:inherit;min-height:48px;padding:8px;margin-top:6px;background:white;color:var(--ink);border:1px solid #879e99;border-radius:8px}.self-check [hidden]{display:none}.self-check .next{background:#edf7f3;padding:12px 16px;border-radius:8px}.self-check a{display:inline-block;min-height:44px}.self-check button:focus-visible,.self-check select:focus-visible{outline:3px solid #b46a00;outline-offset:3px}
 @media print{body{background:white}main{max-width:none}.copy,.copy-status{display:none}.prompt{break-inside:avoid}a{color:inherit}}
 </style></head><body><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료로 돌아가기</a></div><h1>실습하다 막혔을 때 — AI에게 해결을 맡기는 안내서</h1>
 <p><strong>AI 자동화 스터디 3기 · Aside 설치·연결 안내 보완: 2026년 10월 28일</strong></p>
 <p>실습하다 막히셨다면 <strong>내 상황과 맞는 항목 하나만</strong> 보세요. 처음부터 다시 하실 필요는 없습니다.
 컴퓨터에 설치한 <strong>ChatGPT 앱(Codex)</strong>이 확인하고 고칠 수 있는 것은 AI에게 맡깁니다.
 로그인, 휴대폰에서 버튼 누르기처럼 여러분이 해야 하는 일은 따로 설명했습니다.</p>
+<section class="self-check" aria-labelledby="self-check-title" id="self-check">
+<h2 id="self-check-title">지금 상태부터 골라보세요</h2>
+<p>해결 문장을 복사해 <strong>하던 Codex 대화</strong>에 보내세요. 이 화면에서 입력·설치·계정 변경을 실행하지는 않습니다.</p>
+<label for="check-os">내 컴퓨터</label><select id="check-os"><option value="모르겠음">잘 모르겠어요</option><option value="Windows">Windows</option><option value="Mac">Mac</option></select>
+<label for="check-symptom">지금 막힌 곳</label><select id="check-symptom"><option value="">선택해 주세요</option><option value="chat">앱이 안 켜지거나 대화가 안 돼요</option><option value="computer">컴퓨터 유즈가 없거나 앱을 못 봐요</option><option value="cli">Aside 창은 있는데 명령·스킬이 없대요</option><option value="connect">Aside 인증·연결 오류가 나요</option><option value="git">폴더·Git·커밋·푸시가 헷갈려요</option></select>
+<div id="check-answer" hidden><p class="next" id="check-next" role="status" aria-live="polite"></p><div class="prompt"><button type="button" class="copy">해결 문장 복사</button><span role="status" aria-live="polite" class="copy-status"></span><pre><code id="check-prompt"></code></pre></div><a id="check-more" href="#help">자세한 방법 읽기</a><p><strong>성공 확인:</strong> 실제 페이지를 읽거나 파일·원격 반영을 확인한 결과가 있어야 합니다. 설치 완료라는 말만으로 다음 단계에 넘어가지 않습니다.</p></div>
+<noscript><p>아래 차례에서 증상을 고르세요. JavaScript 없이도 전체 안내를 읽고 문장을 직접 복사할 수 있습니다.</p></noscript>
+</section>
 <h2>어디에서 막히셨나요?</h2>
 <ul>
 <li><a href="#help">1. 무엇을 물어봐야 할지 모르겠어요</a></li>
@@ -30,6 +39,7 @@ code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{fon
 <li><a href="#share">9. 자료·과제는 어디에 있나요? 결과는 어떻게 올리나요?</a></li>
 <li><a href="#other">10. 음성 입력·사용 한도·사이트 수정에서 막혔어요</a></li>
 <li><a href="#question">11. 그래도 막히면 이렇게 질문해 주세요</a></li>
+<li><a href="#git">12. 폴더와 Git은 무엇이 다른가요?</a></li>
 </ul>
 <p><a id="help"></a></p>
 <h2>1. 무엇을 물어봐야 할지 모르겠어요</h2>
@@ -71,6 +81,8 @@ Codex가 대화 가능한 상태라면, 거기에 그대로 복사해서 붙여�
 <p><strong>참고:</strong> ChatGPT.com은 해결 방법을 알려 주는 곳입니다. 거기서 "고쳤다"고 말해도 내 컴퓨터의 파일이 실제로 바뀐 것은 아닐 수 있습니다. Codex에 해결 문장을 전달하거나, 안내받은 조작을 한 뒤 결과를 확인해 주세요.</p>
 <p><a id="app"></a></p>
 <h2>3. 보내기 화살표가 회색이에요 / 앱이 흰 화면이에요</h2>
+<h3 id="computer-use">컴퓨터 유즈가 없거나 앱을 못 볼 때</h3>
+<p>ChatGPT 데스크톱 앱의 <strong>Plugins → Computer Use</strong>에서 설치·활성화를 확인합니다. Mac의 <strong>화면 기록·손쉬운 사용 권한</strong>과 앱별 접근 허용은 따로 확인합니다. Windows는 대상 앱이 활성 데스크톱에 보여야 합니다. 전체 액세스 설정만으로 모든 앱의 로그인과 접근 권한이 생기지는 않습니다. 설정 위치가 다르면 현재 화면과 <a href="https://learn.chatgpt.com/docs/computer-use">공식 안내</a>로 확인하세요.</p>
 <h3>보내기 버튼만 안 눌릴 때</h3>
 <ol>
 <li>왼쪽에서 <strong>지금 실습하는 프로젝트</strong>를 선택했는지 확인합니다. 처음이면 안내서에서 정한 실습 폴더를 연결합니다. <a href="#folder">폴더 안내</a>를 보세요.</li>
@@ -336,6 +348,22 @@ Python이 실제로 설치돼 있고 실행 가능한지 네가 먼저 확인해
 </code></pre></div>
 <p>화면도 함께 올릴 수 있습니다. 이름·전화번호·계정·비밀번호·봇 토큰은 가려 주세요. <strong>전체 설정 파일이나 전체 대화 기록을 올릴 필요는 없습니다.</strong></p>
 <p>Q&amp;A 챗봇의 답은 <strong>그 질문 대화에서</strong> 확인합니다. 운영진의 추가 답변도 같은 대화에 남을 수 있으니 <a href="https://study.saedongne.com/automation/qna.html?tab=hist">Q&amp;A의 질문 기록</a>에서 내 질문을 다시 열어 보세요.</p>
+<a id="git"></a><h2>12. 폴더와 Git은 무엇이 다른가요?</h2>
+<p><strong>폴더는 실제 작업 파일이 있는 곳, Git은 그 폴더의 변경 기록을 남기는 도구, GitHub는 기록을 올려 보관하는 서비스</strong>입니다. 같은 폴더에서 Git을 함께 쓰는 것이므로 둘 중 하나를 고르는 문제가 아닙니다.</p>
+<p>큰 작업을 Git으로 관리하면 바뀐 부분을 비교하고, 언제 무엇을 바꿨는지 확인하며, 다른 PC에서도 이어갈 수 있습니다. 비공개 저장소로 혼자 사용해도 됩니다. <strong>파일과 지침을 기록해야 새 Codex 대화가 읽고 이어갈 수 있습니다.</strong> Git이 예전 대화를 전부 기억하거나 자동 백업·공개 발행하는 것은 아닙니다.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Git 용어 쉬운 설명"><table><tr><th>용어</th><th>쉽게 말하면</th></tr><tr><td>저장소·레포</td><td>프로젝트 파일과 변경 기록을 모아 둔 곳</td></tr><tr><td>클론</td><td>원격 저장소를 내 컴퓨터에 처음 가져오기</td></tr><tr><td>상태 확인</td><td>내가 바꾼 파일과 현재 브랜치 확인하기</td></tr><tr><td>페치·풀</td><td>원격의 새 기록 받기. fetch는 받아 보고, pull은 받기와 통합을 함께 합니다.</td></tr><tr><td>커밋</td><td>내 컴퓨터에서 변경 묶음에 설명을 붙여 기록하기</td></tr><tr><td>푸시</td><td>내 커밋을 GitHub 같은 원격에 올리기</td></tr><tr><td>배포·발행</td><td>실제 사이트나 블로그에서 다른 사람이 이용하게 반영하기. 푸시와 별도이며 자동 연결돼 있을 수도 있습니다.</td></tr></table></div>
+<div class="prompt"><button type="button" class="copy">Git 준비 문장 복사</button><span role="status" class="copy-status"></span><pre><code>지금 작업 폴더에서 Git을 쓰는지 먼저 확인해줘.
+이미 연결된 저장소·원격·브랜치·미커밋 변경을 확인하고 재사용해줘.
+내 파일을 덮어쓰거나 같은 폴더를 또 클론하지 마.
+깨끗한 작업본일 때 원격을 fetch하고, 현재 프로젝트의 기준 브랜치로 ff-only 최신화를 해줘.
+미커밋 변경·분기·충돌이 있으면 보존하고 어떤 선택이 필요한지 알려줘.
+저장소가 없다면 내 계정의 비공개 저장소로 준비하는 방법을 보여줘.
+비밀번호·토큰·개인정보·팀 내부 자료는 Git에서 제외해줘.
+README에 사용법, AGENTS.md에 작업 규칙, PROGRESS.md에 완료·남은 일을 기록해줘.
+공개 저장소를 비공개로 바꾸는 것만으로 이미 공개된 자료가 회수되지는 않는다는 점도 확인해줘.
+실제 원격 반영을 확인하고 푸시와 배포 상태를 구분해서 알려줘.</code></pre></div>
+<p>본인 비공개 저장소도 서비스 약관·회사 규정과 자료 소유권을 따라 사용합니다. 나중에 공개하기 전에 파일뿐 아니라 커밋 이력도 확인하세요.</p>
+<p>공식 참고: <a href="https://learn.chatgpt.com/docs/computer-use">Computer Use 설치·권한</a> · <a href="https://learn.chatgpt.com/docs/plugins">플러그인</a> · <a href="https://learn.chatgpt.com/docs/projects">프로젝트와 대화</a> · <a href="https://git-scm.com/docs/git-fetch">Git fetch</a> · <a href="https://git-scm.com/docs/git-merge">Git merge</a>. 확인일 2026-10-28.</p>
 <hr />
 <p><strong>4주차 모임에서는</strong> 어디에서 막혔는지뿐 아니라, 무엇을 해 보니 한 단계라도 진행됐는지도 함께 나눠 주세요. 이 안내서로 해결됐다면 <strong>어떤 문장을 보내고 무엇이 달라졌는지</strong> 이야기해 주시면 다른 분께 도움이 됩니다.</p>
 <p>이 안내서는 카톡에서 반복된 질문, 묻고 답하기 게시판, Q&amp;A 질문과 현재 실습 안내서를 확인해 정리했습니다. 특정 참가자의 컴퓨터에서 해결됐다고 보장하는 문서는 아닙니다. 같은 증상도 실제 원인은 다를 수 있어, 확인은 AI에게 맡기고 실제 결과로 성공을 판단합니다.</p>
@@ -347,4 +375,4 @@ document.querySelectorAll('.copy').forEach(button=>button.addEventListener('clic
  try{await navigator.clipboard.writeText(text);status.textContent='복사했어요. '+destination+'에 붙여넣으세요.';}
  catch{const range=document.createRange();range.selectNodeContents(button.parentElement.querySelector('pre'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='문장을 선택했어요. Ctrl+C(Mac은 ⌘+C)로 복사한 뒤 '+destination+'에 붙여넣으세요.';}
 }));
-</script></body></html>
+</script><script src="./실습_자가진단.js"></script></body></html>

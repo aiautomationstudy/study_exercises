@@ -31,6 +31,8 @@
 컴퓨터를 잘 모르는 참가자가 Codex에 해결을 맡길 문장을 복사할 수 있습니다. Aside 브라우저·CLI·Codex 스킬을 따로 확인하고, 명령 누락·Windows 인증·실행 권한 오류와 실제 페이지 읽기까지 안내합니다.
 정본 Markdown은 `3기/실습/3기_4주차_실습하다_막혔을때_해결안내.md`입니다.
 
+[내 상태로 찾는 자가진단](https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_4주차_실습하다_막혔을때_해결안내.html#self-check)에서 컴퓨터·증상을 고르면 해결 문장이 나옵니다. 컴퓨터 유즈·Aside 명령·스킬·인증과 Git을 구분하고, 폴더·커밋·푸시·배포의 차이도 설명합니다.
+
 ## 동국대 AI 특강
 
 2회차(10월 15일): [내 웹앱 만들기 실습 안내](https://aiautomationstudy.github.io/study_exercises/동국대/학사_특강/2회차_웹앱만들기_실습안내.html)

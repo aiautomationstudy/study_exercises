@@ -1,5 +1,14 @@
 # study_exercises
 
+## 운영진 실무 안내
+
+[웹에서 읽기 — Codex·Claude Code와 함께 웹앱 배포하기](https://aiautomationstudy.github.io/study_exercises/운영진/웹앱_배포_안내서.html)
+
+AI 코딩 도구를 쓰지만 개발·운영 경험은 짧은 운영진을 위한 안내서입니다.
+Dokploy를 중심으로 서버 관리자에게 받을 준비, 앱·GitHub 연결, 도메인·HTTPS, 수정 배포와 이전 버전 복구를 따라 합니다.
+단계별 요청문 14개와 완료 확인, DB·업로드·외부 도메인 연결, 문제 해결 안내를 제공합니다.
+[Markdown 원문](운영진/웹앱_배포_안내서.md)
+
 ## AI 시대 개발자 성장 로드맵
 
 [웹에서 읽기 — E3 Junior에서 E7 Senior Staff까지](https://aiautomationstudy.github.io/study_exercises/ai-developer-roadmap/)

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3기 7주차 실습 — 맡겨 두면 알아서: 매일 아침 나만의 소식 받기</title><style>
+:root{color-scheme:light;--bg:#f5f1ea;--ink:#1c2430;--brand:#0e7c74;--line:#e4ded3}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 'Apple SD Gothic Neo','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:880px;margin:auto;padding:32px 22px 72px;background:white}
+h1{font-size:30px;line-height:1.4}h2{font-size:24px;line-height:1.5;border-top:2px solid var(--line);padding-top:26px;margin-top:40px}h3{font-size:19px;line-height:1.5;margin-top:26px}
+a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px}li{margin:7px 0}ul,ol{padding-left:24px}
+.top{font-size:15px;margin-bottom:18px}.prompt{background:#f7f5f0;border:1px solid var(--line);border-radius:12px;padding:14px;margin:18px 0}
+pre{white-space:pre-wrap;font-family:inherit;font-size:16px;line-height:1.8;overflow-wrap:anywhere;margin:14px 0 0}pre code{background:none;padding:0;border:0;font:inherit}
+code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{font-family:inherit;font-size:16px;line-height:1.4;font-weight:700;background:var(--brand);color:white;border:0;border-radius:8px;padding:10px 18px;min-height:44px;cursor:pointer}.copy-status{margin-left:12px;font-size:14px;color:var(--brand)}
+.tablewrap{overflow-x:auto;margin:18px 0}blockquote{margin:18px 0;padding:12px 16px;background:#eef7f5;border-left:4px solid var(--brand);border-radius:0 10px 10px 0}blockquote p{margin:6px 0}table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f7f5f0}hr{border:0;border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:600px){body{font-size:16px}main{padding:22px 16px 60px}h1{font-size:25px}h2{font-size:21px}pre{font-size:15px}}
+@media print{body{background:white}main{max-width:none}.copy,.copy-status{display:none}.prompt{break-inside:avoid}a{color:inherit}}
+</style></head><body><main><div class="top"><a href="https://study.saedongne.com/automation/board.html?board=9">학습자료로 돌아가기</a></div><h1>3기 7주차 실습 — 맡겨 두면 알아서: 매일 아침 나만의 소식 받기</h1>
+<p>AI 자동화 스터디 3기 · 7주차 모임 실습 · 2026년 11월 4일</p>
+<p>지금까지는 AI에게 <strong>그 자리에서 일을 시키고 지켜봤습니다.</strong>
+이번에는 <strong>일을 맡겨 두고 자리를 떠납니다.</strong> 정해 둔 시간이 되면 ChatGPT가 알아서 소식을 찾아 정리해 둡니다.</p>
+<p>오늘 하나를 걸어 두면, <strong>내일 아침 결과가 와 있습니다.</strong></p>
+<blockquote>
+<p><strong>이번 실습에 필요한 것</strong></p>
+<ul>
+<li>ChatGPT 앱(Codex) — 지금까지 쓰던 그 앱입니다.</li>
+<li><strong>새로 설치할 것은 없습니다.</strong> Aside 브라우저도 쓰지 않습니다.</li>
+<li>걸리는 시간: 약 20분</li>
+</ul>
+</blockquote>
+<h2>한눈에 보기</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>할 일</th>
+<th>걸리는 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>앱을 최신으로 업데이트하기</td>
+<td>2분</td>
+</tr>
+<tr>
+<td>2</td>
+<td>내가 받을 소식 고르고 상자 복사하기</td>
+<td>3분</td>
+</tr>
+<tr>
+<td>3</td>
+<td>대화로 한 번 받아 보기</td>
+<td>5분</td>
+</tr>
+<tr>
+<td>4</td>
+<td>예약 작업으로 걸기</td>
+<td>5분</td>
+</tr>
+<tr>
+<td>5</td>
+<td>「지금 실행」으로 확인하기</td>
+<td>5분</td>
+</tr>
+<tr>
+<td>6</td>
+<td>내일 아침 결과를 캡처해 올리기</td>
+<td>다음 날 1분</td>
+</tr>
+</tbody>
+</table></div>
+<h2>1단계. 앱을 최신으로 업데이트하기</h2>
+<ol>
+<li>ChatGPT 앱 <strong>왼쪽 아래, 내 이름 위</strong>에 <strong>파란 단추(아래 화살표)</strong>가 보이면 누릅니다. 앱이 다시 켜집니다.</li>
+<li>파란 단추가 없으면 이미 최신입니다. 그대로 다음 단계로 갑니다.</li>
+</ol>
+<p><strong>확인:</strong> 왼쪽 메뉴에 <strong>「예약」</strong>이 보이면 준비가 끝났습니다.</p>
+<h2>2단계. 내가 받을 소식 고르기</h2>
+<p>아래에서 <strong>나와 가장 가까운 묶음 하나</strong>를 골라 상자를 복사합니다.
+상자 안의 <strong>[ ] 부분만 내 것으로 바꿉니다.</strong> 예: <code>[우리 동네]</code> → <code>서울 강서구</code></p>
+<p>딱 맞는 묶음이 없으면 <strong>「누구나」</strong> 상자를 쓰세요. 세 번째 소식만 내 관심사로 바꾸면 됩니다.</p>
+<h3>누구나</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 미세먼지, 우산이나 겉옷이 필요한지
+2. [우리 동네] 이번 주 행사·축제·무료 강좌
+3. [내 관심사] 새 소식 하나
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 소식은 최근 3일 안, 공고는 최근 7일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 항목마다 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>산하단체 직원 — 사무·행정</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 미세먼지
+2. [우리 시·구] 복지·지원사업 새 공고 — 대상, 지원 내용, 마감일
+3. 비영리단체·복지기관 사무에 영향을 주는 제도·지침 변경 소식(회계, 개인정보, 보조금 등)
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 소식은 최근 3일 안, 공고는 최근 7일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 항목마다 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>산하단체 직원 — 현장</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 미세먼지, 바깥 활동을 해도 되는지
+2. 돌봄·상담·교육 현장에 관련된 새 소식이나 제도 변화
+3. 이번 주에 해 볼 만한 [어르신·아이·청소년 중 하나] 대상 활동 아이디어 하나(계절·절기에 맞게)
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 소식은 최근 3일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 1·2번은 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>자영업 — 가게·식당·농장 등 운영</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 이번 주 날씨 흐름(비·기온 변화)
+2. 소상공인·[농업인 또는 자영업자] 지원사업 새 공고 — 대상, 지원 내용, 마감일
+3. [내 업종] 관련 새 소식이나 [주요 재료·작물] 가격 흐름
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 소식은 최근 3일 안, 공고는 최근 7일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 항목마다 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>회사원 · 프리랜서·강사·전문직</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 출근길에 챙길 것
+2. [내 업계] 주요 뉴스 두 개
+3. [내 분야] 입찰·공모·강사 모집·위원 모집 공고 — 기관, 내용, 마감일
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 뉴스는 최근 24시간 안, 공고는 최근 7일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 항목마다 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>의료·간호·요양</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 미세먼지, 감기·독감 같은 유행 질환 소식
+2. 장기요양·건강보험·간호 관련 제도 변경이나 새 지침
+3. [내 관심 분야, 예: 치매 돌봄] 관련 새 소식 하나
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 소식은 최근 7일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 항목마다 출처 링크를 붙여 줘. 정부·공공기관 자료를 먼저 찾아 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>명상</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 아침 산책·걷기 명상을 하기 좋은지
+2. 명상·마음 건강에 관한 새 연구나 기사 하나 — 무엇을 알아냈는지 쉬운 말로
+3. 오늘 하루 마음에 새길 짧은 글귀 하나
+
+[지킬 것]
+- 날씨는 오늘, 연구·기사는 최근 한 달 안에 나온 것
+- 항목마다 2~3줄, 쉬운 말로
+- 1·2번은 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>은퇴·쉬는 중·살림</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨와 미세먼지, 빨래·산책하기 좋은지
+2. [우리 동네] 주민센터·도서관·복지관의 무료 강좌와 행사
+3. 제철 장보기 정보 — 요즘 싸고 맛있는 채소·과일 하나와 간단한 요리법
+
+[지킬 것]
+- 최근에 나온 것만. 날씨는 오늘, 강좌·행사는 이번 주와 다음 주
+- 항목마다 2~3줄, 쉬운 말로
+- 1·2번은 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>공부·자기계발</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 내용을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. [우리 동네] 오늘 날씨
+2. 오늘의 영어 표현 세 개 — 표현, 뜻, 일상에서 쓰는 예문 하나씩. 수준은 [기초 / 중급]
+3. AI 새 소식 중 내 일이나 생활에 바로 써 볼 만한 것 하나
+
+[지킬 것]
+- 날씨는 오늘, AI 소식은 최근 3일 안
+- 항목마다 2~3줄, 쉬운 말로
+- 1·3번은 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<h3>주식·경제</h3>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 소식을 찾아서 아침 소식으로 정리해 줘.
+
+[받을 소식]
+1. 어젯밤 미국 증시와 오늘 아침 환율 요약
+2. [관심 종목이나 업종] 관련 뉴스 두 개
+3. 오늘 발표되는 주요 경제 지표나 일정
+
+[지킬 것]
+- 최근 24시간 안에 나온 것만
+- 사실만 요약하고 사라·팔라는 말은 쓰지 마
+- 항목마다 출처 링크를 붙여 줘. 출처를 못 찾으면 &quot;찾지 못함&quot;이라고 써 줘
+- 전체가 휴대폰 한 화면에 들어가게 짧게
+</code></pre></div>
+<blockquote>
+<p>📌 <strong>소식은 바꾸고 싶은 만큼 바꿔도 됩니다.</strong> 다만 <strong>세 개 안팎</strong>으로 두세요. 많이 넣을수록 결과가 길어지고, 매일 쓰는 사용량도 늘어납니다.</p>
+</blockquote>
+<h2>3단계. 대화로 한 번 받아 보기</h2>
+<p>예약을 걸기 전에 <strong>결과가 마음에 드는지 먼저 봅니다.</strong></p>
+<ol>
+<li>ChatGPT 앱에서 <strong>새 채팅</strong>을 엽니다.</li>
+<li>2단계에서 고친 상자를 붙여 넣고 보냅니다.</li>
+<li>결과를 읽어 봅니다. 마음에 들지 않는 곳이 있으면 <strong>상자를 한 줄 고쳐서</strong> 다시 보냅니다.</li>
+</ol>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>이럴 때</th>
+<th>상자에 이렇게 고치거나 더하세요</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>너무 길다</td>
+<td><code>- 항목마다 한 줄로</code></td>
+</tr>
+<tr>
+<td>오래된 소식이 섞였다</td>
+<td><code>- 오늘 날짜를 먼저 확인하고, 그보다 오래된 것은 빼</code></td>
+</tr>
+<tr>
+<td>출처 링크가 없다</td>
+<td><code>- 출처 링크가 없는 항목은 빼</code></td>
+</tr>
+<tr>
+<td>어려운 말이 많다</td>
+<td><code>- 중학생도 알아듣게</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>마지막에 보낸 상자</strong>를 복사해 둡니다. 4단계에서 그대로 씁니다.</p>
+<h2>4단계. 예약 작업으로 걸기</h2>
+<ol>
+<li>왼쪽 메뉴에서 <strong>「예약」</strong>을 누릅니다.</li>
+<li><strong>「작성」</strong>을 누르고 <strong>「수동으로 설정」</strong>을 고릅니다.</li>
+<li>칸을 아래처럼 채웁니다.</li>
+</ol>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>칸</th>
+<th>넣을 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>이름</td>
+<td><code>아침 소식</code> — 계정을 여럿이 함께 쓰면 <code>홍길동 아침 소식</code>처럼 <strong>내 이름을 붙이세요</strong></td>
+</tr>
+<tr>
+<td>지침</td>
+<td>3단계에서 마지막에 보낸 상자를 붙여 넣기</td>
+</tr>
+<tr>
+<td>빈도</td>
+<td><strong>매일</strong></td>
+</tr>
+<tr>
+<td>시간</td>
+<td><strong>오전 7시</strong> (원하는 시간으로)</td>
+</tr>
+<tr>
+<td>실행 위치</td>
+<td><strong>클라우드</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ol>
+<li><strong>「만들기」</strong>를 누릅니다.</li>
+</ol>
+<blockquote>
+<p><strong>실행 위치를 「클라우드」로 하는 이유:</strong> 컴퓨터가 꺼져 있어도 ChatGPT가 대신 실행합니다. 앱 화면에도 <em>"이 기기가 오프라인이어도 클라우드에서 실행됩니다"</em>라고 나옵니다.</p>
+<p><strong>「클라우드」가 보이지 않으면</strong> 「이 기기」를 고르세요. 이때는 <strong>그 시간에 컴퓨터가 켜져 있고 ChatGPT 앱이 열려 있어야</strong> 실행됩니다. 앱을 닫으면 실행되지 않습니다. 시간은 컴퓨터를 켜 두는 때(예: 출근 뒤 오전 9시)로 정하세요.</p>
+</blockquote>
+<h2>5단계. 「지금 실행」으로 확인하기</h2>
+<p>내일까지 기다리지 않고 지금 한 번 돌려 봅니다.</p>
+<ol>
+<li>「예약」 화면에서 방금 만든 <strong>「아침 소식」</strong>을 누릅니다.</li>
+<li><strong>「지금 실행」</strong>을 누릅니다.</li>
+<li>몇 분 뒤 실행 기록이 생깁니다. 눌러서 결과를 봅니다.</li>
+</ol>
+<p><strong>확인:</strong> 3단계에서 대화로 받아 본 것과 비슷한 소식이 나오면 성공입니다.
+<strong>내일부터는 정해 둔 시간에 알아서</strong> 같은 일을 합니다.</p>
+<h2>6단계. 내일 아침 결과를 캡처해 올리기</h2>
+<ol>
+<li>내일 아침 ChatGPT 앱의 <strong>「예약」</strong>을 엽니다. 새 결과에는 <strong>읽지 않음 표시</strong>가 붙어 있습니다.</li>
+<li>결과 화면을 캡처합니다.</li>
+<li>스터디 허브 <strong>실습 공유</strong> 게시판에 올립니다.</li>
+<li>제목: <code>[3기 7주차 실습] 나의 아침 소식</code></li>
+<li>본문: 어떤 소식을 받기로 했는지 한 줄</li>
+</ol>
+<h2>꼭 알아 두기</h2>
+<ul>
+<li><strong>끄는 법:</strong> 「예약」에서 내 작업을 열고 <strong>「일시 중지」</strong>를 누릅니다. 다시 받으려면 <strong>「다시 시작」</strong>, 아예 없애려면 <strong>「삭제」</strong>를 누릅니다.</li>
+<li><strong>사용량:</strong> 매일 한 번 실행할 때마다 내 ChatGPT 사용량이 조금씩 쓰입니다. 소식을 세 개 안팎으로 두면 부담이 적습니다.</li>
+<li><strong>계정을 여럿이 함께 쓰는 경우:</strong> 예약 작업은 계정에 걸립니다. 같은 계정을 쓰는 사람 모두에게 서로의 작업이 보입니다. <strong>이름에 내 이름을 붙이고, 남의 작업은 끄거나 지우지 마세요.</strong></li>
+<li><strong>AI가 찾은 소식은 틀릴 수 있습니다.</strong> 신청 마감일·금액처럼 중요한 것은 <strong>출처 링크를 열어 원문으로 확인</strong>하세요.</li>
+</ul>
+<h2>잘 안될 때</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>이런 일이 생기면</th>
+<th>이렇게 하세요</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>왼쪽에 「예약」 메뉴가 없다</td>
+<td>1단계 업데이트를 합니다. 앱을 완전히 껐다 켭니다. 그래도 없으면 허브 <strong>Q&amp;A 챗봇</strong>에 화면을 캡처해 물어보세요</td>
+</tr>
+<tr>
+<td>「작성」을 눌렀는데 「수동으로 설정」이 없다</td>
+<td>「ChatGPT로 작성」을 고르고, 3단계 상자를 붙여 넣은 뒤 <em>"이걸 매일 오전 7시에 실행되는 예약 작업으로 만들어 줘"</em>라고 보냅니다. ChatGPT가 만든 작업 내용을 확인하고 저장합니다</td>
+</tr>
+<tr>
+<td>「클라우드」가 없다</td>
+<td>「이 기기」를 고르고, 그 시간에 컴퓨터와 ChatGPT 앱을 켜 둡니다</td>
+</tr>
+<tr>
+<td>「지금 실행」을 눌렀는데 결과가 없다</td>
+<td>3분쯤 기다린 뒤 「예약」 화면을 다시 엽니다. 「마지막 실행에 실패함」이 보이면 지침을 짧게 줄여 다시 실행합니다</td>
+</tr>
+<tr>
+<td>다음 날 아침 결과가 없다</td>
+<td>「이 기기」로 걸었다면 그 시간에 컴퓨터가 잠자기였거나 앱이 닫혀 있었던 것입니다. 시간을 컴퓨터를 켜 두는 때로 바꾸세요</td>
+</tr>
+<tr>
+<td>매일 같은 소식이 반복된다</td>
+<td>지침에 <code>- 어제 알려 준 것과 같은 소식은 빼</code>를 더합니다</td>
+</tr>
+</tbody>
+</table></div>
+<h2>한 걸음 더 (선택 · 이미 익숙한 분께)</h2>
+<p>기본 실습을 마쳤다면 아래 중 하나를 골라 해 보세요.</p>
+<p><strong>① 「새로 나온 것만」 받기</strong>
+작업 편집에 <strong>「실행할 때마다 같은 채팅 사용」</strong>이 보이면 그것을 고르세요. 그러면 AI가 지난번에 보낸 내용을 보고 겹치는 소식을 뺄 수 있습니다. 지침에 <code>- 지난번에 알려 준 소식과 겹치면 빼고, 새로 나온 것만</code>을 더하세요.</p>
+<p><strong>② 검사 기준 넣기</strong>
+지침 끝에 아래를 붙이면 AI가 결과를 보내기 전에 스스로 걸러 냅니다.</p>
+<div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">[보내기 전에 검사]
+- 각 항목의 날짜가 기준 기간 안인지 확인하고, 아니면 뺀다
+- 출처 링크를 실제로 열어 내용과 맞는지 확인한다
+- 뺀 항목이 있으면 맨 아래에 &quot;뺀 것: 이유&quot;를 한 줄로 적는다
+</code></pre></div>
+<p><strong>③ 내 컴퓨터에 쌓기</strong>
+실행 위치를 「이 기기」로 하고 <em>"결과를 내 문서 폴더의 <code>아침소식</code> 폴더에 날짜별 파일로 저장해 줘"</em>를 더합니다. 심화 #4 위키를 만든 분은 그 위키 폴더에 쌓아도 됩니다. 이때는 그 시간에 컴퓨터가 켜져 있어야 합니다.</p>
+<p><strong>④ 내 스킬을 예약에 태우기</strong>
+블로그 실습처럼 잘 된 일을 스킬로 만들어 두었다면, 지침에 스킬 이름을 넣어 매주 월요일 아침에 실행되게 해 보세요(예: 지난주 사진으로 블로그 초안 쓰기).</p>
+<p><strong>⑤ 메일이 오면 실행하기</strong>
+「작성」 → 「수동으로 설정」에서 시간 대신 <strong>「새 이메일」</strong>을 고르면, 정해 둔 조건의 Gmail 메일이 올 때 실행됩니다(「Gmail 연결」 필요, 클라우드 실행). 계정 종류에 따라 이 선택지가 없을 수 있습니다. 예: 제목에 <code>[신청]</code>이 들어간 메일이 오면 이름·연락처·신청 내용을 표로 정리하기. <strong>연습용 Gmail로 해 보세요.</strong></p></main><script>
+document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',async()=>{
+ const text=button.parentElement.querySelector('pre').textContent;
+ const status=button.parentElement.querySelector('.copy-status');
+ try{await navigator.clipboard.writeText(text);status.textContent='복사했어요. 대화창에 붙여넣으세요.';}
+ catch{const range=document.createRange();range.selectNodeContents(button.parentElement.querySelector('pre'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='문장을 선택했어요. Ctrl+C로 복사하세요.';}
+}));
+</script></body></html>

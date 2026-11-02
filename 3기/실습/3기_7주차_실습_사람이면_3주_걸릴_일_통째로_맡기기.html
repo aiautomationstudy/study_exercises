@@ -64,7 +64,11 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 <p><strong>② 「전체 액세스」 확인.</strong> 새 채팅을 열고, 아래 입력창 밑의 권한 단추가 <strong>「전체 액세스」</strong>인지 봅니다. 아니면 눌러서 <strong>「전체 권한」</strong>을 고릅니다.
 목록에 「전체 권한」이 없거나 Aside가 안 되면 <a href="https://aiautomationstudy.github.io/study_exercises/3기/실습/3기_Aside_연결_다시맞추기_따라하기.html">Aside 연결 다시 맞추기</a>를 먼저 합니다. <strong>오늘 실습은 이것이 되어 있어야 AI가 멈추지 않고 일합니다.</strong></p>
 <p><strong>③ 절전 끄기.</strong> 설정 → 일반에서 <strong>「실행 중 절전 모드 방지」</strong>를 켭니다. 노트북은 <strong>전원을 꽂고, 덮개를 닫지 않습니다.</strong> 컴퓨터가 잠들면 AI도 멈춥니다.</p>
-<p><strong>④ 모델은 Luna, 추론은 High.</strong> 오래 일하는 실습이라 사용량이 적게 드는 쪽으로 합니다(2주차에 배운 그 설정). 일이 자꾸 막히면 그때 Sol·Medium으로 바꿉니다.</p>
+<p><strong>④ 모델은 GPT-6.1 Terra, 추론 수준은 Medium.</strong> 입력창 아래 모델 단추를 누르고, 「모델 선택」 목록에서 <strong>GPT-6.1 Terra</strong>를, 「추론 수준」은 <strong>Medium</strong>을 고릅니다. Terra는 10월 26일에 나온 빠른 모델로, 웹 화면을 다루는 일(Aside)을 잘합니다. 「파워」 칸의 빠른 선택에는 Terra가 없으니 목록에서 직접 고릅니다.</p>
+<ul>
+<li><strong>Terra가 목록에 없으면</strong> 앱을 업데이트합니다(①). 그래도 없으면 2주차에 배운 <strong>Luna · High</strong>로 합니다.</li>
+<li>Terra는 Luna보다 사용량이 더 듭니다. 처음에는 Medium으로 하고, 일이 막힐 때만 High로 올립니다.</li>
+</ul>
 <p><strong>⑤ Aside를 켜 둡니다.</strong> AI가 일하는 화면이 여기에 보이고, 「사람 차례」 화면도 여기에 뜹니다.</p>
 <p><strong>⑥ 새 폴더.</strong> 새 채팅의 작업 폴더를 <strong>문서 안에 새로 만든 폴더</strong>로 고릅니다. 이름 예: <code>큰일-지원찾기</code>. 큰 일 하나에 폴더 하나입니다.</p>
 <h2>2단계. 내 큰 일 고르기 (3분)</h2>
@@ -367,7 +371,7 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 </tr>
 <tr>
 <td><strong>「목표가 정체됨」</strong>, 같은 오류가 계속</td>
-<td><strong>"지금 막힌 이유를 쉽게 말해 주고, 다른 방법으로 해"</strong> 라고 보냅니다. 그래도 안 되면 모델을 <strong>Sol·Medium</strong>으로 바꾸고 "계속해"</td>
+<td><strong>"지금 막힌 이유를 쉽게 말해 주고, 다른 방법으로 해"</strong> 라고 보냅니다. 그래도 안 되면 <strong>추론 수준만 High</strong>로 올리고 "계속해". 모델은 바꾸지 않습니다(대화 중에 모델을 바꾸면 성능이 떨어진다고 앱이 알려 줍니다)</td>
 </tr>
 <tr>
 <td>뭔가 이상하다, 무섭다</td>
@@ -436,7 +440,7 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 </tr>
 <tr>
 <td>사용 한도가 너무 빨리 차요</td>
-<td>모델이 <strong>Luna</strong>인지 확인합니다. 그래도 차면 오늘은 거기까지 하고 한도가 풀린 뒤 이어 갑니다</td>
+<td>추론 수준이 <strong>Medium</strong>인지 확인합니다. 그래도 차면 오늘은 거기까지 하고 한도가 풀린 뒤 이어 갑니다. 다음 큰 일은 새 채팅에서 <strong>Luna · High</strong>로 시작하면 한도가 훨씬 여유 있습니다</td>
 </tr>
 <tr>
 <td>다 했다는데 결과가 안 보여요</td>

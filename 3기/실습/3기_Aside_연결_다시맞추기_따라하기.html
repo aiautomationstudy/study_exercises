@@ -74,6 +74,11 @@ code{font:inherit;background:#f3f1eb;border-radius:4px;padding:1px 4px}.copy{fon
 <td>연결 확인</td>
 <td>Codex (상자 하나)</td>
 </tr>
+<tr>
+<td>8</td>
+<td>컴퓨터가 잠들지 않게 하기 (7주차 실습 전에 꼭)</td>
+<td>나</td>
+</tr>
 </tbody>
 </table></div>
 <h2>1단계. 앱이 「Codex」로 열려 있는지 보기</h2>
@@ -190,6 +195,43 @@ if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or
 </code></pre></div>
 <p><strong>「NAVER」 같은 제목이 나오면 연결 끝입니다.</strong> 🎉
 이제 수요일 실습을 바로 할 수 있습니다.</p>
+<p><a id="sleep"></a></p>
+<h2>8단계. 컴퓨터가 잠들지 않게 하기</h2>
+<p><strong>컴퓨터가 잠들면 AI도 멈춥니다.</strong> 7주차 실습처럼 AI에게 오래 걸리는 일을 맡길 때는 아래 두 군데를 꼭 바꿉니다. 3분이면 됩니다.</p>
+<h3>① ChatGPT 앱 — 「실행 중 절전 모드 방지」 켜기</h3>
+<ol>
+<li>2단계처럼 <strong>왼쪽 아래 동그라미 → 「설정」</strong> 을 엽니다. 왼쪽 <strong>「일반」</strong> 이 골라져 있는지 봅니다.</li>
+</ol>
+<p><img alt="ChatGPT 앱 설정의 일반" src="images/aside_다시맞추기/08_app_settings_general.png" /></p>
+<ol>
+<li>오른쪽 화면을 <strong>아래로 내립니다.</strong> <strong>「실행 중 절전 모드 방지」</strong> 줄이 나옵니다. 줄 아래에는 「ChatGPT이(가) 작업을 실행하는 동안 컴퓨터가 절전 모드로 전환되지 않도록 합니다」라고 쓰여 있습니다.</li>
+<li>그 줄 오른쪽 스위치를 눌러 <strong>파랗게</strong> 바꿉니다. (2단계의 「전체 액세스」 스위치와 같은 모양입니다)</li>
+</ol>
+<blockquote>
+<p>줄이 안 보이면 왼쪽 위 <strong>검색</strong> 칸에 <strong>절전</strong> 이라고 써 보세요. 그래도 없으면 앱을 업데이트합니다(왼쪽 아래 파란 단추).</p>
+</blockquote>
+<h3>② Windows — 전원을 꽂았을 때 잠들지 않게</h3>
+<p>①은 AI가 일하는 <strong>동안만</strong> 컴퓨터를 깨워 둡니다. AI가 메일 답장이나 심사 결과를 <strong>기다리는 동안</strong>에도 깨어 있게 하려면 Windows 설정도 바꿉니다.</p>
+<ol>
+<li>키보드에서 <strong><code>Windows 키</code> + <code>I</code></strong> 를 함께 누릅니다. Windows <strong>설정</strong> 창이 열립니다.</li>
+<li>왼쪽 <strong>「시스템」</strong> → 오른쪽 <strong>「전원」</strong> 을 누릅니다. <strong>노트북은 「전원 및 배터리」</strong> 라고 쓰여 있습니다.</li>
+<li><strong>「화면, 절전 모드, 최대 절전 모드 시간 제한」</strong> 을 눌러 펼칩니다.</li>
+</ol>
+<p><img alt="Windows 설정 시스템 &gt; 전원" src="images/aside_다시맞추기/09_win_power.png" /></p>
+<ol>
+<li><strong>「전원 연결됨」</strong> 아래에서 <strong>「절전 모드」</strong> 나 <strong>「최대 절전 모드」</strong> 가 들어간 줄을 찾아, 오른쪽 칸을 눌러 <strong>「안 함」</strong> 을 고릅니다. 그런 줄이 두 개면 둘 다 「안 함」입니다.</li>
+</ol>
+<p><img alt="전원 연결됨 아래 절전 줄을 안 함으로" src="images/aside_다시맞추기/10_win_power_never.png" /></p>
+<ul>
+<li><strong>「화면 끄기」 줄은 그대로 둬도 됩니다.</strong> 화면만 꺼지는 것은 AI를 멈추지 않습니다.</li>
+<li>노트북의 <strong>「배터리 사용」</strong> 쪽은 바꾸지 않아도 됩니다. 대신 <strong>전원을 꽂아 둡니다.</strong></li>
+<li>그림은 데스크톱 PC 화면이라 노트북과 줄 이름이 조금 다를 수 있습니다. <strong>「절전」이 들어간 줄을 「안 함」</strong> 으로 하면 됩니다.</li>
+</ul>
+<h3>③ 노트북은 덮개를 닫지 않습니다</h3>
+<p>덮개를 닫으면 위 설정과 상관없이 잠드는 노트북이 많습니다. <strong>전원을 꽂고, 덮개는 열어 둡니다.</strong> 화면이 꺼지는 것은 괜찮습니다.</p>
+<blockquote>
+<p><strong>Mac은</strong> ①만 하고, <strong>시스템 설정 → 배터리 → 옵션</strong>에서 「잠자기 방지」가 들어간 스위치를 켭니다. 전원을 꽂고 덮개를 열어 둡니다.</p>
+</blockquote>
 <h2>안 하셔도 되는 것</h2>
 <ul>
 <li>Aside 안에서 ChatGPT·Claude 계정 연결하기 (Models → Providers → Subscription)</li>

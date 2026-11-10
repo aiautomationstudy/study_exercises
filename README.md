@@ -1,5 +1,12 @@
 # study_exercises
 
+## 대정요양병원·요양원
+
+[웹에서 읽기 — 대정요양병원·요양원 직원을 위한 AI 활용 안내서](https://aiautomationstudy.github.io/study_exercises/대정요양병원/대정요양병원_AI활용_안내서.html)
+
+경영지원본부(원무과·총무과·시설과) 직원이 처음부터 따라 하는 안내서입니다. ChatGPT 앱 또는 Claude 앱 설치와 권한 설정, 쉬운 말 대답과 병원 업무 규칙, Aside 브라우저 연결, 컴퓨터 사용(Computer Use), 절전 끄기, 부서별 작은 일과 큰 일 다섯 가지의 붙여 넣는 글을 담았습니다.
+[Markdown 원문](대정요양병원/대정요양병원_AI활용_안내서.md)
+
 ## 운영진 실무 안내
 
 [웹에서 읽기 — Codex·Claude Code와 함께 웹앱 배포하기](https://aiautomationstudy.github.io/study_exercises/운영진/웹앱_배포_안내서.html)

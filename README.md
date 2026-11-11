@@ -1,5 +1,12 @@
 # study_exercises
 
+## 도움님을 위한 고급 AI 활용 안내서
+
+[웹에서 읽기 — 도움님을 위한 고급 AI 활용 안내서](https://aiautomationstudy.github.io/study_exercises/도움님/도움님을_위한_고급_AI_활용_안내서.html)
+
+스터디 시간에 참여하기 어려운 도움님이 Windows 컴퓨터에서 혼자 따라 하는 안내서입니다. 기존 병원 안내서의 단계와 화면 그림을 바탕으로, 유료 ChatGPT 앱(Codex)과 Aside 연결, 설치 중 ChatGPT.com에 화면을 보여 주며 도움받는 방법, 생활 실습 16가지와 큰 작업 5가지를 담았습니다. 사회, 심리, 경제, 행정, 건강, 일상생활과 도움 활동을 고르게 다룹니다.
+[Markdown 원문](도움님/도움님을_위한_고급_AI_활용_안내서.md)
+
 ## 대정요양병원·요양원
 
 [웹에서 읽기 — 대정요양병원·요양원 직원을 위한 AI 활용 안내서](https://aiautomationstudy.github.io/study_exercises/대정요양병원/대정요양병원_AI활용_안내서.html)

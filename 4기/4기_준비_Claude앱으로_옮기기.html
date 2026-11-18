@@ -103,22 +103,25 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 <li>아래 7에서 맞추는 <strong>「권한 무시」를 쓸 수 있습니다.</strong> AI가 일할 때마다 허락을 묻지 않습니다. 「Claude」 화면에는 이 설정이 없습니다.</li>
 <li>AI가 실행한 명령과 파일에서 바뀐 곳이 함께 나옵니다. 처음에는 낯설어도 괜찮습니다. 다 읽지 않아도 되고, AI가 마지막에 정리해 주는 결과만 보시면 됩니다.</li>
 </ul>
-<p><img alt="왼쪽 위 두 단추 중 오른쪽 &lt;/&gt; 모양이 Code 화면" src="images/claude앱_준비/01_왼쪽_메뉴.png" /></p>
+<p><img alt="왼쪽 위 두 단추 중 오른쪽 &lt;/&gt; 모양을 누른 Code 화면. 왼쪽 메뉴에 새로 만들기, 검색, 아티팩트, 플러그인, 더 보기가 있다" src="images/claude앱_준비/01_Code_화면.png" /></p>
 <h3>5. 모델은 Sonnet, 노력은 Medium</h3>
-<p>「Code」 화면의 입력창 근처에 있는 모델 단추를 누릅니다. <strong>Sonnet</strong>을 고르고, 같은 메뉴의 <strong>「노력」은 Medium</strong>(화면에는 「보통」 또는 「중간」)으로 합니다. 실습에 충분히 똑똑하고, 사용 한도도 덜 씁니다. 대화 중간에는 모델을 바꾸지 않습니다.</p>
+<p>입력창 아래 오른쪽에 지금 모델 이름(예: 「Opus」)이 적힌 단추를 누릅니다. <strong>Sonnet</strong>을 고르고, 같은 메뉴의 <strong>「노력」</strong>에서 <strong>Medium</strong>(화면에는 「보통」 또는 「중간」)을 고릅니다. 실습에 충분히 똑똑하고, 사용 한도도 덜 씁니다. 대화 중간에는 모델을 바꾸지 않습니다.</p>
+<p><img alt="모델 단추를 누른 메뉴. Opus, Sonnet, Haiku 와 그 아래 노력 메뉴가 있다" src="images/claude앱_준비/04_모델_노력.png" /></p>
 <h3>6. 일할 폴더 연결하기</h3>
 <p>Claude가 내 컴퓨터의 파일로 일하려면 폴더를 연결해야 합니다.</p>
 <ol>
-<li>「Code」 화면에서 <strong>「새 세션」</strong>을 누릅니다.</li>
-<li>입력창 근처의 <strong>폴더 단추</strong>를 누르고 <strong>「폴더 선택…」</strong>을 고릅니다.</li>
+<li>「Code」 화면 왼쪽 위 <strong>「새로 만들기」</strong>를 누릅니다.</li>
+<li>입력창 아래의 <strong>폴더 단추</strong>(폴더 모양 옆에 폴더 이름이나 「폴더 없음」)를 누르고 아래쪽 <strong>「폴더 열기…」</strong>를 고릅니다.</li>
 <li>실습할 폴더를 고릅니다. 3기 때 만든 <code>내창고</code>(세컨드 브레인) 폴더가 있으면 그것을 골라도 됩니다.</li>
 <li>처음 연결할 때 이 폴더를 믿어도 되는지 묻는 창이 나오면 <strong>허용</strong>을 누릅니다.</li>
 </ol>
-<p>한 번 고른 폴더는 다음 「새 세션」부터 목록에 나옵니다. 세션마다 폴더가 맞는지만 보고 시작합니다.</p>
+<p>한 번 연 폴더는 다음부터 이 목록의 「최근」에 나옵니다. 새로 만들 때마다 입력창 아래에 <strong>「이 컴퓨터」</strong>와 <strong>실습 폴더 이름</strong>이 보이는지 보고 시작합니다.</p>
+<p><img alt="입력창 아래 폴더 단추를 누른 메뉴. 최근 폴더 목록 아래에 폴더 열기가 있고, 맨 아래 줄에 이 컴퓨터와 폴더 이름이 보인다" src="images/claude앱_준비/02_폴더_열기.png" /></p>
 <h3>7. 매번 묻지 않게 하기 — 「권한 무시」를 늘 켜 두기</h3>
 <p>3기에 ChatGPT 앱을 「전체 액세스」로 맞춘 것과 같은 일입니다. Claude 앱에서는 이 설정을 <strong>「권한 무시」</strong>라고 부릅니다. 켜 두면 AI가 파일을 만들거나 명령을 실행할 때마다 허락을 묻지 않습니다.</p>
 <p><strong>① 앱에서 「권한 무시」를 쓸 수 있게 켜기.</strong> 왼쪽 아래 내 이름 → <strong>설정 → 왼쪽 목록의 「Claude Code」</strong> → 「세션」의 <strong>「권한 우회 모드 허용」</strong> 스위치를 켭니다. 「모든 권한을 우회할까요?」 창이 뜨면 허용합니다.</p>
-<p><strong>② 늘 「권한 무시」로 시작하게 설정 파일에 적기.</strong> 「Code」 화면에서 새 세션을 열고 6에서 연결한 폴더를 고른 뒤, 아래 상자를 복사해서 보냅니다. AI가 파일을 고쳐도 되는지 물으면 <strong>허용</strong>을 누릅니다.</p>
+<p><img alt="입력창 아래 오른쪽 권한 단추를 누른 메뉴. 자동, 수동, 편집 자동 수락, 계획, 권한 무시가 있다. ①을 하기 전에는 권한 무시가 흐리게 보이고 Claude Code 설정에서 활성화라고 나온다" src="images/claude앱_준비/03_권한_단추.png" /></p>
+<p><strong>② 늘 「권한 무시」로 시작하게 설정 파일에 적기.</strong> <strong>「새로 만들기」</strong>를 누르고 폴더 단추에 6에서 연 폴더가 보이는지 본 뒤, 아래 상자를 복사해서 보냅니다. AI가 파일을 고쳐도 되는지 물으면 <strong>허용</strong>을 누릅니다.</p>
 <div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">Claude 앱이 앞으로 매번 묻지 않고 「권한 무시」로 일하도록 설정해 줘.
 1. 내 사용자 설정 파일 settings.json 을 찾아 줘. Windows는 %USERPROFILE%\.claude\settings.json, Mac은 ~/.claude/settings.json 이야. 없으면 새로 만들어.
 2. 고치기 전에 같은 폴더에 settings.json.bak 으로 복사해 둬.
@@ -132,7 +135,7 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 <li><strong>Windows:</strong> 창을 닫은 뒤, 화면 <strong>오른쪽 아래 작업 표시줄</strong>의 <code>^</code> 를 눌러 Claude 아이콘이 보이면 마우스 오른쪽 단추 → <strong>종료</strong>. 그리고 다시 엽니다.</li>
 <li><strong>Mac:</strong> <code>Cmd</code> + <code>Q</code> 로 끄고 다시 엽니다.</li>
 </ul>
-<p><strong>④ 확인.</strong> 다시 연 뒤 「Code」 화면에서 새 세션을 열었을 때 입력창 아래 권한 단추가 <strong>「권한 무시」</strong>면 성공입니다.</p>
+<p><strong>④ 확인.</strong> 다시 연 뒤 「Code」 화면에서 「새로 만들기」를 눌렀을 때 입력창 아래 오른쪽 권한 단추가 <strong>「권한 무시」</strong>면 성공입니다.</p>
 <blockquote>
 <p><strong>알아 두세요</strong></p>
 <ul>
@@ -155,7 +158,7 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 </code></pre></div>
 <ol>
 <li>나온 글을 복사합니다.</li>
-<li>Claude 앱 「Code」 화면에서 새 세션을 열고 아래 상자를 보냅니다. 상자 맨 아래 줄 다음에 복사한 글을 붙여 넣고 보냅니다. Claude의 전역 지침 파일(CLAUDE.md)에 들어가서, 「Code」 화면에서 하는 모든 일에 적용됩니다.</li>
+<li>Claude 앱 「Code」 화면에서 「새로 만들기」를 누르고 아래 상자를 보냅니다. 상자 맨 아래 줄 다음에 복사한 글을 붙여 넣고 보냅니다. Claude의 전역 지침 파일(CLAUDE.md)에 들어가서, 「Code」 화면에서 하는 모든 일에 적용됩니다.</li>
 </ol>
 <div class="prompt"><button type="button" class="copy">문장 복사</button><span role="status" class="copy-status"></span><pre><code class="language-text">아래 「대답 규칙」을 내 전역 지침 파일에 넣어 줘. Windows는 %USERPROFILE%\.claude\CLAUDE.md, Mac은 ~/.claude/CLAUDE.md 야. 없으면 새로 만들고, 이미 있으면 다른 내용은 지우거나 바꾸지 말고 맨 아래에 붙여 줘. 끝나면 넣은 부분만 보여 줘.
 </code></pre></div>
@@ -171,11 +174,11 @@ tr.group td{background:#e6f2f0;color:var(--brand);font-weight:700;padding:8px 10
 <tbody>
 <tr>
 <td>「Code」 화면에서 권한 단추가 「권한 무시」가 아닙니다</td>
-<td>설정 → Claude Code의 「권한 우회 모드 허용」이 켜져 있는지 봅니다. 켜져 있으면 권한 단추를 눌러 「권한 무시」를 직접 고릅니다. 그래도 새 세션마다 돌아가면 7의 상자를 한 번 더 보내고 앱을 껐다 켭니다</td>
+<td>설정 → Claude Code의 「권한 우회 모드 허용」이 켜져 있는지 봅니다. 켜져 있으면 권한 단추를 눌러 「권한 무시」를 직접 고릅니다. 그래도 새로 만들 때마다 돌아가면 7의 상자를 한 번 더 보내고 앱을 껐다 켭니다</td>
 </tr>
 <tr>
 <td>폴더를 고르는 단추나 「권한 무시」가 안 보입니다</td>
-<td>왼쪽 위에서 <code>&lt;/&gt;</code> 모양(「Code」 화면)을 골랐는지 봅니다. 말풍선 모양(「Claude」 화면)이면 <code>&lt;/&gt;</code> 모양을 누르고 「새 세션」을 엽니다. 그래도 없으면 앱을 최신 버전으로 업데이트하고 껐다 켭니다</td>
+<td>왼쪽 위에서 <code>&lt;/&gt;</code> 모양(「Code」 화면)을 골랐는지 봅니다. 말풍선 모양(「Claude」 화면)이면 <code>&lt;/&gt;</code> 모양을 누르고 「새로 만들기」를 누릅니다. 그래도 없으면 앱을 최신 버전으로 업데이트하고 껐다 켭니다</td>
 </tr>
 <tr>
 <td>왼쪽 아래에 업데이트 안내가 있습니다</td>
